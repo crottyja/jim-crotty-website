@@ -198,7 +198,7 @@ const newsItems = [
     outlet: "Associated Press",
     outletShort: "AP",
     logo: "AP",
-    color: "#c8000a",
+    color: "#0274B6",
     date: "March 9, 2022",
     title: "A look inside the 1st official 'safe injection sites' in US",
     quote: "The goal can't simply be to keep people alive. If you believe, like me, that doing drugs is very destructive, then the goal has to be to stop doing drugs.",

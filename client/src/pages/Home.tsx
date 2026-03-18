@@ -351,38 +351,60 @@ function NumbersBar() {
   return (
     <div
       className="relative z-20"
-      style={{ backgroundColor: "#0D2240", borderBottom: "1px solid rgba(255,255,255,0.08)" }}
+      style={{
+        backgroundImage: `url(${MAP_BG})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        borderBottom: "1px solid rgba(255,255,255,0.06)",
+      }}
     >
-      <div className="container">
-        <div className="grid grid-cols-3 md:grid-cols-6 divide-x divide-white/10">
-          {stats.map((s) => (
-            <div
-              key={s.label}
-              className="flex flex-col items-center justify-center py-5 px-2 text-center"
-            >
-              <span
-                style={{
-                  fontFamily: "'Cormorant Garamond', serif",
-                  fontSize: "clamp(1.5rem, 3vw, 2rem)",
-                  fontWeight: 600,
-                  color: "#ffffff",
-                  lineHeight: 1,
-                }}
+      <div className="absolute inset-0" style={{ background: "rgba(13,34,64,0.93)" }} />
+      <div className="container relative z-10">
+        <div className="flex items-center justify-center flex-wrap md:flex-nowrap">
+          {stats.map((s, i) => (
+            <>
+              <div
+                key={s.label}
+                className="flex flex-col items-center justify-center py-6 px-6 text-center"
               >
-                {s.value}
-              </span>
-              <span
-                className="mt-1 uppercase tracking-widest"
-                style={{
-                  fontFamily: "'Lato', sans-serif",
-                  fontSize: "0.6rem",
-                  color: "rgba(255,255,255,0.55)",
-                  letterSpacing: "0.12em",
-                }}
-              >
-                {s.label}
-              </span>
-            </div>
+                <span
+                  style={{
+                    fontFamily: "'Cormorant Garamond', serif",
+                    fontSize: "clamp(1.5rem, 3vw, 2rem)",
+                    fontWeight: 600,
+                    color: "#ffffff",
+                    lineHeight: 1,
+                  }}
+                >
+                  {s.value}
+                </span>
+                <span
+                  className="mt-1 uppercase tracking-widest"
+                  style={{
+                    fontFamily: "'Lato', sans-serif",
+                    fontSize: "0.6rem",
+                    color: "rgba(255,255,255,0.5)",
+                    letterSpacing: "0.12em",
+                  }}
+                >
+                  {s.label}
+                </span>
+              </div>
+              {i < stats.length - 1 && (
+                <span
+                  key={`star-${i}`}
+                  aria-hidden="true"
+                  style={{
+                    color: "rgba(255,255,255,0.25)",
+                    fontSize: "0.55rem",
+                    flexShrink: 0,
+                    userSelect: "none",
+                  }}
+                >
+                  ★
+                </span>
+              )}
+            </>
           ))}
         </div>
       </div>
@@ -425,21 +447,21 @@ function VideoSection() {
         backgroundPosition: "center",
       }}
     >
-      <div className="absolute inset-0" style={{ background: "rgba(248,249,250,0.94)" }} />
+      <div className="absolute inset-0" style={{ background: "rgba(13,34,64,0.91)" }} />
       <div className="container relative z-10">
-        <div className="section-label mb-4" style={{ color: "#4A7FA5" }}>03 / Video Appearances</div>
+        <div className="section-label mb-4" style={{ color: "rgba(255,255,255,0.5)" }}>03 / Video Appearances</div>
         <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-12 gap-4">
           <h2
             style={{
               fontFamily: "'Libre Baskerville', serif",
               fontSize: "clamp(1.75rem, 3vw, 2.5rem)",
-              color: "#0D2240",
+              color: "#ffffff",
               lineHeight: 1.2,
             }}
           >
             On Camera
           </h2>
-          <p className="text-sm max-w-md" style={{ color: "#6b7280", fontFamily: "'Lato', sans-serif", fontWeight: 300 }}>
+          <p className="text-sm max-w-md" style={{ color: "rgba(255,255,255,0.55)", fontFamily: "'Lato', sans-serif", fontWeight: 300 }}>
             Selected broadcast and documentary appearances.
           </p>
         </div>
@@ -448,8 +470,8 @@ function VideoSection() {
           {videos.map((v) => (
             <div
               key={v.id}
-              className="reveal-on-scroll flex flex-col bg-white"
-              style={{ boxShadow: "0 2px 12px rgba(0,0,0,0.07)" }}
+              className="reveal-on-scroll flex flex-col"
+              style={{ backgroundColor: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.12)", boxShadow: "0 4px 24px rgba(0,0,0,0.3)" }}
             >
               {/* Video embed or thumbnail */}
               {v.embedType === "youtube" ? (
@@ -496,21 +518,21 @@ function VideoSection() {
                 <div className="flex items-center justify-between mb-3">
                   <span
                     className="text-xs font-semibold tracking-wide uppercase px-2 py-1"
-                    style={{ backgroundColor: "#0D2240", color: "white", fontFamily: "'Lato', sans-serif", fontSize: "0.65rem", letterSpacing: "0.08em" }}
+                    style={{ backgroundColor: "rgba(74,127,165,0.3)", color: "rgba(255,255,255,0.85)", fontFamily: "'Lato', sans-serif", fontSize: "0.65rem", letterSpacing: "0.08em", border: "1px solid rgba(74,127,165,0.4)" }}
                   >
                     {v.outlet}
                   </span>
-                  <span className="text-xs" style={{ color: "#9ca3af", fontFamily: "'Lato', sans-serif" }}>{v.date}</span>
+                  <span className="text-xs" style={{ color: "rgba(255,255,255,0.4)", fontFamily: "'Lato', sans-serif" }}>{v.date}</span>
                 </div>
 
                 <h3
                   className="font-bold mb-3 leading-snug"
-                  style={{ fontFamily: "'Libre Baskerville', serif", color: "#0D2240", fontSize: "1rem" }}
+                  style={{ fontFamily: "'Libre Baskerville', serif", color: "#ffffff", fontSize: "1rem" }}
                 >
                   {v.title}
                 </h3>
 
-                <p className="text-sm leading-relaxed mb-4 flex-1" style={{ color: "#6b7280", fontFamily: "'Lato', sans-serif", fontWeight: 300 }}>
+                <p className="text-sm leading-relaxed mb-4 flex-1" style={{ color: "rgba(255,255,255,0.6)", fontFamily: "'Lato', sans-serif", fontWeight: 300 }}>
                   {v.description}
                 </p>
 
@@ -518,14 +540,14 @@ function VideoSection() {
                 <blockquote
                   className="relative p-4 mt-auto"
                   style={{
-                    backgroundColor: "rgba(13,34,64,0.04)",
+                    backgroundColor: "rgba(255,255,255,0.05)",
                     borderLeft: "3px solid #4A7FA5",
                   }}
                 >
                   <Quote size={14} className="absolute top-2 right-3 opacity-20" style={{ color: "#4A7FA5" }} />
                   <p
                     className="text-sm italic leading-relaxed"
-                    style={{ fontFamily: "'Cormorant Garamond', serif", color: "#374151", fontSize: "1rem" }}
+                    style={{ fontFamily: "'Cormorant Garamond', serif", color: "rgba(255,255,255,0.75)", fontSize: "1rem" }}
                   >
                     "{v.quote}"
                   </p>
@@ -652,10 +674,9 @@ function AboutSection() {
         backgroundImage: `url(${MAP_BG})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
-        backgroundColor: "white",
       }}
     >
-      <div className="absolute inset-0" style={{ background: "rgba(255,255,255,0.95)" }} />
+      <div className="absolute inset-0" style={{ background: "rgba(255,255,255,0.96)" }} />
       <div className="container relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           {/* Left: Portrait + credentials */}
@@ -893,10 +914,9 @@ function PublicationsSection() {
         backgroundImage: `url(${MAP_BG})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
-        backgroundColor: "white",
       }}
     >
-      <div className="absolute inset-0" style={{ background: "rgba(255,255,255,0.95)" }} />
+      <div className="absolute inset-0" style={{ background: "rgba(245,247,250,0.95)" }} />
       <div className="container relative z-10">
         <div className="section-label mb-4" style={{ color: "#4A7FA5" }}>03 / Writing & Commentary</div>
         <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-12 gap-4">
@@ -1021,10 +1041,9 @@ function InTheNewsSection() {
         backgroundImage: `url(${MAP_BG})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
-        backgroundColor: "white",
       }}
     >
-      <div className="absolute inset-0" style={{ background: "rgba(255,255,255,0.95)" }} />
+      <div className="absolute inset-0" style={{ background: "rgba(255,255,255,0.96)" }} />
       <div className="container relative z-10">
         <div className="section-label mb-4" style={{ color: "#4A7FA5" }}>03 / Media Coverage</div>
         <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-12 gap-4">
@@ -1177,10 +1196,9 @@ function AffiliationsSection() {
         backgroundImage: `url(${MAP_BG})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
-        backgroundColor: "#f0f4f8",
       }}
     >
-      <div className="absolute inset-0" style={{ background: "rgba(240,244,248,0.94)" }} />
+      <div className="absolute inset-0" style={{ background: "rgba(245,247,250,0.95)" }} />
       <div className="container relative z-10">
         <div className="section-label mb-4" style={{ color: "#4A7FA5" }}>04 / Affiliations</div>
         <h2

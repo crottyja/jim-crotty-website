@@ -206,6 +206,30 @@ const newsItems = [
     author: "Jennifer Peltz",
     url: "https://apnews.com/article/inside-nyc-supervised-drug-injection-sites-7ad93117d1566fda53909c0f70984d1b",
   },
+  {
+    outlet: "STAT News",
+    outletShort: "STAT",
+    logo: "STAT",
+    color: "#0D2240",
+    date: "May 7, 2025",
+    title: "Fentanyl busts saved 258 million lives? Experts say that's implausible",
+    quote: "Potential exposure to these substances is still quite small, thank goodness. When you use hyperbole, you can actually lose the audience and the message.",
+    context: "Crotty pushed back on Attorney General Pam Bondi's claim that Trump-era drug busts saved 258 million lives, calling the figure implausible and warning that exaggerated statistics undermine public trust in law enforcement messaging.",
+    author: "Lev Facher",
+    url: "https://www.statnews.com/2025/05/07/pam-bondi-fentanyl-experts-say-attorney-general-claims-false-implausible-misleading/",
+  },
+  {
+    outlet: "Fox News",
+    outletShort: "Fox",
+    logo: "FOX",
+    color: "#0D2240",
+    date: "August 26, 2022",
+    title: "Narcan vending machines are the latest weapon against opioid overdoses",
+    quote: "And sadly, it's probably going to get a lot worse before it gets better.",
+    context: "Crotty warned that the fentanyl crisis was far from over, even as harm-reduction advocates celebrated the rollout of Narcan vending machines across the country as a life-saving measure.",
+    author: "Fox News Health",
+    url: "https://www.foxnews.com/health/narcan-vending-machines-latest-weapon-opioid-overdoses",
+  },
 ];
 
 const affiliations = [
@@ -1361,7 +1385,7 @@ function Footer() {
       <div className="container flex flex-col md:flex-row items-center justify-between gap-4">
         <span
           className="text-sm"
-          style={{ color: "rgba(255,255,255,0.3)", fontFamily: "'Lato', sans-serif", fontWeight: 300 }}
+          style={{ color: "#C9A84C", fontFamily: "'Lato', sans-serif", fontWeight: 300 }}
         >
           © {new Date().getFullYear()} Jim Crotty. All rights reserved.
         </span>
@@ -1371,7 +1395,7 @@ function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             className="transition-colors hover:text-white"
-            style={{ color: "rgba(255,255,255,0.3)" }}
+            style={{ color: "#C9A84C" }}
           >
             <Linkedin size={16} />
           </a>
@@ -1380,7 +1404,7 @@ function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             className="text-xs transition-colors hover:text-white"
-            style={{ color: "rgba(255,255,255,0.3)", fontFamily: "'Lato', sans-serif", letterSpacing: "0.1em" }}
+            style={{ color: "#C9A84C", fontFamily: "'Lato', sans-serif", letterSpacing: "0.1em" }}
           >
             American University
           </a>
@@ -1389,7 +1413,7 @@ function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             className="text-xs transition-colors hover:text-white"
-            style={{ color: "rgba(255,255,255,0.3)", fontFamily: "'Lato', sans-serif", letterSpacing: "0.1em" }}
+            style={{ color: "#C9A84C", fontFamily: "'Lato', sans-serif", letterSpacing: "0.1em" }}
           >
             GI-TOC
           </a>

@@ -352,7 +352,7 @@ function NumbersBar() {
     <div
       className="relative z-20"
       style={{
-        backgroundColor: "#0D2240",
+        backgroundColor: "rgba(13,34,64,0.92)",
         borderBottom: "1px solid rgba(255,255,255,0.06)",
       }}
     >
@@ -392,8 +392,8 @@ function NumbersBar() {
                   key={`star-${i}`}
                   aria-hidden="true"
                   style={{
-                    color: "rgba(255,255,255,0.25)",
-                    fontSize: "0.55rem",
+                    color: "rgba(255,255,255,0.85)",
+                    fontSize: "0.75rem",
                     flexShrink: 0,
                     userSelect: "none",
                   }}

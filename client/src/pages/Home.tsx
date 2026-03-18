@@ -120,7 +120,7 @@ const career = [
     role: "Adjunct Professor / Lecturer",
     org: "American University, School of Public Affairs",
     location: "Washington, D.C.",
-    description: "Teaches JLC-451: Drugs, Crime & Public Policy in the Department of Justice, Law & Criminology.",
+    description: "Teaches JLC-451: Drugs, Crime & Public Policy and JLC-313: Organized Crime in the Department of Justice, Law & Criminology.",
     icon: "edu"
   },
   {

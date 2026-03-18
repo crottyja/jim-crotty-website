@@ -352,13 +352,10 @@ function NumbersBar() {
     <div
       className="relative z-20"
       style={{
-        backgroundImage: `url(${MAP_BG})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
+        backgroundColor: "#0D2240",
         borderBottom: "1px solid rgba(255,255,255,0.06)",
       }}
     >
-      <div className="absolute inset-0" style={{ background: "rgba(13,34,64,0.93)" }} />
       <div className="container relative z-10">
         <div className="flex items-center justify-center flex-wrap md:flex-nowrap">
           {stats.map((s, i) => (
@@ -688,7 +685,7 @@ function AboutSection() {
                 className="w-full max-w-xs object-cover"
                 style={{
                   filter: "grayscale(15%)",
-                  boxShadow: "8px 8px 0 #4A7FA5",
+                  boxShadow: "8px 8px 0 #0D2240",
                 }}
               />
             </div>
@@ -1367,7 +1364,7 @@ function Footer() {
   return (
     <footer
       className="py-8 border-t"
-      style={{ backgroundColor: "#080f1a", borderColor: "rgba(255,255,255,0.05)" }}
+      style={{ backgroundColor: "#0D2240", borderColor: "rgba(255,255,255,0.08)" }}
     >
       <div className="container flex flex-col md:flex-row items-center justify-between gap-4">
         <span

@@ -116,7 +116,7 @@ const career = [
     icon: "meta"
   },
   {
-    period: "Present",
+    period: "2024 – Present",
     role: "Adjunct Professor / Lecturer",
     org: "American University, School of Public Affairs",
     location: "Washington, D.C.",

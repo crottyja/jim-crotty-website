@@ -217,7 +217,7 @@ function NavBar() {
           className="font-display text-white font-semibold text-xl tracking-wide"
           style={{ fontFamily: "'Cormorant Garamond', serif" }}
         >
-          James M. Crotty
+          Jim Crotty
         </a>
 
         {/* Desktop nav */}
@@ -379,7 +379,7 @@ function AboutSection() {
             <div className="relative mb-8">
               <img
                 src={PROFILE_IMG}
-                alt="James M. Crotty"
+                alt="Jim Crotty"
                 className="w-full max-w-xs object-cover"
                 style={{
                   filter: "grayscale(15%)",
@@ -1012,7 +1012,7 @@ function Footer() {
           className="text-sm"
           style={{ color: "rgba(255,255,255,0.3)", fontFamily: "'Lato', sans-serif", fontWeight: 300 }}
         >
-          © {new Date().getFullYear()} James M. Crotty. All rights reserved.
+          © {new Date().getFullYear()} Jim Crotty. All rights reserved.
         </span>
         <div className="flex items-center gap-6">
           <a

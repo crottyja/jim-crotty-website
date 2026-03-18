@@ -281,13 +281,7 @@ function NavBar() {
       }}
     >
       <div className="container flex items-center justify-between h-16">
-        <a
-          href="#"
-          className="font-display text-white font-semibold text-xl tracking-wide"
-          style={{ fontFamily: "'Cormorant Garamond', serif" }}
-        >
-          Jim Crotty
-        </a>
+        <a href="#" aria-label="Back to top" />
 
         {/* Desktop nav */}
         <div className="hidden md:flex items-center gap-8">

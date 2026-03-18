@@ -5,8 +5,8 @@
  * Layout: Off-center editorial columns, horizontal banding, left-border accents
  */
 
-import { useEffect, useRef, useState } from "react";
-import { Menu, X, ExternalLink, Linkedin, ChevronDown, BookOpen, Briefcase, Award, GraduationCap, Globe, Mail } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Menu, X, ExternalLink, Linkedin, ChevronDown, BookOpen, Briefcase, Award, GraduationCap, Globe, Mail, Newspaper, Quote } from "lucide-react";
 
 const HERO_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/hero_bg-E39Xv3dAoLSLwUSSr7GHbD.webp";
 const MAP_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/map_bg-csabJgUBh7GraSoMYMWtE2.webp";
@@ -88,6 +88,57 @@ const career = [
   },
 ];
 
+const newsItems = [
+  {
+    outlet: "The Guardian",
+    outletShort: "Guardian",
+    logo: "G",
+    color: "#052962",
+    date: "March 8, 2025",
+    title: "Trump policies could fuel illicit drug trade despite vow to curb fentanyl",
+    quote: "We're seeing this decrease in overdose deaths and everyone's still trying to suss out exactly why. I don't think now is the time that we want to stop any of those existing efforts because we know that at least some, or a combination of them, have been working.",
+    context: "Crotty criticized Trump's tariffs on Mexico, Canada, and China as 'coercive,' warning they could disrupt existing anti-drug efforts and undermine intelligence-sharing partnerships critical to intercepting drug shipments.",
+    author: "Hannah Harris Green",
+    url: "https://www.theguardian.com/us-news/2025/mar/08/trump-policies-drug-trade-fentanyl",
+  },
+  {
+    outlet: "The Guardian",
+    outletShort: "Guardian",
+    logo: "G",
+    color: "#052962",
+    date: "October 17, 2025",
+    title: "How Chicago succeeded in reducing drug overdose deaths",
+    quote: "A lot of this stuff just isn't being tested for. It's a big blind spot.",
+    context: "Crotty highlighted the critical gap in national drug surveillance, noting that newer adulterants like medetomidine and nitazenes are going undetected in most parts of the country outside of cities with advanced testing infrastructure.",
+    author: "Hannah Harris Green & Matt Kiefer",
+    url: "https://www.theguardian.com/us-news/2025/oct/17/chicago-reduced-drug-overdose-deaths",
+  },
+  {
+    outlet: "Wall Street Journal",
+    outletShort: "WSJ",
+    logo: "WSJ",
+    color: "#0274B6",
+    date: "August 30, 2022",
+    title: "How Two Mexican Drug Cartels Came to Dominate America's Fentanyl Supply",
+    quote: "If it were an athlete, people would call it 'The G.O.A.T.' It is in fact the most pernicious, the most devastating drug that we have ever seen.",
+    context: "Quoted as a leading expert on the Sinaloa and Jalisco cartels' dominance of the U.S. fentanyl supply, as the WSJ investigated how the two cartels cornered the market after China cracked down on fentanyl production.",
+    author: "Jon Kamp, José de Córdoba & Julie Wernau",
+    url: "https://www.wsj.com/world/americas/mexico-drug-cartels-fentanyl-overdose-sinaloa-jalisco-11661866903",
+  },
+  {
+    outlet: "Associated Press",
+    outletShort: "AP",
+    logo: "AP",
+    color: "#c8000a",
+    date: "March 9, 2022",
+    title: "A look inside the 1st official 'safe injection sites' in US",
+    quote: "The goal can't simply be to keep people alive. If you believe, like me, that doing drugs is very destructive, then the goal has to be to stop doing drugs.",
+    context: "Crotty offered a counterpoint to harm-reduction advocates in this landmark AP investigation into New York City's first official overdose prevention centers, arguing that policymakers should concentrate on expanding drug treatment rather than supervised consumption.",
+    author: "Jennifer Peltz",
+    url: "https://apnews.com/article/inside-nyc-supervised-drug-injection-sites-7ad93117d1566fda53909c0f70984d1b",
+  },
+];
+
 const affiliations = [
   { name: "United Against Fentanyl", role: "Advisory Board Member", desc: "Bipartisan non-profit focused on ending the U.S. opioid crisis." },
   { name: "Global Initiative Against Transnational Organized Crime (GI-TOC)", role: "Network of Experts Member", desc: "International network of researchers and practitioners addressing organized crime." },
@@ -99,19 +150,37 @@ const affiliations = [
 
 function useScrollReveal() {
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("revealed");
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-    const elements = document.querySelectorAll(".reveal-on-scroll");
-    elements.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
+    const observe = () => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("revealed");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.08, rootMargin: "0px 0px -40px 0px" }
+      );
+      const elements = document.querySelectorAll(".reveal-on-scroll:not(.revealed)");
+      elements.forEach((el) => observer.observe(el));
+      return observer;
+    };
+
+    // Initial observation
+    let observer = observe();
+
+    // Re-observe when new elements are added to DOM
+    const mutationObserver = new MutationObserver(() => {
+      observer.disconnect();
+      observer = observe();
+    });
+    mutationObserver.observe(document.body, { childList: true, subtree: true });
+
+    return () => {
+      observer.disconnect();
+      mutationObserver.disconnect();
+    };
   }, []);
 }
 
@@ -129,6 +198,7 @@ function NavBar() {
     { label: "About", href: "#about" },
     { label: "Career", href: "#career" },
     { label: "Publications", href: "#publications" },
+    { label: "In the News", href: "#in-the-news" },
     { label: "Affiliations", href: "#affiliations" },
     { label: "Contact", href: "#contact" },
   ];
@@ -635,6 +705,152 @@ function PublicationsSection() {
   );
 }
 
+function InTheNewsSection() {
+  return (
+    <section id="in-the-news" className="py-24 bg-white">
+      <div className="container">
+        <div className="section-label mb-4" style={{ color: "#4A7FA5" }}>03.5 / Media Coverage</div>
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-12 gap-4">
+          <h2
+            style={{
+              fontFamily: "'Libre Baskerville', serif",
+              fontSize: "clamp(1.75rem, 3vw, 2.5rem)",
+              color: "#0D2240",
+              lineHeight: 1.2,
+            }}
+          >
+            In the News
+          </h2>
+          <p
+            className="text-sm max-w-md text-gray-500"
+            style={{ fontFamily: "'Lato', sans-serif", fontWeight: 300 }}
+          >
+            Jim's expert analysis has been sought by the world's leading news organizations on drug policy, cartels, and national security.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {newsItems.map((item, i) => (
+            <a
+              key={i}
+              href={item.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group block reveal-on-scroll"
+              style={{ transitionDelay: `${i * 0.1}s` }}
+            >
+              <div
+                className="h-full p-6 transition-all duration-200 group-hover:-translate-y-1"
+                style={{
+                  backgroundColor: "#f8fafc",
+                  boxShadow: "0 2px 8px rgba(0,0,0,0.06)",
+                  borderTop: `4px solid ${item.color}`,
+                }}
+              >
+                {/* Outlet badge + date */}
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center gap-3">
+                    <span
+                      className="inline-flex items-center justify-center font-black text-white text-xs px-2 py-1 min-w-[2.5rem]"
+                      style={{
+                        backgroundColor: item.color,
+                        fontFamily: "'Lato', sans-serif",
+                        letterSpacing: item.logo.length > 1 ? "0.05em" : "0",
+                        fontSize: item.logo === "G" ? "1rem" : "0.65rem",
+                      }}
+                    >
+                      {item.logo}
+                    </span>
+                    <span
+                      className="font-bold text-sm"
+                      style={{ color: item.color, fontFamily: "'Lato', sans-serif" }}
+                    >
+                      {item.outlet}
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <span
+                      className="text-xs"
+                      style={{ color: "#9ca3af", fontFamily: "'Lato', sans-serif" }}
+                    >
+                      {item.date}
+                    </span>
+                    <ExternalLink
+                      size={12}
+                      className="opacity-0 group-hover:opacity-100 transition-opacity"
+                      style={{ color: "#9ca3af" }}
+                    />
+                  </div>
+                </div>
+
+                {/* Article title */}
+                <h3
+                  className="mb-4 leading-snug group-hover:opacity-80 transition-opacity"
+                  style={{
+                    fontFamily: "'Libre Baskerville', serif",
+                    color: "#0D2240",
+                    fontSize: "1rem",
+                    lineHeight: 1.4,
+                  }}
+                >
+                  {item.title}
+                </h3>
+
+                {/* Pull quote */}
+                <div
+                  className="mb-4 py-3 px-4 relative"
+                  style={{
+                    backgroundColor: "rgba(13,34,64,0.04)",
+                    borderLeft: `3px solid ${item.color}`,
+                  }}
+                >
+                  <Quote
+                    size={14}
+                    className="absolute top-2 right-3 opacity-20"
+                    style={{ color: item.color }}
+                  />
+                  <p
+                    className="italic leading-relaxed"
+                    style={{
+                      fontFamily: "'Cormorant Garamond', serif",
+                      color: "#374151",
+                      fontSize: "1rem",
+                      fontWeight: 400,
+                    }}
+                  >
+                    &ldquo;{item.quote}&rdquo;
+                  </p>
+                </div>
+
+                {/* Context */}
+                <p
+                  className="text-sm leading-relaxed mb-4"
+                  style={{
+                    color: "#6b7280",
+                    fontFamily: "'Lato', sans-serif",
+                    fontWeight: 300,
+                  }}
+                >
+                  {item.context}
+                </p>
+
+                {/* Byline */}
+                <div
+                  className="flex items-center gap-1 text-xs"
+                  style={{ color: "#9ca3af", fontFamily: "'Lato', sans-serif" }}
+                >
+                  <Newspaper size={11} />
+                  <span>By {item.author}</span>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function AffiliationsSection() {
   return (
     <section id="affiliations" className="py-24" style={{ backgroundColor: "#f0f4f8" }}>
@@ -842,6 +1058,7 @@ export default function Home() {
       <AboutSection />
       <CareerSection />
       <PublicationsSection />
+      <InTheNewsSection />
       <AffiliationsSection />
       <ContactSection />
       <Footer />

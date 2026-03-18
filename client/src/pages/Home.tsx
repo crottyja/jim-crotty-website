@@ -267,6 +267,7 @@ function NavBar() {
     { label: "About", href: "#about" },
     { label: "Career", href: "#career" },
     { label: "Publications", href: "#publications" },
+    { label: "On Camera", href: "#media" },
     { label: "In the News", href: "#in-the-news" },
     { label: "Affiliations", href: "#affiliations" },
     { label: "Contact", href: "#contact" },
@@ -335,6 +336,211 @@ function NavBar() {
         </div>
       )}
     </nav>
+  );
+}
+
+function NumbersBar() {
+  const stats = [
+    { value: "12+", label: "Years at DEA" },
+    { value: "17", label: "Publications" },
+    { value: "6", label: "Fellowships" },
+    { value: "15+", label: "Media Outlets" },
+    { value: "3", label: "Degrees" },
+    { value: "4", label: "Countries Served" },
+  ];
+  return (
+    <div
+      className="relative z-20"
+      style={{ backgroundColor: "#0D2240", borderBottom: "1px solid rgba(255,255,255,0.08)" }}
+    >
+      <div className="container">
+        <div className="grid grid-cols-3 md:grid-cols-6 divide-x divide-white/10">
+          {stats.map((s) => (
+            <div
+              key={s.label}
+              className="flex flex-col items-center justify-center py-5 px-2 text-center"
+            >
+              <span
+                style={{
+                  fontFamily: "'Cormorant Garamond', serif",
+                  fontSize: "clamp(1.5rem, 3vw, 2rem)",
+                  fontWeight: 600,
+                  color: "#ffffff",
+                  lineHeight: 1,
+                }}
+              >
+                {s.value}
+              </span>
+              <span
+                className="mt-1 uppercase tracking-widest"
+                style={{
+                  fontFamily: "'Lato', sans-serif",
+                  fontSize: "0.6rem",
+                  color: "rgba(255,255,255,0.45)",
+                  letterSpacing: "0.12em",
+                }}
+              >
+                {s.label}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function VideoSection() {
+  const videos = [
+    {
+      id: "fox-narcan",
+      outlet: "Fox News",
+      date: "August 26, 2022",
+      title: "Narcan Vending Machines Are the Latest Weapon Against Opioid Overdoses",
+      description: "Jim Crotty, former DEA Deputy Chief of Staff, weighs in on the proliferation of Narcan vending machines as a harm-reduction strategy, arguing that while keeping people alive is important, the ultimate goal must be ending drug use.",
+      embedType: "link",
+      url: "https://www.foxnews.com/health/narcan-vending-machines-latest-weapon-opioid-overdoses",
+      quote: "We should be carpet-bombing the country with Narcan. But the goal can't simply be to keep people alive — the goal has to be to stop doing drugs.",
+    },
+    {
+      id: "scripps-fentanyl",
+      outlet: "Scripps News",
+      date: "2024",
+      title: "To Save a Life: A National Fentanyl Alarm",
+      description: "Jim Crotty appears as a featured expert in this Scripps News documentary on the fentanyl crisis, tracing the origins of the epidemic from prescription drug over-marketing through the heroin wave to the current synthetic drug catastrophe.",
+      embedType: "youtube",
+      youtubeId: "iZkaBqpxHuk",
+      url: "https://www.youtube.com/watch?v=iZkaBqpxHuk",
+      quote: "The drug trade is a profit-driven enterprise. The lethality of fentanyl is a calculated risk for dealers — and that's what makes it so dangerous.",
+    },
+  ];
+
+  return (
+    <section
+      id="media"
+      className="py-24"
+      style={{ backgroundColor: "#f8f9fa" }}
+    >
+      <div className="container">
+        <div className="section-label mb-4" style={{ color: "#4A7FA5" }}>03.4 / Video Appearances</div>
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-12 gap-4">
+          <h2
+            style={{
+              fontFamily: "'Libre Baskerville', serif",
+              fontSize: "clamp(1.75rem, 3vw, 2.5rem)",
+              color: "#0D2240",
+              lineHeight: 1.2,
+            }}
+          >
+            On Camera
+          </h2>
+          <p className="text-sm max-w-md" style={{ color: "#6b7280", fontFamily: "'Lato', sans-serif", fontWeight: 300 }}>
+            Selected broadcast and documentary appearances.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+          {videos.map((v) => (
+            <div
+              key={v.id}
+              className="reveal-on-scroll flex flex-col bg-white"
+              style={{ boxShadow: "0 2px 12px rgba(0,0,0,0.07)" }}
+            >
+              {/* Video embed or thumbnail */}
+              {v.embedType === "youtube" ? (
+                <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
+                  <iframe
+                    className="absolute inset-0 w-full h-full"
+                    src={`https://www.youtube.com/embed/${v.youtubeId}`}
+                    title={v.title}
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                </div>
+              ) : (
+                <a
+                  href={v.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="relative flex items-center justify-center group"
+                  style={{ backgroundColor: "#0D2240", minHeight: "220px" }}
+                >
+                  <div className="text-center px-8">
+                    <div
+                      className="inline-flex items-center justify-center w-16 h-16 rounded-full mb-4 group-hover:scale-110 transition-transform"
+                      style={{ backgroundColor: "rgba(255,255,255,0.15)", border: "2px solid rgba(255,255,255,0.3)" }}
+                    >
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+                        <path d="M8 5v14l11-7z" />
+                      </svg>
+                    </div>
+                    <p className="text-white/70 text-sm" style={{ fontFamily: "'Lato', sans-serif" }}>Watch on Fox News</p>
+                  </div>
+                  <div
+                    className="absolute top-3 left-3 px-2 py-1 text-white text-xs font-bold"
+                    style={{ backgroundColor: "#c00", fontFamily: "'Lato', sans-serif", letterSpacing: "0.05em" }}
+                  >
+                    FOX NEWS
+                  </div>
+                </a>
+              )}
+
+              {/* Card body */}
+              <div className="p-6 flex flex-col flex-1">
+                <div className="flex items-center justify-between mb-3">
+                  <span
+                    className="text-xs font-semibold tracking-wide uppercase px-2 py-1"
+                    style={{ backgroundColor: "#0D2240", color: "white", fontFamily: "'Lato', sans-serif", fontSize: "0.65rem", letterSpacing: "0.08em" }}
+                  >
+                    {v.outlet}
+                  </span>
+                  <span className="text-xs" style={{ color: "#9ca3af", fontFamily: "'Lato', sans-serif" }}>{v.date}</span>
+                </div>
+
+                <h3
+                  className="font-bold mb-3 leading-snug"
+                  style={{ fontFamily: "'Libre Baskerville', serif", color: "#0D2240", fontSize: "1rem" }}
+                >
+                  {v.title}
+                </h3>
+
+                <p className="text-sm leading-relaxed mb-4 flex-1" style={{ color: "#6b7280", fontFamily: "'Lato', sans-serif", fontWeight: 300 }}>
+                  {v.description}
+                </p>
+
+                {/* Pull quote */}
+                <blockquote
+                  className="relative p-4 mt-auto"
+                  style={{
+                    backgroundColor: "rgba(13,34,64,0.04)",
+                    borderLeft: "3px solid #4A7FA5",
+                  }}
+                >
+                  <Quote size={14} className="absolute top-2 right-3 opacity-20" style={{ color: "#4A7FA5" }} />
+                  <p
+                    className="text-sm italic leading-relaxed"
+                    style={{ fontFamily: "'Cormorant Garamond', serif", color: "#374151", fontSize: "1rem" }}
+                  >
+                    "{v.quote}"
+                  </p>
+                </blockquote>
+
+                <a
+                  href={v.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 mt-4 text-xs font-semibold tracking-wide uppercase hover:underline"
+                  style={{ color: "#4A7FA5", fontFamily: "'Lato', sans-serif" }}
+                >
+                  Watch / Read <ExternalLink size={11} />
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -1140,9 +1346,11 @@ export default function Home() {
     <div className="min-h-screen">
       <NavBar />
       <HeroSection />
+      <NumbersBar />
       <AboutSection />
       <CareerSection />
       <PublicationsSection />
+      <VideoSection />
       <InTheNewsSection />
       <AffiliationsSection />
       <ContactSection />

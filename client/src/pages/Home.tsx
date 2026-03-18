@@ -13,22 +13,91 @@ const MAP_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5Zc
 const PROFILE_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/crottyheadshot2_b48bea55.webp";
 
 const publications = [
-  { year: "2026", title: "The quiet resurgence of plant-based illicit drugs", outlet: "The Hill", url: "https://thehill.com/opinion/criminal-justice/5777092-synthetic-vs-plant-based-drugs/" },
-  { year: "2026", title: "Beyond Illicit Drugs: How the US is Expanding the Scope of Armed Conflict", outlet: "Small Wars Journal", url: "https://smallwarsjournal.com/2026/01/13/beyond-illicit-drugs-how-the-us-is-expanding-the-scope-of-armed-conflict/" },
-  { year: "2026", title: "Operation Absolute Resolve: A Rendition Revival?", outlet: "Small Wars Journal", url: "https://smallwarsjournal.com/author/jim-crotty/" },
-  { year: "2025", title: "What if pharma companies made 'safe' recreational drugs?", outlet: "STAT News", url: "https://www.statnews.com/2025/07/08/pharmaceutical-companies-recreational-drugs-safe-legal-high-dea-expert/" },
-  { year: "2025", title: "The New Militarized War on Drugs — Time to View Cartels as National Security Threats?", outlet: "Small Wars Journal", url: "https://smallwarsjournal.com/2025/10/21/the-new-militarized-war-on-drugs-time-to-view-cartels-as-national-security-threats/" },
-  { year: "2025", title: "'Narconomics,' not prohibition, is behind the rise in synthetic drugs", outlet: "The Hill", url: "https://thehill.com/opinion/criminal-justice/5545108-synthetic-drugs-rise-narconomics/" },
-  { year: "2025", title: "Could Illicit Drug Production Shift to US?", outlet: "Small Wars Journal / El Centro", url: "https://smallwarsjournal.com/2025/02/19/could-illicit-drug-production-shift-to-us/" },
-  { year: "2024", title: "Welcome to the global synthetic drug revolution", outlet: "The Hill", url: "https://globalinitiative.net/profile/jim-crotty/" },
-  { year: "2024", title: "How DEA is tackling our greatest national security threat", outlet: "We Are The Mighty", url: "https://globalinitiative.net/profile/jim-crotty/" },
-  { year: "2024", title: "9/11 makes the case for a Department of Treatment and Recovery", outlet: "The Hill", url: "https://globalinitiative.net/profile/jim-crotty/" },
-  { year: "2023", title: "Will 'Poor Man's Cocaine' Fuel the Next U.S. Drug Crisis?", outlet: "Undark Magazine", url: "https://globalinitiative.net/profile/jim-crotty/" },
-  { year: "2022", title: "We Need an All-of-the-Above Strategy to Fight the Opioid Crisis", outlet: "Newsweek", url: "https://www.newsweek.com/we-need-all-above-strategy-fight-opioid-crisis-opinion-1698234" },
-  { year: "2022", title: "The US Opioid Problem Is Also a China Problem", outlet: "The Diplomat", url: "https://globalinitiative.net/profile/jim-crotty/" },
-  { year: "2022", title: "Launching Missiles Is Easy, Drug Control Is Hard", outlet: "Lawfare", url: "https://www.lawfaremedia.org/article/launching-missiles-easy-drug-control-hard" },
-  { year: "2022", title: "In Search of a Silver Bullet: Reducing the Supply of Synthetic Drugs to the U.S.", outlet: "Small Wars Journal", url: "https://smallwarsjournal.com/author/jim-crotty/" },
-  { year: "2022", title: "Congress Must Act to Permanently Control Fentanyl-Related Substances", outlet: "Newsweek", url: "https://www.newsweek.com/congress-must-act-permanently-control-fentanyl-related-substances-opinion-1677625" },
+  {
+    year: "2026", title: "The quiet resurgence of plant-based illicit drugs", outlet: "The Hill",
+    url: "https://thehill.com/opinion/criminal-justice/5777092-synthetic-vs-plant-based-drugs/",
+    summary: "Argues that despite the dominance of synthetic drugs, plant-based substances like cocaine and cannabis are quietly regaining market share, driven by the economics of the illicit drug trade."
+  },
+  {
+    year: "2026", title: "Beyond Illicit Drugs: How the US is Expanding the Scope of Armed Conflict", outlet: "Small Wars Journal",
+    url: "https://smallwarsjournal.com/2026/01/13/beyond-illicit-drugs-how-the-us-is-expanding-the-scope-of-armed-conflict/",
+    summary: "Examines how U.S. policy is broadening the definition of armed conflict to encompass drug trafficking organizations, raising legal and strategic questions about militarizing the war on drugs."
+  },
+  {
+    year: "2026", title: "Operation Absolute Resolve: A Rendition Revival?", outlet: "Small Wars Journal",
+    url: "https://smallwarsjournal.com/2026/01/06/operation-absolute-resolve-a-rendition-revival/",
+    summary: "Analyzes the Trump administration's use of military renditions to extradite cartel leaders, questioning whether this controversial tactic can meaningfully reduce drug trafficking into the U.S."
+  },
+  {
+    year: "2025", title: "What if pharma companies made 'safe' recreational drugs?", outlet: "STAT News",
+    url: "https://www.statnews.com/2025/07/08/pharmaceutical-companies-recreational-drugs-safe-legal-high-dea-expert/",
+    summary: "Explores the provocative idea of pharmaceutical companies producing regulated recreational drugs as an alternative to dangerous illicit substances, weighing public health benefits against regulatory and moral risks."
+  },
+  {
+    year: "2025", title: "The New Militarized War on Drugs — Time to View Cartels as National Security Threats?", outlet: "Small Wars Journal",
+    url: "https://smallwarsjournal.com/2025/10/21/the-new-militarized-war-on-drugs-time-to-view-cartels-as-national-security-threats/",
+    summary: "Makes the case for formally designating major drug cartels as national security threats, arguing that their power, violence, and geopolitical reach demand a military-grade strategic response."
+  },
+  {
+    year: "2025", title: "'Narconomics,' not prohibition, is behind the rise in synthetic drugs", outlet: "The Hill",
+    url: "https://thehill.com/opinion/criminal-justice/5545108-synthetic-drugs-rise-narconomics/",
+    summary: "Contends that the explosion of synthetic drugs is driven by market economics — low production costs and high profit margins — not the failure of prohibition, requiring economic rather than purely punitive policy responses."
+  },
+  {
+    year: "2025", title: "Could Illicit Drug Production Shift to US?", outlet: "Small Wars Journal / El Centro",
+    url: "https://smallwarsjournal.com/2025/02/19/could-illicit-drug-production-shift-to-us/",
+    summary: "Warns that tightening border enforcement and tariffs on Mexico could incentivize drug trafficking organizations to shift synthetic drug manufacturing operations to within the United States."
+  },
+  {
+    year: "2024", title: "Overdose deaths are down, but the crisis is far from resolved", outlet: "The Hill",
+    url: "https://thehill.com/opinion/healthcare/5032647-us-drug-overdose-deaths-decline/",
+    summary: "Cautions against complacency as overdose death numbers decline, arguing that the underlying structural drivers of the drug crisis — including supply chains and addiction — remain largely unaddressed."
+  },
+  {
+    year: "2024", title: "Welcome to the global synthetic drug revolution", outlet: "The Hill",
+    url: "https://thehill.com/opinion/international/4863417-global-drug-trade-synthetic/",
+    summary: "Charts how the global drug trade has been fundamentally transformed by synthetic substances, arguing that what began as an American opioid crisis has become a worldwide public health and security emergency."
+  },
+  {
+    year: "2024", title: "How DEA is tackling our greatest national security threat", outlet: "We Are The Mighty",
+    url: "https://www.wearethemighty.com/military-news/how-dea-is-tackling-our-greatest-national-security-threat/",
+    summary: "Describes how the DEA has evolved from a traditional drug enforcement agency into a key national security actor, confronting transnational criminal organizations that rival the threat posed by foreign states."
+  },
+  {
+    year: "2024", title: "9/11 makes the case for a Department of Treatment and Recovery", outlet: "The Hill",
+    url: "https://thehill.com/opinion/healthcare/4567590-9-11-makes-the-case-for-a-department-of-treatment-and-recovery/",
+    summary: "Draws on the post-9/11 reorganization of national security to argue that the U.S. needs a dedicated cabinet-level Department of Treatment and Recovery to coordinate the federal response to the addiction crisis."
+  },
+  {
+    year: "2023", title: "Will 'Poor Man's Cocaine' Fuel the Next U.S. Drug Crisis?", outlet: "Undark Magazine",
+    url: "https://undark.org/2023/09/21/will-poor-mans-cocaine-fuel-the-next-u-s-drug-crisis/",
+    summary: "Investigates the spread of Captagon — a cheap amphetamine-type stimulant popular in the Middle East — and assesses whether it could become the next major drug threat to reach the United States."
+  },
+  {
+    year: "2022", title: "We Need an All-of-the-Above Strategy to Fight the Opioid Crisis", outlet: "Newsweek",
+    url: "https://www.newsweek.com/we-need-all-above-strategy-fight-opioid-crisis-opinion-1698234",
+    summary: "Calls for a comprehensive, multi-pronged approach to the opioid epidemic that integrates supply reduction, demand treatment, and harm reduction rather than relying on any single policy lever."
+  },
+  {
+    year: "2022", title: "The US Opioid Problem Is Also a China Problem", outlet: "The Diplomat",
+    url: "https://thediplomat.com/2022/09/the-us-opioid-problem-is-also-a-china-problem/",
+    summary: "Argues that China's role as the primary supplier of fentanyl precursor chemicals to Mexican cartels makes the opioid crisis a bilateral diplomatic issue requiring sustained U.S.-China counternarcotics engagement."
+  },
+  {
+    year: "2022", title: "Launching Missiles Is Easy, Drug Control Is Hard", outlet: "Lawfare",
+    url: "https://www.lawfaremedia.org/article/launching-missiles-easy-drug-control-hard",
+    summary: "Critiques proposals to use military force against Mexican drug cartels, arguing that the complexity of drug supply chains makes kinetic strikes an ineffective and counterproductive policy tool."
+  },
+  {
+    year: "2022", title: "In Search of a Silver Bullet: Reducing the Supply of Synthetic Drugs to the U.S.", outlet: "Small Wars Journal",
+    url: "https://smallwarsjournal.com/2022/04/04/search-silver-bullet-reducing-supply-synthetic-drugs-us/",
+    summary: "Reviews the full range of supply-side interdiction strategies — from precursor chemical controls to international partnerships — and concludes that no single approach can solve the synthetic drug crisis."
+  },
+  {
+    year: "2022", title: "Congress Must Act to Permanently Control Fentanyl-Related Substances", outlet: "Newsweek",
+    url: "https://www.newsweek.com/congress-must-act-permanently-control-fentanyl-related-substances-opinion-1677625",
+    summary: "Urges Congress to make permanent the temporary scheduling of fentanyl analogues, warning that allowing the emergency order to lapse would create a legal loophole exploited by drug manufacturers to evade prosecution."
+  },
 ];
 
 const mediaOutlets = [
@@ -661,7 +730,7 @@ function PublicationsSection() {
                     </span>
                   </div>
                   <h3
-                    className="font-semibold leading-snug group-hover:text-blue-700 transition-colors"
+                    className="font-semibold leading-snug group-hover:text-blue-700 transition-colors mb-2"
                     style={{
                       fontFamily: "'Libre Baskerville', serif",
                       color: "#0D2240",
@@ -671,6 +740,19 @@ function PublicationsSection() {
                   >
                     {pub.title}
                   </h3>
+                  {pub.summary && (
+                    <p
+                      className="text-xs leading-relaxed"
+                      style={{
+                        color: "#6b7280",
+                        fontFamily: "'Lato', sans-serif",
+                        fontWeight: 300,
+                        lineHeight: 1.6,
+                      }}
+                    >
+                      {pub.summary}
+                    </p>
+                  )}
                 </div>
                 <ExternalLink
                   size={14}

@@ -358,7 +358,7 @@ function HeroSection() {
       <div className="container relative z-10 pt-24 pb-16">
         <div className="max-w-3xl">
           {/* Section label */}
-          <div className="section-label mb-6 text-white/60 tracking-widest uppercase text-xs" style={{ fontFamily: "'Lato', sans-serif" }}>
+          <div className="section-label mb-6 tracking-widest uppercase text-xs" style={{ fontFamily: "'Lato', sans-serif", color: "#C9A84C", letterSpacing: "0.18em" }}>
             Law Enforcement · Intelligence · Drug Policy
           </div>
 
@@ -373,7 +373,7 @@ function HeroSection() {
             }}
           >
             Jim{" "}
-            <span style={{ fontWeight: 600, fontStyle: "italic" }}>Crotty</span>
+            <span style={{ fontWeight: 600, fontStyle: "italic", color: "#C9A84C" }}>Crotty</span>
           </h1>
 
           {/* Title */}
@@ -398,7 +398,8 @@ function HeroSection() {
               href="#publications"
               className="inline-flex items-center gap-2 px-6 py-3 text-white font-semibold text-sm tracking-widest uppercase transition-all duration-200 hover:opacity-90"
               style={{
-                backgroundColor: "#4A7FA5",
+                backgroundColor: "#C9A84C",
+                color: "#0D2240",
                 fontFamily: "'Lato', sans-serif",
                 fontSize: "0.7rem",
                 letterSpacing: "0.15em",
@@ -411,7 +412,8 @@ function HeroSection() {
               href="#career"
               className="inline-flex items-center gap-2 px-6 py-3 text-white font-semibold text-sm tracking-widest uppercase transition-all duration-200 hover:bg-white/10"
               style={{
-                border: "1px solid rgba(255,255,255,0.4)",
+                border: "1px solid rgba(201,168,76,0.5)",
+                color: "rgba(201,168,76,0.9)",
                 fontFamily: "'Lato', sans-serif",
                 fontSize: "0.7rem",
                 letterSpacing: "0.15em",
@@ -562,7 +564,7 @@ function CareerSection() {
       <div className="absolute inset-0" style={{ background: "rgba(13,34,64,0.88)" }} />
       <div className="container relative z-10">
         <div className="max-w-4xl mx-auto">
-          <div className="section-label mb-4" style={{ color: "#4A7FA5" }}>02 / Career</div>
+          <div className="section-label mb-4" style={{ color: "#C9A84C", letterSpacing: "0.15em" }}>02 / Career</div>
           <h2
             className="text-white mb-12"
             style={{
@@ -579,7 +581,7 @@ function CareerSection() {
             {/* Vertical line */}
             <div
               className="absolute left-0 top-0 bottom-0 w-px hidden md:block"
-              style={{ backgroundColor: "rgba(74,127,165,0.3)", left: "140px" }}
+              style={{ backgroundColor: "rgba(201,168,76,0.25)", left: "140px" }}
             />
 
             <div className="space-y-10">
@@ -596,7 +598,7 @@ function CareerSection() {
                   >
                     <span
                       className="text-xs font-semibold tracking-wider uppercase"
-                      style={{ color: "#4A7FA5", fontFamily: "'Lato', sans-serif" }}
+                      style={{ color: "#C9A84C", fontFamily: "'Lato', sans-serif" }}
                     >
                       {item.period}
                     </span>
@@ -609,7 +611,7 @@ function CareerSection() {
                   >
                     <div
                       className="w-3 h-3 rounded-full border-2"
-                      style={{ backgroundColor: "#0D2240", borderColor: "#4A7FA5" }}
+                      style={{ backgroundColor: "#C9A84C", borderColor: "#C9A84C" }}
                     />
                   </div>
 
@@ -618,10 +620,12 @@ function CareerSection() {
                     className="flex-1 p-6"
                     style={{
                       backgroundColor: "rgba(255,255,255,0.05)",
-                      borderLeft: "3px solid #4A7FA5",
+                      borderLeft: "3px solid #C9A84C",
                     }}
                   >
-                    <div className="md:hidden text-xs font-semibold tracking-wider uppercase mb-2" style={{ color: "#4A7FA5", fontFamily: "'Lato', sans-serif" }}>
+                    <div
+                      className="md:hidden text-xs font-semibold tracking-wider uppercase mb-2" style={{ color: "#C9A84C", fontFamily: "'Lato', sans-serif" }}
+                    >
                       {item.period}
                     </div>
                     <div
@@ -632,7 +636,7 @@ function CareerSection() {
                     </div>
                     <div
                       className="font-semibold mb-1"
-                      style={{ color: "#4A7FA5", fontFamily: "'Lato', sans-serif", fontSize: "0.9rem" }}
+                      style={{ color: "#C9A84C", fontFamily: "'Lato', sans-serif", fontSize: "0.9rem" }}
                     >
                       {item.org}
                     </div>
@@ -995,7 +999,7 @@ function ContactSection() {
     >
       <div className="container">
         <div className="max-w-2xl">
-          <div className="section-label mb-4" style={{ color: "#4A7FA5" }}>05 / Connect</div>
+          <div className="section-label mb-4" style={{ color: "#C9A84C", letterSpacing: "0.15em" }}>05 / Connect</div>
           <h2
             className="text-white mb-6"
             style={{
@@ -1020,7 +1024,8 @@ function ContactSection() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-3 px-6 py-4 text-white font-semibold transition-all duration-200 hover:opacity-90"
               style={{
-                backgroundColor: "#4A7FA5",
+                backgroundColor: "#C9A84C",
+                color: "#0D2240",
                 fontFamily: "'Lato', sans-serif",
                 fontSize: "0.85rem",
                 letterSpacing: "0.05em",
@@ -1035,7 +1040,8 @@ function ContactSection() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-3 px-6 py-4 text-white font-semibold transition-all duration-200 hover:bg-white/10"
               style={{
-                border: "1px solid rgba(255,255,255,0.3)",
+                border: "1px solid rgba(201,168,76,0.5)",
+                color: "rgba(201,168,76,0.9)",
                 fontFamily: "'Lato', sans-serif",
                 fontSize: "0.85rem",
                 letterSpacing: "0.05em",
@@ -1046,10 +1052,10 @@ function ContactSection() {
             </a>
           </div>
 
-          <div className="mt-12 pt-8 border-t" style={{ borderColor: "rgba(255,255,255,0.1)" }}>
+          <div className="mt-12 pt-8 border-t" style={{ borderColor: "rgba(201,168,76,0.25)" }}>
             <div className="flex items-center gap-2 mb-2">
-              <Mail size={14} style={{ color: "#4A7FA5" }} />
-              <span className="section-label" style={{ color: "#4A7FA5" }}>Media Inquiries</span>
+              <Mail size={14} style={{ color: "#C9A84C" }} />
+              <span className="section-label" style={{ color: "#C9A84C" }}>Media Inquiries</span>
             </div>
             <p
               className="text-sm"

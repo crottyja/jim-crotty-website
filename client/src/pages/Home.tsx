@@ -376,7 +376,7 @@ function NumbersBar() {
                 style={{
                   fontFamily: "'Lato', sans-serif",
                   fontSize: "0.6rem",
-                  color: "rgba(255,255,255,0.45)",
+                  color: "rgba(255,255,255,0.55)",
                   letterSpacing: "0.12em",
                 }}
               >
@@ -418,11 +418,16 @@ function VideoSection() {
   return (
     <section
       id="media"
-      className="py-24"
-      style={{ backgroundColor: "#f8f9fa" }}
+      className="py-24 relative"
+      style={{
+        backgroundImage: `url(${MAP_BG})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
     >
-      <div className="container">
-        <div className="section-label mb-4" style={{ color: "#4A7FA5" }}>03.4 / Video Appearances</div>
+      <div className="absolute inset-0" style={{ background: "rgba(248,249,250,0.94)" }} />
+      <div className="container relative z-10">
+        <div className="section-label mb-4" style={{ color: "#4A7FA5" }}>03 / Video Appearances</div>
         <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-12 gap-4">
           <h2
             style={{
@@ -640,8 +645,18 @@ function HeroSection() {
 
 function AboutSection() {
   return (
-    <section id="about" className="py-24 bg-white">
-      <div className="container">
+    <section
+      id="about"
+      className="py-24 relative"
+      style={{
+        backgroundImage: `url(${MAP_BG})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundColor: "white",
+      }}
+    >
+      <div className="absolute inset-0" style={{ background: "rgba(255,255,255,0.95)" }} />
+      <div className="container relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           {/* Left: Portrait + credentials */}
           <div className="lg:col-span-4 reveal-on-scroll">
@@ -871,8 +886,18 @@ function PublicationsSection() {
   const displayed = showAll ? publications : publications.slice(0, 8);
 
   return (
-    <section id="publications" className="py-24 bg-white">
-      <div className="container">
+    <section
+      id="publications"
+      className="py-24 relative"
+      style={{
+        backgroundImage: `url(${MAP_BG})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundColor: "white",
+      }}
+    >
+      <div className="absolute inset-0" style={{ background: "rgba(255,255,255,0.95)" }} />
+      <div className="container relative z-10">
         <div className="section-label mb-4" style={{ color: "#4A7FA5" }}>03 / Writing & Commentary</div>
         <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-12 gap-4">
           <h2
@@ -989,9 +1014,19 @@ function PublicationsSection() {
 
 function InTheNewsSection() {
   return (
-    <section id="in-the-news" className="py-24 bg-white">
-      <div className="container">
-        <div className="section-label mb-4" style={{ color: "#4A7FA5" }}>03.5 / Media Coverage</div>
+    <section
+      id="in-the-news"
+      className="py-24 relative"
+      style={{
+        backgroundImage: `url(${MAP_BG})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundColor: "white",
+      }}
+    >
+      <div className="absolute inset-0" style={{ background: "rgba(255,255,255,0.95)" }} />
+      <div className="container relative z-10">
+        <div className="section-label mb-4" style={{ color: "#4A7FA5" }}>03 / Media Coverage</div>
         <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-12 gap-4">
           <h2
             style={{
@@ -1135,8 +1170,18 @@ function InTheNewsSection() {
 
 function AffiliationsSection() {
   return (
-    <section id="affiliations" className="py-24" style={{ backgroundColor: "#f0f4f8" }}>
-      <div className="container">
+    <section
+      id="affiliations"
+      className="py-24 relative"
+      style={{
+        backgroundImage: `url(${MAP_BG})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundColor: "#f0f4f8",
+      }}
+    >
+      <div className="absolute inset-0" style={{ background: "rgba(240,244,248,0.94)" }} />
+      <div className="container relative z-10">
         <div className="section-label mb-4" style={{ color: "#4A7FA5" }}>04 / Affiliations</div>
         <h2
           className="mb-12"

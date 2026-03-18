@@ -342,58 +342,49 @@ function NavBar() {
 function NumbersBarInline() {
   const stats = [
     { value: "12+", label: "Years at DEA" },
-    { value: "17", label: "Publications" },
+    { value: "40+", label: "Publications" },
     { value: "6", label: "Fellowships" },
     { value: "15+", label: "Media Outlets" },
     { value: "3", label: "Degrees" },
     { value: "4", label: "Countries Served" },
+    { value: "2", label: "Courses Taught" },
+    { value: "10+", label: "Years in Policy" },
+    { value: "3", label: "Gov't Agencies" },
   ];
   return (
-    <div className="flex items-center justify-center flex-wrap md:flex-nowrap gap-0">
+    <div className="grid grid-cols-3 gap-0 w-full">
       {stats.map((s, i) => (
-        <>
-          <div
-            key={s.label}
-            className="flex flex-col items-center justify-center py-2 px-5 text-center"
+        <div
+          key={s.label}
+          className="flex flex-col items-center justify-center py-4 px-4 text-center"
+          style={{
+            borderRight: (i + 1) % 3 !== 0 ? "1px solid rgba(255,255,255,0.1)" : "none",
+            borderBottom: i < 6 ? "1px solid rgba(255,255,255,0.1)" : "none",
+          }}
+        >
+          <span
+            style={{
+              fontFamily: "'Cormorant Garamond', serif",
+              fontSize: "clamp(1.4rem, 2.5vw, 1.8rem)",
+              fontWeight: 600,
+              color: "#ffffff",
+              lineHeight: 1,
+            }}
           >
-            <span
-              style={{
-                fontFamily: "'Cormorant Garamond', serif",
-                fontSize: "clamp(1.4rem, 2.5vw, 1.8rem)",
-                fontWeight: 600,
-                color: "#ffffff",
-                lineHeight: 1,
-              }}
-            >
-              {s.value}
-            </span>
-            <span
-              className="mt-1 uppercase tracking-widest"
-              style={{
-                fontFamily: "'Lato', sans-serif",
-                fontSize: "0.55rem",
-                color: "rgba(255,255,255,0.5)",
-                letterSpacing: "0.12em",
-              }}
-            >
-              {s.label}
-            </span>
-          </div>
-          {i < stats.length - 1 && (
-            <span
-              key={`star-${i}`}
-              aria-hidden="true"
-              style={{
-                color: "rgba(255,255,255,0.85)",
-                fontSize: "0.75rem",
-                flexShrink: 0,
-                userSelect: "none",
-              }}
-            >
-              ★
-            </span>
-          )}
-        </>
+            {s.value}
+          </span>
+          <span
+            className="mt-1 uppercase tracking-widest"
+            style={{
+              fontFamily: "'Lato', sans-serif",
+              fontSize: "0.55rem",
+              color: "rgba(255,255,255,0.5)",
+              letterSpacing: "0.12em",
+            }}
+          >
+            {s.label}
+          </span>
+        </div>
       ))}
     </div>
   );

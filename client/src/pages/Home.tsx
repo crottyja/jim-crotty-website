@@ -349,7 +349,7 @@ function NumbersBarInline() {
     { value: "4", label: "Countries Served" },
   ];
   return (
-    <div className="flex items-center justify-start flex-wrap md:flex-nowrap gap-0">
+    <div className="flex items-center justify-center flex-wrap md:flex-nowrap gap-0">
       {stats.map((s, i) => (
         <>
           <div
@@ -645,7 +645,7 @@ function HeroSection() {
 
         {/* By the Numbers — inline within hero */}
         <div
-          className="w-full"
+          className="w-full text-center"
           style={{
             borderTop: "1px solid rgba(255,255,255,0.1)",
             paddingTop: "2rem",

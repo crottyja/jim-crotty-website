@@ -10,7 +10,7 @@ import { Menu, X, ExternalLink, Linkedin, ChevronDown, BookOpen, Briefcase, Awar
 
 const HERO_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/hero_bg-E39Xv3dAoLSLwUSSr7GHbD.webp";
 const MAP_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/map_bg-csabJgUBh7GraSoMYMWtE2.webp";
-const PROFILE_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/jim_crotty_profile_da1d9e44.jpeg";
+const PROFILE_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/crottyheadshot2_b48bea55.webp";
 
 const publications = [
   { year: "2026", title: "The quiet resurgence of plant-based illicit drugs", outlet: "The Hill", url: "https://thehill.com/opinion/criminal-justice/5777092-synthetic-vs-plant-based-drugs/" },

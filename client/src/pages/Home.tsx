@@ -1198,15 +1198,15 @@ function AffiliationsSection() {
         backgroundPosition: "center",
       }}
     >
-      <div className="absolute inset-0" style={{ background: "rgba(245,247,250,0.95)" }} />
+      <div className="absolute inset-0" style={{ background: "rgba(13,34,64,0.91)" }} />
       <div className="container relative z-10">
-        <div className="section-label mb-4" style={{ color: "#4A7FA5" }}>04 / Affiliations</div>
+        <div className="section-label mb-4" style={{ color: "rgba(255,255,255,0.5)" }}>04 / Affiliations</div>
         <h2
           className="mb-12"
           style={{
             fontFamily: "'Libre Baskerville', serif",
             fontSize: "clamp(1.75rem, 3vw, 2.5rem)",
-            color: "#0D2240",
+            color: "#ffffff",
             lineHeight: 1.2,
           }}
         >
@@ -1217,10 +1217,11 @@ function AffiliationsSection() {
           {affiliations.map((aff, i) => (
             <div
               key={i}
-              className="p-6 bg-white reveal-on-scroll"
+              className="p-6 reveal-on-scroll"
               style={{
                 transitionDelay: `${i * 0.08}s`,
-                boxShadow: "0 2px 8px rgba(0,0,0,0.06)",
+                backgroundColor: "rgba(255,255,255,0.07)",
+                border: "1px solid rgba(255,255,255,0.12)",
                 borderTop: "3px solid #4A7FA5",
               }}
             >
@@ -1229,14 +1230,14 @@ function AffiliationsSection() {
                 <div>
                   <h3
                     className="font-bold leading-snug"
-                    style={{ fontFamily: "'Libre Baskerville', serif", color: "#0D2240", fontSize: "0.95rem" }}
+                    style={{ fontFamily: "'Libre Baskerville', serif", color: "#ffffff", fontSize: "0.95rem" }}
                   >
                     <a
                       href={aff.url}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1 hover:underline transition-colors"
-                      style={{ color: "#0D2240" }}
+                      style={{ color: "#ffffff" }}
                     >
                       {aff.name}
                       <ExternalLink size={11} className="flex-shrink-0 opacity-50" />
@@ -1252,7 +1253,7 @@ function AffiliationsSection() {
               </div>
               <p
                 className="text-sm leading-relaxed"
-                style={{ color: "#6b7280", fontFamily: "'Lato', sans-serif", fontWeight: 300 }}
+                style={{ color: "rgba(255,255,255,0.6)", fontFamily: "'Lato', sans-serif", fontWeight: 300 }}
               >
                 {aff.desc}
               </p>
@@ -1268,17 +1269,23 @@ function ContactSection() {
   return (
     <section
       id="contact"
-      className="py-24"
-      style={{ backgroundColor: "#0D2240" }}
+      className="py-24 relative"
+      style={{
+        backgroundImage: `url(${MAP_BG})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
     >
-      <div className="container">
+      <div className="absolute inset-0" style={{ background: "rgba(255,255,255,0.96)" }} />
+      <div className="container relative z-10">
         <div className="max-w-2xl">
           <div className="section-label mb-4" style={{ color: "#4A7FA5" }}>05 / Connect</div>
           <h2
-            className="text-white mb-6"
+            className="mb-6"
             style={{
               fontFamily: "'Libre Baskerville', serif",
               fontSize: "clamp(1.75rem, 3vw, 2.5rem)",
+              color: "#0D2240",
               lineHeight: 1.2,
             }}
           >
@@ -1286,7 +1293,7 @@ function ContactSection() {
           </h2>
           <p
             className="mb-10 leading-relaxed"
-            style={{ color: "rgba(255,255,255,0.6)", fontFamily: "'Lato', sans-serif", fontWeight: 300, fontSize: "1.05rem" }}
+            style={{ color: "#6b7280", fontFamily: "'Lato', sans-serif", fontWeight: 300, fontSize: "1.05rem" }}
           >
             For media inquiries, speaking engagements, or academic collaboration, please reach out via LinkedIn or through American University's School of Public Affairs.
           </p>
@@ -1298,7 +1305,7 @@ function ContactSection() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-3 px-6 py-4 text-white font-semibold transition-all duration-200 hover:opacity-90"
               style={{
-                backgroundColor: "#4A7FA5",
+                backgroundColor: "#0D2240",
                 fontFamily: "'Lato', sans-serif",
                 fontSize: "0.85rem",
                 letterSpacing: "0.05em",
@@ -1311,9 +1318,10 @@ function ContactSection() {
               href="https://www.american.edu/spa/faculty/jcrotty.cfm"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-6 py-4 text-white font-semibold transition-all duration-200 hover:bg-white/10"
+              className="inline-flex items-center gap-3 px-6 py-4 font-semibold transition-all duration-200 hover:bg-navy/10"
               style={{
-                border: "1px solid rgba(255,255,255,0.3)",
+                border: "1px solid rgba(13,34,64,0.3)",
+                color: "#0D2240",
                 fontFamily: "'Lato', sans-serif",
                 fontSize: "0.85rem",
                 letterSpacing: "0.05em",
@@ -1324,17 +1332,17 @@ function ContactSection() {
             </a>
           </div>
 
-          <div className="mt-12 pt-8 border-t" style={{ borderColor: "rgba(255,255,255,0.1)" }}>
+          <div className="mt-12 pt-8 border-t" style={{ borderColor: "rgba(13,34,64,0.12)" }}>
             <div className="flex items-center gap-2 mb-2">
               <Mail size={14} style={{ color: "#4A7FA5" }} />
               <span className="section-label" style={{ color: "#4A7FA5" }}>Media Inquiries</span>
             </div>
             <p
               className="text-sm"
-              style={{ color: "rgba(255,255,255,0.5)", fontFamily: "'Lato', sans-serif", fontWeight: 300 }}
+              style={{ color: "#6b7280", fontFamily: "'Lato', sans-serif", fontWeight: 300 }}
             >
               For media requests, contact AU Communications at{" "}
-              <a href="tel:2028855950" className="underline hover:text-white transition-colors" style={{ color: "rgba(255,255,255,0.6)" }}>
+              <a href="tel:2028855950" className="underline hover:text-navy transition-colors" style={{ color: "#4A7FA5" }}>
                 202-885-5950
               </a>{" "}
               or visit the{" "}
@@ -1342,8 +1350,8 @@ function ContactSection() {
                 href="https://www.american.edu/spa/faculty/jcrotty.cfm"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="underline hover:text-white transition-colors"
-                style={{ color: "rgba(255,255,255,0.6)" }}
+                className="underline hover:text-navy transition-colors"
+                style={{ color: "#4A7FA5" }}
               >
                 AU Faculty Media Guide
               </a>.

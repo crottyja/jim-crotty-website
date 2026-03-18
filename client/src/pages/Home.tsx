@@ -339,7 +339,7 @@ function NavBar() {
   );
 }
 
-function NumbersBar() {
+function NumbersBarInline() {
   const stats = [
     { value: "12+", label: "Years at DEA" },
     { value: "17", label: "Publications" },
@@ -349,62 +349,52 @@ function NumbersBar() {
     { value: "4", label: "Countries Served" },
   ];
   return (
-    <div
-      className="relative z-20"
-      style={{
-        backgroundColor: "rgba(13,34,64,0.92)",
-        borderBottom: "1px solid rgba(255,255,255,0.06)",
-      }}
-    >
-      <div className="container relative z-10">
-        <div className="flex items-center justify-center flex-wrap md:flex-nowrap">
-          {stats.map((s, i) => (
-            <>
-              <div
-                key={s.label}
-                className="flex flex-col items-center justify-center py-6 px-6 text-center"
-              >
-                <span
-                  style={{
-                    fontFamily: "'Cormorant Garamond', serif",
-                    fontSize: "clamp(1.5rem, 3vw, 2rem)",
-                    fontWeight: 600,
-                    color: "#ffffff",
-                    lineHeight: 1,
-                  }}
-                >
-                  {s.value}
-                </span>
-                <span
-                  className="mt-1 uppercase tracking-widest"
-                  style={{
-                    fontFamily: "'Lato', sans-serif",
-                    fontSize: "0.6rem",
-                    color: "rgba(255,255,255,0.5)",
-                    letterSpacing: "0.12em",
-                  }}
-                >
-                  {s.label}
-                </span>
-              </div>
-              {i < stats.length - 1 && (
-                <span
-                  key={`star-${i}`}
-                  aria-hidden="true"
-                  style={{
-                    color: "rgba(255,255,255,0.85)",
-                    fontSize: "0.75rem",
-                    flexShrink: 0,
-                    userSelect: "none",
-                  }}
-                >
-                  ★
-                </span>
-              )}
-            </>
-          ))}
-        </div>
-      </div>
+    <div className="flex items-center justify-start flex-wrap md:flex-nowrap gap-0">
+      {stats.map((s, i) => (
+        <>
+          <div
+            key={s.label}
+            className="flex flex-col items-center justify-center py-2 px-5 text-center"
+          >
+            <span
+              style={{
+                fontFamily: "'Cormorant Garamond', serif",
+                fontSize: "clamp(1.4rem, 2.5vw, 1.8rem)",
+                fontWeight: 600,
+                color: "#ffffff",
+                lineHeight: 1,
+              }}
+            >
+              {s.value}
+            </span>
+            <span
+              className="mt-1 uppercase tracking-widest"
+              style={{
+                fontFamily: "'Lato', sans-serif",
+                fontSize: "0.55rem",
+                color: "rgba(255,255,255,0.5)",
+                letterSpacing: "0.12em",
+              }}
+            >
+              {s.label}
+            </span>
+          </div>
+          {i < stats.length - 1 && (
+            <span
+              key={`star-${i}`}
+              aria-hidden="true"
+              style={{
+                color: "rgba(255,255,255,0.85)",
+                fontSize: "0.75rem",
+                flexShrink: 0,
+                userSelect: "none",
+              }}
+            >
+              ★
+            </span>
+          )}
+        </>
+      ))}
     </div>
   );
 }
@@ -623,7 +613,7 @@ function HeroSection() {
           </p>
 
           {/* CTAs */}
-          <div className="flex flex-wrap gap-4">
+          <div className="flex flex-wrap gap-4 mb-16">
             <a
               href="#publications"
               className="inline-flex items-center gap-2 px-6 py-3 text-white font-semibold text-sm tracking-widest uppercase transition-all duration-200 hover:opacity-90"
@@ -651,6 +641,17 @@ function HeroSection() {
               Career
             </a>
           </div>
+        </div>
+
+        {/* By the Numbers — inline within hero */}
+        <div
+          className="w-full"
+          style={{
+            borderTop: "1px solid rgba(255,255,255,0.1)",
+            paddingTop: "2rem",
+          }}
+        >
+          <NumbersBarInline />
         </div>
       </div>
 
@@ -1414,7 +1415,6 @@ export default function Home() {
     <div className="min-h-screen">
       <NavBar />
       <HeroSection />
-      <NumbersBar />
       <AboutSection />
       <CareerSection />
       <PublicationsSection />

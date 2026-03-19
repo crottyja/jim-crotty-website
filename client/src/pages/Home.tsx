@@ -29,6 +29,16 @@ const publications = [
     summary: "Analyzes the Trump administration's use of military renditions to extradite cartel leaders, questioning whether this controversial tactic can meaningfully reduce drug trafficking into the U.S."
   },
   {
+    year: "2026", title: "Mexico-U.S. cooperation reduces fentanyl flow", outlet: "The Hill",
+    url: "https://thehill.com/opinion/criminal-justice/5698065-us-mexico-cartel-cooperation/",
+    summary: "Argues that despite the Trump administration's confrontational posture, quiet diplomatic and intelligence cooperation between U.S. and Mexican authorities has been the real driver of recent reductions in fentanyl trafficking."
+  },
+  {
+    year: "2025", title: "Commentary: Understanding the real deal about fentanyl", outlet: "Orlando Sentinel",
+    url: "https://www.orlandosentinel.com/2025/12/20/commentary-understanding-the-real-deal-about-fentanyl/",
+    summary: "Provides a clear-eyed assessment of the fentanyl crisis for a general audience, debunking common myths and offering practical guidance on how communities and families can respond to the ongoing threat."
+  },
+  {
     year: "2025", title: "What if pharma companies made 'safe' recreational drugs?", outlet: "STAT News",
     url: "https://www.statnews.com/2025/07/08/pharmaceutical-companies-recreational-drugs-safe-legal-high-dea-expert/",
     summary: "Explores the provocative idea of pharmaceutical companies producing regulated recreational drugs as an alternative to dangerous illicit substances, weighing public health benefits against regulatory and moral risks."
@@ -69,14 +79,54 @@ const publications = [
     summary: "Draws on the post-9/11 reorganization of national security to argue that the U.S. needs a dedicated cabinet-level Department of Treatment and Recovery to coordinate the federal response to the addiction crisis."
   },
   {
+    year: "2023", title: "Florida, in this new year, keep talking to kids about drugs", outlet: "Tampa Bay Times",
+    url: "https://www.tampabay.com/opinion/2023/12/30/florida-this-new-year-keep-talking-kids-about-drugs-column/",
+    summary: "Co-authored with Uttam Dhillon. Urges Florida parents and educators to maintain open conversations about drug risks with young people, warning that the fentanyl threat makes even casual experimentation potentially fatal."
+  },
+  {
     year: "2023", title: "Will 'Poor Man's Cocaine' Fuel the Next U.S. Drug Crisis?", outlet: "Undark Magazine",
     url: "https://undark.org/2023/09/21/will-poor-mans-cocaine-fuel-the-next-u-s-drug-crisis/",
     summary: "Investigates the spread of Captagon — a cheap amphetamine-type stimulant popular in the Middle East — and assesses whether it could become the next major drug threat to reach the United States."
   },
   {
-    year: "2022", title: "We Need an All-of-the-Above Strategy to Fight the Opioid Crisis", outlet: "Newsweek",
-    url: "https://www.newsweek.com/we-need-all-above-strategy-fight-opioid-crisis-opinion-1698234",
-    summary: "Calls for a comprehensive, multi-pronged approach to the opioid epidemic that integrates supply reduction, demand treatment, and harm reduction rather than relying on any single policy lever."
+    year: "2023", title: "Fentanyl is killing thousands of Americans. The DEA needs a clear strategy.", outlet: "Dallas Morning News",
+    url: "https://www.dallasnews.com/opinion/commentary/2023/04/05/fentanyl-is-killing-thousands-of-americans-the-dea-needs-a-clear-strategy/",
+    summary: "Co-authored with former DEA Acting Administrator Uttam Dhillon. Criticizes the DEA's delay in publishing a critical intelligence report and calls for a more transparent, data-driven strategy to combat fentanyl trafficking."
+  },
+  {
+    year: "2023", title: "The US can learn from Portugal's drug policies, including decriminalization", outlet: "The Hill",
+    url: "https://thehill.com/opinion/criminal-justice/4090780-the-us-can-learn-from-portugals-drug-policies-including-decriminalization/",
+    summary: "Examines Portugal's landmark drug decriminalization model and its measurable public health outcomes, arguing that the U.S. should adopt elements of the approach to reduce overdose deaths and incarceration rates."
+  },
+  {
+    year: "2023", title: "U.S. must exercise all its authority to bring Mexican cartels to heel", outlet: "Washington Times",
+    url: "https://www.washingtontimes.com/news/2023/jan/19/us-must-exercise-all-its-authority-to-bring-mexica/",
+    summary: "Argues that the U.S. must deploy the full range of diplomatic, economic, and law enforcement tools at its disposal to pressure Mexico into taking more decisive action against cartel operations."
+  },
+  {
+    year: "2023", title: "Guest opinion: Opioid crisis not a red or blue state issue — it's an American issue", outlet: "AL.com",
+    url: "https://www.al.com/opinion/2023/01/guest-opinion-opioid-crisis-not-a-red-or-blue-state-issue-its-an-american-issue.html",
+    summary: "Calls for a bipartisan approach to the opioid epidemic, arguing that overdose deaths cut across political and geographic lines and that partisan gridlock is costing American lives."
+  },
+  {
+    year: "2022", title: "Deadly fentanyl hybrids and substitutes could fuel 2023's opioid crisis", outlet: "The Hill",
+    url: "https://thehill.com/opinion/healthcare/3789532-deadly-fentanyl-hybrids-and-substitutes-could-fuel-2023s-opioid-crisis/",
+    summary: "Warns that drug traffickers are developing fentanyl analogues and hybrid compounds designed to evade detection and scheduling, predicting that these novel substances will drive a new wave of overdose deaths."
+  },
+  {
+    year: "2022", title: "Finally, a much-needed glimmer of hope for the opioid crisis", outlet: "The Hill",
+    url: "https://thehill.com/opinion/healthcare/3768725-finally-a-much-needed-glimmer-of-hope-for-the-opioid-crisis/",
+    summary: "Cautiously welcomes early signs of declining overdose deaths while warning that structural vulnerabilities in the drug supply chain mean the crisis is far from over and sustained policy effort is still required."
+  },
+  {
+    year: "2022", title: "Biden must do more to disrupt the fentanyl supply", outlet: "The Spectator World",
+    url: "https://spectator.com/article/biden-must-do-more-to-disrupt-the-fentanyl-supply/",
+    summary: "Argues that the Biden administration's counterdrug strategy lacks the urgency needed to disrupt fentanyl supply chains, calling for stronger pressure on China and Mexico to cut off precursor chemical flows."
+  },
+  {
+    year: "2022", title: "Biden's prisoner swaps are setting a terrible precedent", outlet: "Washington Examiner",
+    url: "https://www.washingtonexaminer.com/author/james-crotty/",
+    summary: "Critiques the Biden administration's high-profile prisoner exchanges, arguing that trading convicted drug traffickers for American detainees signals weakness and incentivizes adversaries to take more U.S. citizens hostage."
   },
   {
     year: "2022", title: "The US Opioid Problem Is Also a China Problem", outlet: "The Diplomat",
@@ -84,9 +134,44 @@ const publications = [
     summary: "Argues that China's role as the primary supplier of fentanyl precursor chemicals to Mexican cartels makes the opioid crisis a bilateral diplomatic issue requiring sustained U.S.-China counternarcotics engagement."
   },
   {
+    year: "2022", title: "Ending telehealth cuts off a vital tool against opioid addiction", outlet: "The Hill",
+    url: "https://thehill.com/opinion/healthcare/3636356-ending-telehealth-cuts-off-a-vital-tool-against-opioid-addiction/",
+    summary: "Argues that rolling back pandemic-era telehealth flexibilities would eliminate a critical access point for addiction treatment, disproportionately harming rural and underserved communities."
+  },
+  {
+    year: "2022", title: "We Need an All-of-the-Above Strategy to Fight the Opioid Crisis", outlet: "Newsweek",
+    url: "https://www.newsweek.com/we-need-all-above-strategy-fight-opioid-crisis-opinion-1698234",
+    summary: "Calls for a comprehensive, multi-pronged approach to the opioid epidemic that integrates supply reduction, demand treatment, and harm reduction rather than relying on any single policy lever."
+  },
+  {
+    year: "2022", title: "The White House's new drug control strategy may have to work around Mexico", outlet: "The Hill",
+    url: "https://thehill.com/opinion/white-house/3478544-the-white-houses-new-drug-control-strategy-may-have-to-work-around-mexico/",
+    summary: "Assesses the Biden administration's National Drug Control Strategy in the context of deteriorating U.S.-Mexico counternarcotics cooperation, arguing that Washington must find ways to reduce supply without Mexican partnership."
+  },
+  {
     year: "2022", title: "Launching Missiles Is Easy, Drug Control Is Hard", outlet: "Lawfare",
     url: "https://www.lawfaremedia.org/article/launching-missiles-easy-drug-control-hard",
     summary: "Critiques proposals to use military force against Mexican drug cartels, arguing that the complexity of drug supply chains makes kinetic strikes an ineffective and counterproductive policy tool."
+  },
+  {
+    year: "2022", title: "The next generation of illicit drugs? Think 'synthetic'", outlet: "STAT News",
+    url: "https://www.statnews.com/2022/08/05/synthetic-drugs-fuel-next-wave-illicit-drug-use/",
+    summary: "Predicts that synthetic drugs will define the next era of illicit drug trafficking, as their low production costs, high potency, and ease of global distribution make them far more dangerous than plant-based predecessors."
+  },
+  {
+    year: "2022", title: "What the COVID pandemic can teach us about the drug pandemic", outlet: "The Hill",
+    url: "https://thehill.com/opinion/healthcare/595290-what-the-covid-pandemic-can-teach-us-about-the-drug-pandemic/",
+    summary: "Draws parallels between the federal government's response to COVID-19 and the ongoing drug crisis, arguing that the same whole-of-government urgency applied to the pandemic must now be directed at drug overdose deaths."
+  },
+  {
+    year: "2022", title: "To prevent overdose deaths, focus on demand reduction in the U.S.", outlet: "STAT News",
+    url: "https://www.statnews.com/2022/02/11/preventing-overdose-deaths-demand-reduction-at-home/",
+    summary: "Argues that supply-side interdiction alone cannot end the overdose crisis and that the U.S. must invest far more heavily in treatment, recovery, and prevention to reduce the demand that sustains drug trafficking."
+  },
+  {
+    year: "2022", title: "Congress Must Act to Permanently Control Fentanyl-Related Substances", outlet: "Newsweek",
+    url: "https://www.newsweek.com/congress-must-act-permanently-control-fentanyl-related-substances-opinion-1677625",
+    summary: "Urges Congress to make permanent the temporary scheduling of fentanyl analogues, warning that allowing the emergency order to lapse would create a legal loophole exploited by drug manufacturers to evade prosecution."
   },
   {
     year: "2022", title: "In Search of a Silver Bullet: Reducing the Supply of Synthetic Drugs to the U.S.", outlet: "Small Wars Journal",
@@ -94,16 +179,17 @@ const publications = [
     summary: "Reviews the full range of supply-side interdiction strategies — from precursor chemical controls to international partnerships — and concludes that no single approach can solve the synthetic drug crisis."
   },
   {
-    year: "2022", title: "Congress Must Act to Permanently Control Fentanyl-Related Substances", outlet: "Newsweek",
-    url: "https://www.newsweek.com/congress-must-act-permanently-control-fentanyl-related-substances-opinion-1677625",
-    summary: "Urges Congress to make permanent the temporary scheduling of fentanyl analogues, warning that allowing the emergency order to lapse would create a legal loophole exploited by drug manufacturers to evade prosecution."
+    year: "2021", title: "If it's fentanyl, one pill can kill — talk to your family about drugs this New Year's Eve", outlet: "Tampa Bay Times",
+    url: "https://www.tampabay.com/opinion/2021/12/31/if-its-fentanyl-one-pill-can-kill-so-this-new-years-eve-talk-to-your-family-about-drugs-column/",
+    summary: "Urges families to use the New Year's holiday as an opportunity to have frank conversations about the lethal danger of fentanyl-laced counterfeit pills, warning that even a single pill can be fatal."
   },
 ];
 
 const mediaOutlets = [
-  "Washington Post", "Wall Street Journal", "Associated Press", "USA Today",
-  "Newsweek", "The Guardian", "The Hill", "Lawfare", "STAT News", "The Independent",
-  "Fox News", "Tampa Bay Times", "Dallas Morning News", "The Diplomat", "Undark Magazine"
+  "Wall Street Journal", "Washington Post", "Associated Press", "The Guardian",
+  "Newsweek", "The Hill", "STAT News", "Lawfare", "The Diplomat", "Undark Magazine",
+  "Tampa Bay Times", "Orlando Sentinel", "Dallas Morning News", "Washington Times",
+  "Washington Examiner", "The Spectator World", "We Are The Mighty", "Fox News", "AL.com"
 ];
 
 const career = [
@@ -366,9 +452,9 @@ function NavBar() {
 function NumbersBarInline() {
   const stats = [
     { value: "14+", label: "Years in Law Enforcement" },
-    { value: "40+", label: "Publications" },
+    { value: "35+", label: "Publications & Op-Eds" },
     { value: "6", label: "Fellowships" },
-    { value: "15+", label: "Media Outlets" },
+    { value: "19+", label: "Media Outlets" },
     { value: "3", label: "Degrees" },
     { value: "30+", label: "Countries Served" },
   ];

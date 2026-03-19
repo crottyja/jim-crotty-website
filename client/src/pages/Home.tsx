@@ -365,7 +365,7 @@ function NavBar() {
 
 function NumbersBarInline() {
   const stats = [
-    { value: "12+", label: "Years at DEA" },
+    { value: "14+", label: "Years in Law Enforcement" },
     { value: "40+", label: "Publications" },
     { value: "6", label: "Fellowships" },
     { value: "15+", label: "Media Outlets" },

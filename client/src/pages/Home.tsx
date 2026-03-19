@@ -624,35 +624,7 @@ function HeroSection() {
             A global thought leader and subject matter expert in law enforcement, intelligence, transnational organized crime, and drug policy — with over 12 years of service at the U.S. Drug Enforcement Administration and a distinguished record of public service, academic scholarship, and policy advocacy.
           </p>
 
-          {/* CTAs */}
-          <div className="flex flex-wrap gap-4 mb-16">
-            <a
-              href="#publications"
-              className="inline-flex items-center gap-2 px-6 py-3 text-white font-semibold text-sm tracking-widest uppercase transition-all duration-200 hover:opacity-90"
-              style={{
-                backgroundColor: "#4A7FA5",
-                fontFamily: "'Lato', sans-serif",
-                fontSize: "0.7rem",
-                letterSpacing: "0.15em",
-              }}
-            >
-              <BookOpen size={14} />
-              Publications
-            </a>
-            <a
-              href="#career"
-              className="inline-flex items-center gap-2 px-6 py-3 text-white font-semibold text-sm tracking-widest uppercase transition-all duration-200 hover:bg-white/10"
-              style={{
-                border: "1px solid rgba(255,255,255,0.4)",
-                fontFamily: "'Lato', sans-serif",
-                fontSize: "0.7rem",
-                letterSpacing: "0.15em",
-              }}
-            >
-              <Briefcase size={14} />
-              Career
-            </a>
-          </div>
+
         </div>
 
         {/* By the Numbers — inline within hero */}

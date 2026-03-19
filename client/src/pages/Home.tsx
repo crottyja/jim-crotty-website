@@ -1347,28 +1347,35 @@ function AffiliationsSection() {
 }
 
 function ContactSection() {
-  const [formState, setFormState] = React.useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const [formState, setFormState] = React.useState<'idle' | 'success'>('idle');
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setFormState('submitting');
     const form = e.currentTarget;
     const data = new FormData(form);
-    try {
-      const res = await fetch('https://formspree.io/f/xpwrqkjb', {
-        method: 'POST',
-        body: data,
-        headers: { Accept: 'application/json' },
-      });
-      if (res.ok) {
-        setFormState('success');
-        form.reset();
-      } else {
-        setFormState('error');
-      }
-    } catch {
-      setFormState('error');
-    }
+
+    const name = (data.get('name') as string) || '';
+    const email = (data.get('email') as string) || '';
+    const organization = (data.get('organization') as string) || '';
+    const subject = (data.get('subject') as string) || 'General Inquiry';
+    const message = (data.get('message') as string) || '';
+
+    const bodyLines = [
+      `From: ${name}`,
+      email ? `Email: ${email}` : '',
+      organization ? `Organization: ${organization}` : '',
+      '',
+      message,
+    ].filter((l, i) => i < 3 ? l !== '' : true);
+
+    const mailtoUrl =
+      `mailto:jamesmcrotty@hotmail.com` +
+      `?subject=${encodeURIComponent(subject)}` +
+      `&body=${encodeURIComponent(bodyLines.join('\n'))}`;
+
+    window.location.href = mailtoUrl;
+    setFormState('success');
+    form.reset();
   };
 
   const inputStyle: React.CSSProperties = {
@@ -1423,15 +1430,21 @@ function ContactSection() {
               style={{ border: '1px solid rgba(13,34,64,0.15)', background: 'rgba(13,34,64,0.04)' }}
             >
               <div style={{ color: '#0D2240', fontFamily: "'Libre Baskerville', serif", fontSize: '1.25rem', marginBottom: '0.5rem' }}>
-                Message Sent
+                Email Client Opened
               </div>
               <p style={{ color: '#6b7280', fontFamily: "'Lato', sans-serif", fontWeight: 300 }}>
-                Thank you for reaching out. Jim will be in touch shortly.
+                Your message has been pre-filled in your email client. Please send it from there to complete your inquiry.
               </p>
+              <button
+                onClick={() => setFormState('idle')}
+                className="mt-4 text-sm underline"
+                style={{ color: '#4A7FA5', fontFamily: "'Lato', sans-serif", background: 'none', border: 'none', cursor: 'pointer' }}
+              >
+                Send another message
+              </button>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-5">
-              <input type="hidden" name="_replyto" value="" />
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div>
                   <label
@@ -1526,8 +1539,7 @@ function ContactSection() {
               <div className="flex items-center gap-4">
                 <button
                   type="submit"
-                  disabled={formState === 'submitting'}
-                  className="inline-flex items-center gap-2 px-8 py-3 text-white font-semibold transition-all duration-200 hover:opacity-90 disabled:opacity-60"
+                  className="inline-flex items-center gap-2 px-8 py-3 text-white font-semibold transition-all duration-200 hover:opacity-90"
                   style={{
                     backgroundColor: '#0D2240',
                     fontFamily: "'Lato', sans-serif",
@@ -1538,13 +1550,8 @@ function ContactSection() {
                   }}
                 >
                   <Send size={14} />
-                  {formState === 'submitting' ? 'Sending...' : 'Send Message'}
+                  Send Message
                 </button>
-                {formState === 'error' && (
-                  <span style={{ color: '#dc2626', fontFamily: "'Lato', sans-serif", fontSize: '0.85rem' }}>
-                    Something went wrong. Please try again.
-                  </span>
-                )}
               </div>
             </form>
           )}

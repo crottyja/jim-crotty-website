@@ -576,7 +576,7 @@ function HeroSection() {
       id="home"
       className="relative min-h-screen flex items-center"
       style={{
-        backgroundImage: `url(${HERO_BG})`,
+        backgroundImage: `url(${MAP_BG})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
@@ -584,7 +584,7 @@ function HeroSection() {
       {/* Dark overlay */}
       <div
         className="absolute inset-0"
-        style={{ background: "linear-gradient(135deg, rgba(13,34,64,0.92) 0%, rgba(13,34,64,0.75) 60%, rgba(13,34,64,0.6) 100%)" }}
+        style={{ background: "rgba(13,34,64,0.90)" }}
       />
 
       <div className="container relative z-10 pt-24 pb-16">

@@ -5,8 +5,8 @@
  * Layout: Off-center editorial columns, horizontal banding, left-border accents
  */
 
-import { useEffect, useState } from "react";
-import { Menu, X, ExternalLink, Linkedin, ChevronDown, BookOpen, Briefcase, Award, GraduationCap, Globe, Mail, Newspaper, Quote } from "lucide-react";
+import React, { useEffect, useState } from "react";
+import { Menu, X, ExternalLink, Linkedin, ChevronDown, BookOpen, Briefcase, Award, GraduationCap, Globe, Mail, Newspaper, Quote, Send } from "lucide-react";
 
 const HERO_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/hero_bg-E39Xv3dAoLSLwUSSr7GHbD.webp";
 const MAP_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/map_bg-csabJgUBh7GraSoMYMWtE2.webp";
@@ -589,11 +589,6 @@ function HeroSection() {
 
       <div className="container relative z-10 pt-24 pb-16">
         <div className="max-w-3xl">
-          {/* Section label */}
-          <div className="section-label mb-6 text-white/60 tracking-widest uppercase text-xs" style={{ fontFamily: "'Lato', sans-serif" }}>
-            Law Enforcement · Intelligence · Drug Policy
-          </div>
-
           {/* Name */}
           <h1
             className="text-white mb-4 leading-none"
@@ -613,7 +608,7 @@ function HeroSection() {
             className="text-white/70 mb-8 text-lg"
             style={{ fontFamily: "'Lato', sans-serif", fontWeight: 300, letterSpacing: "0.02em" }}
           >
-            Law Enforcement Outreach Manager, Meta Platforms <span style={{color:'white',margin:'0 0.4em'}}>★</span> Former DEA Deputy Chief of Staff <span style={{color:'white',margin:'0 0.4em'}}>★</span> Adjunct Professor, American University
+            Law Enforcement Outreach Manager, Meta Platforms &nbsp;·&nbsp; Former DEA Deputy Chief of Staff &nbsp;·&nbsp; Adjunct Professor, American University
           </p>
 
           {/* Bio snippet */}
@@ -1248,26 +1243,63 @@ function AffiliationsSection() {
 }
 
 function ContactSection() {
+  const [formState, setFormState] = React.useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setFormState('submitting');
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    try {
+      const res = await fetch('https://formspree.io/f/jamesmcrotty@hotmail.com', {
+        method: 'POST',
+        body: data,
+        headers: { Accept: 'application/json' },
+      });
+      if (res.ok) {
+        setFormState('success');
+        form.reset();
+      } else {
+        setFormState('error');
+      }
+    } catch {
+      setFormState('error');
+    }
+  };
+
+  const inputStyle: React.CSSProperties = {
+    width: '100%',
+    padding: '0.75rem 1rem',
+    border: '1px solid rgba(13,34,64,0.2)',
+    background: 'rgba(255,255,255,0.9)',
+    color: '#0D2240',
+    fontFamily: "'Lato', sans-serif",
+    fontSize: '0.95rem',
+    outline: 'none',
+    borderRadius: '2px',
+    transition: 'border-color 0.2s',
+  };
+
   return (
     <section
       id="contact"
       className="py-24 relative"
       style={{
         backgroundImage: `url(${MAP_BG})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
       }}
     >
-      <div className="absolute inset-0" style={{ background: "rgba(255,255,255,0.96)" }} />
+      <div className="absolute inset-0" style={{ background: 'rgba(255,255,255,0.96)' }} />
       <div className="container relative z-10">
-        <div className="max-w-2xl">
-          <div className="section-label mb-4" style={{ color: "#4A7FA5" }}>05 / Connect</div>
+        <div className="max-w-3xl">
+          <div className="section-label mb-4" style={{ color: '#4A7FA5' }}>05 / Connect</div>
           <h2
-            className="mb-6"
+            className="mb-4"
             style={{
               fontFamily: "'Libre Baskerville', serif",
-              fontSize: "clamp(1.75rem, 3vw, 2.5rem)",
-              color: "#0D2240",
+              fontSize: 'clamp(1.75rem, 3vw, 2.5rem)',
+              color: '#0D2240',
               lineHeight: 1.2,
             }}
           >
@@ -1275,69 +1307,179 @@ function ContactSection() {
           </h2>
           <p
             className="mb-10 leading-relaxed"
-            style={{ color: "#6b7280", fontFamily: "'Lato', sans-serif", fontWeight: 300, fontSize: "1.05rem" }}
+            style={{ color: '#6b7280', fontFamily: "'Lato', sans-serif", fontWeight: 300, fontSize: '1.05rem' }}
           >
-            For media inquiries, speaking engagements, or academic collaboration, please reach out via LinkedIn or through American University's School of Public Affairs.
+            For media inquiries, speaking engagements, academic collaboration, or general questions, send a message directly using the form below.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4">
+          {/* Contact Form */}
+          {formState === 'success' ? (
+            <div
+              className="p-8 text-center"
+              style={{ border: '1px solid rgba(13,34,64,0.15)', background: 'rgba(13,34,64,0.04)' }}
+            >
+              <div style={{ color: '#0D2240', fontFamily: "'Libre Baskerville', serif", fontSize: '1.25rem', marginBottom: '0.5rem' }}>
+                Message Sent
+              </div>
+              <p style={{ color: '#6b7280', fontFamily: "'Lato', sans-serif", fontWeight: 300 }}>
+                Thank you for reaching out. Jim will be in touch shortly.
+              </p>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <input type="hidden" name="_replyto" value="" />
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div>
+                  <label
+                    htmlFor="contact-name"
+                    className="block mb-1 text-xs tracking-widest uppercase"
+                    style={{ color: '#4A7FA5', fontFamily: "'Lato', sans-serif" }}
+                  >
+                    Full Name *
+                  </label>
+                  <input
+                    id="contact-name"
+                    type="text"
+                    name="name"
+                    required
+                    placeholder="Your full name"
+                    style={inputStyle}
+                  />
+                </div>
+                <div>
+                  <label
+                    htmlFor="contact-email"
+                    className="block mb-1 text-xs tracking-widest uppercase"
+                    style={{ color: '#4A7FA5', fontFamily: "'Lato', sans-serif" }}
+                  >
+                    Email Address *
+                  </label>
+                  <input
+                    id="contact-email"
+                    type="email"
+                    name="email"
+                    required
+                    placeholder="your@email.com"
+                    style={inputStyle}
+                  />
+                </div>
+              </div>
+              <div>
+                <label
+                  htmlFor="contact-org"
+                  className="block mb-1 text-xs tracking-widest uppercase"
+                  style={{ color: '#4A7FA5', fontFamily: "'Lato', sans-serif" }}
+                >
+                  Organization
+                </label>
+                <input
+                  id="contact-org"
+                  type="text"
+                  name="organization"
+                  placeholder="Your organization or affiliation"
+                  style={inputStyle}
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="contact-subject"
+                  className="block mb-1 text-xs tracking-widest uppercase"
+                  style={{ color: '#4A7FA5', fontFamily: "'Lato', sans-serif" }}
+                >
+                  Subject *
+                </label>
+                <select
+                  id="contact-subject"
+                  name="subject"
+                  required
+                  style={{ ...inputStyle, cursor: 'pointer' }}
+                >
+                  <option value="">Select a subject</option>
+                  <option value="Media Inquiry">Media Inquiry</option>
+                  <option value="Speaking Engagement">Speaking Engagement</option>
+                  <option value="Academic Collaboration">Academic Collaboration</option>
+                  <option value="Policy Consultation">Policy Consultation</option>
+                  <option value="General Question">General Question</option>
+                </select>
+              </div>
+              <div>
+                <label
+                  htmlFor="contact-message"
+                  className="block mb-1 text-xs tracking-widest uppercase"
+                  style={{ color: '#4A7FA5', fontFamily: "'Lato', sans-serif" }}
+                >
+                  Message *
+                </label>
+                <textarea
+                  id="contact-message"
+                  name="message"
+                  required
+                  rows={5}
+                  placeholder="Please describe your inquiry..."
+                  style={{ ...inputStyle, resize: 'vertical' }}
+                />
+              </div>
+              <div className="flex items-center gap-4">
+                <button
+                  type="submit"
+                  disabled={formState === 'submitting'}
+                  className="inline-flex items-center gap-2 px-8 py-3 text-white font-semibold transition-all duration-200 hover:opacity-90 disabled:opacity-60"
+                  style={{
+                    backgroundColor: '#0D2240',
+                    fontFamily: "'Lato', sans-serif",
+                    fontSize: '0.8rem',
+                    letterSpacing: '0.12em',
+                    textTransform: 'uppercase',
+                    borderRadius: '2px',
+                  }}
+                >
+                  <Send size={14} />
+                  {formState === 'submitting' ? 'Sending...' : 'Send Message'}
+                </button>
+                {formState === 'error' && (
+                  <span style={{ color: '#dc2626', fontFamily: "'Lato', sans-serif", fontSize: '0.85rem' }}>
+                    Something went wrong. Please try again.
+                  </span>
+                )}
+              </div>
+            </form>
+          )}
+
+          {/* Social links */}
+          <div className="mt-12 pt-8 border-t flex flex-col sm:flex-row gap-4" style={{ borderColor: 'rgba(13,34,64,0.12)' }}>
             <a
               href="https://www.linkedin.com/in/jamesmcrotty"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-6 py-4 text-white font-semibold transition-all duration-200 hover:opacity-90"
+              className="inline-flex items-center gap-3 px-6 py-3 text-white font-semibold transition-all duration-200 hover:opacity-90"
               style={{
-                backgroundColor: "#0D2240",
+                backgroundColor: '#0D2240',
                 fontFamily: "'Lato', sans-serif",
-                fontSize: "0.85rem",
-                letterSpacing: "0.05em",
+                fontSize: '0.8rem',
+                letterSpacing: '0.05em',
+                borderRadius: '2px',
               }}
             >
-              <Linkedin size={18} />
+              <Linkedin size={16} />
               LinkedIn Profile
             </a>
             <a
               href="https://www.american.edu/spa/faculty/jcrotty.cfm"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-6 py-4 font-semibold transition-all duration-200 hover:bg-navy/10"
+              className="inline-flex items-center gap-3 px-6 py-3 font-semibold transition-all duration-200"
               style={{
-                border: "1px solid rgba(13,34,64,0.3)",
-                color: "#0D2240",
+                border: '1px solid rgba(13,34,64,0.3)',
+                color: '#0D2240',
                 fontFamily: "'Lato', sans-serif",
-                fontSize: "0.85rem",
-                letterSpacing: "0.05em",
+                fontSize: '0.8rem',
+                letterSpacing: '0.05em',
+                borderRadius: '2px',
               }}
             >
-              <GraduationCap size={18} />
+              <GraduationCap size={16} />
               American University Profile
             </a>
-          </div>
-
-          <div className="mt-12 pt-8 border-t" style={{ borderColor: "rgba(13,34,64,0.12)" }}>
-            <div className="flex items-center gap-2 mb-2">
-              <Mail size={14} style={{ color: "#4A7FA5" }} />
-              <span className="section-label" style={{ color: "#4A7FA5" }}>Media Inquiries</span>
-            </div>
-            <p
-              className="text-sm"
-              style={{ color: "#6b7280", fontFamily: "'Lato', sans-serif", fontWeight: 300 }}
-            >
-              For media requests, contact AU Communications at{" "}
-              <a href="tel:2028855950" className="underline hover:text-navy transition-colors" style={{ color: "#4A7FA5" }}>
-                202-885-5950
-              </a>{" "}
-              or visit the{" "}
-              <a
-                href="https://www.american.edu/spa/faculty/jcrotty.cfm"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline hover:text-navy transition-colors"
-                style={{ color: "#4A7FA5" }}
-              >
-                AU Faculty Media Guide
-              </a>.
-            </p>
           </div>
         </div>
       </div>

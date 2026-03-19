@@ -6,7 +6,7 @@
  */
 
 import React, { useEffect, useState } from "react";
-import { Menu, X, ExternalLink, Linkedin, ChevronDown, BookOpen, Briefcase, Award, GraduationCap, Globe, Mail, Newspaper, Quote, Send } from "lucide-react";
+import { Menu, X, ExternalLink, Linkedin, ChevronDown, BookOpen, Briefcase, Award, GraduationCap, Globe, Mail, Newspaper, Quote, Send, ArrowUp } from "lucide-react";
 
 const HERO_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/hero_bg-E39Xv3dAoLSLwUSSr7GHbD.webp";
 const MAP_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/map_bg-csabJgUBh7GraSoMYMWtE2.webp";
@@ -448,7 +448,7 @@ function VideoSection() {
     >
       <div className="absolute inset-0" style={{ background: "rgba(13,34,64,0.91)" }} />
       <div className="container relative z-10">
-        <div className="section-label mb-4" style={{ color: "rgba(255,255,255,0.5)" }}>03 / Video Appearances</div>
+        <div className="section-label mb-4" style={{ color: "rgba(255,255,255,0.5)" }}>04 / On Camera</div>
         <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-12 gap-4">
           <h2
             style={{
@@ -591,7 +591,7 @@ function HeroSection() {
         <div className="max-w-3xl">
           {/* Name */}
           <h1
-            className="text-white mb-4 leading-none"
+            className="hero-name text-white mb-4 leading-none"
             style={{
               fontFamily: "'Cormorant Garamond', serif",
               fontSize: "clamp(3rem, 8vw, 6rem)",
@@ -605,7 +605,7 @@ function HeroSection() {
 
           {/* Title */}
           <p
-            className="text-white/70 mb-8 text-lg"
+            className="hero-titles text-white/70 mb-8 text-lg"
             style={{ fontFamily: "'Lato', sans-serif", fontWeight: 300, letterSpacing: "0.02em" }}
           >
             Law Enforcement Outreach Manager, Meta Platforms &nbsp;·&nbsp; Former DEA Deputy Chief of Staff &nbsp;·&nbsp; Adjunct Professor, American University
@@ -613,10 +613,10 @@ function HeroSection() {
 
           {/* Bio snippet */}
           <p
-            className="text-white/60 mb-10 leading-relaxed max-w-2xl"
+            className="hero-bio text-white/60 mb-10 leading-relaxed max-w-2xl"
             style={{ fontFamily: "'Lato', sans-serif", fontWeight: 300, fontSize: "1rem" }}
           >
-            A global thought leader and subject matter expert in law enforcement, intelligence, transnational organized crime, and drug policy — with over 12 years of service at the U.S. Drug Enforcement Administration and a distinguished record of public service, academic scholarship, and policy advocacy.
+            A global thought leader and subject matter expert in law enforcement, intelligence, transnational organized crime, and drug policy — with over 14 years in law enforcement, including a distinguished career at the U.S. Drug Enforcement Administration, and a record of public service, academic scholarship, and policy advocacy spanning 30+ countries.
           </p>
 
 
@@ -624,7 +624,7 @@ function HeroSection() {
 
         {/* By the Numbers — inline within hero */}
         <div
-          className="w-full text-center"
+          className="hero-stats w-full text-center"
           style={{
             borderTop: "1px solid rgba(255,255,255,0.1)",
             paddingTop: "2rem",
@@ -738,7 +738,7 @@ function AboutSection() {
                 Before joining Meta, Jim led the Investigative Support Section at the <strong style={{ fontWeight: 700, color: "#0D2240" }}>DC Metropolitan Police Department (MPD)</strong>, managing a team of Criminal Research Specialists providing real-time intelligence on major crimes across the District of Columbia. He also served as Associate Vice President at <strong style={{ fontWeight: 700, color: "#0D2240" }}>The Cohen Group</strong>, a strategic advisory firm founded by former Secretary of Defense William Cohen, where he led client teams across defense, cybersecurity, healthcare, energy, and national security.
               </p>
               <p>
-                Jim's distinguished public service career includes over <strong style={{ fontWeight: 700, color: "#0D2240" }}>12 years with the U.S. Drug Enforcement Administration (DEA)</strong>, serving in strategic, tactical, and operational positions domestically and internationally. His final DEA assignment was as Deputy Chief of Staff and Executive Assistant to the Administrator — the agency's top leadership position.
+                Jim's distinguished public service career includes over <strong style={{ fontWeight: 700, color: "#0D2240" }}>14 years in law enforcement</strong>, anchored by a career at the <strong style={{ fontWeight: 700, color: "#0D2240" }}>U.S. Drug Enforcement Administration (DEA)</strong>, where he served in strategic, tactical, and operational positions domestically and internationally across more than 30 countries. His final DEA assignment was as Deputy Chief of Staff and Executive Assistant to the Administrator — the agency's top leadership position.
               </p>
               <p>
                 He is an <strong style={{ fontWeight: 700, color: "#0D2240" }}>Adjunct Professor at American University's School of Public Affairs</strong>, teaching courses on Drugs, Crime, and Public Policy and Organized Crime. His commentary and analysis have been featured in the <em>Washington Post</em>, <em>Wall Street Journal</em>, <em>Newsweek</em>, <em>The Hill</em>, <em>STAT News</em>, <em>The Guardian</em>, and many other leading publications.
@@ -879,6 +879,24 @@ function CareerSection() {
   );
 }
 
+function BackToTop() {
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setVisible(window.scrollY > 400);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+  return (
+    <button
+      aria-label="Back to top"
+      className={`back-to-top${visible ? " visible" : ""}`}
+      onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+    >
+      <ArrowUp size={18} />
+    </button>
+  );
+}
+
 function PublicationsSection() {
   const [showAll, setShowAll] = useState(false);
   const displayed = showAll ? publications : publications.slice(0, 8);
@@ -922,7 +940,7 @@ function PublicationsSection() {
               href={pub.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group block p-6 transition-all duration-200 hover:-translate-y-0.5 reveal-on-scroll"
+              className="pub-card group block p-6 reveal-on-scroll"
               style={{
                 borderLeft: "3px solid #4A7FA5",
                 backgroundColor: "#f8fafc",
@@ -1022,7 +1040,7 @@ function InTheNewsSection() {
     >
       <div className="absolute inset-0" style={{ background: "rgba(255,255,255,0.96)" }} />
       <div className="container relative z-10">
-        <div className="section-label mb-4" style={{ color: "#4A7FA5" }}>03 / Media Coverage</div>
+        <div className="section-label mb-4" style={{ color: "#4A7FA5" }}>05 / Media Coverage</div>
         <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-12 gap-4">
           <h2
             style={{
@@ -1177,7 +1195,7 @@ function AffiliationsSection() {
     >
       <div className="absolute inset-0" style={{ background: "rgba(13,34,64,0.91)" }} />
       <div className="container relative z-10">
-        <div className="section-label mb-4" style={{ color: "rgba(255,255,255,0.5)" }}>04 / Affiliations</div>
+        <div className="section-label mb-4" style={{ color: "rgba(255,255,255,0.5)" }}>06 / Affiliations</div>
         <h2
           className="mb-12"
           style={{
@@ -1251,7 +1269,7 @@ function ContactSection() {
     const form = e.currentTarget;
     const data = new FormData(form);
     try {
-      const res = await fetch('https://formspree.io/f/jamesmcrotty@hotmail.com', {
+      const res = await fetch('https://formspree.io/f/xpwrqkjb', {
         method: 'POST',
         body: data,
         headers: { Accept: 'application/json' },
@@ -1293,7 +1311,7 @@ function ContactSection() {
       <div className="absolute inset-0" style={{ background: 'rgba(255,255,255,0.96)' }} />
       <div className="container relative z-10">
         <div className="max-w-3xl">
-          <div className="section-label mb-4" style={{ color: '#4A7FA5' }}>05 / Connect</div>
+          <div className="section-label mb-4" style={{ color: '#4A7FA5' }}>07 / Connect</div>
           <h2
             className="mb-4"
             style={{
@@ -1485,6 +1503,7 @@ export default function Home() {
       <AffiliationsSection />
       <ContactSection />
       <Footer />
+      <BackToTop />
     </div>
   );
 }

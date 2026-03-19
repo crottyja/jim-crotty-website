@@ -774,7 +774,7 @@ function AboutSection() {
                 Jim's distinguished public service career includes over <strong style={{ fontWeight: 700, color: "#0D2240" }}>12 years with the U.S. Drug Enforcement Administration (DEA)</strong>, serving in strategic, tactical, and operational positions domestically and internationally. His final DEA assignment was as Deputy Chief of Staff and Executive Assistant to the Administrator — the agency's top leadership position.
               </p>
               <p>
-                He is an <strong style={{ fontWeight: 700, color: "#0D2240" }}>Adjunct Professor at American University's School of Public Affairs</strong>, teaching courses on Drugs, Crime, and Public Policy. His commentary and analysis have been featured in the <em>Washington Post</em>, <em>Wall Street Journal</em>, <em>Newsweek</em>, <em>The Hill</em>, <em>STAT News</em>, <em>The Guardian</em>, and many other leading publications.
+                He is an <strong style={{ fontWeight: 700, color: "#0D2240" }}>Adjunct Professor at American University's School of Public Affairs</strong>, teaching courses on Drugs, Crime, and Public Policy and Organized Crime. His commentary and analysis have been featured in the <em>Washington Post</em>, <em>Wall Street Journal</em>, <em>Newsweek</em>, <em>The Hill</em>, <em>STAT News</em>, <em>The Guardian</em>, and many other leading publications.
               </p>
             </div>
 
@@ -1386,35 +1386,7 @@ function Footer() {
         >
           © {new Date().getFullYear()} Jim Crotty. All rights reserved.
         </span>
-        <div className="flex items-center gap-6">
-          <a
-            href="https://www.linkedin.com/in/jamesmcrotty"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="transition-colors hover:text-white"
-            style={{ color: "#C9A84C" }}
-          >
-            <Linkedin size={16} />
-          </a>
-          <a
-            href="https://www.american.edu/spa/faculty/jcrotty.cfm"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-xs transition-colors hover:text-white"
-            style={{ color: "#C9A84C", fontFamily: "'Lato', sans-serif", letterSpacing: "0.1em" }}
-          >
-            American University
-          </a>
-          <a
-            href="https://globalinitiative.net/profile/jim-crotty/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-xs transition-colors hover:text-white"
-            style={{ color: "#C9A84C", fontFamily: "'Lato', sans-serif", letterSpacing: "0.1em" }}
-          >
-            GI-TOC
-          </a>
-        </div>
+
       </div>
     </footer>
   );

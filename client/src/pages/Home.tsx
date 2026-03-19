@@ -371,9 +371,6 @@ function NumbersBarInline() {
     { value: "15+", label: "Media Outlets" },
     { value: "3", label: "Degrees" },
     { value: "4", label: "Countries Served" },
-    { value: "2", label: "Courses Taught" },
-    { value: "10+", label: "Years in Policy" },
-    { value: "3", label: "Gov't Agencies" },
   ];
   return (
     <div className="grid grid-cols-3 gap-0 w-full">
@@ -383,7 +380,7 @@ function NumbersBarInline() {
           className="flex flex-col items-center justify-center py-4 px-4 text-center"
           style={{
             borderRight: (i + 1) % 3 !== 0 ? "1px solid rgba(255,255,255,0.1)" : "none",
-            borderBottom: i < 6 ? "1px solid rgba(255,255,255,0.1)" : "none",
+            borderBottom: i < 3 ? "1px solid rgba(255,255,255,0.1)" : "none",
           }}
         >
           <span

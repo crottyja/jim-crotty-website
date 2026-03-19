@@ -370,7 +370,7 @@ function NumbersBarInline() {
     { value: "6", label: "Fellowships" },
     { value: "15+", label: "Media Outlets" },
     { value: "3", label: "Degrees" },
-    { value: "4", label: "Countries Served" },
+    { value: "30+", label: "Countries Served" },
   ];
   return (
     <div className="grid grid-cols-3 gap-0 w-full">

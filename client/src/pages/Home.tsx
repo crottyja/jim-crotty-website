@@ -1445,42 +1445,6 @@ function ContactSection() {
             </form>
           )}
 
-          {/* Social links */}
-          <div className="mt-12 pt-8 border-t flex flex-col sm:flex-row gap-4" style={{ borderColor: 'rgba(13,34,64,0.12)' }}>
-            <a
-              href="https://www.linkedin.com/in/jamesmcrotty"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-6 py-3 text-white font-semibold transition-all duration-200 hover:opacity-90"
-              style={{
-                backgroundColor: '#0D2240',
-                fontFamily: "'Lato', sans-serif",
-                fontSize: '0.8rem',
-                letterSpacing: '0.05em',
-                borderRadius: '2px',
-              }}
-            >
-              <Linkedin size={16} />
-              LinkedIn Profile
-            </a>
-            <a
-              href="https://www.american.edu/spa/faculty/jcrotty.cfm"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-6 py-3 font-semibold transition-all duration-200"
-              style={{
-                border: '1px solid rgba(13,34,64,0.3)',
-                color: '#0D2240',
-                fontFamily: "'Lato', sans-serif",
-                fontSize: '0.8rem',
-                letterSpacing: '0.05em',
-                borderRadius: '2px',
-              }}
-            >
-              <GraduationCap size={16} />
-              American University Profile
-            </a>
-          </div>
         </div>
       </div>
     </section>

@@ -557,16 +557,24 @@ function VideoSection() {
       }}
     >
       <div className="absolute inset-0" style={{ background: "rgba(13,34,64,0.91)" }} />
-      {/* Starburst accent */}
-      <svg className="absolute top-16 left-12 opacity-25 pointer-events-none" width="120" height="120" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        {Array.from({ length: 16 }).map((_, i) => {
-          const angle = (i * 360) / 16;
-          const rad = (angle * Math.PI) / 180;
-          const x2 = 110 + 105 * Math.cos(rad);
-          const y2 = 110 + 105 * Math.sin(rad);
-          return <line key={i} x1="110" y1="110" x2={x2} y2={y2} stroke="white" strokeWidth={i % 2 === 0 ? "2" : "1"} />;
-        })}
-        <circle cx="110" cy="110" r="6" fill="white" />
+      {/* Star accent */}
+      <svg className="absolute top-16 left-12 pointer-events-none" width="80" height="80" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <radialGradient id="glowA" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor="white" stopOpacity="0.6" />
+            <stop offset="100%" stopColor="white" stopOpacity="0" />
+          </radialGradient>
+        </defs>
+        <circle cx="50" cy="50" r="40" fill="url(#glowA)" />
+        <polygon points="50,2 52,48 50,50 48,48" fill="white" opacity="0.95" />
+        <polygon points="50,98 52,52 50,50 48,52" fill="white" opacity="0.95" />
+        <polygon points="2,50 48,52 50,50 48,48" fill="white" opacity="0.95" />
+        <polygon points="98,50 52,48 50,50 52,52" fill="white" opacity="0.95" />
+        <polygon points="50,18 51.5,48 50,50 48.5,48" fill="white" opacity="0.55" transform="rotate(45 50 50)" />
+        <polygon points="50,98 51.5,52 50,50 48.5,52" fill="white" opacity="0.55" transform="rotate(45 50 50)" />
+        <polygon points="2,50 48,51.5 50,50 48,48.5" fill="white" opacity="0.55" transform="rotate(45 50 50)" />
+        <polygon points="98,50 52,48.5 50,50 52,51.5" fill="white" opacity="0.55" transform="rotate(45 50 50)" />
+        <circle cx="50" cy="50" r="2.5" fill="white" />
       </svg>
       <div className="container relative z-10">
         <div className="section-label mb-4" style={{ color: "rgba(255,255,255,0.5)" }}>04 / On Camera</div>
@@ -707,16 +715,24 @@ function HeroSection() {
         className="absolute inset-0"
         style={{ background: "rgba(13,34,64,0.90)" }}
       />
-      {/* Starburst accent */}
-      <svg className="absolute top-16 right-12 opacity-25 pointer-events-none" width="120" height="120" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        {Array.from({ length: 16 }).map((_, i) => {
-          const angle = (i * 360) / 16;
-          const rad = (angle * Math.PI) / 180;
-          const x2 = 110 + 105 * Math.cos(rad);
-          const y2 = 110 + 105 * Math.sin(rad);
-          return <line key={i} x1="110" y1="110" x2={x2} y2={y2} stroke="white" strokeWidth={i % 2 === 0 ? "2" : "1"} />;
-        })}
-        <circle cx="110" cy="110" r="6" fill="white" />
+      {/* Star accent */}
+      <svg className="absolute top-16 right-12 pointer-events-none" width="80" height="80" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <radialGradient id="glowB" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor="white" stopOpacity="0.6" />
+            <stop offset="100%" stopColor="white" stopOpacity="0" />
+          </radialGradient>
+        </defs>
+        <circle cx="50" cy="50" r="40" fill="url(#glowB)" />
+        <polygon points="50,2 52,48 50,50 48,48" fill="white" opacity="0.95" />
+        <polygon points="50,98 52,52 50,50 48,52" fill="white" opacity="0.95" />
+        <polygon points="2,50 48,52 50,50 48,48" fill="white" opacity="0.95" />
+        <polygon points="98,50 52,48 50,50 52,52" fill="white" opacity="0.95" />
+        <polygon points="50,18 51.5,48 50,50 48.5,48" fill="white" opacity="0.55" transform="rotate(45 50 50)" />
+        <polygon points="50,98 51.5,52 50,50 48.5,52" fill="white" opacity="0.55" transform="rotate(45 50 50)" />
+        <polygon points="2,50 48,51.5 50,50 48,48.5" fill="white" opacity="0.55" transform="rotate(45 50 50)" />
+        <polygon points="98,50 52,48.5 50,50 52,51.5" fill="white" opacity="0.55" transform="rotate(45 50 50)" />
+        <circle cx="50" cy="50" r="2.5" fill="white" />
       </svg>
 
       <div className="container relative z-10 pt-24 pb-16">
@@ -911,16 +927,24 @@ function CareerSection() {
       }}
     >
       <div className="absolute inset-0" style={{ background: "rgba(13,34,64,0.88)" }} />
-      {/* Starburst accent */}
-      <svg className="absolute bottom-16 right-12 opacity-25 pointer-events-none" width="120" height="120" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        {Array.from({ length: 16 }).map((_, i) => {
-          const angle = (i * 360) / 16;
-          const rad = (angle * Math.PI) / 180;
-          const x2 = 110 + 105 * Math.cos(rad);
-          const y2 = 110 + 105 * Math.sin(rad);
-          return <line key={i} x1="110" y1="110" x2={x2} y2={y2} stroke="white" strokeWidth={i % 2 === 0 ? "2" : "1"} />;
-        })}
-        <circle cx="110" cy="110" r="6" fill="white" />
+      {/* Star accent */}
+      <svg className="absolute bottom-16 right-12 pointer-events-none" width="80" height="80" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <radialGradient id="glowC" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor="white" stopOpacity="0.6" />
+            <stop offset="100%" stopColor="white" stopOpacity="0" />
+          </radialGradient>
+        </defs>
+        <circle cx="50" cy="50" r="40" fill="url(#glowC)" />
+        <polygon points="50,2 52,48 50,50 48,48" fill="white" opacity="0.95" />
+        <polygon points="50,98 52,52 50,50 48,52" fill="white" opacity="0.95" />
+        <polygon points="2,50 48,52 50,50 48,48" fill="white" opacity="0.95" />
+        <polygon points="98,50 52,48 50,50 52,52" fill="white" opacity="0.95" />
+        <polygon points="50,18 51.5,48 50,50 48.5,48" fill="white" opacity="0.55" transform="rotate(45 50 50)" />
+        <polygon points="50,98 51.5,52 50,50 48.5,52" fill="white" opacity="0.55" transform="rotate(45 50 50)" />
+        <polygon points="2,50 48,51.5 50,50 48,48.5" fill="white" opacity="0.55" transform="rotate(45 50 50)" />
+        <polygon points="98,50 52,48.5 50,50 52,51.5" fill="white" opacity="0.55" transform="rotate(45 50 50)" />
+        <circle cx="50" cy="50" r="2.5" fill="white" />
       </svg>
       <div className="container relative z-10">
         <div className="max-w-4xl mx-auto">
@@ -1337,16 +1361,24 @@ function AffiliationsSection() {
       }}
     >
       <div className="absolute inset-0" style={{ background: "rgba(13,34,64,0.91)" }} />
-      {/* Starburst accent */}
-      <svg className="absolute bottom-16 left-12 opacity-25 pointer-events-none" width="120" height="120" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        {Array.from({ length: 16 }).map((_, i) => {
-          const angle = (i * 360) / 16;
-          const rad = (angle * Math.PI) / 180;
-          const x2 = 110 + 105 * Math.cos(rad);
-          const y2 = 110 + 105 * Math.sin(rad);
-          return <line key={i} x1="110" y1="110" x2={x2} y2={y2} stroke="white" strokeWidth={i % 2 === 0 ? "2" : "1"} />;
-        })}
-        <circle cx="110" cy="110" r="6" fill="white" />
+      {/* Star accent */}
+      <svg className="absolute bottom-16 left-12 pointer-events-none" width="80" height="80" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <radialGradient id="glowD" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor="white" stopOpacity="0.6" />
+            <stop offset="100%" stopColor="white" stopOpacity="0" />
+          </radialGradient>
+        </defs>
+        <circle cx="50" cy="50" r="40" fill="url(#glowD)" />
+        <polygon points="50,2 52,48 50,50 48,48" fill="white" opacity="0.95" />
+        <polygon points="50,98 52,52 50,50 48,52" fill="white" opacity="0.95" />
+        <polygon points="2,50 48,52 50,50 48,48" fill="white" opacity="0.95" />
+        <polygon points="98,50 52,48 50,50 52,52" fill="white" opacity="0.95" />
+        <polygon points="50,18 51.5,48 50,50 48.5,48" fill="white" opacity="0.55" transform="rotate(45 50 50)" />
+        <polygon points="50,98 51.5,52 50,50 48.5,52" fill="white" opacity="0.55" transform="rotate(45 50 50)" />
+        <polygon points="2,50 48,51.5 50,50 48,48.5" fill="white" opacity="0.55" transform="rotate(45 50 50)" />
+        <polygon points="98,50 52,48.5 50,50 52,51.5" fill="white" opacity="0.55" transform="rotate(45 50 50)" />
+        <circle cx="50" cy="50" r="2.5" fill="white" />
       </svg>
       <div className="container relative z-10">
         <div className="section-label mb-4" style={{ color: "rgba(255,255,255,0.5)" }}>06 / Affiliations</div>

@@ -1294,6 +1294,12 @@ function AffiliationsSection() {
           Professional Affiliations & Fellowships
         </h2>
 
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-12 gap-4">
+          <p className="text-sm max-w-md" style={{ color: "rgba(255,255,255,0.55)", fontFamily: "'Lato', sans-serif", fontWeight: 300 }}>
+            Jim is affiliated with several leading research institutions, policy organizations, and national security networks focused on drug policy, transnational organized crime, and law enforcement.
+          </p>
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {affiliations.map((aff, i) => (
             <div

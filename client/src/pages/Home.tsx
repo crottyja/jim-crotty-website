@@ -6,7 +6,7 @@
  */
 
 import React, { useEffect, useState } from "react";
-import { Menu, X, ExternalLink, Linkedin, ChevronDown, BookOpen, Briefcase, Award, GraduationCap, Globe, Mail, Newspaper, Quote, Send, ArrowUp } from "lucide-react";
+import { Menu, X, ExternalLink, Linkedin, ChevronDown, BookOpen, Briefcase, Award, GraduationCap, Globe, Mail, Newspaper, Quote, ArrowUp } from "lucide-react";
 
 const HERO_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/hero_bg-E39Xv3dAoLSLwUSSr7GHbD.webp";
 const MAP_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/map_bg-csabJgUBh7GraSoMYMWtE2.webp";
@@ -1347,49 +1347,22 @@ function AffiliationsSection() {
 }
 
 function ContactSection() {
-  const [formState, setFormState] = React.useState<'idle' | 'success'>('idle');
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const form = e.currentTarget;
-    const data = new FormData(form);
-
-    const name = (data.get('name') as string) || '';
-    const email = (data.get('email') as string) || '';
-    const organization = (data.get('organization') as string) || '';
-    const subject = (data.get('subject') as string) || 'General Inquiry';
-    const message = (data.get('message') as string) || '';
-
-    const bodyLines = [
-      `From: ${name}`,
-      email ? `Email: ${email}` : '',
-      organization ? `Organization: ${organization}` : '',
-      '',
-      message,
-    ].filter((l, i) => i < 3 ? l !== '' : true);
-
-    const mailtoUrl =
-      `mailto:jamesmcrotty@hotmail.com` +
-      `?subject=${encodeURIComponent(subject)}` +
-      `&body=${encodeURIComponent(bodyLines.join('\n'))}`;
-
-    window.location.href = mailtoUrl;
-    setFormState('success');
-    form.reset();
-  };
-
-  const inputStyle: React.CSSProperties = {
-    width: '100%',
-    padding: '0.75rem 1rem',
-    border: '1px solid rgba(13,34,64,0.2)',
-    background: 'rgba(255,255,255,0.9)',
-    color: '#0D2240',
-    fontFamily: "'Lato', sans-serif",
-    fontSize: '0.95rem',
-    outline: 'none',
-    borderRadius: '2px',
-    transition: 'border-color 0.2s',
-  };
+  const contactLinks = [
+    {
+      icon: <Linkedin size={22} style={{ color: '#4A7FA5' }} />,
+      label: "LinkedIn",
+      description: "Connect and send a direct message on LinkedIn.",
+      href: "https://www.linkedin.com/in/jamesmcrotty",
+      cta: "View Profile",
+    },
+    {
+      icon: <Mail size={22} style={{ color: '#4A7FA5' }} />,
+      label: "Email",
+      description: "Reach Jim directly for media, speaking, or collaboration inquiries.",
+      href: "mailto:jamesmcrotty@hotmail.com",
+      cta: "Send Email",
+    },
+  ];
 
   return (
     <section
@@ -1420,142 +1393,48 @@ function ContactSection() {
             className="mb-10 leading-relaxed"
             style={{ color: '#6b7280', fontFamily: "'Lato', sans-serif", fontWeight: 300, fontSize: '1.05rem' }}
           >
-            For media inquiries, speaking engagements, academic collaboration, or general questions, send a message directly using the form below.
+            For media inquiries, speaking engagements, academic collaboration, or general questions, reach out directly via LinkedIn or email.
           </p>
 
-          {/* Contact Form */}
-          {formState === 'success' ? (
-            <div
-              className="p-8 text-center"
-              style={{ border: '1px solid rgba(13,34,64,0.15)', background: 'rgba(13,34,64,0.04)' }}
-            >
-              <div style={{ color: '#0D2240', fontFamily: "'Libre Baskerville', serif", fontSize: '1.25rem', marginBottom: '0.5rem' }}>
-                Email Client Opened
-              </div>
-              <p style={{ color: '#6b7280', fontFamily: "'Lato', sans-serif", fontWeight: 300 }}>
-                Your message has been pre-filled in your email client. Please send it from there to complete your inquiry.
-              </p>
-              <button
-                onClick={() => setFormState('idle')}
-                className="mt-4 text-sm underline"
-                style={{ color: '#4A7FA5', fontFamily: "'Lato', sans-serif", background: 'none', border: 'none', cursor: 'pointer' }}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {contactLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                target={link.href.startsWith('http') ? '_blank' : undefined}
+                rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                className="group block p-6 reveal-on-scroll transition-all duration-200 hover:-translate-y-1"
+                style={{
+                  backgroundColor: '#f8fafc',
+                  border: '1px solid rgba(13,34,64,0.1)',
+                  borderTop: '3px solid #4A7FA5',
+                  boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
+                }}
               >
-                Send another message
-              </button>
-            </div>
-          ) : (
-            <form onSubmit={handleSubmit} className="space-y-5">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                <div>
-                  <label
-                    htmlFor="contact-name"
-                    className="block mb-1 text-xs tracking-widest uppercase"
-                    style={{ color: '#4A7FA5', fontFamily: "'Lato', sans-serif" }}
+                <div className="flex items-center gap-3 mb-3">
+                  {link.icon}
+                  <span
+                    className="font-bold text-base"
+                    style={{ fontFamily: "'Libre Baskerville', serif", color: '#0D2240' }}
                   >
-                    Full Name *
-                  </label>
-                  <input
-                    id="contact-name"
-                    type="text"
-                    name="name"
-                    required
-                    placeholder="Your full name"
-                    style={inputStyle}
-                  />
+                    {link.label}
+                  </span>
                 </div>
-                <div>
-                  <label
-                    htmlFor="contact-email"
-                    className="block mb-1 text-xs tracking-widest uppercase"
-                    style={{ color: '#4A7FA5', fontFamily: "'Lato', sans-serif" }}
-                  >
-                    Email Address *
-                  </label>
-                  <input
-                    id="contact-email"
-                    type="email"
-                    name="email"
-                    required
-                    placeholder="your@email.com"
-                    style={inputStyle}
-                  />
-                </div>
-              </div>
-              <div>
-                <label
-                  htmlFor="contact-org"
-                  className="block mb-1 text-xs tracking-widest uppercase"
+                <p
+                  className="text-sm leading-relaxed mb-4"
+                  style={{ color: '#6b7280', fontFamily: "'Lato', sans-serif", fontWeight: 300 }}
+                >
+                  {link.description}
+                </p>
+                <span
+                  className="inline-flex items-center gap-1 text-xs font-semibold tracking-widest uppercase group-hover:underline"
                   style={{ color: '#4A7FA5', fontFamily: "'Lato', sans-serif" }}
                 >
-                  Organization
-                </label>
-                <input
-                  id="contact-org"
-                  type="text"
-                  name="organization"
-                  placeholder="Your organization or affiliation"
-                  style={inputStyle}
-                />
-              </div>
-              <div>
-                <label
-                  htmlFor="contact-subject"
-                  className="block mb-1 text-xs tracking-widest uppercase"
-                  style={{ color: '#4A7FA5', fontFamily: "'Lato', sans-serif" }}
-                >
-                  Subject *
-                </label>
-                <select
-                  id="contact-subject"
-                  name="subject"
-                  required
-                  style={{ ...inputStyle, cursor: 'pointer' }}
-                >
-                  <option value="">Select a subject</option>
-                  <option value="Media Inquiry">Media Inquiry</option>
-                  <option value="Speaking Engagement">Speaking Engagement</option>
-                  <option value="Academic Collaboration">Academic Collaboration</option>
-                  <option value="Policy Consultation">Policy Consultation</option>
-                  <option value="General Question">General Question</option>
-                </select>
-              </div>
-              <div>
-                <label
-                  htmlFor="contact-message"
-                  className="block mb-1 text-xs tracking-widest uppercase"
-                  style={{ color: '#4A7FA5', fontFamily: "'Lato', sans-serif" }}
-                >
-                  Message *
-                </label>
-                <textarea
-                  id="contact-message"
-                  name="message"
-                  required
-                  rows={5}
-                  placeholder="Please describe your inquiry..."
-                  style={{ ...inputStyle, resize: 'vertical' }}
-                />
-              </div>
-              <div className="flex items-center gap-4">
-                <button
-                  type="submit"
-                  className="inline-flex items-center gap-2 px-8 py-3 text-white font-semibold transition-all duration-200 hover:opacity-90"
-                  style={{
-                    backgroundColor: '#0D2240',
-                    fontFamily: "'Lato', sans-serif",
-                    fontSize: '0.8rem',
-                    letterSpacing: '0.12em',
-                    textTransform: 'uppercase',
-                    borderRadius: '2px',
-                  }}
-                >
-                  <Send size={14} />
-                  Send Message
-                </button>
-              </div>
-            </form>
-          )}
-
+                  {link.cta} <ExternalLink size={11} />
+                </span>
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </section>

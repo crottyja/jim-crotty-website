@@ -558,7 +558,7 @@ function VideoSection() {
     >
       <div className="absolute inset-0" style={{ background: "rgba(13,34,64,0.91)" }} />
       {/* Starburst accent */}
-      <svg className="absolute top-16 left-12 opacity-[0.07] pointer-events-none" width="220" height="220" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <svg className="absolute top-16 left-12 opacity-25 pointer-events-none" width="120" height="120" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         {Array.from({ length: 16 }).map((_, i) => {
           const angle = (i * 360) / 16;
           const rad = (angle * Math.PI) / 180;
@@ -708,7 +708,7 @@ function HeroSection() {
         style={{ background: "rgba(13,34,64,0.90)" }}
       />
       {/* Starburst accent */}
-      <svg className="absolute top-16 right-12 opacity-[0.07] pointer-events-none" width="220" height="220" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <svg className="absolute top-16 right-12 opacity-25 pointer-events-none" width="120" height="120" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         {Array.from({ length: 16 }).map((_, i) => {
           const angle = (i * 360) / 16;
           const rad = (angle * Math.PI) / 180;
@@ -912,7 +912,7 @@ function CareerSection() {
     >
       <div className="absolute inset-0" style={{ background: "rgba(13,34,64,0.88)" }} />
       {/* Starburst accent */}
-      <svg className="absolute bottom-16 right-12 opacity-[0.07] pointer-events-none" width="220" height="220" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <svg className="absolute bottom-16 right-12 opacity-25 pointer-events-none" width="120" height="120" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         {Array.from({ length: 16 }).map((_, i) => {
           const angle = (i * 360) / 16;
           const rad = (angle * Math.PI) / 180;
@@ -1338,7 +1338,7 @@ function AffiliationsSection() {
     >
       <div className="absolute inset-0" style={{ background: "rgba(13,34,64,0.91)" }} />
       {/* Starburst accent */}
-      <svg className="absolute bottom-16 left-12 opacity-[0.07] pointer-events-none" width="220" height="220" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <svg className="absolute bottom-16 left-12 opacity-25 pointer-events-none" width="120" height="120" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         {Array.from({ length: 16 }).map((_, i) => {
           const angle = (i * 360) / 16;
           const rad = (angle * Math.PI) / 180;

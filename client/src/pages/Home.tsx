@@ -245,6 +245,18 @@ const career = [
 
 const newsItems = [
   {
+    outlet: "Atlanta Journal-Constitution",
+    outletShort: "AJC",
+    logo: "AJC",
+    color: "#1a1a1a",
+    date: "January 21, 2025",
+    title: "Opinion: We must hear the warnings about fentanyl",
+    quote: "What we're seeing today is the single largest transformation in the drug trade ever.",
+    context: "Crotty was quoted as a leading expert on the synthetic drug revolution, warning that the scale and speed of change in the illicit drug market demands urgent public attention and a coordinated policy response.",
+    author: "Atlanta Journal-Constitution Editorial",
+    url: "https://www.ajc.com/opinion/opinion-we-must-hear-the-warnings-about-fentanyl/MTEKNULXY5BC7HO7DVEFVSH2S4/",
+  },
+  {
     outlet: "The Guardian",
     outletShort: "Guardian",
     logo: "G",

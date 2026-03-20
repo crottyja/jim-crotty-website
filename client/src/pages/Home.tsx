@@ -245,6 +245,18 @@ const career = [
 
 const newsItems = [
   {
+    outlet: "Washington Post",
+    outletShort: "WaPo",
+    logo: "WP",
+    color: "#231f20",
+    date: "August 20, 2022",
+    title: "Colombia, largest cocaine supplier to U.S., considers decriminalizing",
+    quote: "As we've seen before in Colombia and elsewhere, there's always someone to fill that vacuum.",
+    context: "Crotty was quoted as a former DEA deputy chief of staff pushing back on Colombia's proposal to decriminalize cocaine, arguing that a legal cocaine trade would not eliminate the illegal market and that armed groups would continue to exploit any regulatory gap.",
+    author: "Samantha Schmidt & Diana Durán",
+    url: "https://www.washingtonpost.com/world/2022/08/20/colombia-cocaine-decriminalize-petro/",
+  },
+  {
     outlet: "Atlanta Journal-Constitution",
     outletShort: "AJC",
     logo: "AJC",

@@ -864,8 +864,8 @@ function AboutSection() {
                 {mediaOutlets.map((outlet) => (
                   <span
                     key={outlet}
-                    className="text-sm font-semibold"
-                    style={{ color: "#6b7280", fontFamily: "'Lato', sans-serif", letterSpacing: "0.02em" }}
+                    className="text-sm font-bold"
+                    style={{ color: "#4A7FA5", fontFamily: "'Lato', sans-serif", letterSpacing: "0.02em" }}
                   >
                     {outlet}
                   </span>
@@ -1207,7 +1207,7 @@ function InTheNewsSection() {
                     </span>
                     <span
                       className="font-bold text-sm"
-                      style={{ color: item.color, fontFamily: "'Lato', sans-serif" }}
+                      style={{ color: "#4A7FA5", fontFamily: "'Lato', sans-serif" }}
                     >
                       {item.outlet}
                     </span>

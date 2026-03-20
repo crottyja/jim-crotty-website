@@ -1,0 +1,1 @@
+- [x] Make publication names bold and accent-colored in Featured In and In the News sections

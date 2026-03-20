@@ -6,7 +6,7 @@
  */
 
 import React, { useEffect, useState } from "react";
-import { Menu, X, ExternalLink, Linkedin, ChevronDown, BookOpen, Briefcase, Award, GraduationCap, Globe, Mail, Newspaper, Quote, ArrowUp } from "lucide-react";
+import { Menu, X, ExternalLink, Linkedin, ChevronDown, BookOpen, Briefcase, Award, GraduationCap, Globe, Mail, Newspaper, Quote, ArrowUp, Users, Shield } from "lucide-react";
 
 const HERO_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/hero_bg-E39Xv3dAoLSLwUSSr7GHbD.webp";
 const MAP_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/map_bg-csabJgUBh7GraSoMYMWtE2.webp";
@@ -343,12 +343,12 @@ const newsItems = [
 ];
 
 const affiliations = [
-  { name: "United Against Fentanyl", role: "Advisory Board Member", desc: "Bipartisan non-profit focused on ending the U.S. opioid crisis.", url: "https://www.uniteagainstfentanyl.org" },
-  { name: "Global Initiative Against Transnational Organized Crime (GI-TOC)", role: "Network of Experts Member", desc: "International network of researchers and practitioners addressing organized crime.", url: "https://globalinitiative.net" },
-  { name: "USF Global and National Security Institute (GNSI)", role: "Non-Resident Senior Fellow", desc: "University of South Florida research institute on national security.", url: "https://www.usf.edu/gnsi/" },
-  { name: "Small Wars Journal – El Centro", role: "2026 Fellow / Associate", desc: "Leading journal on irregular warfare and national security strategy.", url: "https://smallwarsjournal.com" },
-  { name: "Center for Advanced Defense Studies (C4ADS)", role: "Former Senior Fellow", desc: "Supported Organized Crime and Grand Corruption team on drug trafficking and money laundering.", url: "https://c4ads.org" },
-  { name: "Presidential Management Fellows Program", role: "Former Fellow", desc: "Prestigious U.S. government leadership development program.", url: "https://www.pmf.gov" },
+  { name: "United Against Fentanyl", role: "Advisory Board Member", desc: "Bipartisan non-profit focused on ending the U.S. opioid crisis.", url: "https://www.uniteagainstfentanyl.org", icon: "shield" },
+  { name: "Global Initiative Against Transnational Organized Crime (GI-TOC)", role: "Network of Experts Member", desc: "International network of researchers and practitioners addressing organized crime.", url: "https://globalinitiative.net", icon: "users" },
+  { name: "USF Global and National Security Institute (GNSI)", role: "Non-Resident Senior Fellow", desc: "University of South Florida research institute on national security.", url: "https://www.usf.edu/gnsi/", icon: "award" },
+  { name: "Small Wars Journal – El Centro", role: "2026 Fellow / Associate", desc: "Leading journal on irregular warfare and national security strategy.", url: "https://smallwarsjournal.com", icon: "book" },
+  { name: "Center for Advanced Defense Studies (C4ADS)", role: "Former Senior Fellow", desc: "Supported Organized Crime and Grand Corruption team on drug trafficking and money laundering.", url: "https://c4ads.org", icon: "users" },
+  { name: "Presidential Management Fellows Program", role: "Former Fellow", desc: "Prestigious U.S. government leadership development program.", url: "https://www.pmf.gov", icon: "award" },
 ];
 
 function useScrollReveal() {
@@ -435,6 +435,7 @@ function NavBar() {
             target="_blank"
             rel="noopener noreferrer"
             className="text-white/80 hover:text-white transition-colors"
+            aria-label="LinkedIn Profile"
           >
             <Linkedin size={18} />
           </a>
@@ -480,7 +481,7 @@ function NumbersBarInline() {
     { value: "6", label: "Fellowships" },
     { value: "19+", label: "Media Outlets" },
     { value: "3", label: "Degrees" },
-    { value: "30+", label: "Experience Across Countries" },
+    { value: "30+", label: "Countries Served" },
   ];
   return (
     <div className="grid grid-cols-3 gap-0 w-full">
@@ -601,9 +602,10 @@ function VideoSection() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="relative flex items-center justify-center group"
-                  style={{ backgroundColor: "#0D2240", minHeight: "220px" }}
+                  style={{ backgroundColor: "#0D2240", minHeight: "220px", backgroundImage: `url(https://img.youtube.com/vi/iZkaBqpxHuk/hqdefault.jpg)`, backgroundSize: "cover", backgroundPosition: "center" }}
                 >
-                  <div className="text-center px-8">
+                  <div className="absolute inset-0" style={{ backgroundColor: "rgba(13,34,64,0.75)" }} />
+                  <div className="relative z-10 text-center px-8">
                     <div
                       className="inline-flex items-center justify-center w-16 h-16 rounded-full mb-4 group-hover:scale-110 transition-transform"
                       style={{ backgroundColor: "rgba(255,255,255,0.15)", border: "2px solid rgba(255,255,255,0.3)" }}
@@ -1123,7 +1125,6 @@ function PublicationsSection() {
               onClick={() => setShowAll(true)}
               className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold tracking-widest uppercase transition-all duration-200 hover:bg-gray-100"
               style={{
-                border: "1px solid #0D2240",
                 color: "#0D2240",
                 fontFamily: "'Lato', sans-serif",
                 fontSize: "0.7rem",
@@ -1188,7 +1189,7 @@ function InTheNewsSection() {
                 style={{
                   backgroundColor: "#f8fafc",
                   boxShadow: "0 2px 8px rgba(0,0,0,0.06)",
-                  borderTop: `4px solid ${item.color}`,
+                  borderTop: "4px solid #4A7FA5",
                 }}
               >
                 {/* Outlet badge + date */}
@@ -1197,7 +1198,7 @@ function InTheNewsSection() {
                     <span
                       className="inline-flex items-center justify-center font-black text-white text-xs px-2 py-1 min-w-[2.5rem]"
                       style={{
-                        backgroundColor: item.color,
+                        backgroundColor: "#0D2240",
                         fontFamily: "'Lato', sans-serif",
                         letterSpacing: item.logo.length > 1 ? "0.05em" : "0",
                         fontSize: item.logo === "G" ? "1rem" : "0.65rem",
@@ -1206,8 +1207,8 @@ function InTheNewsSection() {
                       {item.logo}
                     </span>
                     <span
-                      className="font-bold text-sm"
-                      style={{ color: "#4A7FA5", fontFamily: "'Lato', sans-serif" }}
+                      className="font-bold"
+                      style={{ color: "#4A7FA5", fontFamily: "'Lato', sans-serif", fontSize: "0.75rem" }}
                     >
                       {item.outlet}
                     </span>
@@ -1341,7 +1342,10 @@ function AffiliationsSection() {
               }}
             >
               <div className="flex items-start gap-3 mb-3">
-                <Award size={18} className="flex-shrink-0 mt-0.5" style={{ color: "#4A7FA5" }} />
+                {aff.icon === "shield" && <Shield size={18} className="flex-shrink-0 mt-0.5" style={{ color: "#4A7FA5" }} />}
+                {aff.icon === "users" && <Users size={18} className="flex-shrink-0 mt-0.5" style={{ color: "#4A7FA5" }} />}
+                {aff.icon === "book" && <BookOpen size={18} className="flex-shrink-0 mt-0.5" style={{ color: "#4A7FA5" }} />}
+                {aff.icon === "award" && <Award size={18} className="flex-shrink-0 mt-0.5" style={{ color: "#4A7FA5" }} />}
                 <div>
                   <h3
                     className="font-bold leading-snug"
@@ -1484,7 +1488,7 @@ function Footer() {
       <div className="container flex flex-col md:flex-row items-center justify-between gap-4">
         <span
           className="text-sm"
-          style={{ color: "#C9A84C", fontFamily: "'Lato', sans-serif", fontWeight: 300 }}
+              style={{ color: "#C8860A", fontFamily: "'Lato', sans-serif", fontWeight: 300 }}
         >
           © {new Date().getFullYear()} Jim Crotty. All rights reserved.
         </span>

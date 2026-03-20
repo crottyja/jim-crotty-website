@@ -12,20 +12,6 @@ const HERO_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5Z
 const MAP_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/map_bg-csabJgUBh7GraSoMYMWtE2.webp";
 const PROFILE_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/crottyheadshot2_b48bea55.webp";
 
-// Organization logos (CDN)
-const LOGOS = {
-  meta: "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/meta_bb728d7d.png",
-  guardian: "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/guardian_7e8ab014.png",
-  wsj: "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/wsj_4b7941f3.png",
-  ap: "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/ap_57916b2a.png",
-  foxnews: "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/foxnews_721f4f9f.png",
-  stat: "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/stat_903c4518.png",
-  gitoc: "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/gitoc_logo_6b5aa070.png",
-  dea: "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/dea_seal_e926fc9f.png",
-  mpd: "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/mpd_seal_round_6dc133d6.png",
-  au: "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/au_logo_wiki_9edab067.png",
-};
-
 const publications = [
   {
     year: "2026", title: "The quiet resurgence of plant-based illicit drugs", outlet: "The Hill",
@@ -213,10 +199,7 @@ const career = [
     org: "Meta Platforms, Inc.",
     location: "Washington, D.C.",
     description: "Develops and maintains strategic relationships with law enforcement agencies across North America to help combat online criminal activity and prevent real-world harm.",
-    icon: "meta",
-    logoUrl: LOGOS.meta,
-    logoBg: "#ffffff",
-    logoFilter: "none",
+    icon: "meta"
   },
   {
     period: "2024 – Present",
@@ -224,10 +207,7 @@ const career = [
     org: "American University, School of Public Affairs",
     location: "Washington, D.C.",
     description: "Teaches JLC-451: Drugs, Crime & Public Policy and JLC-313: Organized Crime in the Department of Justice, Law & Criminology.",
-    icon: "edu",
-    logoUrl: LOGOS.au,
-    logoBg: "#ffffff",
-    logoFilter: "none",
+    icon: "edu"
   },
   {
     period: "2023 – 2024",
@@ -235,10 +215,7 @@ const career = [
     org: "DC Metropolitan Police Department (MPD)",
     location: "Washington, D.C.",
     description: "Led a team of Criminal Research Specialists providing real-time intelligence on major crimes across the District of Columbia.",
-    icon: "law",
-    logoUrl: LOGOS.mpd,
-    logoBg: "transparent",
-    logoFilter: "none",
+    icon: "law"
   },
   {
     period: "2021 – 2023",
@@ -246,11 +223,7 @@ const career = [
     org: "The Cohen Group",
     location: "Washington, D.C.",
     description: "Led multiple client teams across defense, cybersecurity, healthcare, energy, and national security sectors at the strategic advisory firm founded by former Secretary of Defense William Cohen.",
-    icon: "advisory",
-    logoUrl: null,
-    logoBg: "#0D2240",
-    logoFilter: "none",
-    logoText: "THE COHEN GROUP",
+    icon: "advisory"
   },
   {
     period: "2009 – 2021",
@@ -258,10 +231,7 @@ const career = [
     org: "U.S. Drug Enforcement Administration (DEA)",
     location: "Washington, D.C. | Chicago | London | Afghanistan",
     description: "Over 12 years of distinguished service. Final role: Deputy Chief of Staff and Executive Assistant to the Administrator. Prior roles included Group Supervisor (Chicago Field Division), Liaison Officer (London Country Office, 2013–2018), Tactical Intelligence Analyst with FAST-Alpha (Afghanistan, 2010), and Strategic Intelligence Analyst focused on South America.",
-    icon: "dea",
-    logoUrl: LOGOS.dea,
-    logoBg: "transparent",
-    logoFilter: "none",
+    icon: "dea"
   },
   {
     period: "Pre-2009",
@@ -269,21 +239,9 @@ const career = [
     org: "PRTM Management Consultants",
     location: "Washington, D.C.",
     description: "Provided strategic and operational advice to clients in the Intelligence Community, Department of Homeland Security, and Department of Defense.",
-    icon: "consulting",
-    logoUrl: null,
-    logoBg: "#0D2240",
-    logoFilter: "none",
-    logoText: "PRTM",
+    icon: "consulting"
   },
 ];
-
-const NEWS_OUTLET_LOGOS: Record<string, string> = {
-  "The Guardian": LOGOS.guardian,
-  "Wall Street Journal": LOGOS.wsj,
-  "Associated Press": LOGOS.ap,
-  "Fox News": LOGOS.foxnews,
-  "STAT News": LOGOS.stat,
-};
 
 const newsItems = [
   {
@@ -385,12 +343,12 @@ const newsItems = [
 ];
 
 const affiliations = [
-  { name: "United Against Fentanyl", role: "Advisory Board Member", desc: "Bipartisan non-profit focused on ending the U.S. opioid crisis.", url: "https://www.uniteagainstfentanyl.org", logoUrl: null, logoText: "UAF", logoBg: "#1a4a8a" },
-  { name: "Global Initiative Against Transnational Organized Crime (GI-TOC)", role: "Network of Experts Member", desc: "International network of researchers and practitioners addressing organized crime.", url: "https://globalinitiative.net", logoUrl: LOGOS.gitoc, logoText: null, logoBg: "#ffffff" },
-  { name: "USF Global and National Security Institute (GNSI)", role: "Non-Resident Senior Fellow", desc: "University of South Florida research institute on national security.", url: "https://www.usf.edu/gnsi/", logoUrl: null, logoText: "USF GNSI", logoBg: "#006747" },
-  { name: "Small Wars Journal – El Centro", role: "2026 Fellow / Associate", desc: "Leading journal on irregular warfare and national security strategy.", url: "https://smallwarsjournal.com", logoUrl: null, logoText: "SWJ", logoBg: "#8b1a1a" },
-  { name: "Center for Advanced Defense Studies (C4ADS)", role: "Former Senior Fellow", desc: "Supported Organized Crime and Grand Corruption team on drug trafficking and money laundering.", url: "https://c4ads.org", logoUrl: null, logoText: "C4ADS", logoBg: "#1a3a5c" },
-  { name: "Presidential Management Fellows Program", role: "Former Fellow", desc: "Prestigious U.S. government leadership development program.", url: "https://www.pmf.gov", logoUrl: null, logoText: "PMF", logoBg: "#003366" },
+  { name: "United Against Fentanyl", role: "Advisory Board Member", desc: "Bipartisan non-profit focused on ending the U.S. opioid crisis.", url: "https://www.uniteagainstfentanyl.org" },
+  { name: "Global Initiative Against Transnational Organized Crime (GI-TOC)", role: "Network of Experts Member", desc: "International network of researchers and practitioners addressing organized crime.", url: "https://globalinitiative.net" },
+  { name: "USF Global and National Security Institute (GNSI)", role: "Non-Resident Senior Fellow", desc: "University of South Florida research institute on national security.", url: "https://www.usf.edu/gnsi/" },
+  { name: "Small Wars Journal – El Centro", role: "2026 Fellow / Associate", desc: "Leading journal on irregular warfare and national security strategy.", url: "https://smallwarsjournal.com" },
+  { name: "Center for Advanced Defense Studies (C4ADS)", role: "Former Senior Fellow", desc: "Supported Organized Crime and Grand Corruption team on drug trafficking and money laundering.", url: "https://c4ads.org" },
+  { name: "Presidential Management Fellows Program", role: "Former Fellow", desc: "Prestigious U.S. government leadership development program.", url: "https://www.pmf.gov" },
 ];
 
 function useScrollReveal() {
@@ -902,47 +860,15 @@ function AboutSection() {
             {/* Featured in strip */}
             <div className="mt-10 pt-8 border-t" style={{ borderColor: "#e5e7eb" }}>
               <div className="section-label mb-4" style={{ color: "#4A7FA5" }}>Featured In</div>
-              <div className="flex flex-wrap items-center gap-4">
-                {/* Outlets with real logos */}
-                {([
-                  { name: "Wall Street Journal", logo: LOGOS.wsj, bg: "#ffffff", h: 20 },
-                  { name: "Associated Press", logo: LOGOS.ap, bg: "#ffffff", h: 36 },
-                  { name: "The Guardian", logo: LOGOS.guardian, bg: "#ffffff", h: 22 },
-                  { name: "Fox News", logo: LOGOS.foxnews, bg: "#ffffff", h: 28 },
-                  { name: "STAT News", logo: LOGOS.stat, bg: "#ffffff", h: 22 },
-                ] as { name: string; logo: string; bg: string; h: number }[]).map((item) => (
-                  <div
-                    key={item.name}
-                    className="flex items-center justify-center px-3 py-2"
-                    style={{ backgroundColor: item.bg, border: "1px solid #e5e7eb", borderRadius: "3px" }}
-                    title={item.name}
+              <div className="flex flex-wrap gap-x-6 gap-y-2">
+                {mediaOutlets.map((outlet) => (
+                  <span
+                    key={outlet}
+                    className="text-sm font-semibold"
+                    style={{ color: "#6b7280", fontFamily: "'Lato', sans-serif", letterSpacing: "0.02em" }}
                   >
-                    <img src={item.logo} alt={item.name} style={{ height: `${item.h}px`, width: "auto", objectFit: "contain" }} />
-                  </div>
-                ))}
-                {/* Outlets with text badges */}
-                {[
-                  { name: "Washington Post", abbr: "WaPo", color: "#231f20" },
-                  { name: "Newsweek", abbr: "NEWSWEEK", color: "#c00" },
-                  { name: "The Hill", abbr: "The Hill", color: "#1a5c2a" },
-                  { name: "Lawfare", abbr: "LAWFARE", color: "#1a3a5c" },
-                  { name: "The Diplomat", abbr: "THE DIPLOMAT", color: "#1a3a5c" },
-                  { name: "Undark", abbr: "UNDARK", color: "#333" },
-                  { name: "Tampa Bay Times", abbr: "TBT", color: "#1a4a8a" },
-                  { name: "Dallas Morning News", abbr: "DMN", color: "#003366" },
-                  { name: "Washington Times", abbr: "WT", color: "#8b0000" },
-                  { name: "We Are The Mighty", abbr: "WATM", color: "#2a4a2a" },
-                ].map((item) => (
-                  <div
-                    key={item.name}
-                    className="flex items-center justify-center px-3 py-2"
-                    style={{ backgroundColor: item.color, border: "1px solid rgba(0,0,0,0.1)", borderRadius: "3px" }}
-                    title={item.name}
-                  >
-                    <span style={{ fontFamily: "'Lato', sans-serif", fontSize: "0.6rem", fontWeight: 800, color: "#ffffff", letterSpacing: "0.08em", textTransform: "uppercase", whiteSpace: "nowrap" }}>
-                      {item.abbr}
-                    </span>
-                  </div>
+                    {outlet}
+                  </span>
                 ))}
               </div>
             </div>
@@ -1027,65 +953,27 @@ function CareerSection() {
                       borderLeft: "3px solid #4A7FA5",
                     }}
                   >
-                    <div className="flex items-start justify-between gap-4 mb-1">
-                      <div className="flex-1">
-                        <div className="md:hidden text-xs font-semibold tracking-wider uppercase mb-2" style={{ color: "#4A7FA5", fontFamily: "'Lato', sans-serif" }}>
-                          {item.period}
-                        </div>
-                        <div
-                          className="font-bold text-white mb-1"
-                          style={{ fontFamily: "'Libre Baskerville', serif", fontSize: "1.05rem" }}
-                        >
-                          {item.role}
-                        </div>
-                        <div
-                          className="font-semibold mb-1"
-                          style={{ color: "#4A7FA5", fontFamily: "'Lato', sans-serif", fontSize: "0.9rem" }}
-                        >
-                          {item.org}
-                        </div>
-                        <div
-                          className="text-xs mb-3 flex items-center gap-1"
-                          style={{ color: "rgba(255,255,255,0.4)", fontFamily: "'Lato', sans-serif" }}
-                        >
-                          <Globe size={11} />
-                          {item.location}
-                        </div>
-                      </div>
-                      {/* Org logo badge */}
-                      <div
-                        className="flex-shrink-0 flex items-center justify-center rounded"
-                        style={{
-                          width: "64px",
-                          height: "64px",
-                          backgroundColor: item.logoBg,
-                          border: item.logoBg === "transparent" ? "none" : "1px solid rgba(255,255,255,0.15)",
-                          padding: "6px",
-                        }}
-                      >
-                        {item.logoUrl ? (
-                          <img
-                            src={item.logoUrl}
-                            alt={item.org}
-                            style={{ width: "100%", height: "100%", objectFit: "contain" }}
-                          />
-                        ) : (
-                          <span
-                            style={{
-                              fontFamily: "'Lato', sans-serif",
-                              fontSize: "0.55rem",
-                              fontWeight: 700,
-                              color: "#ffffff",
-                              letterSpacing: "0.06em",
-                              textAlign: "center",
-                              lineHeight: 1.3,
-                              textTransform: "uppercase",
-                            }}
-                          >
-                            {(item as any).logoText}
-                          </span>
-                        )}
-                      </div>
+                    <div className="md:hidden text-xs font-semibold tracking-wider uppercase mb-2" style={{ color: "#4A7FA5", fontFamily: "'Lato', sans-serif" }}>
+                      {item.period}
+                    </div>
+                    <div
+                      className="font-bold text-white mb-1"
+                      style={{ fontFamily: "'Libre Baskerville', serif", fontSize: "1.05rem" }}
+                    >
+                      {item.role}
+                    </div>
+                    <div
+                      className="font-semibold mb-1"
+                      style={{ color: "#4A7FA5", fontFamily: "'Lato', sans-serif", fontSize: "0.9rem" }}
+                    >
+                      {item.org}
+                    </div>
+                    <div
+                      className="text-xs mb-3 flex items-center gap-1"
+                      style={{ color: "rgba(255,255,255,0.4)", fontFamily: "'Lato', sans-serif" }}
+                    >
+                      <Globe size={11} />
+                      {item.location}
                     </div>
                     <p
                       className="text-sm leading-relaxed"
@@ -1306,30 +1194,17 @@ function InTheNewsSection() {
                 {/* Outlet badge + date */}
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center gap-3">
-                    {NEWS_OUTLET_LOGOS[item.outlet] ? (
-                      <div
-                        className="inline-flex items-center justify-center px-2 py-1"
-                        style={{ backgroundColor: "#ffffff", border: `1px solid ${item.color}20`, borderRadius: "2px", minWidth: "2.5rem", height: "28px" }}
-                      >
-                        <img
-                          src={NEWS_OUTLET_LOGOS[item.outlet]}
-                          alt={item.outlet}
-                          style={{ maxHeight: "18px", maxWidth: "60px", objectFit: "contain" }}
-                        />
-                      </div>
-                    ) : (
-                      <span
-                        className="inline-flex items-center justify-center font-black text-white text-xs px-2 py-1 min-w-[2.5rem]"
-                        style={{
-                          backgroundColor: item.color,
-                          fontFamily: "'Lato', sans-serif",
-                          letterSpacing: item.logo.length > 1 ? "0.05em" : "0",
-                          fontSize: item.logo === "G" ? "1rem" : "0.65rem",
-                        }}
-                      >
-                        {item.logo}
-                      </span>
-                    )}
+                    <span
+                      className="inline-flex items-center justify-center font-black text-white text-xs px-2 py-1 min-w-[2.5rem]"
+                      style={{
+                        backgroundColor: item.color,
+                        fontFamily: "'Lato', sans-serif",
+                        letterSpacing: item.logo.length > 1 ? "0.05em" : "0",
+                        fontSize: item.logo === "G" ? "1rem" : "0.65rem",
+                      }}
+                    >
+                      {item.logo}
+                    </span>
                     <span
                       className="font-bold text-sm"
                       style={{ color: item.color, fontFamily: "'Lato', sans-serif" }}
@@ -1465,61 +1340,30 @@ function AffiliationsSection() {
                 borderTop: "3px solid #4A7FA5",
               }}
             >
-              {/* Logo / Badge at top of card */}
-              <div className="mb-4">
-                {aff.logoUrl ? (
-                  <div
-                    className="flex items-center justify-center"
-                    style={{ backgroundColor: aff.logoBg, padding: "8px", borderRadius: "4px", height: "52px" }}
+              <div className="flex items-start gap-3 mb-3">
+                <Award size={18} className="flex-shrink-0 mt-0.5" style={{ color: "#4A7FA5" }} />
+                <div>
+                  <h3
+                    className="font-bold leading-snug"
+                    style={{ fontFamily: "'Libre Baskerville', serif", color: "#ffffff", fontSize: "0.95rem" }}
                   >
-                    <img
-                      src={aff.logoUrl}
-                      alt={aff.name}
-                      style={{ maxHeight: "36px", maxWidth: "100%", objectFit: "contain" }}
-                    />
-                  </div>
-                ) : (
-                  <div
-                    className="flex items-center justify-center"
-                    style={{ backgroundColor: aff.logoBg, padding: "8px", borderRadius: "4px", height: "52px" }}
-                  >
-                    <span
-                      style={{
-                        fontFamily: "'Lato', sans-serif",
-                        fontSize: "0.7rem",
-                        fontWeight: 800,
-                        color: "#ffffff",
-                        letterSpacing: "0.1em",
-                        textTransform: "uppercase",
-                        textAlign: "center",
-                      }}
+                    <a
+                      href={aff.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 hover:underline transition-colors"
+                      style={{ color: "#ffffff" }}
                     >
-                      {aff.logoText}
-                    </span>
-                  </div>
-                )}
-              </div>
-              <div className="mb-3">
-                <h3
-                  className="font-bold leading-snug mb-1"
-                  style={{ fontFamily: "'Libre Baskerville', serif", color: "#ffffff", fontSize: "0.95rem" }}
-                >
-                  <a
-                    href={aff.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 hover:underline transition-colors"
-                    style={{ color: "#ffffff" }}
+                      {aff.name}
+                      <ExternalLink size={11} className="flex-shrink-0 opacity-50" />
+                    </a>
+                  </h3>
+                  <div
+                    className="text-xs font-semibold mt-1 tracking-wide"
+                    style={{ color: "#4A7FA5", fontFamily: "'Lato', sans-serif", letterSpacing: "0.05em" }}
                   >
-                    {aff.name}
-                    <ExternalLink size={11} className="flex-shrink-0 opacity-50" />
-                  </a>
-                </h3>
-                <div
-                  className="text-xs font-semibold tracking-wide"
-                  style={{ color: "#4A7FA5", fontFamily: "'Lato', sans-serif", letterSpacing: "0.05em" }}
-                >
-                  {aff.role}
+                    {aff.role}
+                  </div>
                 </div>
               </div>
               <p

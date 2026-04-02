@@ -14,3 +14,4 @@
 ## New Features
 - [x] Add hero section navigation tiles/cards for each section
 - [x] Make all sections collapsible with animated toggle
+- [x] Collapse sections by default on mobile, open on desktop

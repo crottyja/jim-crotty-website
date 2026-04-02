@@ -368,7 +368,10 @@ function SectionWrapper({
   dark?: boolean;
   bgOverlay?: string;
 }) {
-  const [open, setOpen] = useState(defaultOpen);
+  // On mobile (< 768px), sections start collapsed; on desktop they start open
+  const getInitialOpen = () =>
+    typeof window !== "undefined" ? window.innerWidth >= 768 && defaultOpen : defaultOpen;
+  const [open, setOpen] = useState(getInitialOpen);
   const overlay = bgOverlay ?? (dark ? "rgba(13,34,64,0.88)" : "rgba(255,255,255,0.96)");
   const labelColor = dark ? "rgba(255,255,255,0.5)" : "#4A7FA5";
   const titleColor = dark ? "#ffffff" : "#0D2240";

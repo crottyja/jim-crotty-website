@@ -803,8 +803,8 @@ function HeroSection() {
               { label: "Opinion & Analysis", sub: "35+ Op-Eds", href: "#publications", icon: <BookOpen size={20} /> },
               { label: "On Camera", sub: "Broadcast Appearances", href: "#media", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg> },
               { label: "In the News", sub: "Media Coverage", href: "#in-the-news", icon: <Newspaper size={20} /> },
+              { label: "Contact", sub: "Get in Touch", href: "#contact", icon: <Mail size={20} /> },
               { label: "Affiliations", sub: "Fellowships & Networks", href: "#affiliations", icon: <Award size={20} /> },
-              { label: "Contact", sub: "Get in Touch", href: "#contact", icon: <Mail size={20} />, center: true },
             ].map((tile) => (
               <a
                 key={tile.href}

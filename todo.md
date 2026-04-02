@@ -22,3 +22,8 @@
 - [x] Rename Publications tile and section label to "Opinion & Analysis"
 - [x] Remove the stats grid from the hero section
 - [x] Align tile labels with their corresponding section header labels
+
+## Tile & Section Title Alignment
+- [x] Rename Publications tile/nav back to "Publications", subtitle "Opinion and Analysis"
+- [x] Center Contact tile on bottom row of hero grid
+- [x] Align all section header titles to match tile subtitles

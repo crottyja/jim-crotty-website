@@ -482,7 +482,7 @@ function NavBar() {
   const links = [
     { label: "About", href: "#about" },
     { label: "Career", href: "#career" },
-    { label: "Opinion & Analysis", href: "#publications" },
+    { label: "Publications", href: "#publications" },
     { label: "On Camera", href: "#media" },
     { label: "In the News", href: "#in-the-news" },
     { label: "Affiliations", href: "#affiliations" },
@@ -633,7 +633,7 @@ function VideoSection() {
     <SectionWrapper
       id="media"
       label="04 / On Camera"
-      title="On Camera"
+      title="Broadcast Appearances"
       dark={true}
       bgOverlay="rgba(13,34,64,0.91)"
     >
@@ -800,11 +800,11 @@ function HeroSection() {
             {[
               { label: "Profile", sub: "Background & Bio", href: "#about", icon: <GraduationCap size={20} /> },
               { label: "Career", sub: "Professional History", href: "#career", icon: <Briefcase size={20} /> },
-              { label: "Opinion & Analysis", sub: "35+ Op-Eds", href: "#publications", icon: <BookOpen size={20} /> },
+              { label: "Publications", sub: "Opinion and Analysis", href: "#publications", icon: <BookOpen size={20} /> },
               { label: "On Camera", sub: "Broadcast Appearances", href: "#media", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg> },
               { label: "In the News", sub: "Media Coverage", href: "#in-the-news", icon: <Newspaper size={20} /> },
-              { label: "Contact", sub: "Get in Touch", href: "#contact", icon: <Mail size={20} /> },
               { label: "Affiliations", sub: "Fellowships & Networks", href: "#affiliations", icon: <Award size={20} /> },
+              { label: "Contact", sub: "Get in Touch", href: "#contact", icon: <Mail size={20} />, center: true },
             ].map((tile) => (
               <a
                 key={tile.href}
@@ -852,7 +852,7 @@ function AboutSection() {
     <SectionWrapper
       id="about"
       label="01 / Profile"
-      title="Global Thought Leader in Law Enforcement & Drug Policy"
+      title="Background & Bio"
       dark={false}
     >
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
@@ -971,7 +971,7 @@ function CareerSection() {
     <SectionWrapper
       id="career"
       label="02 / Career"
-      title="Professional Experience"
+      title="Professional History"
       dark={true}
     >
         <div className="max-w-4xl mx-auto">
@@ -1086,8 +1086,8 @@ function PublicationsSection() {
   return (
     <SectionWrapper
       id="publications"
-      label="03 / Opinion & Analysis"
-      title="Opinion & Analysis"
+      label="03 / Publications"
+      title="Opinion and Analysis"
       dark={false}
       bgOverlay="rgba(245,247,250,0.95)"
     >
@@ -1175,7 +1175,7 @@ function PublicationsSection() {
                 letterSpacing: "0.15em",
               }}
             >
-              View All Opinion & Analysis
+              View All Publications
               <ChevronDown size={14} />
             </button>
           </div>
@@ -1188,8 +1188,8 @@ function InTheNewsSection() {
   return (
     <SectionWrapper
       id="in-the-news"
-      label="05 / Media Coverage"
-      title="In the News"
+      label="05 / In the News"
+      title="Media Coverage"
       dark={false}
     >
       <p className="text-sm max-w-md text-gray-500 mb-8" style={{ fontFamily: "'Lato', sans-serif", fontWeight: 300 }}>
@@ -1321,7 +1321,7 @@ function AffiliationsSection() {
     <SectionWrapper
       id="affiliations"
       label="06 / Affiliations"
-      title="Professional Affiliations & Fellowships"
+      title="Fellowships & Networks"
       dark={true}
       bgOverlay="rgba(13,34,64,0.91)"
     >
@@ -1403,8 +1403,8 @@ function ContactSection() {
   return (
     <SectionWrapper
       id="contact"
-      label="07 / Connect"
-      title="Connect with Jim"
+      label="07 / Contact"
+      title="Get in Touch"
       dark={false}
     >
         <p className="mb-8 leading-relaxed" style={{ color: '#6b7280', fontFamily: "'Lato', sans-serif", fontWeight: 300, fontSize: '1.05rem' }}>

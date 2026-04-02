@@ -369,8 +369,7 @@ function SectionWrapper({
   bgOverlay?: string;
 }) {
   // On mobile (< 768px), sections start collapsed; on desktop they start open
-  const getInitialOpen = () =>
-    typeof window !== "undefined" ? window.innerWidth >= 768 && defaultOpen : defaultOpen;
+  const getInitialOpen = () => false;
   const [open, setOpen] = useState(getInitialOpen);
   const overlay = bgOverlay ?? (dark ? "rgba(13,34,64,0.88)" : "rgba(255,255,255,0.96)");
   const labelColor = dark ? "rgba(255,255,255,0.5)" : "#4A7FA5";
@@ -512,15 +511,7 @@ function NavBar() {
               {l.label}
             </a>
           ))}
-          <a
-            href="https://www.linkedin.com/in/jamesmcrotty"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-white/80 hover:text-white transition-colors"
-            aria-label="LinkedIn Profile"
-          >
-            <Linkedin size={18} />
-          </a>
+
         </div>
 
         {/* Mobile menu toggle */}
@@ -1464,7 +1455,7 @@ function Footer() {
       <div className="container flex flex-col md:flex-row items-center justify-between gap-4">
         <span
           className="text-sm"
-              style={{ color: "#C8860A", fontFamily: "'Lato', sans-serif", fontWeight: 300 }}
+              style={{ color: "#ffffff", fontFamily: "'Lato', sans-serif", fontWeight: 300 }}
         >
           © {new Date().getFullYear()} Jim Crotty. All rights reserved.
         </span>

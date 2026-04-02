@@ -6,7 +6,7 @@
  */
 
 import React, { useEffect, useState } from "react";
-import { Menu, X, ExternalLink, Linkedin, ChevronDown, BookOpen, Briefcase, Award, GraduationCap, Globe, Mail, Newspaper, Quote, ArrowUp, Users, Shield } from "lucide-react";
+import { Menu, X, ExternalLink, Linkedin, ChevronDown, ChevronUp, BookOpen, Briefcase, Award, GraduationCap, Globe, Mail, Newspaper, Quote, ArrowUp, Users, Shield } from "lucide-react";
 
 const HERO_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/hero_bg-E39Xv3dAoLSLwUSSr7GHbD.webp";
 const MAP_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/map_bg-csabJgUBh7GraSoMYMWtE2.webp";
@@ -351,6 +351,85 @@ const affiliations = [
   { name: "Presidential Management Fellows Program", role: "Former Fellow", desc: "Prestigious U.S. government leadership development program.", url: "https://www.pmf.gov", icon: "award" },
 ];
 
+function SectionWrapper({
+  id,
+  children,
+  label,
+  title,
+  defaultOpen = true,
+  dark = false,
+  bgOverlay,
+}: {
+  id: string;
+  children: React.ReactNode;
+  label: string;
+  title: string;
+  defaultOpen?: boolean;
+  dark?: boolean;
+  bgOverlay?: string;
+}) {
+  const [open, setOpen] = useState(defaultOpen);
+  const overlay = bgOverlay ?? (dark ? "rgba(13,34,64,0.88)" : "rgba(255,255,255,0.96)");
+  const labelColor = dark ? "rgba(255,255,255,0.5)" : "#4A7FA5";
+  const titleColor = dark ? "#ffffff" : "#0D2240";
+  const borderColor = dark ? "rgba(255,255,255,0.1)" : "rgba(13,34,64,0.1)";
+  const chevronColor = dark ? "rgba(255,255,255,0.5)" : "#4A7FA5";
+
+  return (
+    <section
+      id={id}
+      className="relative"
+      style={{
+        backgroundImage: `url(${MAP_BG})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
+      <div className="absolute inset-0" style={{ background: overlay }} />
+      <div className="container relative z-10">
+        {/* Collapsible header */}
+        <button
+          onClick={() => setOpen((o) => !o)}
+          className="w-full flex items-center justify-between py-8 group text-left"
+          style={{ borderBottom: open ? `1px solid ${borderColor}` : "none" }}
+          aria-expanded={open}
+        >
+          <div>
+            <div className="section-label mb-1" style={{ color: labelColor }}>{label}</div>
+            <h2
+              style={{
+                fontFamily: "'Libre Baskerville', serif",
+                fontSize: "clamp(1.5rem, 2.5vw, 2rem)",
+                color: titleColor,
+                lineHeight: 1.2,
+              }}
+            >
+              {title}
+            </h2>
+          </div>
+          <span
+            className="flex-shrink-0 ml-4 transition-transform duration-300"
+            style={{ color: chevronColor, transform: open ? "rotate(0deg)" : "rotate(-90deg)" }}
+          >
+            {open ? <ChevronUp size={22} /> : <ChevronDown size={22} />}
+          </span>
+        </button>
+
+        {/* Collapsible body */}
+        <div
+          style={{
+            overflow: "hidden",
+            maxHeight: open ? "9999px" : "0",
+            transition: "max-height 0.5s cubic-bezier(0.4,0,0.2,1)",
+          }}
+        >
+          <div className="py-10">{children}</div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function useScrollReveal() {
   useEffect(() => {
     const observe = () => {
@@ -548,35 +627,16 @@ function VideoSection() {
   ];
 
   return (
-    <section
+    <SectionWrapper
       id="media"
-      className="py-24 relative"
-      style={{
-        backgroundImage: `url(${MAP_BG})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
+      label="04 / On Camera"
+      title="On Camera"
+      dark={true}
+      bgOverlay="rgba(13,34,64,0.91)"
     >
-      <div className="absolute inset-0" style={{ background: "rgba(13,34,64,0.91)" }} />
-
-      <div className="container relative z-10">
-        <div className="section-label mb-4" style={{ color: "rgba(255,255,255,0.5)" }}>04 / On Camera</div>
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-12 gap-4">
-          <h2
-            style={{
-              fontFamily: "'Libre Baskerville', serif",
-              fontSize: "clamp(1.75rem, 3vw, 2.5rem)",
-              color: "#ffffff",
-              lineHeight: 1.2,
-            }}
-          >
-            On Camera
-          </h2>
-          <p className="text-sm max-w-md" style={{ color: "rgba(255,255,255,0.55)", fontFamily: "'Lato', sans-serif", fontWeight: 300 }}>
-            Selected broadcast and documentary appearances.
-          </p>
-        </div>
-
+      <p className="text-sm max-w-md mb-8" style={{ color: "rgba(255,255,255,0.55)", fontFamily: "'Lato', sans-serif", fontWeight: 300 }}>
+        Selected broadcast and documentary appearances.
+      </p>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
           {videos.map((v) => (
             <div
@@ -678,8 +738,7 @@ function VideoSection() {
             </div>
           ))}
         </div>
-      </div>
-    </section>
+    </SectionWrapper>
   );
 }
 
@@ -733,6 +792,45 @@ function HeroSection() {
             A global thought leader and subject matter expert in law enforcement, intelligence, transnational organized crime, and drug policy — with over 14 years in law enforcement, including a distinguished career at the U.S. Drug Enforcement Administration, and a record of public service, academic scholarship, and policy advocacy spanning 30+ countries.
           </p>
 
+          {/* Section navigation tiles */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 mb-10">
+            {[
+              { label: "Profile", sub: "Background & Bio", href: "#about", icon: <GraduationCap size={20} /> },
+              { label: "Career", sub: "Professional History", href: "#career", icon: <Briefcase size={20} /> },
+              { label: "Publications", sub: "35+ Op-Eds", href: "#publications", icon: <BookOpen size={20} /> },
+              { label: "On Camera", sub: "Broadcast Appearances", href: "#media", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg> },
+              { label: "In the News", sub: "Media Coverage", href: "#in-the-news", icon: <Newspaper size={20} /> },
+              { label: "Affiliations", sub: "Fellowships & Networks", href: "#affiliations", icon: <Award size={20} /> },
+              { label: "Contact", sub: "Get in Touch", href: "#contact", icon: <Mail size={20} /> },
+            ].map((tile) => (
+              <a
+                key={tile.href}
+                href={tile.href}
+                className="group flex flex-col gap-2 p-4 transition-all duration-200 hover:-translate-y-0.5"
+                style={{
+                  backgroundColor: "rgba(255,255,255,0.06)",
+                  border: "1px solid rgba(255,255,255,0.12)",
+                  borderTop: "2px solid rgba(74,127,165,0.6)",
+                }}
+              >
+                <span style={{ color: "#4A7FA5" }} className="group-hover:text-white transition-colors">{tile.icon}</span>
+                <div>
+                  <div
+                    className="font-semibold text-white text-sm leading-tight"
+                    style={{ fontFamily: "'Lato', sans-serif", letterSpacing: "0.03em" }}
+                  >
+                    {tile.label}
+                  </div>
+                  <div
+                    className="text-xs mt-0.5"
+                    style={{ color: "rgba(255,255,255,0.45)", fontFamily: "'Lato', sans-serif" }}
+                  >
+                    {tile.sub}
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
 
         </div>
 
@@ -758,17 +856,12 @@ function HeroSection() {
 
 function AboutSection() {
   return (
-    <section
+    <SectionWrapper
       id="about"
-      className="py-24 relative"
-      style={{
-        backgroundImage: `url(${MAP_BG})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
+      label="01 / Profile"
+      title="Global Thought Leader in Law Enforcement & Drug Policy"
+      dark={false}
     >
-      <div className="absolute inset-0" style={{ background: "rgba(255,255,255,0.96)" }} />
-      <div className="container relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           {/* Left: Portrait + credentials */}
           <div className="lg:col-span-4 reveal-on-scroll">
@@ -876,37 +969,19 @@ function AboutSection() {
             </div>
           </div>
         </div>
-      </div>
-    </section>
+    </SectionWrapper>
   );
 }
 
 function CareerSection() {
   return (
-    <section
+    <SectionWrapper
       id="career"
-      className="py-24 relative"
-      style={{
-        backgroundImage: `url(${MAP_BG})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
+      label="02 / Career"
+      title="Professional Experience"
+      dark={true}
     >
-      <div className="absolute inset-0" style={{ background: "rgba(13,34,64,0.88)" }} />
-
-      <div className="container relative z-10">
         <div className="max-w-4xl mx-auto">
-          <div className="section-label mb-4" style={{ color: "#4A7FA5" }}>02 / Career</div>
-          <h2
-            className="text-white mb-12"
-            style={{
-              fontFamily: "'Libre Baskerville', serif",
-              fontSize: "clamp(1.75rem, 3vw, 2.5rem)",
-              lineHeight: 1.2,
-            }}
-          >
-            Professional Experience
-          </h2>
 
           {/* Timeline */}
           <div className="relative">
@@ -989,8 +1064,7 @@ function CareerSection() {
             </div>
           </div>
         </div>
-      </div>
-    </section>
+    </SectionWrapper>
   );
 }
 
@@ -1017,36 +1091,13 @@ function PublicationsSection() {
   const displayed = showAll ? publications : publications.slice(0, 8);
 
   return (
-    <section
+    <SectionWrapper
       id="publications"
-      className="py-24 relative"
-      style={{
-        backgroundImage: `url(${MAP_BG})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
+      label="03 / Writing & Commentary"
+      title="Selected Publications & Op-Eds"
+      dark={false}
+      bgOverlay="rgba(245,247,250,0.95)"
     >
-      <div className="absolute inset-0" style={{ background: "rgba(245,247,250,0.95)" }} />
-      <div className="container relative z-10">
-        <div className="section-label mb-4" style={{ color: "#4A7FA5" }}>03 / Writing & Commentary</div>
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-12 gap-4">
-          <h2
-            style={{
-              fontFamily: "'Libre Baskerville', serif",
-              fontSize: "clamp(1.75rem, 3vw, 2.5rem)",
-              color: "#0D2240",
-              lineHeight: 1.2,
-            }}
-          >
-            Selected Publications & Op-Eds
-          </h2>
-          <p
-            className="text-sm max-w-md text-gray-500"
-            style={{ fontFamily: "'Lato', sans-serif", fontWeight: 300 }}
-          >
-            Jim is a prolific writer and commentator on drug policy, synthetic drugs, transnational crime, and national security.
-          </p>
-        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {displayed.map((pub, i) => (
@@ -1136,44 +1187,21 @@ function PublicationsSection() {
             </button>
           </div>
         )}
-      </div>
-    </section>
+    </SectionWrapper>
   );
 }
 
 function InTheNewsSection() {
   return (
-    <section
+    <SectionWrapper
       id="in-the-news"
-      className="py-24 relative"
-      style={{
-        backgroundImage: `url(${MAP_BG})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
+      label="05 / Media Coverage"
+      title="In the News"
+      dark={false}
     >
-      <div className="absolute inset-0" style={{ background: "rgba(255,255,255,0.96)" }} />
-      <div className="container relative z-10">
-        <div className="section-label mb-4" style={{ color: "#4A7FA5" }}>05 / Media Coverage</div>
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-12 gap-4">
-          <h2
-            style={{
-              fontFamily: "'Libre Baskerville', serif",
-              fontSize: "clamp(1.75rem, 3vw, 2.5rem)",
-              color: "#0D2240",
-              lineHeight: 1.2,
-            }}
-          >
-            In the News
-          </h2>
-          <p
-            className="text-sm max-w-md text-gray-500"
-            style={{ fontFamily: "'Lato', sans-serif", fontWeight: 300 }}
-          >
-            Jim's expert analysis has been sought by the world's leading news organizations on drug policy, cartels, and national security.
-          </p>
-        </div>
-
+      <p className="text-sm max-w-md text-gray-500 mb-8" style={{ fontFamily: "'Lato', sans-serif", fontWeight: 300 }}>
+        Jim's expert analysis has been sought by the world's leading news organizations on drug policy, cartels, and national security.
+      </p>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {newsItems.map((item, i) => (
             <a
@@ -1291,44 +1319,22 @@ function InTheNewsSection() {
             </a>
           ))}
         </div>
-      </div>
-    </section>
+    </SectionWrapper>
   );
 }
 
 function AffiliationsSection() {
   return (
-    <section
+    <SectionWrapper
       id="affiliations"
-      className="py-24 relative"
-      style={{
-        backgroundImage: `url(${MAP_BG})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
+      label="06 / Affiliations"
+      title="Professional Affiliations & Fellowships"
+      dark={true}
+      bgOverlay="rgba(13,34,64,0.91)"
     >
-      <div className="absolute inset-0" style={{ background: "rgba(13,34,64,0.91)" }} />
-
-      <div className="container relative z-10">
-        <div className="section-label mb-4" style={{ color: "rgba(255,255,255,0.5)" }}>06 / Affiliations</div>
-        <h2
-          className="mb-12"
-          style={{
-            fontFamily: "'Libre Baskerville', serif",
-            fontSize: "clamp(1.75rem, 3vw, 2.5rem)",
-            color: "#ffffff",
-            lineHeight: 1.2,
-          }}
-        >
-          Professional Affiliations & Fellowships
-        </h2>
-
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-12 gap-4">
-          <p className="text-sm max-w-md" style={{ color: "rgba(255,255,255,0.55)", fontFamily: "'Lato', sans-serif", fontWeight: 300 }}>
-            Jim is affiliated with several leading research institutions, policy organizations, and national security networks focused on drug policy, transnational organized crime, and law enforcement.
-          </p>
-        </div>
-
+      <p className="text-sm max-w-md mb-8" style={{ color: "rgba(255,255,255,0.55)", fontFamily: "'Lato', sans-serif", fontWeight: 300 }}>
+        Jim is affiliated with several leading research institutions, policy organizations, and national security networks focused on drug policy, transnational organized crime, and law enforcement.
+      </p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {affiliations.map((aff, i) => (
             <div
@@ -1379,8 +1385,7 @@ function AffiliationsSection() {
             </div>
           ))}
         </div>
-      </div>
-    </section>
+    </SectionWrapper>
   );
 }
 
@@ -1403,37 +1408,16 @@ function ContactSection() {
   ];
 
   return (
-    <section
+    <SectionWrapper
       id="contact"
-      className="py-24 relative"
-      style={{
-        backgroundImage: `url(${MAP_BG})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-      }}
+      label="07 / Connect"
+      title="Connect with Jim"
+      dark={false}
     >
-      <div className="absolute inset-0" style={{ background: 'rgba(255,255,255,0.96)' }} />
-      <div className="container relative z-10">
+        <p className="mb-8 leading-relaxed" style={{ color: '#6b7280', fontFamily: "'Lato', sans-serif", fontWeight: 300, fontSize: '1.05rem' }}>
+          For media inquiries, speaking engagements, academic collaboration, or general questions, reach out directly via LinkedIn or email.
+        </p>
         <div className="max-w-3xl">
-          <div className="section-label mb-4" style={{ color: '#4A7FA5' }}>07 / Connect</div>
-          <h2
-            className="mb-4"
-            style={{
-              fontFamily: "'Libre Baskerville', serif",
-              fontSize: 'clamp(1.75rem, 3vw, 2.5rem)',
-              color: '#0D2240',
-              lineHeight: 1.2,
-            }}
-          >
-            Connect with Jim
-          </h2>
-          <p
-            className="mb-10 leading-relaxed"
-            style={{ color: '#6b7280', fontFamily: "'Lato', sans-serif", fontWeight: 300, fontSize: '1.05rem' }}
-          >
-            For media inquiries, speaking engagements, academic collaboration, or general questions, reach out directly via LinkedIn or email.
-          </p>
-
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {contactLinks.map((link) => (
               <a
@@ -1474,8 +1458,7 @@ function ContactSection() {
             ))}
           </div>
         </div>
-      </div>
-    </section>
+    </SectionWrapper>
   );
 }
 

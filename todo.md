@@ -10,3 +10,7 @@
 - [x] Fix "View All Publications" button border-radius from 2px to 4px
 - [x] Remove border from "View All Publications" button for CTA consistency
 - [x] Improve Fox News On Camera card thumbnail styling
+
+## New Features
+- [x] Add hero section navigation tiles/cards for each section
+- [x] Make all sections collapsible with animated toggle

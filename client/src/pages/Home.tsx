@@ -480,7 +480,7 @@ function NavBar() {
   }, []);
 
   const links = [
-    { label: "About", href: "#about" },
+    { label: "Profile", href: "#about" },
     { label: "Career", href: "#career" },
     { label: "Publications", href: "#publications" },
     { label: "On Camera", href: "#media" },

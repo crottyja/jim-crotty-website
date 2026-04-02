@@ -30,3 +30,4 @@
 
 ## Layout Fixes
 - [x] Remove blank right-side space in hero, shift content left
+- [x] Update nav bar "About" label to "Profile"

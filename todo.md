@@ -27,3 +27,6 @@
 - [x] Rename Publications tile/nav back to "Publications", subtitle "Opinion and Analysis"
 - [x] Center Contact tile on bottom row of hero grid
 - [x] Align all section header titles to match tile subtitles
+
+## Layout Fixes
+- [x] Remove blank right-side space in hero, shift content left

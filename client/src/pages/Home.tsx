@@ -763,8 +763,8 @@ function HeroSection() {
       />
 
 
-      <div className="container relative z-10 pt-24 pb-16">
-        <div className="max-w-3xl">
+      <div className="container relative z-10 pt-24 pb-8">
+        <div className="w-full">
           {/* Name */}
           <h1
             className="hero-name text-white mb-4 leading-none"

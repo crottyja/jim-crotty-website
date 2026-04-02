@@ -482,7 +482,7 @@ function NavBar() {
   const links = [
     { label: "About", href: "#about" },
     { label: "Career", href: "#career" },
-    { label: "Publications", href: "#publications" },
+    { label: "Opinion & Analysis", href: "#publications" },
     { label: "On Camera", href: "#media" },
     { label: "In the News", href: "#in-the-news" },
     { label: "Affiliations", href: "#affiliations" },
@@ -792,7 +792,7 @@ function HeroSection() {
             className="hero-bio text-white/60 mb-10 leading-relaxed max-w-2xl"
             style={{ fontFamily: "'Lato', sans-serif", fontWeight: 300, fontSize: "1rem" }}
           >
-            A global thought leader and subject matter expert in law enforcement, intelligence, transnational organized crime, and drug policy — with over 14 years in law enforcement, including a distinguished career at the U.S. Drug Enforcement Administration, and a record of public service, academic scholarship, and policy advocacy spanning 30+ countries.
+            A global thought leader and subject matter expert in law enforcement, intelligence, transnational organized crime, and drug policy — with over 14 years in law enforcement, including a distinguished career at the U.S. Drug Enforcement Administration, and a record of public service, academic scholarship, and policy advocacy.
           </p>
 
           {/* Section navigation tiles */}
@@ -800,16 +800,16 @@ function HeroSection() {
             {[
               { label: "Profile", sub: "Background & Bio", href: "#about", icon: <GraduationCap size={20} /> },
               { label: "Career", sub: "Professional History", href: "#career", icon: <Briefcase size={20} /> },
-              { label: "Publications", sub: "35+ Op-Eds", href: "#publications", icon: <BookOpen size={20} /> },
+              { label: "Opinion & Analysis", sub: "35+ Op-Eds", href: "#publications", icon: <BookOpen size={20} /> },
               { label: "On Camera", sub: "Broadcast Appearances", href: "#media", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg> },
               { label: "In the News", sub: "Media Coverage", href: "#in-the-news", icon: <Newspaper size={20} /> },
               { label: "Affiliations", sub: "Fellowships & Networks", href: "#affiliations", icon: <Award size={20} /> },
-              { label: "Contact", sub: "Get in Touch", href: "#contact", icon: <Mail size={20} /> },
+              { label: "Contact", sub: "Get in Touch", href: "#contact", icon: <Mail size={20} />, center: true },
             ].map((tile) => (
               <a
                 key={tile.href}
                 href={tile.href}
-                className="group flex flex-col gap-2 p-4 transition-all duration-200 hover:-translate-y-0.5"
+                className={`group flex flex-col gap-2 p-4 transition-all duration-200 hover:-translate-y-0.5${'center' in tile && tile.center ? ' col-span-2 sm:col-span-1' : ''}`}
                 style={{
                   backgroundColor: "rgba(255,255,255,0.06)",
                   border: "1px solid rgba(255,255,255,0.12)",
@@ -837,16 +837,6 @@ function HeroSection() {
 
         </div>
 
-        {/* By the Numbers — inline within hero */}
-        <div
-          className="hero-stats w-full text-center"
-          style={{
-            borderTop: "1px solid rgba(255,255,255,0.1)",
-            paddingTop: "2rem",
-          }}
-        >
-          <NumbersBarInline />
-        </div>
       </div>
 
       {/* Scroll indicator */}
@@ -1096,8 +1086,8 @@ function PublicationsSection() {
   return (
     <SectionWrapper
       id="publications"
-      label="03 / Writing & Commentary"
-      title="Selected Publications & Op-Eds"
+      label="03 / Opinion & Analysis"
+      title="Opinion & Analysis"
       dark={false}
       bgOverlay="rgba(245,247,250,0.95)"
     >
@@ -1185,7 +1175,7 @@ function PublicationsSection() {
                 letterSpacing: "0.15em",
               }}
             >
-              View All Publications
+              View All Opinion & Analysis
               <ChevronDown size={14} />
             </button>
           </div>

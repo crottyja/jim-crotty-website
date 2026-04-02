@@ -15,3 +15,10 @@
 - [x] Add hero section navigation tiles/cards for each section
 - [x] Make all sections collapsible with animated toggle
 - [x] Collapse sections by default on mobile, open on desktop
+
+## Hero Section Edits
+- [x] Truncate hero bio sentence at "advocacy"
+- [x] Center the Contact tile in the hero grid
+- [x] Rename Publications tile and section label to "Opinion & Analysis"
+- [x] Remove the stats grid from the hero section
+- [x] Align tile labels with their corresponding section header labels

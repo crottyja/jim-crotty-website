@@ -64,3 +64,4 @@
 - [x] Move PDF button below section tiles and make it smaller/more discrete
 - [x] Align headshot top with Jim Crotty name text in hero
 - [x] Final pre-publication audit: colors, fonts, copy, links
+- [x] Align headshot top with lowercase letters in Jim Crotty

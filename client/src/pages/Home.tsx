@@ -607,6 +607,7 @@ function VideoSection() {
       title: "Narcan Vending Machines Are the Latest Weapon Against Opioid Overdoses",
       description: "Jim Crotty, former DEA Deputy Chief of Staff, weighs in on the proliferation of Narcan vending machines as a harm-reduction strategy, arguing that while keeping people alive is important, the ultimate goal must be ending drug use.",
       embedType: "link",
+      thumbnail: "https://a57.foxnews.com/static.foxnews.com/foxnews.com/content/uploads/2022/08/1024/512/Narcan-Vending-Machine-8.jpg?ve=1&tl=1",
       url: "https://www.foxnews.com/health/narcan-vending-machines-latest-weapon-opioid-overdoses",
       quote: "We should be carpet-bombing the country with Narcan. But the goal can't simply be to keep people alive — the goal has to be to stop doing drugs.",
     },
@@ -659,7 +660,7 @@ function VideoSection() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="relative flex items-center justify-center group"
-                  style={{ backgroundColor: "#0D2240", minHeight: "220px", backgroundImage: `url(https://img.youtube.com/vi/iZkaBqpxHuk/hqdefault.jpg)`, backgroundSize: "cover", backgroundPosition: "center" }}
+                  style={{ backgroundColor: "#0D2240", minHeight: "220px", backgroundImage: v.thumbnail ? `url(${v.thumbnail})` : "none", backgroundSize: "cover", backgroundPosition: "center" }}
                 >
                   <div className="absolute inset-0" style={{ backgroundColor: "rgba(13,34,64,0.75)" }} />
                   <div className="relative z-10 text-center px-8">
@@ -872,7 +873,7 @@ function HeroSection() {
           </div>{/* end left column */}
 
           {/* Right column: headshot */}
-          <div className="hidden lg:flex lg:w-72 xl:w-80 flex-shrink-0 justify-center items-start pt-2">
+          <div className="hidden lg:flex lg:w-72 xl:w-80 flex-shrink-0 justify-center items-start pt-20">
             <div className="relative">
               <img
                 src={PROFILE_IMG}
@@ -1445,13 +1446,6 @@ function ContactSection() {
       description: "Connect and send a direct message on LinkedIn.",
       href: "https://www.linkedin.com/in/jamesmcrotty",
       cta: "View Profile",
-    },
-    {
-      icon: <Mail size={22} style={{ color: '#4A7FA5' }} />,
-      label: "Email",
-      description: "For media, speaking, or general inquiries.",
-      href: "mailto:jamesmcrotty@hotmail.com",
-      cta: "Send Email",
     },
     {
       icon: <GraduationCap size={22} style={{ color: '#4A7FA5' }} />,

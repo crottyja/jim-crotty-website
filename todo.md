@@ -46,3 +46,6 @@
 - [x] PDF: Remove Meta "190+" inaccurate stat
 - [x] PDF: Add email/LinkedIn/website icons to header contact line
 - [x] Add "Advisory Board Member" and "Senior Fellow" to hero subtitle line
+- [x] Move hero headshot down to align with left-column text
+- [x] Fix Fox News broadcast thumbnail and link (currently shows Scripps News thumbnail)
+- [x] Remove email contact option from Contact section

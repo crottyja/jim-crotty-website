@@ -903,6 +903,128 @@ function HeroSection() {
   );
 }
 
+const CAROUSEL_PHOTOS = [
+  {
+    src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/speaking_podium_a053b602.jpg",
+    caption: "Keynote Address",
+    label: "Speaking Engagement",
+  },
+  {
+    src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/speech_mic_094dd872.jpg",
+    caption: "Congressional Briefing",
+    label: "Policy Testimony",
+  },
+  {
+    src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/speech_conference_4282e5d6.jpg",
+    caption: "National Security Conference",
+    label: "Expert Panel",
+  },
+  {
+    src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/capitol_hill_6170f8f1.jpg",
+    caption: "U.S. Capitol, Washington D.C.",
+    label: "Policy Work",
+  },
+  {
+    src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/badge_5d5114ea.jpg",
+    caption: "14 Years in Federal Law Enforcement",
+    label: "DEA Career",
+  },
+];
+
+function PhotoCarousel() {
+  const [active, setActive] = useState(0);
+  const total = CAROUSEL_PHOTOS.length;
+
+  const prev = () => setActive((a) => (a - 1 + total) % total);
+  const next = () => setActive((a) => (a + 1) % total);
+
+  // Auto-advance every 5 seconds
+  useEffect(() => {
+    const timer = setInterval(next, 5000);
+    return () => clearInterval(timer);
+  }, [active]);
+
+  return (
+    <div className="mt-10 pt-8 border-t" style={{ borderColor: "#e5e7eb" }}>
+      <div className="section-label mb-4" style={{ color: "#4A7FA5" }}>In the Field</div>
+      <div className="relative overflow-hidden" style={{ borderTop: "2px solid #4A7FA5" }}>
+        {/* Main image */}
+        <div className="relative" style={{ aspectRatio: "16/9", backgroundColor: "#0D2240" }}>
+          {CAROUSEL_PHOTOS.map((photo, i) => (
+            <div
+              key={i}
+              className="absolute inset-0 transition-opacity duration-700"
+              style={{ opacity: i === active ? 1 : 0, pointerEvents: i === active ? "auto" : "none" }}
+            >
+              <img
+                src={photo.src}
+                alt={photo.caption}
+                className="w-full h-full object-cover"
+                style={{ filter: "grayscale(20%)" }}
+              />
+              {/* Caption overlay */}
+              <div
+                className="absolute bottom-0 left-0 right-0 px-5 py-3"
+                style={{ background: "linear-gradient(to top, rgba(13,34,64,0.92) 0%, rgba(13,34,64,0.0) 100%)" }}
+              >
+                <div
+                  className="text-xs font-semibold tracking-widest uppercase mb-0.5"
+                  style={{ color: "#4A7FA5", fontFamily: "'Lato', sans-serif" }}
+                >
+                  {photo.label}
+                </div>
+                <div
+                  className="text-sm text-white/80"
+                  style={{ fontFamily: "'Lato', sans-serif", fontWeight: 300 }}
+                >
+                  {photo.caption}
+                </div>
+              </div>
+            </div>
+          ))}
+
+          {/* Prev / Next buttons */}
+          <button
+            onClick={prev}
+            aria-label="Previous photo"
+            className="absolute left-3 top-1/2 -translate-y-1/2 flex items-center justify-center w-9 h-9 transition-all hover:scale-110"
+            style={{ backgroundColor: "rgba(13,34,64,0.7)", border: "1px solid rgba(74,127,165,0.5)" }}
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <button
+            onClick={next}
+            aria-label="Next photo"
+            className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center justify-center w-9 h-9 transition-all hover:scale-110"
+            style={{ backgroundColor: "rgba(13,34,64,0.7)", border: "1px solid rgba(74,127,165,0.5)" }}
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+
+        {/* Dot indicators + thumbnail strip */}
+        <div className="flex items-center gap-3 mt-3">
+          {CAROUSEL_PHOTOS.map((photo, i) => (
+            <button
+              key={i}
+              onClick={() => setActive(i)}
+              aria-label={`Go to photo ${i + 1}`}
+              className="flex-1 relative overflow-hidden transition-all duration-200"
+              style={{
+                height: "52px",
+                border: i === active ? "2px solid #4A7FA5" : "2px solid transparent",
+                opacity: i === active ? 1 : 0.5,
+              }}
+            >
+              <img src={photo.src} alt={photo.caption} className="w-full h-full object-cover" />
+            </button>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function AboutSection() {
   return (
     <SectionWrapper
@@ -1016,6 +1138,9 @@ function AboutSection() {
                 ))}
               </div>
             </div>
+
+            {/* Photo carousel */}
+            <PhotoCarousel />
           </div>
         </div>
     </SectionWrapper>

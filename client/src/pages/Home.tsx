@@ -456,7 +456,7 @@ function SectionWrapper({
         {/* Collapsible header */}
         <button
           onClick={() => setOpen((o) => !o)}
-          className="w-full flex items-center justify-between py-8 group text-left"
+          className={`w-full flex items-center justify-between py-8 group text-left section-accordion-btn${dark ? " dark" : " light"}`}
           style={{
             borderBottom: `1px solid ${borderColor}`,
             background: headerBg,
@@ -464,6 +464,7 @@ function SectionWrapper({
             marginRight: "-1rem",
             paddingLeft: "1rem",
             paddingRight: "1rem",
+            transition: "background 0.2s ease",
           }}
           aria-expanded={open}
         >
@@ -481,7 +482,7 @@ function SectionWrapper({
             </h2>
           </div>
           <span
-            className="flex-shrink-0 ml-4 transition-transform duration-300"
+            className="flex-shrink-0 ml-4 transition-all duration-300 section-accordion-chevron"
             style={{ color: chevronColor, transform: open ? "rotate(0deg)" : "rotate(-90deg)" }}
           >
             {open ? <ChevronUp size={22} /> : <ChevronDown size={22} />}

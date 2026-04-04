@@ -382,6 +382,32 @@
     transform: translateX(0);
   }
 
+  /* Accordion section header hover effects */
+  .section-accordion-btn {
+    position: relative;
+  }
+  .section-accordion-btn.dark:hover {
+    background: rgba(255,255,255,0.04) !important;
+  }
+  .section-accordion-btn.light:hover {
+    background: rgba(13,34,64,0.05) !important;
+  }
+  .section-accordion-btn:hover .section-accordion-chevron {
+    color: #C9A84C !important;
+    transform: translateX(3px) !important;
+  }
+  /* When open and hovered, keep the rotation but still shift */
+  .section-accordion-btn[aria-expanded="true"]:hover .section-accordion-chevron {
+    transform: rotate(0deg) translateX(3px) !important;
+  }
+  .section-accordion-btn[aria-expanded="false"]:hover .section-accordion-chevron {
+    transform: rotate(-90deg) translateX(3px) !important;
+  }
+  /* Gold border pulse on hover */
+  .section-accordion-btn:hover > div > div:first-child {
+    border-left-color: #e8c55a !important;
+  }
+
   /* Contact form focus states */
   #contact input:focus,
   #contact select:focus,

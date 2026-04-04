@@ -27,19 +27,20 @@ router.get("/api/download-cv", (_req, res) => {
   const STEEL = "#4A7FA5";
   const GOLD = "#C8860A";
   const GRAY = "#6b7280";
-  const LIGHT = "#f8f9fa";
 
   const W = doc.page.width - 120; // usable width
 
   // ─── Header band ─────────────────────────────────────────────────
-  doc.rect(0, 0, doc.page.width, 110).fill(NAVY);
+  doc.rect(0, 0, doc.page.width, 118).fill(NAVY);
 
+  // Name
   doc
     .fillColor("#ffffff")
     .font("Helvetica-Bold")
     .fontSize(28)
-    .text("Jim Crotty", 60, 28);
+    .text("Jim Crotty", 60, 22);
 
+  // Title line
   doc
     .fillColor(STEEL)
     .font("Helvetica")
@@ -47,43 +48,49 @@ router.get("/api/download-cv", (_req, res) => {
     .text(
       "Law Enforcement Outreach Manager, Meta Platforms  ·  Former DEA Deputy Chief of Staff  ·  Adjunct Professor, American University",
       60,
-      64,
+      60,
       { width: W }
     );
 
-  doc
-    .fillColor("rgba(255,255,255,0.55)")
-    .font("Helvetica")
-    .fontSize(8.5)
-    .text(
-      "jamesmcrotty@hotmail.com  ·  jcrotty@american.edu  ·  linkedin.com/in/jamesmcrotty  ·  jcrotty.com",
-      60,
-      84,
-      { width: W }
-    );
+  // Contact line with unicode icon substitutes (PDFKit doesn't support SVG icons,
+  // so we use clean text symbols that render well in PDF)
+  const contactY = 84;
+  const iconColor = "rgba(255,255,255,0.70)";
+  const linkColor = "rgba(255,255,255,0.55)";
+
+  // Email icon (envelope symbol) + address
+  doc.fillColor(iconColor).font("Helvetica-Bold").fontSize(8).text("✉", 60, contactY, { continued: true });
+  doc.fillColor(linkColor).font("Helvetica").fontSize(8).text("  jamesmcrotty@hotmail.com  ·  jcrotty@american.edu", 60, contactY, { continued: true });
+
+  // LinkedIn icon (in symbol) + URL
+  doc.fillColor(iconColor).font("Helvetica-Bold").text("   in", { continued: true });
+  doc.fillColor(linkColor).font("Helvetica").text("  linkedin.com/in/jamesmcrotty", { continued: true });
+
+  // Website icon (globe symbol) + URL
+  doc.fillColor(iconColor).font("Helvetica-Bold").text("   ⊕", { continued: true });
+  doc.fillColor(linkColor).font("Helvetica").text("  jcrotty.com");
 
   // ─── Pull-quote ───────────────────────────────────────────────────
-  doc.moveDown(0);
-  const qY = 126;
-  doc.rect(60, qY, 3, 36).fill(STEEL);
+  const qY = 134;
+  doc.rect(60, qY, 3, 30).fill(STEEL);
   doc
     .fillColor(NAVY)
     .font("Helvetica-Oblique")
     .fontSize(10)
     .text(
-      '"The next generation of illicit drugs will not be grown in a field — they will be synthesized in a lab, shipped in an envelope, and delivered to your door."',
+      '"The opioid crisis is not a red or blue state issue — it\'s an American issue."',
       70,
-      qY + 2,
+      qY + 4,
       { width: W - 10 }
     );
   doc
     .fillColor(STEEL)
     .font("Helvetica")
     .fontSize(7.5)
-    .text("— STAT News", 70, qY + 28);
+    .text("— Jim Crotty, AL.com", 70, qY + 22);
 
   // ─── Section helper ───────────────────────────────────────────────
-  let curY = qY + 52;
+  let curY = qY + 48;
 
   function sectionHeader(title: string) {
     doc
@@ -137,14 +144,14 @@ router.get("/api/download-cv", (_req, res) => {
       org: "Meta Platforms",
       period: "2022 – Present",
       detail:
-        "Leads global law enforcement engagement strategy, supporting criminal investigations across 190+ countries.",
+        "Leads global law enforcement engagement strategy, supporting criminal investigations and legal compliance across international markets.",
     },
     {
-      title: "Adjunct Professor, School of International Service",
+      title: "Adjunct Professor, School of Public Affairs",
       org: "American University",
       period: "2021 – Present",
       detail:
-        "Teaches graduate-level courses on transnational organized crime, drug policy, and national security.",
+        "Teaches graduate-level courses on drugs, crime, public policy, and organized crime.",
     },
     {
       title: "Deputy Chief of Staff",
@@ -183,6 +190,7 @@ router.get("/api/download-cv", (_req, res) => {
   sectionHeader("Selected Publications (Opinion & Analysis)");
 
   const pubs = [
+    { year: "2026", title: "Could Mexican Cartels Be Incentivized to Sell 'Safer' Drugs?", outlet: "Small Wars Journal" },
     { year: "2026", title: "The quiet resurgence of plant-based illicit drugs", outlet: "The Hill" },
     { year: "2026", title: "Beyond Illicit Drugs: How the US is Expanding the Scope of Armed Conflict", outlet: "Small Wars Journal" },
     { year: "2025", title: "The New Militarized War on Drugs — Time to View Cartels as National Security Threats?", outlet: "Small Wars Journal" },
@@ -190,7 +198,6 @@ router.get("/api/download-cv", (_req, res) => {
     { year: "2024", title: "Welcome to the global synthetic drug revolution", outlet: "The Hill" },
     { year: "2024", title: "9/11 makes the case for a Department of Treatment and Recovery", outlet: "The Hill" },
     { year: "2023", title: "Will 'Poor Man's Cocaine' Fuel the Next U.S. Drug Crisis?", outlet: "Undark Magazine" },
-    { year: "2022", title: "The next generation of illicit drugs? Think 'synthetic'", outlet: "STAT News" },
     { year: "2022", title: "Launching Missiles Is Easy, Drug Control Is Hard", outlet: "Lawfare" },
     { year: "2022", title: "The US Opioid Problem Is Also a China Problem", outlet: "The Diplomat" },
   ];

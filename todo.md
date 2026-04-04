@@ -42,3 +42,6 @@
 - [x] Build downloadable PDF one-pager and place button in hero section
 - [x] Add new SWJ publication: "Could Mexican Cartels Be Incentivized to Sell 'Safer' Drugs?" (2026)
 - [x] Update hero pull-quote to opioid crisis red/blue state quote
+- [x] PDF: Update pull-quote to match hero section
+- [x] PDF: Remove Meta "190+" inaccurate stat
+- [x] PDF: Add email/LinkedIn/website icons to header contact line

@@ -449,11 +449,9 @@ function SectionWrapper({
   return (
     <section
       id={id}
-      className="relative"
-      style={{ width: "100vw", marginLeft: "calc(50% - 50vw)", marginRight: "calc(50% - 50vw)" }}
+      style={{ background: overlay }}
     >
-      <div className="absolute inset-0" style={{ background: overlay }} />
-      <div className="container relative z-10">
+      <div className="container">
         {/* Collapsible header */}
         <button
           onClick={() => setOpen((o) => !o)}
@@ -461,10 +459,6 @@ function SectionWrapper({
           style={{
             borderBottom: `1px solid ${borderColor}`,
             background: headerBg,
-            marginLeft: "-1rem",
-            marginRight: "-1rem",
-            paddingLeft: "1rem",
-            paddingRight: "1rem",
             transition: "background 0.2s ease",
           }}
           aria-expanded={open}
@@ -896,8 +890,7 @@ function HeroSection() {
               letterSpacing: "-0.01em",
             }}
           >
-            Jim{" "}
-            <span style={{ fontWeight: 600, fontStyle: "italic", color: "#C9A84C" }}>Crotty</span>
+            Jim <span style={{ fontWeight: 600, fontStyle: "italic", color: "#C9A84C" }}>Crotty</span>
           </h1>
 
           {/* Title */}
@@ -1798,49 +1791,16 @@ function ContactSection() {
 function Footer() {
   return (
     <footer
-      className="pt-10 pb-8 border-t"
-      style={{ backgroundColor: "#0D2240", borderColor: "rgba(201,168,76,0.25)" }}
+      className="py-6 border-t"
+      style={{ backgroundColor: "#0D2240", borderColor: "rgba(255,255,255,0.08)" }}
     >
-      <div className="container flex flex-col md:flex-row items-center justify-between gap-6">
-        {/* Left: name + tagline */}
-        <div className="flex flex-col items-center md:items-start gap-1">
-          <span
-            style={{
-              fontFamily: "'Cormorant Garamond', serif",
-              fontSize: "1.35rem",
-              fontWeight: 400,
-              color: "rgba(255,255,255,0.9)",
-              letterSpacing: "0.01em",
-            }}
-          >
-            Jim <span style={{ fontStyle: "italic", color: "#C9A84C" }}>Crotty</span>
-          </span>
-          <span
-            className="text-xs tracking-widest uppercase"
-            style={{ color: "rgba(255,255,255,0.4)", fontFamily: "'Lato', sans-serif", fontWeight: 300, letterSpacing: "0.12em" }}
-          >
-            Drug Policy Expert &nbsp;·&nbsp; Law Enforcement Veteran &nbsp;·&nbsp; Public Voice
-          </span>
-        </div>
-        {/* Right: copyright + LinkedIn */}
-        <div className="flex flex-col items-center md:items-end gap-2">
-          <a
-            href="https://www.linkedin.com/in/james-crotty-b0a15a12/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-1.5 transition-opacity hover:opacity-100"
-            style={{ color: "rgba(255,255,255,0.5)", fontSize: "0.8rem", fontFamily: "'Lato', sans-serif" }}
-          >
-            <Linkedin size={14} />
-            LinkedIn
-          </a>
-          <span
-            className="text-xs"
-            style={{ color: "rgba(255,255,255,0.3)", fontFamily: "'Lato', sans-serif", fontWeight: 300 }}
-          >
-            © {new Date().getFullYear()} Jim Crotty. All rights reserved.
-          </span>
-        </div>
+      <div className="container flex items-center justify-center">
+        <span
+          className="text-sm"
+          style={{ color: "rgba(255,255,255,0.4)", fontFamily: "'Lato', sans-serif", fontWeight: 300 }}
+        >
+          © {new Date().getFullYear()} Jim Crotty. All rights reserved.
+        </span>
       </div>
     </footer>
   );

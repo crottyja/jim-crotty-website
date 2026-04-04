@@ -57,3 +57,4 @@
 - [x] Add new In the News quotes (Guardian Oct 2024, Baltimore Banner Mar 2025, STAT News May 2025)
 - [x] Nav links auto-scroll to and open the target section
 - [x] Add Guardian Oct 2024 and Baltimore Banner Mar 2025 quotes to PDF profile
+- [x] Convert mobile menu to right-side drawer so it doesn't cover hero name

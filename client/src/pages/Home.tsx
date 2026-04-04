@@ -595,24 +595,55 @@ function NavBar() {
         </button>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile drawer — rendered outside the nav bar so it can be full-height */}
       {open && (
-        <div
-          className="md:hidden border-t"
-          style={{ backgroundColor: "#0D2240", borderColor: "rgba(255,255,255,0.1)" }}
-        >
-          {links.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              onClick={(e) => { setOpen(false); handleNavClick(e, l.sectionId); }}
-              className="block px-6 py-4 text-white/80 hover:text-white hover:bg-white/5 transition-colors text-sm tracking-widest uppercase"
-              style={{ fontFamily: "'Lato', sans-serif", fontSize: "0.7rem", letterSpacing: "0.15em" }}
+        <>
+          {/* Backdrop — closes drawer on tap, does NOT cover the full page width */}
+          <div
+            className="md:hidden fixed inset-0 z-40"
+            style={{ background: "rgba(0,0,0,0.45)" }}
+            onClick={() => setOpen(false)}
+            aria-hidden="true"
+          />
+          {/* Right-side drawer panel */}
+          <div
+            className="md:hidden fixed top-0 right-0 h-full z-50 flex flex-col"
+            style={{
+              width: "220px",
+              backgroundColor: "#0D2240",
+              boxShadow: "-4px 0 24px rgba(0,0,0,0.4)",
+              borderLeft: "1px solid rgba(255,255,255,0.08)",
+            }}
+          >
+            {/* Drawer header with close button */}
+            <div
+              className="flex items-center justify-end px-4 h-16 flex-shrink-0"
+              style={{ borderBottom: "1px solid rgba(255,255,255,0.08)" }}
             >
-              {l.label}
-            </a>
-          ))}
-        </div>
+              <button
+                onClick={() => setOpen(false)}
+                className="text-white/70 hover:text-white p-1"
+                aria-label="Close menu"
+              >
+                <X size={20} />
+              </button>
+            </div>
+            {/* Nav links */}
+            <div className="flex flex-col py-4 overflow-y-auto">
+              {links.map((l) => (
+                <a
+                  key={l.href}
+                  href={l.href}
+                  onClick={(e) => { setOpen(false); handleNavClick(e, l.sectionId); }}
+                  className="block px-6 py-4 text-white/80 hover:text-white hover:bg-white/5 transition-colors tracking-widest uppercase"
+                  style={{ fontFamily: "'Lato', sans-serif", fontSize: "0.7rem", letterSpacing: "0.15em" }}
+                >
+                  {l.label}
+                </a>
+              ))}
+            </div>
+          </div>
+        </>
       )}
     </nav>
   );

@@ -1011,20 +1011,8 @@ function AboutSection() {
       dark={false}
     >
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          {/* Left: Portrait + credentials */}
+          {/* Left: Credentials */}
           <div className="lg:col-span-4 reveal-on-scroll">
-            <div className="relative mb-8">
-              <img
-                src={PROFILE_IMG}
-                alt="Jim Crotty"
-                className="w-full max-w-xs object-cover"
-                style={{
-                  filter: "grayscale(15%)",
-                  boxShadow: "8px 8px 0 #0D2240",
-                }}
-              />
-            </div>
-
             {/* Credentials */}
             <div className="space-y-4">
               <div className="section-label mb-3" style={{ color: "#4A7FA5" }}>Education</div>

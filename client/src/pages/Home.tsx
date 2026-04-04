@@ -1047,11 +1047,40 @@ function AboutSection() {
                         backgroundColor: "#f0f4f8",
                         color: "#0D2240",
                         fontFamily: "'Lato', sans-serif",
+                        fontWeight: 700,
                         border: "1px solid #d1dde8",
+                        letterSpacing: "0.02em",
                       }}
                     >
                       {tag}
                     </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Featured In — moved here from right column */}
+              <div className="mt-6 pt-6 border-t" style={{ borderColor: "#e5e7eb" }}>
+                <div className="section-label mb-3" style={{ color: "#4A7FA5" }}>Featured In</div>
+                <div className="flex flex-wrap gap-2">
+                  {mediaOutlets.map((outlet) => (
+                    <a
+                      key={outlet.name}
+                      href={outlet.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs px-3 py-1 hover:opacity-70 transition-opacity"
+                      style={{
+                        backgroundColor: "#f0f4f8",
+                        color: "#0D2240",
+                        fontFamily: "'Lato', sans-serif",
+                        fontWeight: 700,
+                        border: "1px solid #d1dde8",
+                        letterSpacing: "0.02em",
+                        textDecoration: "none",
+                      }}
+                    >
+                      {outlet.name}
+                    </a>
                   ))}
                 </div>
               </div>
@@ -1088,24 +1117,7 @@ function AboutSection() {
               </p>
             </div>
 
-            {/* Featured in strip */}
-            <div className="mt-10 pt-8 border-t" style={{ borderColor: "#e5e7eb" }}>
-              <div className="section-label mb-4" style={{ color: "#4A7FA5" }}>Featured In</div>
-              <div className="flex flex-wrap gap-x-6 gap-y-2">
-                {mediaOutlets.map((outlet) => (
-                  <a
-                    key={outlet.name}
-                    href={outlet.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm font-bold hover:underline transition-opacity hover:opacity-70"
-                    style={{ color: "#4A7FA5", fontFamily: "'Lato', sans-serif", letterSpacing: "0.02em" }}
-                  >
-                    {outlet.name}
-                  </a>
-                ))}
-              </div>
-            </div>
+
           </div>
         </div>
     </SectionWrapper>

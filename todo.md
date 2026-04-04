@@ -59,3 +59,4 @@
 - [x] Add Guardian Oct 2024 and Baltimore Banner Mar 2025 quotes to PDF profile
 - [x] Convert mobile menu to right-side drawer so it doesn't cover hero name
 - [x] Remove headshot from Background & Bio section
+- [x] Move Featured In below Research Areas in About section and match tag styles

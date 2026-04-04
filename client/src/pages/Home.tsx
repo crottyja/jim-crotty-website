@@ -13,8 +13,11 @@ const MAP_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5Zc
 const PROFILE_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/crottyheadshot2_b48bea55.webp";
 
 const publications = [
-  {
-    year: "2026", title: "The quiet resurgence of plant-based illicit drugs", outlet: "The Hill",
+  { year: "2026", title: "Could Mexican Cartels Be Incentivized to Sell 'Safer' Drugs?", outlet: "Small Wars Journal",
+    url: "https://smallwarsjournal.com/2026/03/31/could-mexican-cartels-be-incentivized-to-sell-safer-drugs/",
+    summary: "Explores the provocative idea of incentivizing drug trafficking organizations to shift away from highly lethal synthetic opioids toward less dangerous substances, examining whether a combination of enforcement pressure and cartel negotiations could reduce overdose deaths without eliminating illicit markets entirely."
+  },
+  { year: "2026", title: "The quiet resurgence of plant-based illicit drugs", outlet: "The Hill",
     url: "https://thehill.com/opinion/criminal-justice/5777092-synthetic-vs-plant-based-drugs/",
     summary: "Argues that despite the dominance of synthetic drugs, plant-based substances like cocaine and cannabis are quietly regaining market share, driven by the economics of the illicit drug trade."
   },

@@ -911,25 +911,6 @@ function HeroSection() {
             </cite>
           </blockquote>
 
-          {/* PDF Download button */}
-          <div className="mb-10">
-            <a
-              href="/api/download-cv"
-              download="Jim_Crotty_Profile.pdf"
-              className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold tracking-widest uppercase transition-all duration-200 hover:-translate-y-0.5"
-              style={{
-                backgroundColor: "rgba(74,127,165,0.15)",
-                border: "1px solid rgba(74,127,165,0.5)",
-                color: "#ffffff",
-                fontFamily: "'Lato', sans-serif",
-                letterSpacing: "0.1em",
-              }}
-            >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-              Download Profile PDF
-            </a>
-          </div>
-
           {/* Section navigation tiles */}
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 mb-10">
             {[
@@ -969,6 +950,26 @@ function HeroSection() {
               </a>
             ))}
           </div>{/* end tiles grid */}
+
+          {/* PDF Download button — discrete, below tiles */}
+          <div className="mt-4 mb-6">
+            <a
+              href="/api/download-cv"
+              download="Jim_Crotty_Profile.pdf"
+              className="inline-flex items-center gap-1.5 transition-opacity duration-200 hover:opacity-100"
+              style={{
+                color: "rgba(255,255,255,0.45)",
+                fontFamily: "'Lato', sans-serif",
+                fontSize: "0.7rem",
+                letterSpacing: "0.12em",
+                textTransform: "uppercase",
+                opacity: 0.7,
+              }}
+            >
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Download Profile PDF
+            </a>
+          </div>
           </div>{/* end left column */}
 
           {/* Right column: headshot */}

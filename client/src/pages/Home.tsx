@@ -412,7 +412,7 @@ function SectionWrapper({
   children,
   label,
   title,
-  defaultOpen = true,
+  defaultOpen = false,
   dark = false,
   bgOverlay,
 }: {

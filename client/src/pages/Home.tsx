@@ -1002,7 +1002,7 @@ function HeroSection() {
 
           {/* Right column: headshot */}
           <div className="hidden lg:flex lg:w-72 xl:w-80 flex-shrink-0 justify-center items-start" style={{ paddingTop: "3.5rem" }}>
-            <div className="relative" style={{ padding: "6px", border: "1px solid #C9A84C", boxShadow: "0 0 24px rgba(201,168,76,0.15), 8px 8px 0 rgba(74,127,165,0.3)" }}>
+            <div className="relative" style={{ boxShadow: "0 4px 32px rgba(255,255,255,0.12), 0 8px 24px rgba(0,0,0,0.45), 4px 4px 0 rgba(200,200,200,0.15)" }}>
               <img
                 src={PROFILE_IMG}
                 alt="Jim Crotty"

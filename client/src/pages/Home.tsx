@@ -6,7 +6,7 @@
  */
 
 import React, { useEffect, useState } from "react";
-import { Menu, X, ExternalLink, Linkedin, ChevronDown, ChevronUp, BookOpen, Briefcase, Award, GraduationCap, Globe, Mail, Newspaper, Quote, ArrowUp, Users, Shield } from "lucide-react";
+import { Menu, X, ExternalLink, Linkedin, ChevronDown, ChevronUp, BookOpen, Briefcase, Award, GraduationCap, Globe, Mail, Newspaper, Quote, ArrowUp, Users, Shield, Send } from "lucide-react";
 
 const LOGO_DEA = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/logo_dea_sm_9adb416c.png";
 const LOGO_META = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/logo_meta_v2_d36d1aef.png";
@@ -424,10 +424,25 @@ function SectionWrapper({
   dark?: boolean;
   bgOverlay?: string;
 }) {
+  const [open, setOpen] = useState(defaultOpen);
+
+  // Listen for a custom "open-section" event dispatched by the nav
+  useEffect(() => {
+    const handler = (e: Event) => {
+      const detail = (e as CustomEvent<{ id: string }>).detail;
+      if (detail.id === id) {
+        setOpen(true);
+      }
+    };
+    window.addEventListener("open-section", handler);
+    return () => window.removeEventListener("open-section", handler);
+  }, [id]);
+
   const overlay = bgOverlay ?? (dark ? "rgba(13,34,64,0.88)" : "#F8F9FA");
-  const labelColor = dark ? "#C9A84C" : "#C9A84C";
+  const labelColor = "#C9A84C";
   const titleColor = dark ? "#ffffff" : "#0D2240";
   const borderColor = dark ? "rgba(255,255,255,0.1)" : "rgba(13,34,64,0.1)";
+  const chevronColor = dark ? "rgba(255,255,255,0.5)" : "#4A7FA5";
 
   return (
     <section
@@ -441,15 +456,14 @@ function SectionWrapper({
     >
       <div className="absolute inset-0" style={{ background: overlay }} />
       <div className="container relative z-10">
-        {/* Static section header with gold accent left border */}
-        <div
-          className="py-8"
-          style={{ borderBottom: `1px solid ${borderColor}` }}
+        {/* Collapsible header */}
+        <button
+          onClick={() => setOpen((o) => !o)}
+          className="w-full flex items-center justify-between py-8 group text-left"
+          style={{ borderBottom: open ? `1px solid ${borderColor}` : "none" }}
+          aria-expanded={open}
         >
-          <div
-            className="pl-4"
-            style={{ borderLeft: "3px solid #C9A84C" }}
-          >
+          <div className="pl-4" style={{ borderLeft: "3px solid #C9A84C" }}>
             <div className="section-label mb-1" style={{ color: labelColor }}>{label}</div>
             <h2
               style={{
@@ -462,10 +476,24 @@ function SectionWrapper({
               {title}
             </h2>
           </div>
-        </div>
+          <span
+            className="flex-shrink-0 ml-4 transition-transform duration-300"
+            style={{ color: chevronColor, transform: open ? "rotate(0deg)" : "rotate(-90deg)" }}
+          >
+            {open ? <ChevronUp size={22} /> : <ChevronDown size={22} />}
+          </span>
+        </button>
 
-        {/* Always-visible body */}
-        <div className="py-10">{children}</div>
+        {/* Collapsible body */}
+        <div
+          style={{
+            overflow: "hidden",
+            maxHeight: open ? "9999px" : "0",
+            transition: "max-height 0.5s cubic-bezier(0.4,0,0.2,1)",
+          }}
+        >
+          <div className="py-10">{children}</div>
+        </div>
       </div>
     </section>
   );
@@ -529,12 +557,17 @@ function NavBar() {
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
     e.preventDefault();
-    const el = document.getElementById(sectionId);
-    if (el) {
-      const offset = 72; // nav height
-      const top = el.getBoundingClientRect().top + window.scrollY - offset;
-      window.scrollTo({ top, behavior: "smooth" });
-    }
+    // Dispatch event to open the section first
+    window.dispatchEvent(new CustomEvent("open-section", { detail: { id: sectionId } }));
+    // After a short delay (so the section can expand), scroll to it
+    setTimeout(() => {
+      const el = document.getElementById(sectionId);
+      if (el) {
+        const offset = 72; // nav height
+        const top = el.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: "smooth" });
+      }
+    }, 50);
   };
 
   return (
@@ -1580,22 +1613,54 @@ function AffiliationsSection() {
 }
 
 function ContactSection() {
-  const contactLinks = [
-    {
-      icon: <Linkedin size={22} style={{ color: '#4A7FA5' }} />,
-      label: "LinkedIn",
-      description: "Connect and send a direct message on LinkedIn.",
-      href: "https://www.linkedin.com/in/jamesmcrotty",
-      cta: "View Profile",
-    },
-    {
-      icon: <GraduationCap size={22} style={{ color: '#4A7FA5' }} />,
-      label: "Academic Email",
-      description: "For academic collaboration, research, or university inquiries.",
-      href: "mailto:jcrotty@american.edu",
-      cta: "Send Email",
-    },
+  const [formData, setFormData] = useState({
+    name: "",
+    organization: "",
+    inquiryType: "",
+    message: "",
+  });
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+
+  const inquiryTypes = [
+    "Media Inquiry",
+    "Speaking Engagement",
+    "Academic Collaboration",
+    "Policy Consultation",
+    "General Question",
   ];
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formData.name || !formData.inquiryType || !formData.message) return;
+    setStatus("sending");
+    try {
+      await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      setStatus("sent");
+      setFormData({ name: "", organization: "", inquiryType: "", message: "" });
+    } catch {
+      setStatus("error");
+    }
+  };
+
+  const inputStyle: React.CSSProperties = {
+    width: "100%",
+    padding: "0.65rem 0.85rem",
+    fontFamily: "'Lato', sans-serif",
+    fontSize: "0.9rem",
+    color: "#0D2240",
+    backgroundColor: "#ffffff",
+    border: "1px solid rgba(13,34,64,0.18)",
+    borderRadius: 0,
+    outline: "none",
+  };
 
   return (
     <SectionWrapper
@@ -1604,50 +1669,119 @@ function ContactSection() {
       title="Get in Touch"
       dark={false}
     >
+      <div className="max-w-2xl">
         <p className="mb-8 leading-relaxed" style={{ color: '#6b7280', fontFamily: "'Lato', sans-serif", fontWeight: 300, fontSize: '1.05rem' }}>
-          For media inquiries, speaking engagements, academic collaboration, or general questions, reach out directly via LinkedIn or email.
+          For media inquiries, speaking engagements, academic collaboration, or general questions, complete the form below and I will respond promptly.
         </p>
-        <div className="max-w-4xl">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {contactLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                target={link.href.startsWith('http') ? '_blank' : undefined}
-                rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                className="group block p-6 reveal-on-scroll transition-all duration-200 hover:-translate-y-1"
-                style={{
-                  backgroundColor: '#F8F9FA',
-                  border: '1px solid rgba(13,34,64,0.1)',
-                  borderTop: '3px solid #4A7FA5',
-                  boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
-                }}
-              >
-                <div className="flex items-center gap-3 mb-3">
-                  {link.icon}
-                  <span
-                    className="font-bold text-base"
-                    style={{ fontFamily: "'Libre Baskerville', serif", color: '#0D2240' }}
-                  >
-                    {link.label}
-                  </span>
-                </div>
-                <p
-                  className="text-sm leading-relaxed mb-4"
-                  style={{ color: '#6b7280', fontFamily: "'Lato', sans-serif", fontWeight: 300 }}
-                >
-                  {link.description}
-                </p>
-                <span
-                  className="inline-flex items-center gap-1 text-xs font-semibold tracking-widest uppercase group-hover:underline"
-                  style={{ color: '#4A7FA5', fontFamily: "'Lato', sans-serif" }}
-                >
-                  {link.cta} <ExternalLink size={11} />
-                </span>
-              </a>
-            ))}
+
+        {status === "sent" ? (
+          <div
+            className="p-8 text-center"
+            style={{ backgroundColor: "#f0f7f0", border: "1px solid #c3dfc3", borderTop: "3px solid #4A7FA5" }}
+          >
+            <div className="text-2xl mb-2" style={{ color: "#0D2240", fontFamily: "'Libre Baskerville', serif" }}>Message Received</div>
+            <p style={{ color: "#6b7280", fontFamily: "'Lato', sans-serif", fontWeight: 300 }}>Thank you for reaching out. I will be in touch shortly.</p>
+            <button
+              onClick={() => setStatus("idle")}
+              className="mt-4 text-xs font-bold tracking-widest uppercase"
+              style={{ color: "#4A7FA5", fontFamily: "'Lato', sans-serif" }}
+            >
+              Send Another Message
+            </button>
           </div>
-        </div>
+        ) : (
+          <form onSubmit={handleSubmit} className="space-y-5">
+            {/* Name + Organization */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div>
+                <label className="section-label block mb-1.5" style={{ color: "#4A7FA5" }}>Name *</label>
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                  placeholder="Your full name"
+                  style={inputStyle}
+                />
+              </div>
+              <div>
+                <label className="section-label block mb-1.5" style={{ color: "#4A7FA5" }}>Organization</label>
+                <input
+                  type="text"
+                  name="organization"
+                  value={formData.organization}
+                  onChange={handleChange}
+                  placeholder="Company, agency, or institution"
+                  style={inputStyle}
+                />
+              </div>
+            </div>
+
+            {/* Inquiry Type */}
+            <div>
+              <label className="section-label block mb-1.5" style={{ color: "#4A7FA5" }}>Inquiry Type *</label>
+              <select
+                name="inquiryType"
+                value={formData.inquiryType}
+                onChange={handleChange}
+                required
+                style={{ ...inputStyle, appearance: "none", backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%234A7FA5' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E")`, backgroundRepeat: "no-repeat", backgroundPosition: "right 0.85rem center" }}
+              >
+                <option value="">Select inquiry type…</option>
+                {inquiryTypes.map((t) => (
+                  <option key={t} value={t}>{t}</option>
+                ))}
+              </select>
+            </div>
+
+            {/* Message */}
+            <div>
+              <label className="section-label block mb-1.5" style={{ color: "#4A7FA5" }}>Message *</label>
+              <textarea
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                required
+                rows={5}
+                placeholder="Please describe your inquiry…"
+                style={{ ...inputStyle, resize: "vertical" }}
+              />
+            </div>
+
+            {status === "error" && (
+              <p className="text-sm" style={{ color: "#c0392b", fontFamily: "'Lato', sans-serif" }}>
+                Something went wrong. Please try again or email jcrotty@american.edu directly.
+              </p>
+            )}
+
+            <button
+              type="submit"
+              disabled={status === "sending"}
+              className="inline-flex items-center gap-2 px-8 py-3 transition-all duration-200"
+              style={{
+                backgroundColor: status === "sending" ? "#4A7FA5" : "#0D2240",
+                color: "#ffffff",
+                fontFamily: "'Lato', sans-serif",
+                fontSize: "0.75rem",
+                fontWeight: 700,
+                letterSpacing: "0.15em",
+                textTransform: "uppercase",
+                border: "none",
+                cursor: status === "sending" ? "not-allowed" : "pointer",
+              }}
+            >
+              <Send size={14} />
+              {status === "sending" ? "Sending…" : "Send Message"}
+            </button>
+
+            <p className="text-xs" style={{ color: "rgba(13,34,64,0.4)", fontFamily: "'Lato', sans-serif", fontWeight: 300 }}>
+              You can also connect on{" "}
+              <a href="https://www.linkedin.com/in/jamesmcrotty" target="_blank" rel="noopener noreferrer" style={{ color: "#4A7FA5", textDecoration: "underline" }}>LinkedIn</a>.
+            </p>
+          </form>
+        )}
+      </div>
     </SectionWrapper>
   );
 }

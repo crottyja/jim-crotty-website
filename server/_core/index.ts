@@ -8,6 +8,7 @@ import { appRouter } from "../routers";
 import { createContext } from "./context";
 import { serveStatic, setupVite } from "./vite";
 import pdfRouter from "../pdfRoute";
+import contactRouter from "../contactRoute";
 
 function isPortAvailable(port: number): Promise<boolean> {
   return new Promise(resolve => {
@@ -38,6 +39,8 @@ async function startServer() {
   registerOAuthRoutes(app);
   // PDF download route
   app.use(pdfRouter);
+  // Contact form route
+  app.use(contactRouter);
   // tRPC API
   app.use(
     "/api/trpc",

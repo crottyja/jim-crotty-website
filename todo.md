@@ -60,3 +60,4 @@
 - [x] Convert mobile menu to right-side drawer so it doesn't cover hero name
 - [x] Remove headshot from Background & Bio section
 - [x] Move Featured In below Research Areas in About section and match tag styles
+- [x] Normalize all light section backgrounds to consistent color

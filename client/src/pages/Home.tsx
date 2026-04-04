@@ -426,7 +426,7 @@ function SectionWrapper({
     window.addEventListener("open-section", handler);
     return () => window.removeEventListener("open-section", handler);
   }, [id]);
-  const overlay = bgOverlay ?? (dark ? "rgba(13,34,64,0.88)" : "rgba(255,255,255,0.96)");
+  const overlay = bgOverlay ?? (dark ? "rgba(13,34,64,0.88)" : "#F8F9FA");
   const labelColor = dark ? "rgba(255,255,255,0.5)" : "#4A7FA5";
   const titleColor = dark ? "#ffffff" : "#0D2240";
   const borderColor = dark ? "rgba(255,255,255,0.1)" : "rgba(13,34,64,0.1)";
@@ -1284,7 +1284,7 @@ function PublicationsSection() {
               className="pub-card group block p-6 reveal-on-scroll"
               style={{
                 borderLeft: "3px solid #4A7FA5",
-                backgroundColor: "#f8fafc",
+                backgroundColor: "#F8F9FA",
                 transitionDelay: `${(i % 4) * 0.05}s`,
                 boxShadow: "0 1px 3px rgba(0,0,0,0.06)",
               }}
@@ -1390,7 +1390,7 @@ function InTheNewsSection() {
               <div
                 className="h-full p-6 transition-all duration-200 group-hover:-translate-y-1"
                 style={{
-                  backgroundColor: "#f8fafc",
+                  backgroundColor: "#F8F9FA",
                   boxShadow: "0 2px 8px rgba(0,0,0,0.06)",
                   borderTop: "4px solid #4A7FA5",
                 }}
@@ -1602,7 +1602,7 @@ function ContactSection() {
                 rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                 className="group block p-6 reveal-on-scroll transition-all duration-200 hover:-translate-y-1"
                 style={{
-                  backgroundColor: '#f8fafc',
+                  backgroundColor: '#F8F9FA',
                   border: '1px solid rgba(13,34,64,0.1)',
                   borderTop: '3px solid #4A7FA5',
                   boxShadow: '0 2px 8px rgba(0,0,0,0.05)',

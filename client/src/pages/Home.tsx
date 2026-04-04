@@ -412,9 +412,20 @@ function SectionWrapper({
   dark?: boolean;
   bgOverlay?: string;
 }) {
-  // On mobile (< 768px), sections start collapsed; on desktop they start open
   const getInitialOpen = () => false;
   const [open, setOpen] = useState(getInitialOpen);
+
+  // Listen for a custom "open-section" event dispatched by the nav
+  useEffect(() => {
+    const handler = (e: Event) => {
+      const detail = (e as CustomEvent<{ id: string }>).detail;
+      if (detail.id === id) {
+        setOpen(true);
+      }
+    };
+    window.addEventListener("open-section", handler);
+    return () => window.removeEventListener("open-section", handler);
+  }, [id]);
   const overlay = bgOverlay ?? (dark ? "rgba(13,34,64,0.88)" : "rgba(255,255,255,0.96)");
   const labelColor = dark ? "rgba(255,255,255,0.5)" : "#4A7FA5";
   const titleColor = dark ? "#ffffff" : "#0D2240";
@@ -523,14 +534,29 @@ function NavBar() {
   }, []);
 
   const links = [
-    { label: "Profile", href: "#about" },
-    { label: "Career", href: "#career" },
-    { label: "Publications", href: "#publications" },
-    { label: "On Camera", href: "#media" },
-    { label: "In the News", href: "#in-the-news" },
-    { label: "Affiliations", href: "#affiliations" },
-    { label: "Contact", href: "#contact" },
+    { label: "Profile", href: "#about", sectionId: "about" },
+    { label: "Career", href: "#career", sectionId: "career" },
+    { label: "Publications", href: "#publications", sectionId: "publications" },
+    { label: "On Camera", href: "#media", sectionId: "media" },
+    { label: "In the News", href: "#in-the-news", sectionId: "in-the-news" },
+    { label: "Affiliations", href: "#affiliations", sectionId: "affiliations" },
+    { label: "Contact", href: "#contact", sectionId: "contact" },
   ];
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
+    e.preventDefault();
+    // Dispatch event to open the section
+    window.dispatchEvent(new CustomEvent("open-section", { detail: { id: sectionId } }));
+    // After a short delay (so the section can expand), scroll to it
+    setTimeout(() => {
+      const el = document.getElementById(sectionId);
+      if (el) {
+        const offset = 72; // nav height
+        const top = el.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: "smooth" });
+      }
+    }, 50);
+  };
 
   return (
     <nav
@@ -549,6 +575,7 @@ function NavBar() {
             <a
               key={l.href}
               href={l.href}
+              onClick={(e) => handleNavClick(e, l.sectionId)}
               className="text-white/80 hover:text-white text-sm font-body tracking-widest uppercase transition-colors duration-200"
               style={{ fontFamily: "'Lato', sans-serif", fontSize: "0.7rem", letterSpacing: "0.15em" }}
             >
@@ -578,7 +605,7 @@ function NavBar() {
             <a
               key={l.href}
               href={l.href}
-              onClick={() => setOpen(false)}
+              onClick={(e) => { setOpen(false); handleNavClick(e, l.sectionId); }}
               className="block px-6 py-4 text-white/80 hover:text-white hover:bg-white/5 transition-colors text-sm tracking-widest uppercase"
               style={{ fontFamily: "'Lato', sans-serif", fontSize: "0.7rem", letterSpacing: "0.15em" }}
             >

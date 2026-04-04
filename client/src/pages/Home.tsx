@@ -767,7 +767,7 @@ function HeroSection() {
             className="hero-name text-white mb-4 leading-none"
             style={{
               fontFamily: "'Cormorant Garamond', serif",
-              fontSize: "clamp(3rem, 8vw, 6rem)",
+              fontSize: "clamp(3.5rem, 9vw, 7.5rem)",
               fontWeight: 300,
               letterSpacing: "-0.01em",
             }}

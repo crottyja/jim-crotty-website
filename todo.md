@@ -65,4 +65,4 @@
 - [x] Align headshot top with Jim Crotty name text in hero
 - [x] Final pre-publication audit: colors, fonts, copy, links
 - [x] Align headshot top with lowercase letters in Jim Crotty
-- [ ] Build refined logo bar and integrate into footer
+- [x] Build refined logo bar and integrate into footer

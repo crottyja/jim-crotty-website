@@ -8,13 +8,13 @@
 import React, { useEffect, useState } from "react";
 import { Menu, X, ExternalLink, Linkedin, ChevronDown, ChevronUp, BookOpen, Briefcase, Award, GraduationCap, Globe, Mail, Newspaper, Quote, ArrowUp, Users, Shield } from "lucide-react";
 
-const LOGO_DEA = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/logo_dea_9673f56e.png";
-const LOGO_META = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/logo_meta_8ac3ca5e.png";
-const LOGO_AU = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/logo_au_2d976c76.png";
+const LOGO_DEA = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/logo_dea_v2_d7b06eb1.png";
+const LOGO_META = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/logo_meta_v2_d36d1aef.png";
+const LOGO_AU = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/logo_au_v2_078dd7ee.png";
 const LOGO_AUBURN = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/logo_auburn_5db8ae82.png";
 const LOGO_ALABAMA = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/logo_alabama_521ba06b.png";
-const LOGO_BC = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/logo_bc_e786d78c.png";
-const LOGO_USF = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/logo_usf_1c7b6488.png";
+const LOGO_BC = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/logo_bc_v2_baa8226b.png";
+const LOGO_USF = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/logo_usf_v2_06cc32d8.png";
 const LOGO_UAF = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/logo_uaf_c8e61754.png";
 const LOGO_GITOC = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/logo_gitoc_9c8adfcc.png";
 const LOGO_C4ADS = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/logo_c4ads_0b95344d.png";
@@ -1650,17 +1650,14 @@ function ContactSection() {
 }
 
 const footerLogos = [
-  { src: LOGO_DEA,     alt: "DEA",                    h: 32 },
-  { src: LOGO_META,    alt: "Meta",                   h: 32 },
-  { src: LOGO_AU,      alt: "American University",    h: 32 },
-  { src: LOGO_AUBURN,  alt: "Auburn University",      h: 40 },
-  { src: LOGO_ALABAMA, alt: "University of Alabama",  h: 34 },
-  { src: LOGO_BC,      alt: "Boston College",         h: 24 },
-  { src: LOGO_USF,     alt: "University of South Florida", h: 36 },
-  { src: LOGO_UAF,     alt: "United Against Fentanyl", h: 32 },
-  { src: LOGO_GITOC,   alt: "GI-TOC",                h: 32 },
-  { src: LOGO_C4ADS,   alt: "C4ADS",                 h: 28 },
-  { src: LOGO_SWJ,     alt: "Small Wars Journal",     h: 28 },
+  { src: LOGO_DEA,     alt: "DEA",                         h: 52 },
+  { src: LOGO_META,    alt: "Meta",                        h: 36 },
+  { src: LOGO_AU,      alt: "American University",         h: 52 },
+  { src: LOGO_AUBURN,  alt: "Auburn University",           h: 44 },
+  { src: LOGO_ALABAMA, alt: "University of Alabama",       h: 40 },
+  { src: LOGO_BC,      alt: "Boston College",              h: 52 },
+  { src: LOGO_USF,     alt: "University of South Florida", h: 52 },
+  { src: LOGO_UAF,     alt: "United Against Fentanyl",     h: 40 },
 ];
 
 function Footer() {

@@ -1023,54 +1023,7 @@ function AboutSection() {
                 </div>
               ))}
 
-              <div className="mt-6 pt-6 border-t" style={{ borderColor: "#e5e7eb" }}>
-                <div className="section-label mb-3" style={{ color: "#4A7FA5" }}>Research Areas</div>
-                <div className="flex flex-wrap gap-2">
-                  {["Drug Policy", "Transnational Organized Crime", "Global Drug Trends", "Money Laundering", "Law Enforcement", "Cyber & Online Drug Trafficking"].map((tag) => (
-                    <span
-                      key={tag}
-                      className="text-xs px-3 py-1"
-                      style={{
-                        backgroundColor: "#f0f4f8",
-                        color: "#0D2240",
-                        fontFamily: "'Lato', sans-serif",
-                        fontWeight: 700,
-                        border: "1px solid #d1dde8",
-                        letterSpacing: "0.02em",
-                      }}
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
 
-              {/* Featured In — moved here from right column */}
-              <div className="mt-6 pt-6 border-t" style={{ borderColor: "#e5e7eb" }}>
-                <div className="section-label mb-3" style={{ color: "#4A7FA5" }}>Featured In</div>
-                <div className="flex flex-wrap gap-2">
-                  {mediaOutlets.map((outlet) => (
-                    <a
-                      key={outlet.name}
-                      href={outlet.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-xs px-3 py-1 hover:opacity-70 transition-opacity"
-                      style={{
-                        backgroundColor: "#f0f4f8",
-                        color: "#0D2240",
-                        fontFamily: "'Lato', sans-serif",
-                        fontWeight: 700,
-                        border: "1px solid #d1dde8",
-                        letterSpacing: "0.02em",
-                        textDecoration: "none",
-                      }}
-                    >
-                      {outlet.name}
-                    </a>
-                  ))}
-                </div>
-              </div>
             </div>
           </div>
 
@@ -1103,6 +1056,55 @@ function AboutSection() {
               </p>
             </div>
 
+            {/* Research Areas */}
+            <div className="mt-8 pt-6 border-t" style={{ borderColor: "#e5e7eb" }}>
+              <div className="section-label mb-3" style={{ color: "#4A7FA5" }}>Research Areas</div>
+              <div className="flex flex-wrap gap-2">
+                {["Drug Policy", "Transnational Organized Crime", "Global Drug Trends", "Money Laundering", "Law Enforcement", "Cyber & Online Drug Trafficking"].map((tag) => (
+                  <span
+                    key={tag}
+                    className="text-xs px-3 py-1"
+                    style={{
+                      backgroundColor: "#f0f4f8",
+                      color: "#0D2240",
+                      fontFamily: "'Lato', sans-serif",
+                      fontWeight: 700,
+                      border: "1px solid #d1dde8",
+                      letterSpacing: "0.02em",
+                    }}
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Featured In */}
+            <div className="mt-6 pt-6 border-t" style={{ borderColor: "#e5e7eb" }}>
+              <div className="section-label mb-3" style={{ color: "#4A7FA5" }}>Featured In</div>
+              <div className="flex flex-wrap gap-2">
+                {mediaOutlets.map((outlet) => (
+                  <a
+                    key={outlet.name}
+                    href={outlet.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs px-3 py-1 hover:opacity-70 transition-opacity"
+                    style={{
+                      backgroundColor: "#f0f4f8",
+                      color: "#0D2240",
+                      fontFamily: "'Lato', sans-serif",
+                      fontWeight: 700,
+                      border: "1px solid #d1dde8",
+                      letterSpacing: "0.02em",
+                      textDecoration: "none",
+                    }}
+                  >
+                    {outlet.name}
+                  </a>
+                ))}
+              </div>
+            </div>
 
           </div>
         </div>
@@ -1265,89 +1267,6 @@ function PublicationsSection() {
       dark={false}
       bgOverlay="#F8F9FA"
     >
-
-        {/* Featured Publications */}
-        <div className="mb-10">
-          <div
-            className="text-xs font-bold tracking-widest uppercase mb-4"
-            style={{ color: "#4A7FA5", fontFamily: "'Lato', sans-serif", letterSpacing: "0.15em" }}
-          >
-            Featured
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            {featuredPublications.map((pub, i) => (
-              <a
-                key={i}
-                href={pub.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group block reveal-on-scroll"
-                style={{ textDecoration: "none" }}
-              >
-                <div
-                  className="h-full flex flex-col p-6"
-                  style={{
-                    backgroundColor: "#0D2240",
-                    borderTop: "3px solid #4A7FA5",
-                    transition: "transform 0.2s, box-shadow 0.2s",
-                  }}
-                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.transform = "translateY(-3px)"; (e.currentTarget as HTMLElement).style.boxShadow = "0 8px 24px rgba(13,34,64,0.25)"; }}
-                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.transform = ""; (e.currentTarget as HTMLElement).style.boxShadow = ""; }}
-                >
-                  <div className="flex items-center justify-between mb-3">
-                    <span
-                      className="text-xs font-bold px-2 py-0.5"
-                      style={{ backgroundColor: "rgba(74,127,165,0.25)", color: "#7ab3d4", fontFamily: "'Lato', sans-serif", letterSpacing: "0.08em" }}
-                    >
-                      {pub.tag}
-                    </span>
-                    <span
-                      className="text-xs"
-                      style={{ color: "rgba(255,255,255,0.4)", fontFamily: "'Lato', sans-serif" }}
-                    >
-                      {pub.outlet} · {pub.year}
-                    </span>
-                  </div>
-                  <h3
-                    className="font-semibold leading-snug mb-3 group-hover:text-blue-300 transition-colors"
-                    style={{
-                      fontFamily: "'Libre Baskerville', serif",
-                      color: "#ffffff",
-                      fontSize: "0.95rem",
-                      lineHeight: 1.45,
-                    }}
-                  >
-                    {pub.title}
-                  </h3>
-                  <p
-                    className="text-xs leading-relaxed flex-1"
-                    style={{
-                      color: "rgba(255,255,255,0.5)",
-                      fontFamily: "'Lato', sans-serif",
-                      fontWeight: 300,
-                      lineHeight: 1.65,
-                    }}
-                  >
-                    {pub.summary}
-                  </p>
-                  <div className="mt-4 flex items-center gap-1" style={{ color: "#4A7FA5" }}>
-                    <span className="text-xs font-bold tracking-widest uppercase" style={{ fontFamily: "'Lato', sans-serif", fontSize: "0.6rem", letterSpacing: "0.15em" }}>Read</span>
-                    <ExternalLink size={10} />
-                  </div>
-                </div>
-              </a>
-            ))}
-          </div>
-        </div>
-
-        <div className="mb-6" style={{ borderTop: "1px solid #e5e7eb", paddingTop: "1.5rem" }}>
-          <div
-            className="text-xs font-bold tracking-widest uppercase mb-4"
-            style={{ color: "#4A7FA5", fontFamily: "'Lato', sans-serif", letterSpacing: "0.15em" }}
-          >
-            All Publications
-          </div>
-        </div>
 
         {/* Year filter */}
         <div className="flex flex-wrap gap-2 mb-6">

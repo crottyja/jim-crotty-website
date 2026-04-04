@@ -1129,65 +1129,6 @@ function AboutSection() {
               </p>
             </div>
 
-            {/* Career Timeline */}
-            <div className="mt-10 pt-8 border-t" style={{ borderColor: "#e5e7eb" }}>
-              <div className="section-label mb-6" style={{ color: "#4A7FA5" }}>Career Timeline</div>
-              <div className="relative">
-                {/* Vertical spine */}
-                <div
-                  className="absolute top-0 bottom-0"
-                  style={{ left: "7px", width: "2px", backgroundColor: "#d1dde8" }}
-                />
-                <div className="space-y-0">
-                  {[
-                    { year: "2024", role: "Law Enforcement Outreach Manager", org: "Meta Platforms", current: true },
-                    { year: "2024", role: "Adjunct Professor & Lecturer", org: "American University", current: true },
-                    { year: "2023", role: "Head, Investigative Support Section", org: "DC Metropolitan Police Dept." },
-                    { year: "2021", role: "Associate Vice President", org: "The Cohen Group" },
-                    { year: "2009", role: "Deputy Chief of Staff & Multiple Roles", org: "U.S. Drug Enforcement Administration" },
-                    { year: "Pre-2009", role: "Associate, National Security Practice", org: "PRTM Management Consultants" },
-                  ].map((item, i, arr) => (
-                    <div key={i} className="flex gap-5 relative" style={{ paddingBottom: i < arr.length - 1 ? "1.5rem" : 0 }}>
-                      {/* Dot */}
-                      <div className="flex-shrink-0 flex flex-col items-center" style={{ width: "16px", paddingTop: "3px" }}>
-                        <div
-                          className="rounded-full"
-                          style={{
-                            width: item.current ? "14px" : "10px",
-                            height: item.current ? "14px" : "10px",
-                            marginLeft: item.current ? "-2px" : "0",
-                            backgroundColor: item.current ? "#4A7FA5" : "#fff",
-                            border: `2px solid ${item.current ? "#4A7FA5" : "#9ab3c8"}`,
-                            boxShadow: item.current ? "0 0 0 3px rgba(74,127,165,0.15)" : "none",
-                          }}
-                        />
-                      </div>
-                      {/* Content */}
-                      <div style={{ paddingTop: "0px" }}>
-                        <div
-                          className="text-xs font-semibold tracking-wider uppercase mb-0.5"
-                          style={{ color: "#9ab3c8", fontFamily: "'Lato', sans-serif" }}
-                        >
-                          {item.year}{item.current ? " – Present" : ""}
-                        </div>
-                        <div
-                          className="font-semibold text-sm leading-snug"
-                          style={{ color: "#0D2240", fontFamily: "'Lato', sans-serif" }}
-                        >
-                          {item.role}
-                        </div>
-                        <div
-                          className="text-sm"
-                          style={{ color: "#4A7FA5", fontFamily: "'Lato', sans-serif", fontWeight: 400 }}
-                        >
-                          {item.org}
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
 
           </div>
         </div>

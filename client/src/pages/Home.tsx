@@ -11,8 +11,8 @@ import { Menu, X, ExternalLink, Linkedin, ChevronDown, ChevronUp, BookOpen, Brie
 const LOGO_DEA = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/logo_dea_v2_d7b06eb1.png";
 const LOGO_META = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/logo_meta_v2_d36d1aef.png";
 const LOGO_AU = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/logo_au_v2_078dd7ee.png";
-const LOGO_AUBURN = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/logo_auburn_5db8ae82.png";
-const LOGO_ALABAMA = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/logo_alabama_521ba06b.png";
+const LOGO_AUBURN = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/logo_auburn_sm_0abdbf10.png";
+const LOGO_ALABAMA = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/logo_alabama_sm_3210b25a.png";
 const LOGO_BC = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/logo_bc_v2_baa8226b.png";
 const LOGO_USF = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/logo_usf_v2_06cc32d8.png";
 const LOGO_UAF = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/logo_uaf_c8e61754.png";

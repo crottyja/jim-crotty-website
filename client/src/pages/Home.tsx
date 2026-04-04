@@ -8,6 +8,18 @@
 import React, { useEffect, useState } from "react";
 import { Menu, X, ExternalLink, Linkedin, ChevronDown, ChevronUp, BookOpen, Briefcase, Award, GraduationCap, Globe, Mail, Newspaper, Quote, ArrowUp, Users, Shield } from "lucide-react";
 
+const LOGO_DEA = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/logo_dea_9673f56e.png";
+const LOGO_META = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/logo_meta_8ac3ca5e.png";
+const LOGO_AU = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/logo_au_2d976c76.png";
+const LOGO_AUBURN = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/logo_auburn_5db8ae82.png";
+const LOGO_ALABAMA = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/logo_alabama_521ba06b.png";
+const LOGO_BC = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/logo_bc_e786d78c.png";
+const LOGO_USF = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/logo_usf_1c7b6488.png";
+const LOGO_UAF = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/logo_uaf_c8e61754.png";
+const LOGO_GITOC = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/logo_gitoc_9c8adfcc.png";
+const LOGO_C4ADS = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/logo_c4ads_0b95344d.png";
+const LOGO_SWJ = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/logo_swj_b0a61e87.png";
+
 const HERO_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/hero_bg-E39Xv3dAoLSLwUSSr7GHbD.webp";
 const MAP_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/map_bg-csabJgUBh7GraSoMYMWtE2.webp";
 const PROFILE_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/crottyheadshot2_b48bea55.webp";
@@ -1637,20 +1649,52 @@ function ContactSection() {
   );
 }
 
+const footerLogos = [
+  { src: LOGO_DEA,     alt: "DEA",                    h: 32 },
+  { src: LOGO_META,    alt: "Meta",                   h: 32 },
+  { src: LOGO_AU,      alt: "American University",    h: 32 },
+  { src: LOGO_AUBURN,  alt: "Auburn University",      h: 40 },
+  { src: LOGO_ALABAMA, alt: "University of Alabama",  h: 34 },
+  { src: LOGO_BC,      alt: "Boston College",         h: 24 },
+  { src: LOGO_USF,     alt: "University of South Florida", h: 36 },
+  { src: LOGO_UAF,     alt: "United Against Fentanyl", h: 32 },
+  { src: LOGO_GITOC,   alt: "GI-TOC",                h: 32 },
+  { src: LOGO_C4ADS,   alt: "C4ADS",                 h: 28 },
+  { src: LOGO_SWJ,     alt: "Small Wars Journal",     h: 28 },
+];
+
 function Footer() {
   return (
     <footer
-      className="py-8 border-t"
+      className="pt-8 pb-6 border-t"
       style={{ backgroundColor: "#0D2240", borderColor: "rgba(255,255,255,0.08)" }}
     >
+      {/* Logo bar */}
+      <div
+        className="container mb-6"
+        style={{ borderBottom: "1px solid rgba(74,127,165,0.2)", paddingBottom: "1.5rem" }}
+      >
+        <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
+          {footerLogos.map((logo) => (
+            <img
+              key={logo.alt}
+              src={logo.src}
+              alt={logo.alt}
+              style={{ height: logo.h, opacity: 0.72, filter: "brightness(1.1)" }}
+              className="object-contain transition-opacity duration-200 hover:opacity-100"
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* Copyright */}
       <div className="container flex flex-col md:flex-row items-center justify-between gap-4">
         <span
           className="text-sm"
-              style={{ color: "#ffffff", fontFamily: "'Lato', sans-serif", fontWeight: 300 }}
+          style={{ color: "rgba(255,255,255,0.55)", fontFamily: "'Lato', sans-serif", fontWeight: 300 }}
         >
           © {new Date().getFullYear()} Jim Crotty. All rights reserved.
         </span>
-
       </div>
     </footer>
   );

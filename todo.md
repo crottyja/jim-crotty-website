@@ -62,3 +62,4 @@
 - [x] Move Featured In below Research Areas in About section and match tag styles
 - [x] Normalize all light section backgrounds to consistent color
 - [x] Move PDF button below section tiles and make it smaller/more discrete
+- [x] Align headshot top with Jim Crotty name text in hero

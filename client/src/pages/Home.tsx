@@ -973,7 +973,7 @@ function HeroSection() {
           </div>{/* end left column */}
 
           {/* Right column: headshot */}
-          <div className="hidden lg:flex lg:w-72 xl:w-80 flex-shrink-0 justify-center items-start pt-20">
+          <div className="hidden lg:flex lg:w-72 xl:w-80 flex-shrink-0 justify-center items-start">
             <div className="relative">
               <img
                 src={PROFILE_IMG}

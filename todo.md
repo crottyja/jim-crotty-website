@@ -34,3 +34,9 @@
 - [x] Collapse all sections by default (not just on mobile)
 - [x] Remove LinkedIn logo/link from nav bar
 - [x] Change footer disclaimer text color to white
+
+## Hero & Contact Enhancements
+- [x] Move headshot from Profile section to hero section
+- [x] Add direct email jcrotty@american.edu to Contact section
+- [x] Add high-impact pull-quote to hero section
+- [x] Build downloadable PDF one-pager and place button in hero section

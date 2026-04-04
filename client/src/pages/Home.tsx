@@ -755,7 +755,10 @@ function HeroSection() {
 
 
       <div className="container relative z-10 pt-24 pb-8">
-        <div className="w-full">
+        <div className="w-full flex flex-col lg:flex-row gap-10 lg:gap-16 items-start">
+
+          {/* Left column: text content */}
+          <div className="flex-1 min-w-0">
           {/* Name */}
           <h1
             className="hero-name text-white mb-4 leading-none"
@@ -780,11 +783,49 @@ function HeroSection() {
 
           {/* Bio snippet */}
           <p
-            className="hero-bio text-white/60 mb-10 leading-relaxed max-w-2xl"
+            className="hero-bio text-white/60 mb-8 leading-relaxed"
             style={{ fontFamily: "'Lato', sans-serif", fontWeight: 300, fontSize: "1rem" }}
           >
             A global thought leader and subject matter expert in law enforcement, intelligence, transnational organized crime, and drug policy — with over 14 years in law enforcement, including a distinguished career at the U.S. Drug Enforcement Administration, and a record of public service, academic scholarship, and policy advocacy.
           </p>
+
+          {/* Pull-quote */}
+          <blockquote
+            className="mb-8 pl-4 border-l-2"
+            style={{ borderColor: "#4A7FA5" }}
+          >
+            <p
+              className="text-white/80 italic leading-relaxed"
+              style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.15rem", fontWeight: 400 }}
+            >
+              "The next generation of illicit drugs will not be grown in a field — they will be synthesized in a lab, shipped in an envelope, and delivered to your door."
+            </p>
+            <cite
+              className="block mt-2 text-xs not-italic tracking-widest uppercase"
+              style={{ color: "#4A7FA5", fontFamily: "'Lato', sans-serif" }}
+            >
+              — STAT News
+            </cite>
+          </blockquote>
+
+          {/* PDF Download button */}
+          <div className="mb-10">
+            <a
+              href="/api/download-cv"
+              download="Jim_Crotty_Profile.pdf"
+              className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold tracking-widest uppercase transition-all duration-200 hover:-translate-y-0.5"
+              style={{
+                backgroundColor: "rgba(74,127,165,0.15)",
+                border: "1px solid rgba(74,127,165,0.5)",
+                color: "#ffffff",
+                fontFamily: "'Lato', sans-serif",
+                letterSpacing: "0.1em",
+              }}
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Download Profile PDF
+            </a>
+          </div>
 
           {/* Section navigation tiles */}
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 mb-10">
@@ -824,9 +865,29 @@ function HeroSection() {
                 </div>
               </a>
             ))}
+          </div>{/* end tiles grid */}
+          </div>{/* end left column */}
+
+          {/* Right column: headshot */}
+          <div className="hidden lg:flex lg:w-72 xl:w-80 flex-shrink-0 justify-center items-start pt-2">
+            <div className="relative">
+              <img
+                src={PROFILE_IMG}
+                alt="Jim Crotty"
+                className="w-64 xl:w-72 object-cover"
+                style={{
+                  filter: "grayscale(15%)",
+                  boxShadow: "8px 8px 0 rgba(74,127,165,0.4)",
+                }}
+              />
+              <div
+                className="absolute inset-0 pointer-events-none"
+                style={{ border: "1px solid rgba(74,127,165,0.3)" }}
+              />
+            </div>
           </div>
 
-        </div>
+        </div>{/* end flex row */}
 
       </div>
 
@@ -1385,8 +1446,15 @@ function ContactSection() {
     {
       icon: <Mail size={22} style={{ color: '#4A7FA5' }} />,
       label: "Email",
-      description: "Reach Jim directly for media, speaking, or collaboration inquiries.",
+      description: "For media, speaking, or general inquiries.",
       href: "mailto:jamesmcrotty@hotmail.com",
+      cta: "Send Email",
+    },
+    {
+      icon: <GraduationCap size={22} style={{ color: '#4A7FA5' }} />,
+      label: "Academic Email",
+      description: "For academic collaboration, research, or university inquiries.",
+      href: "mailto:jcrotty@american.edu",
       cta: "Send Email",
     },
   ];
@@ -1401,8 +1469,8 @@ function ContactSection() {
         <p className="mb-8 leading-relaxed" style={{ color: '#6b7280', fontFamily: "'Lato', sans-serif", fontWeight: 300, fontSize: '1.05rem' }}>
           For media inquiries, speaking engagements, academic collaboration, or general questions, reach out directly via LinkedIn or email.
         </p>
-        <div className="max-w-3xl">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div className="max-w-4xl">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {contactLinks.map((link) => (
               <a
                 key={link.label}

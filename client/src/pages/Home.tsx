@@ -223,7 +223,7 @@ const career = [
   },
   {
     period: "2024 – Present",
-    role: "Adjunct Professor / Lecturer",
+    role: "Adjunct Professor & Lecturer",
     org: "American University, School of Public Affairs",
     location: "Washington, D.C.",
     description: "Teaches JLC-451: Drugs, Crime & Public Policy and JLC-313: Organized Crime in the Department of Justice, Law & Criminology.",
@@ -1090,7 +1090,6 @@ function AboutSection() {
 
           {/* Right: Bio text */}
           <div className="lg:col-span-8 reveal-on-scroll" style={{ transitionDelay: "0.15s" }}>
-            <div className="section-label mb-4" style={{ color: "#4A7FA5" }}>01 / Profile</div>
             <h2
               className="mb-8"
               style={{
@@ -1251,7 +1250,7 @@ function PublicationsSection() {
       label="03 / Publications"
       title="Opinion and Analysis"
       dark={false}
-      bgOverlay="rgba(245,247,250,0.95)"
+      bgOverlay="#F8F9FA"
     >
 
         {/* Year filter */}
@@ -1594,7 +1593,7 @@ function ContactSection() {
           For media inquiries, speaking engagements, academic collaboration, or general questions, reach out directly via LinkedIn or email.
         </p>
         <div className="max-w-4xl">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {contactLinks.map((link) => (
               <a
                 key={link.label}

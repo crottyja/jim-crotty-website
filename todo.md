@@ -63,3 +63,4 @@
 - [x] Normalize all light section backgrounds to consistent color
 - [x] Move PDF button below section tiles and make it smaller/more discrete
 - [x] Align headshot top with Jim Crotty name text in hero
+- [x] Final pre-publication audit: colors, fonts, copy, links

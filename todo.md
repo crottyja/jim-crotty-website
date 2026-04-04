@@ -41,3 +41,4 @@
 - [x] Add high-impact pull-quote to hero section
 - [x] Build downloadable PDF one-pager and place button in hero section
 - [x] Add new SWJ publication: "Could Mexican Cartels Be Incentivized to Sell 'Safer' Drugs?" (2026)
+- [x] Update hero pull-quote to opioid crisis red/blue state quote

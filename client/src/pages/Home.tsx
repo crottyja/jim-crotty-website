@@ -807,7 +807,7 @@ function HeroSection() {
               className="block mt-2 text-xs not-italic tracking-widest uppercase"
               style={{ color: "#4A7FA5", fontFamily: "'Lato', sans-serif" }}
             >
-              — STAT News
+              — Jim Crotty, AL.com
             </cite>
           </blockquote>
 

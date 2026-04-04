@@ -189,10 +189,27 @@ const publications = [
 ];
 
 const mediaOutlets = [
-  "Wall Street Journal", "Washington Post", "Associated Press", "The Guardian",
-  "Newsweek", "The Hill", "STAT News", "Lawfare", "The Diplomat", "Undark Magazine",
-  "Tampa Bay Times", "Orlando Sentinel", "Dallas Morning News", "Washington Times",
-  "Washington Examiner", "The Spectator World", "We Are The Mighty", "Fox News", "AL.com"
+  { name: "Wall Street Journal", url: "https://www.wsj.com" },
+  { name: "Washington Post", url: "https://www.washingtonpost.com" },
+  { name: "Associated Press", url: "https://apnews.com" },
+  { name: "The Guardian", url: "https://www.theguardian.com" },
+  { name: "Newsweek", url: "https://www.newsweek.com" },
+  { name: "The Hill", url: "https://thehill.com" },
+  { name: "STAT News", url: "https://www.statnews.com" },
+  { name: "Lawfare", url: "https://www.lawfaremedia.org" },
+  { name: "The Diplomat", url: "https://thediplomat.com" },
+  { name: "Undark Magazine", url: "https://undark.org" },
+  { name: "Tampa Bay Times", url: "https://www.tampabay.com" },
+  { name: "Orlando Sentinel", url: "https://www.orlandosentinel.com" },
+  { name: "Dallas Morning News", url: "https://www.dallasnews.com" },
+  { name: "Washington Times", url: "https://www.washingtontimes.com" },
+  { name: "Washington Examiner", url: "https://www.washingtonexaminer.com" },
+  { name: "The Spectator World", url: "https://spectator.com" },
+  { name: "We Are The Mighty", url: "https://www.wearethemighty.com" },
+  { name: "Fox News", url: "https://www.foxnews.com" },
+  { name: "AL.com", url: "https://www.al.com" },
+  { name: "The Baltimore Banner", url: "https://www.thebanner.com" },
+  { name: "Atlanta Journal-Constitution", url: "https://www.ajc.com" },
 ];
 
 const career = [
@@ -247,6 +264,30 @@ const career = [
 ];
 
 const newsItems = [
+  {
+    outlet: "The Baltimore Banner",
+    outletShort: "Banner",
+    logo: "BB",
+    color: "#1a1a1a",
+    date: "March 18, 2025",
+    title: "Maryland jails and prisons can't keep track of their pills. Now the DEA is cracking down.",
+    quote: "It's sort of a tragic story, really, to see that despite years of this opioid crisis, we still have such a long way to go, particularly in carceral settings.",
+    context: "Crotty called the DEA's accountability audits of the Baltimore jail and Maryland women's prison a damning indictment of 'woefully inadequate' record-keeping, warning that the failures had life-or-death implications for incarcerated people relying on methadone treatment.",
+    author: "Ben Conarck",
+    url: "https://www.thebanner.com/community/criminal-justice/baltimore-jail-missing-methadone-pills-NM4EYDJMBJGJZKGEDYRY45ZRI4/",
+  },
+  {
+    outlet: "The Guardian",
+    outletShort: "Guardian",
+    logo: "G",
+    color: "#052962",
+    date: "October 6, 2024",
+    title: "Some vapes claiming to be cannabis contain 'synthetic cannabinoid' – study",
+    quote: "These products could be appealing to vulnerable populations with limited income like youth and unhoused people, who might find legal dispensary products unaffordable.",
+    context: "Crotty explained why illicit synthetic cannabinoid vapes are flooding the unregulated hemp market, noting that manufacturers can produce them cheaply from powders ordered online — making them especially dangerous for price-sensitive users who may not know what they are consuming.",
+    author: "Hannah Harris Green",
+    url: "https://www.theguardian.com/uk-news/2024/oct/06/cannabis-vapes-synthetic-cannabinoid-illegal",
+  },
   {
     outlet: "Washington Post",
     outletShort: "WaPo",
@@ -1006,13 +1047,16 @@ function AboutSection() {
               <div className="section-label mb-4" style={{ color: "#4A7FA5" }}>Featured In</div>
               <div className="flex flex-wrap gap-x-6 gap-y-2">
                 {mediaOutlets.map((outlet) => (
-                  <span
-                    key={outlet}
-                    className="text-sm font-bold"
+                  <a
+                    key={outlet.name}
+                    href={outlet.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm font-bold hover:underline transition-opacity hover:opacity-70"
                     style={{ color: "#4A7FA5", fontFamily: "'Lato', sans-serif", letterSpacing: "0.02em" }}
                   >
-                    {outlet}
-                  </span>
+                    {outlet.name}
+                  </a>
                 ))}
               </div>
             </div>
@@ -1137,7 +1181,10 @@ function BackToTop() {
 
 function PublicationsSection() {
   const [showAll, setShowAll] = useState(false);
-  const displayed = showAll ? publications : publications.slice(0, 8);
+  const [yearFilter, setYearFilter] = useState<string>("All");
+  const years = ["All", ...Array.from(new Set(publications.map((p) => p.year))).sort((a, b) => Number(b) - Number(a))];
+  const filtered = yearFilter === "All" ? publications : publications.filter((p) => p.year === yearFilter);
+  const displayed = showAll ? filtered : filtered.slice(0, 8);
 
   return (
     <SectionWrapper
@@ -1147,6 +1194,27 @@ function PublicationsSection() {
       dark={false}
       bgOverlay="rgba(245,247,250,0.95)"
     >
+
+        {/* Year filter */}
+        <div className="flex flex-wrap gap-2 mb-6">
+          {years.map((y) => (
+            <button
+              key={y}
+              onClick={() => { setYearFilter(y); setShowAll(false); }}
+              className="px-3 py-1 text-xs font-bold tracking-widest uppercase transition-all duration-150"
+              style={{
+                fontFamily: "'Lato', sans-serif",
+                letterSpacing: "0.1em",
+                backgroundColor: yearFilter === y ? "#0D2240" : "transparent",
+                color: yearFilter === y ? "white" : "#4A7FA5",
+                border: "1px solid",
+                borderColor: yearFilter === y ? "#0D2240" : "#4A7FA5",
+              }}
+            >
+              {y}
+            </button>
+          ))}
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {displayed.map((pub, i) => (
@@ -1219,7 +1287,7 @@ function PublicationsSection() {
           ))}
         </div>
 
-        {!showAll && publications.length > 8 && (
+        {!showAll && filtered.length > 8 && (
           <div className="mt-8 text-center">
             <button
               onClick={() => setShowAll(true)}

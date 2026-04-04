@@ -50,3 +50,8 @@
 - [x] Fix Fox News broadcast thumbnail and link (currently shows Scripps News thumbnail)
 - [x] Remove email contact option from Contact section
 - [x] Audit and update PDF profile to match current website content
+- [x] Add year filter to Publications section
+- [ ] Find and add recent news quotes to In the News section
+- [x] Add clickable links to hero section publication names
+- [x] Add year filter to Publications section
+- [x] Add new In the News quotes (Guardian Oct 2024, Baltimore Banner Mar 2025, STAT News May 2025)

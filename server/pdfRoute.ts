@@ -288,10 +288,83 @@ router.get("/api/download-cv", (_req, res) => {
 
   curY += 4;
 
+  // ─── Selected Media Quotes ────────────────────────────────────────
+  sectionHeader("Selected Media Quotes");
+
+  const mediaQuotes = [
+    {
+      outlet: "The Baltimore Banner",
+      date: "March 18, 2025",
+      quote: "It's sort of a tragic story, really, to see that despite years of this opioid crisis, we still have such a long way to go, particularly in carceral settings.",
+      context: "On the DEA's accountability audits of the Baltimore jail and Maryland women's prison over missing methadone pills.",
+    },
+    {
+      outlet: "The Guardian",
+      date: "October 6, 2024",
+      quote: "These products could be appealing to vulnerable populations with limited income like youth and unhoused people, who might find legal dispensary products unaffordable.",
+      context: "On illicit synthetic cannabinoid vapes flooding the unregulated hemp market.",
+    },
+    {
+      outlet: "STAT News",
+      date: "May 7, 2025",
+      quote: "When you use hyperbole, you can actually lose the audience and the message.",
+      context: "Pushing back on AG Pam Bondi's claim that drug busts saved 258 million lives.",
+    },
+    {
+      outlet: "The Guardian",
+      date: "March 8, 2025",
+      quote: "I don't think now is the time that we want to stop any of those existing efforts because we know that at least some, or a combination of them, have been working.",
+      context: "On Trump tariffs potentially disrupting anti-drug cooperation with Mexico, Canada, and China.",
+    },
+    {
+      outlet: "Wall Street Journal",
+      date: "August 30, 2022",
+      quote: "If it were an athlete, people would call it 'The G.O.A.T.' It is in fact the most pernicious, the most devastating drug that we have ever seen.",
+      context: "On fentanyl and the Sinaloa and Jalisco cartels' dominance of the U.S. drug supply.",
+    },
+    {
+      outlet: "Washington Post",
+      date: "August 20, 2022",
+      quote: "As we've seen before in Colombia and elsewhere, there's always someone to fill that vacuum.",
+      context: "On Colombia's proposal to decriminalize cocaine production.",
+    },
+  ];
+
+  for (const mq of mediaQuotes) {
+    // Outlet + date line
+    doc
+      .fillColor(NAVY)
+      .font("Helvetica-Bold")
+      .fontSize(8)
+      .text(`${mq.outlet}  `, 60, curY, { continued: true, width: W });
+    doc
+      .fillColor(GRAY)
+      .font("Helvetica")
+      .fontSize(7.5)
+      .text(mq.date);
+    curY = doc.y + 1;
+    // Pull quote
+    doc
+      .fillColor(NAVY)
+      .font("Helvetica-Oblique")
+      .fontSize(8.5)
+      .text(`"${mq.quote}"`, 66, curY, { width: W - 6 });
+    curY = doc.y + 1;
+    // Context
+    doc
+      .fillColor(GRAY)
+      .font("Helvetica")
+      .fontSize(7.5)
+      .text(mq.context, 66, curY, { width: W - 6 });
+    curY = doc.y + 5;
+  }
+
+  curY += 2;
+
   // ─── Featured In ─────────────────────────────────────────────────
-  sectionHeader("Media Coverage & Featured In");
+  sectionHeader("Featured In");
   bodyText(
-    "Wall Street Journal  ·  Washington Post  ·  Associated Press  ·  The Guardian  ·  Newsweek  ·  The Hill  ·  STAT News  ·  Lawfare  ·  The Diplomat  ·  Undark Magazine  ·  Tampa Bay Times  ·  Orlando Sentinel  ·  Dallas Morning News  ·  Washington Times  ·  Washington Examiner  ·  The Spectator World  ·  We Are The Mighty  ·  Fox News  ·  AL.com"
+    "Wall Street Journal  ·  Washington Post  ·  Associated Press  ·  The Guardian  ·  Newsweek  ·  The Hill  ·  STAT News  ·  Lawfare  ·  The Diplomat  ·  Undark Magazine  ·  Tampa Bay Times  ·  Orlando Sentinel  ·  Dallas Morning News  ·  Washington Times  ·  Washington Examiner  ·  The Spectator World  ·  We Are The Mighty  ·  Fox News  ·  AL.com  ·  The Baltimore Banner  ·  Atlanta Journal-Constitution"
   );
 
   doc.end();

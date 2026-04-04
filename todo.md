@@ -56,3 +56,4 @@
 - [x] Add year filter to Publications section
 - [x] Add new In the News quotes (Guardian Oct 2024, Baltimore Banner Mar 2025, STAT News May 2025)
 - [x] Nav links auto-scroll to and open the target section
+- [x] Add Guardian Oct 2024 and Baltimore Banner Mar 2025 quotes to PDF profile

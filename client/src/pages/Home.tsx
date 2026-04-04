@@ -801,7 +801,7 @@ function HeroSection() {
               className="text-white/80 italic leading-relaxed"
               style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.15rem", fontWeight: 400 }}
             >
-              "The next generation of illicit drugs will not be grown in a field — they will be synthesized in a lab, shipped in an envelope, and delivered to your door."
+              "The opioid crisis is not a red or blue state issue — it’s an American issue."
             </p>
             <cite
               className="block mt-2 text-xs not-italic tracking-widest uppercase"

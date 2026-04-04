@@ -667,7 +667,6 @@ function StatBar() {
     { value: "35+", label: "Publications & Op-Eds" },
     { value: "6", label: "Fellowships & Networks" },
     { value: "19+", label: "Media Outlets" },
-    { value: "3", label: "Advanced Degrees" },
     { value: "30+", label: "Countries Served" },
   ];
   return (
@@ -679,40 +678,22 @@ function StatBar() {
       }}
     >
       <div className="container">
-        <div className="grid grid-cols-3 md:grid-cols-6">
+        <p
+          className="text-center py-3 flex flex-wrap items-center justify-center gap-x-0"
+          style={{ fontFamily: "'Lato', sans-serif", fontWeight: 300, letterSpacing: "0.02em", fontSize: "0.85rem", color: "rgba(255,255,255,0.7)" }}
+        >
           {stats.map((s, i) => (
-            <div
-              key={s.label}
-              className="flex flex-col items-center justify-center py-5 px-3 text-center"
-              style={{
-                borderRight: i < 5 ? "1px solid rgba(255,255,255,0.08)" : "none",
-              }}
-            >
-              <span
-                style={{
-                  fontFamily: "'Cormorant Garamond', serif",
-                  fontSize: "clamp(1.5rem, 2.5vw, 2rem)",
-                  fontWeight: 600,
-                  color: "#ffffff",
-                  lineHeight: 1,
-                }}
-              >
-                {s.value}
+            <React.Fragment key={s.label}>
+              <span>
+                <span style={{ fontWeight: 600, color: "#ffffff" }}>{s.value}</span>
+                {" "}{s.label}
               </span>
-              <span
-                className="mt-1.5 uppercase tracking-widest"
-                style={{
-                  fontFamily: "'Lato', sans-serif",
-                  fontSize: "0.5rem",
-                  color: "rgba(255,255,255,0.45)",
-                  letterSpacing: "0.13em",
-                }}
-              >
-                {s.label}
-              </span>
-            </div>
+              {i < stats.length - 1 && (
+                <span style={{ color: "rgba(255,255,255,0.35)", margin: "0 0.6em" }}>&nbsp;·&nbsp;</span>
+              )}
+            </React.Fragment>
           ))}
-        </div>
+        </p>
       </div>
     </div>
   );

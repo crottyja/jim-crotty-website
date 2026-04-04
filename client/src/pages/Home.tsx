@@ -8,14 +8,14 @@
 import React, { useEffect, useState } from "react";
 import { Menu, X, ExternalLink, Linkedin, ChevronDown, ChevronUp, BookOpen, Briefcase, Award, GraduationCap, Globe, Mail, Newspaper, Quote, ArrowUp, Users, Shield } from "lucide-react";
 
-const LOGO_DEA = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/logo_dea_v2_d7b06eb1.png";
+const LOGO_DEA = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/logo_dea_sm_9adb416c.png";
 const LOGO_META = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/logo_meta_v2_d36d1aef.png";
-const LOGO_AU = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/logo_au_v2_078dd7ee.png";
-const LOGO_AUBURN = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/logo_auburn_sm_0abdbf10.png";
+const LOGO_AU = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/logo_au_sm_3af77265.png";
+const LOGO_AUBURN = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/logo_auburn_sm_393be940.png";
 const LOGO_ALABAMA = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/logo_alabama_sm_3210b25a.png";
 const LOGO_BC = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/logo_bc_v2_baa8226b.png";
 const LOGO_USF = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/logo_usf_v2_06cc32d8.png";
-const LOGO_UAF = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/logo_uaf_c8e61754.png";
+const LOGO_UAF = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/logo_uaf_sm_0aad8988.png";
 const LOGO_GITOC = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/logo_gitoc_9c8adfcc.png";
 const LOGO_C4ADS = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/logo_c4ads_0b95344d.png";
 const LOGO_SWJ = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/logo_swj_b0a61e87.png";

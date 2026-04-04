@@ -381,4 +381,15 @@
   .mobile-nav-drawer.open {
     transform: translateX(0);
   }
+
+  /* Contact form focus states */
+  #contact input:focus,
+  #contact select:focus,
+  #contact textarea:focus {
+    border-color: rgba(13,34,64,0.18) !important;
+    border-bottom-color: #4A7FA5 !important;
+    box-shadow: 0 2px 0 0 #4A7FA5;
+    background-color: #fafcff !important;
+    outline: none;
+  }
 }

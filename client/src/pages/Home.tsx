@@ -443,6 +443,8 @@ function SectionWrapper({
   const titleColor = dark ? "#ffffff" : "#0D2240";
   const borderColor = dark ? "rgba(255,255,255,0.1)" : "rgba(13,34,64,0.1)";
   const chevronColor = dark ? "rgba(255,255,255,0.5)" : "#4A7FA5";
+  // Subtle tint on the header area for collapsed sections to add visual rhythm
+  const headerBg = !open ? (dark ? "rgba(255,255,255,0.02)" : "rgba(13,34,64,0.03)") : "transparent";
 
   return (
     <section
@@ -460,7 +462,14 @@ function SectionWrapper({
         <button
           onClick={() => setOpen((o) => !o)}
           className="w-full flex items-center justify-between py-8 group text-left"
-          style={{ borderBottom: open ? `1px solid ${borderColor}` : "none" }}
+          style={{
+            borderBottom: `1px solid ${borderColor}`,
+            background: headerBg,
+            marginLeft: "-1rem",
+            marginRight: "-1rem",
+            paddingLeft: "1rem",
+            paddingRight: "1rem",
+          }}
           aria-expanded={open}
         >
           <div className="pl-4" style={{ borderLeft: "3px solid #C9A84C" }}>
@@ -993,19 +1002,14 @@ function HeroSection() {
 
           {/* Right column: headshot */}
           <div className="hidden lg:flex lg:w-72 xl:w-80 flex-shrink-0 justify-center items-start" style={{ paddingTop: "3.5rem" }}>
-            <div className="relative">
+            <div className="relative" style={{ padding: "6px", border: "1px solid #C9A84C", boxShadow: "0 0 24px rgba(201,168,76,0.15), 8px 8px 0 rgba(74,127,165,0.3)" }}>
               <img
                 src={PROFILE_IMG}
                 alt="Jim Crotty"
-                className="w-64 xl:w-72 object-cover"
+                className="w-64 xl:w-72 object-cover block"
                 style={{
                   filter: "grayscale(15%)",
-                  boxShadow: "8px 8px 0 rgba(74,127,165,0.4)",
                 }}
-              />
-              <div
-                className="absolute inset-0 pointer-events-none"
-                style={{ border: "1px solid rgba(74,127,165,0.3)" }}
               />
             </div>
           </div>
@@ -1122,15 +1126,17 @@ function AboutSection() {
                     href={outlet.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-xs px-3 py-1 hover:opacity-70 transition-opacity"
+                    className="text-xs hover:opacity-80 transition-all"
                     style={{
                       backgroundColor: "#f0f4f8",
                       color: "#0D2240",
                       fontFamily: "'Lato', sans-serif",
                       fontWeight: 700,
                       border: "1px solid #d1dde8",
+                      borderLeft: "3px solid #4A7FA5",
                       letterSpacing: "0.02em",
                       textDecoration: "none",
+                      padding: "4px 12px 4px 10px",
                     }}
                   >
                     {outlet.name}
@@ -1159,8 +1165,8 @@ function CareerSection() {
           <div className="relative">
             {/* Vertical line */}
             <div
-              className="absolute left-0 top-0 bottom-0 w-px hidden md:block"
-              style={{ backgroundColor: "rgba(74,127,165,0.3)", left: "140px" }}
+              className="absolute left-0 top-0 bottom-0 hidden md:block"
+              style={{ width: "2px", background: "linear-gradient(to bottom, rgba(201,168,76,0.6), rgba(201,168,76,0.15))", left: "140px" }}
             />
 
             <div className="space-y-10">
@@ -1186,11 +1192,18 @@ function CareerSection() {
                   {/* Dot */}
                   <div
                     className="hidden md:flex flex-shrink-0 items-start justify-center"
-                    style={{ width: "20px", marginTop: "4px" }}
+                    style={{ width: "20px", marginTop: "6px" }}
                   >
                     <div
-                      className="w-3 h-3 rounded-full border-2"
-                      style={{ backgroundColor: "#0D2240", borderColor: "#4A7FA5" }}
+                      className="rounded-full"
+                      style={{
+                        width: "12px",
+                        height: "12px",
+                        backgroundColor: "#4A7FA5",
+                        border: "2px solid #C9A84C",
+                        boxShadow: "0 0 8px rgba(74,127,165,0.6)",
+                        flexShrink: 0,
+                      }}
                     />
                   </div>
 
@@ -1658,8 +1671,10 @@ function ContactSection() {
     color: "#0D2240",
     backgroundColor: "#ffffff",
     border: "1px solid rgba(13,34,64,0.18)",
+    borderBottom: "2px solid rgba(13,34,64,0.18)",
     borderRadius: 0,
     outline: "none",
+    transition: "border-color 0.2s ease, box-shadow 0.2s ease",
   };
 
   return (

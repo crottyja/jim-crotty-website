@@ -1129,6 +1129,65 @@ function AboutSection() {
               </p>
             </div>
 
+            {/* Career Timeline */}
+            <div className="mt-10 pt-8 border-t" style={{ borderColor: "#e5e7eb" }}>
+              <div className="section-label mb-6" style={{ color: "#4A7FA5" }}>Career Timeline</div>
+              <div className="relative">
+                {/* Vertical spine */}
+                <div
+                  className="absolute top-0 bottom-0"
+                  style={{ left: "7px", width: "2px", backgroundColor: "#d1dde8" }}
+                />
+                <div className="space-y-0">
+                  {[
+                    { year: "2024", role: "Law Enforcement Outreach Manager", org: "Meta Platforms", current: true },
+                    { year: "2024", role: "Adjunct Professor & Lecturer", org: "American University", current: true },
+                    { year: "2023", role: "Head, Investigative Support Section", org: "DC Metropolitan Police Dept." },
+                    { year: "2021", role: "Associate Vice President", org: "The Cohen Group" },
+                    { year: "2009", role: "Deputy Chief of Staff & Multiple Roles", org: "U.S. Drug Enforcement Administration" },
+                    { year: "Pre-2009", role: "Associate, National Security Practice", org: "PRTM Management Consultants" },
+                  ].map((item, i, arr) => (
+                    <div key={i} className="flex gap-5 relative" style={{ paddingBottom: i < arr.length - 1 ? "1.5rem" : 0 }}>
+                      {/* Dot */}
+                      <div className="flex-shrink-0 flex flex-col items-center" style={{ width: "16px", paddingTop: "3px" }}>
+                        <div
+                          className="rounded-full"
+                          style={{
+                            width: item.current ? "14px" : "10px",
+                            height: item.current ? "14px" : "10px",
+                            marginLeft: item.current ? "-2px" : "0",
+                            backgroundColor: item.current ? "#4A7FA5" : "#fff",
+                            border: `2px solid ${item.current ? "#4A7FA5" : "#9ab3c8"}`,
+                            boxShadow: item.current ? "0 0 0 3px rgba(74,127,165,0.15)" : "none",
+                          }}
+                        />
+                      </div>
+                      {/* Content */}
+                      <div style={{ paddingTop: "0px" }}>
+                        <div
+                          className="text-xs font-semibold tracking-wider uppercase mb-0.5"
+                          style={{ color: "#9ab3c8", fontFamily: "'Lato', sans-serif" }}
+                        >
+                          {item.year}{item.current ? " – Present" : ""}
+                        </div>
+                        <div
+                          className="font-semibold text-sm leading-snug"
+                          style={{ color: "#0D2240", fontFamily: "'Lato', sans-serif" }}
+                        >
+                          {item.role}
+                        </div>
+                        <div
+                          className="text-sm"
+                          style={{ color: "#4A7FA5", fontFamily: "'Lato', sans-serif", fontWeight: 400 }}
+                        >
+                          {item.org}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
 
           </div>
         </div>
@@ -1649,42 +1708,12 @@ function ContactSection() {
   );
 }
 
-const footerLogos = [
-  { src: LOGO_DEA,     alt: "DEA",                         h: 52 },
-  { src: LOGO_META,    alt: "Meta",                        h: 36 },
-  { src: LOGO_AU,      alt: "American University",         h: 52 },
-  { src: LOGO_AUBURN,  alt: "Auburn University",           h: 44 },
-  { src: LOGO_ALABAMA, alt: "University of Alabama",       h: 40 },
-  { src: LOGO_BC,      alt: "Boston College",              h: 52 },
-  { src: LOGO_USF,     alt: "University of South Florida", h: 52 },
-  { src: LOGO_UAF,     alt: "United Against Fentanyl",     h: 40 },
-];
-
 function Footer() {
   return (
     <footer
       className="pt-8 pb-6 border-t"
       style={{ backgroundColor: "#0D2240", borderColor: "rgba(255,255,255,0.08)" }}
     >
-      {/* Logo bar */}
-      <div
-        className="container mb-6"
-        style={{ borderBottom: "1px solid rgba(74,127,165,0.2)", paddingBottom: "1.5rem" }}
-      >
-        <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
-          {footerLogos.map((logo) => (
-            <img
-              key={logo.alt}
-              src={logo.src}
-              alt={logo.alt}
-              style={{ height: logo.h, opacity: 0.72, filter: "brightness(1.1)" }}
-              className="object-contain transition-opacity duration-200 hover:opacity-100"
-            />
-          ))}
-        </div>
-      </div>
-
-      {/* Copyright */}
       <div className="container flex flex-col md:flex-row items-center justify-between gap-4">
         <span
           className="text-sm"

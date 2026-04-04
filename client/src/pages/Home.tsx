@@ -953,31 +953,7 @@ function HeroSection() {
             ))}
           </div>{/* end tiles grid */}
 
-          {/* Stats line */}
-          <p
-            className="mb-5 flex flex-wrap items-center gap-x-0"
-            style={{ fontFamily: "'Lato', sans-serif", fontWeight: 300, letterSpacing: "0.02em", fontSize: "0.8rem", color: "rgba(255,255,255,0.6)" }}
-          >
-            {[
-              { value: "14+", label: "Years in Law Enforcement" },
-              { value: "35+", label: "Publications & Op-Eds" },
-              { value: "6", label: "Fellowships & Networks" },
-              { value: "19+", label: "Media Outlets" },
-              { value: "30+", label: "Countries Served" },
-            ].map((s, i, arr) => (
-              <React.Fragment key={s.label}>
-                <span>
-                  <span style={{ fontWeight: 600, color: "#ffffff" }}>{s.value}</span>
-                  {" "}{s.label}
-                </span>
-                {i < arr.length - 1 && (
-                  <span style={{ color: "rgba(255,255,255,0.3)", margin: "0 0.55em" }}>&nbsp;·&nbsp;</span>
-                )}
-              </React.Fragment>
-            ))}
-          </p>
-
-          {/* PDF Download button — discrete, below stats */}
+          {/* PDF Download button — discrete, below tiles */}
           <div className="mt-1 mb-6">
             <a
               href="/api/download-cv"

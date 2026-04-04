@@ -49,3 +49,4 @@
 - [x] Move hero headshot down to align with left-column text
 - [x] Fix Fox News broadcast thumbnail and link (currently shows Scripps News thumbnail)
 - [x] Remove email contact option from Contact section
+- [x] Audit and update PDF profile to match current website content

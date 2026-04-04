@@ -25,13 +25,12 @@ router.get("/api/download-cv", (_req, res) => {
   // ─── Color palette ───────────────────────────────────────────────
   const NAVY = "#0D2240";
   const STEEL = "#4A7FA5";
-  const GOLD = "#C8860A";
   const GRAY = "#6b7280";
 
   const W = doc.page.width - 120; // usable width
 
   // ─── Header band ─────────────────────────────────────────────────
-  doc.rect(0, 0, doc.page.width, 118).fill(NAVY);
+  doc.rect(0, 0, doc.page.width, 128).fill(NAVY);
 
   // Name
   doc
@@ -40,38 +39,34 @@ router.get("/api/download-cv", (_req, res) => {
     .fontSize(28)
     .text("Jim Crotty", 60, 22);
 
-  // Title line
+  // Title line — matches hero subtitle exactly
   doc
     .fillColor(STEEL)
     .font("Helvetica")
-    .fontSize(9.5)
+    .fontSize(9)
     .text(
-      "Law Enforcement Outreach Manager, Meta Platforms  ·  Former DEA Deputy Chief of Staff  ·  Adjunct Professor, American University",
+      "Law Enforcement Outreach Manager, Meta Platforms  ·  Former DEA Deputy Chief of Staff  ·  Adjunct Professor, American University  ·  Advisory Board Member  ·  Senior Fellow",
       60,
       60,
       { width: W }
     );
 
-  // Contact line with unicode icon substitutes (PDFKit doesn't support SVG icons,
-  // so we use clean text symbols that render well in PDF)
-  const contactY = 84;
+  // Contact line — academic email + LinkedIn + website (personal email removed)
+  const contactY = 100;
   const iconColor = "rgba(255,255,255,0.70)";
   const linkColor = "rgba(255,255,255,0.55)";
 
-  // Email icon (envelope symbol) + address
   doc.fillColor(iconColor).font("Helvetica-Bold").fontSize(8).text("✉", 60, contactY, { continued: true });
-  doc.fillColor(linkColor).font("Helvetica").fontSize(8).text("  jamesmcrotty@hotmail.com  ·  jcrotty@american.edu", 60, contactY, { continued: true });
+  doc.fillColor(linkColor).font("Helvetica").fontSize(8).text("  jcrotty@american.edu", { continued: true });
 
-  // LinkedIn icon (in symbol) + URL
   doc.fillColor(iconColor).font("Helvetica-Bold").text("   in", { continued: true });
   doc.fillColor(linkColor).font("Helvetica").text("  linkedin.com/in/jamesmcrotty", { continued: true });
 
-  // Website icon (globe symbol) + URL
   doc.fillColor(iconColor).font("Helvetica-Bold").text("   ⊕", { continued: true });
   doc.fillColor(linkColor).font("Helvetica").text("  jcrotty.com");
 
   // ─── Pull-quote ───────────────────────────────────────────────────
-  const qY = 134;
+  const qY = 144;
   doc.rect(60, qY, 3, 30).fill(STEEL);
   doc
     .fillColor(NAVY)
@@ -90,7 +85,7 @@ router.get("/api/download-cv", (_req, res) => {
     .text("— Jim Crotty, AL.com", 70, qY + 22);
 
   // ─── Section helper ───────────────────────────────────────────────
-  let curY = qY + 48;
+  let curY = qY + 52;
 
   function sectionHeader(title: string) {
     doc
@@ -141,31 +136,51 @@ router.get("/api/download-cv", (_req, res) => {
   const career = [
     {
       title: "Law Enforcement Outreach Manager",
-      org: "Meta Platforms",
-      period: "2022 – Present",
+      org: "Meta Platforms, Inc.",
+      period: "2024 – Present",
+      location: "Washington, D.C.",
       detail:
-        "Leads global law enforcement engagement strategy, supporting criminal investigations and legal compliance across international markets.",
+        "Develops and maintains strategic relationships with law enforcement agencies across North America to help combat online criminal activity and prevent real-world harm.",
     },
     {
-      title: "Adjunct Professor, School of Public Affairs",
-      org: "American University",
-      period: "2021 – Present",
+      title: "Adjunct Professor / Lecturer",
+      org: "American University, School of Public Affairs",
+      period: "2024 – Present",
+      location: "Washington, D.C.",
       detail:
-        "Teaches graduate-level courses on drugs, crime, public policy, and organized crime.",
+        "Teaches JLC-451: Drugs, Crime & Public Policy and JLC-313: Organized Crime in the Department of Justice, Law & Criminology.",
     },
     {
-      title: "Deputy Chief of Staff",
+      title: "Head, Investigative Support Section",
+      org: "DC Metropolitan Police Department (MPD)",
+      period: "2023 – 2024",
+      location: "Washington, D.C.",
+      detail:
+        "Led a team of Criminal Research Specialists providing real-time intelligence on major crimes across the District of Columbia.",
+    },
+    {
+      title: "Associate Vice President",
+      org: "The Cohen Group",
+      period: "2021 – 2023",
+      location: "Washington, D.C.",
+      detail:
+        "Led multiple client teams across defense, cybersecurity, healthcare, energy, and national security sectors at the strategic advisory firm founded by former Secretary of Defense William Cohen.",
+    },
+    {
+      title: "Deputy Chief of Staff & Multiple Roles",
       org: "U.S. Drug Enforcement Administration (DEA)",
-      period: "2019 – 2022",
+      period: "2009 – 2021",
+      location: "Washington, D.C. | Chicago | London | Afghanistan",
       detail:
-        "Senior advisor to DEA leadership; coordinated cross-agency counternarcotics strategy and intelligence operations.",
+        "Over 12 years of distinguished service. Final role: Deputy Chief of Staff and Executive Assistant to the Administrator. Prior roles included Group Supervisor (Chicago Field Division), Liaison Officer (London Country Office, 2013–2018), Tactical Intelligence Analyst with FAST-Alpha (Afghanistan, 2010), and Strategic Intelligence Analyst focused on South America.",
     },
     {
-      title: "Intelligence Research Specialist",
-      org: "Metropolitan Police Department, Washington D.C.",
-      period: "2010 – 2019",
+      title: "Associate, National Security Practice",
+      org: "PRTM Management Consultants",
+      period: "Pre-2009",
+      location: "Washington, D.C.",
       detail:
-        "Conducted strategic intelligence analysis on transnational criminal organizations and drug trafficking networks.",
+        "Provided strategic and operational advice to clients in the Intelligence Community, Department of Homeland Security, and Department of Defense.",
     },
   ];
 
@@ -180,11 +195,35 @@ router.get("/api/download-cv", (_req, res) => {
       .fillColor(STEEL)
       .font("Helvetica")
       .fontSize(8)
-      .text(`${job.org}  ·  ${job.period}`, 60, curY, { width: W });
+      .text(`${job.org}  ·  ${job.period}  ·  ${job.location}`, 60, curY, { width: W });
     curY = doc.y + 1;
     bodyText(job.detail);
     curY += 3;
   }
+
+  // ─── Education ───────────────────────────────────────────────────
+  sectionHeader("Education");
+
+  const education = [
+    { degree: "JD", school: "University of Alabama School of Law", year: "2008" },
+    { degree: "MA, Political Science", school: "Boston College", year: "2005" },
+    { degree: "BA, Political Science", school: "Auburn University", year: "2003", note: "Summa Cum Laude" },
+  ];
+
+  for (const ed of education) {
+    doc
+      .fillColor(NAVY)
+      .font("Helvetica-Bold")
+      .fontSize(8.5)
+      .text(ed.degree, 60, curY, { continued: true, width: W });
+    doc
+      .fillColor(GRAY)
+      .font("Helvetica")
+      .text(`  —  ${ed.school}, ${ed.year}${ed.note ? `  (${ed.note})` : ""}`);
+    curY = doc.y + 3;
+  }
+
+  curY += 4;
 
   // ─── Selected Publications ────────────────────────────────────────
   sectionHeader("Selected Publications (Opinion & Analysis)");
@@ -193,13 +232,23 @@ router.get("/api/download-cv", (_req, res) => {
     { year: "2026", title: "Could Mexican Cartels Be Incentivized to Sell 'Safer' Drugs?", outlet: "Small Wars Journal" },
     { year: "2026", title: "The quiet resurgence of plant-based illicit drugs", outlet: "The Hill" },
     { year: "2026", title: "Beyond Illicit Drugs: How the US is Expanding the Scope of Armed Conflict", outlet: "Small Wars Journal" },
+    { year: "2026", title: "Operation Absolute Resolve: A Rendition Revival?", outlet: "Small Wars Journal" },
+    { year: "2026", title: "Mexico-U.S. cooperation reduces fentanyl flow", outlet: "The Hill" },
+    { year: "2025", title: "Commentary: Understanding the real deal about fentanyl", outlet: "Orlando Sentinel" },
+    { year: "2025", title: "What if pharma companies made 'safe' recreational drugs?", outlet: "STAT News" },
     { year: "2025", title: "The New Militarized War on Drugs — Time to View Cartels as National Security Threats?", outlet: "Small Wars Journal" },
     { year: "2025", title: "'Narconomics,' not prohibition, is behind the rise in synthetic drugs", outlet: "The Hill" },
+    { year: "2025", title: "Could Illicit Drug Production Shift to US?", outlet: "Small Wars Journal / El Centro" },
+    { year: "2024", title: "Overdose deaths are down, but the crisis is far from resolved", outlet: "The Hill" },
     { year: "2024", title: "Welcome to the global synthetic drug revolution", outlet: "The Hill" },
+    { year: "2024", title: "How DEA is tackling our greatest national security threat", outlet: "We Are The Mighty" },
     { year: "2024", title: "9/11 makes the case for a Department of Treatment and Recovery", outlet: "The Hill" },
     { year: "2023", title: "Will 'Poor Man's Cocaine' Fuel the Next U.S. Drug Crisis?", outlet: "Undark Magazine" },
+    { year: "2023", title: "Fentanyl is killing thousands of Americans. The DEA needs a clear strategy.", outlet: "Dallas Morning News" },
+    { year: "2023", title: "The US can learn from Portugal's drug policies, including decriminalization", outlet: "The Hill" },
     { year: "2022", title: "Launching Missiles Is Easy, Drug Control Is Hard", outlet: "Lawfare" },
     { year: "2022", title: "The US Opioid Problem Is Also a China Problem", outlet: "The Diplomat" },
+    { year: "2022", title: "We Need an All-of-the-Above Strategy to Fight the Opioid Crisis", outlet: "Newsweek" },
   ];
 
   for (const pub of pubs) {
@@ -225,11 +274,12 @@ router.get("/api/download-cv", (_req, res) => {
   sectionHeader("Affiliations & Fellowships");
 
   const affiliations = [
-    { name: "Global Initiative Against Transnational Organized Crime (GI-TOC)", role: "Research Affiliate" },
-    { name: "Small Wars Journal", role: "Contributing Author" },
-    { name: "Center for Advanced Defense Studies (C4ADS)", role: "Research Contributor" },
-    { name: "University of South Florida, Global National Security Institute", role: "Affiliated Researcher" },
-    { name: "Partnership for a Drug-Free America", role: "Advisory Board" },
+    { name: "United Against Fentanyl", role: "Advisory Board Member" },
+    { name: "Global Initiative Against Transnational Organized Crime (GI-TOC)", role: "Network of Experts Member" },
+    { name: "USF Global and National Security Institute (GNSI)", role: "Non-Resident Senior Fellow" },
+    { name: "Small Wars Journal – El Centro", role: "2026 Fellow / Associate" },
+    { name: "Center for Advanced Defense Studies (C4ADS)", role: "Former Senior Fellow" },
+    { name: "Presidential Management Fellows Program", role: "Former Fellow" },
   ];
 
   for (const aff of affiliations) {
@@ -241,7 +291,7 @@ router.get("/api/download-cv", (_req, res) => {
   // ─── Featured In ─────────────────────────────────────────────────
   sectionHeader("Media Coverage & Featured In");
   bodyText(
-    "The Washington Post  ·  Newsweek  ·  The Hill  ·  Wall Street Journal  ·  Associated Press  ·  The Guardian  ·  Fox News  ·  STAT News  ·  Lawfare  ·  The Diplomat  ·  Undark Magazine  ·  Dallas Morning News  ·  Tampa Bay Times  ·  Orlando Sentinel  ·  Washington Times  ·  Washington Examiner  ·  The Spectator World  ·  We Are The Mighty  ·  AL.com"
+    "Wall Street Journal  ·  Washington Post  ·  Associated Press  ·  The Guardian  ·  Newsweek  ·  The Hill  ·  STAT News  ·  Lawfare  ·  The Diplomat  ·  Undark Magazine  ·  Tampa Bay Times  ·  Orlando Sentinel  ·  Dallas Morning News  ·  Washington Times  ·  Washington Examiner  ·  The Spectator World  ·  We Are The Mighty  ·  Fox News  ·  AL.com"
   );
 
   doc.end();

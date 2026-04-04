@@ -100,6 +100,8 @@
   body {
     @apply bg-background text-foreground;
     font-family: 'Lato', sans-serif;
+    background-color: #0D2240 !important;
+    overflow-x: hidden;
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Libre Baskerville', serif;

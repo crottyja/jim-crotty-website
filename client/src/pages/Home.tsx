@@ -661,50 +661,59 @@ function NavBar() {
   );
 }
 
-function NumbersBarInline() {
+function StatBar() {
   const stats = [
     { value: "14+", label: "Years in Law Enforcement" },
     { value: "35+", label: "Publications & Op-Eds" },
-    { value: "6", label: "Fellowships" },
+    { value: "6", label: "Fellowships & Networks" },
     { value: "19+", label: "Media Outlets" },
-    { value: "3", label: "Degrees" },
+    { value: "3", label: "Advanced Degrees" },
     { value: "30+", label: "Countries Served" },
   ];
   return (
-    <div className="grid grid-cols-3 gap-0 w-full">
-      {stats.map((s, i) => (
-        <div
-          key={s.label}
-          className="flex flex-col items-center justify-center py-4 px-4 text-center"
-          style={{
-            borderRight: (i + 1) % 3 !== 0 ? "1px solid rgba(255,255,255,0.1)" : "none",
-            borderBottom: i < 3 ? "1px solid rgba(255,255,255,0.1)" : "none",
-          }}
-        >
-          <span
-            style={{
-              fontFamily: "'Cormorant Garamond', serif",
-              fontSize: "clamp(1.4rem, 2.5vw, 1.8rem)",
-              fontWeight: 600,
-              color: "#ffffff",
-              lineHeight: 1,
-            }}
-          >
-            {s.value}
-          </span>
-          <span
-            className="mt-1 uppercase tracking-widest"
-            style={{
-              fontFamily: "'Lato', sans-serif",
-              fontSize: "0.55rem",
-              color: "rgba(255,255,255,0.5)",
-              letterSpacing: "0.12em",
-            }}
-          >
-            {s.label}
-          </span>
+    <div
+      style={{
+        backgroundColor: "#0a1c35",
+        borderTop: "1px solid rgba(74,127,165,0.3)",
+        borderBottom: "1px solid rgba(74,127,165,0.2)",
+      }}
+    >
+      <div className="container">
+        <div className="grid grid-cols-3 md:grid-cols-6">
+          {stats.map((s, i) => (
+            <div
+              key={s.label}
+              className="flex flex-col items-center justify-center py-5 px-3 text-center"
+              style={{
+                borderRight: i < 5 ? "1px solid rgba(255,255,255,0.08)" : "none",
+              }}
+            >
+              <span
+                style={{
+                  fontFamily: "'Cormorant Garamond', serif",
+                  fontSize: "clamp(1.5rem, 2.5vw, 2rem)",
+                  fontWeight: 600,
+                  color: "#ffffff",
+                  lineHeight: 1,
+                }}
+              >
+                {s.value}
+              </span>
+              <span
+                className="mt-1.5 uppercase tracking-widest"
+                style={{
+                  fontFamily: "'Lato', sans-serif",
+                  fontSize: "0.5rem",
+                  color: "rgba(255,255,255,0.45)",
+                  letterSpacing: "0.13em",
+                }}
+              >
+                {s.label}
+              </span>
+            </div>
+          ))}
         </div>
-      ))}
+      </div>
     </div>
   );
 }
@@ -893,7 +902,7 @@ function HeroSection() {
             className="hero-titles text-white/70 mb-8 text-lg"
             style={{ fontFamily: "'Lato', sans-serif", fontWeight: 300, letterSpacing: "0.02em" }}
           >
-            Law Enforcement Outreach Manager, Meta Platforms &nbsp;·&nbsp; Former DEA Deputy Chief of Staff &nbsp;·&nbsp; Adjunct Professor, American University &nbsp;·&nbsp; Advisory Board Member &nbsp;·&nbsp; Senior Fellow
+            Law Enforcement Outreach Manager, Meta Platforms &nbsp;·&nbsp; Former DEA Deputy Chief of Staff &nbsp;·&nbsp; Adjunct Professor, American University &nbsp;·&nbsp; Advisory Board Member, United Against Fentanyl &nbsp;·&nbsp; Senior Fellow, USF Global &amp; National Security Institute
           </p>
 
           {/* Bio snippet */}
@@ -1249,6 +1258,33 @@ function BackToTop() {
   );
 }
 
+const featuredPublications = [
+  {
+    year: "2022",
+    title: "Launching Missiles Is Easy, Drug Control Is Hard",
+    outlet: "Lawfare",
+    url: "https://www.lawfaremedia.org/article/launching-missiles-easy-drug-control-hard",
+    summary: "Critiques proposals to use military force against Mexican drug cartels, arguing that the complexity of drug supply chains makes kinetic strikes an ineffective and counterproductive policy tool.",
+    tag: "Strategy",
+  },
+  {
+    year: "2022",
+    title: "The next generation of illicit drugs? Think 'synthetic'",
+    outlet: "STAT News",
+    url: "https://www.statnews.com/2022/08/05/synthetic-drugs-fuel-next-wave-illicit-drug-use/",
+    summary: "Predicts that synthetic drugs will define the next era of illicit drug trafficking, as their low production costs, high potency, and ease of global distribution make them far more dangerous than plant-based predecessors.",
+    tag: "Public Health",
+  },
+  {
+    year: "2022",
+    title: "The US Opioid Problem Is Also a China Problem",
+    outlet: "The Diplomat",
+    url: "https://thediplomat.com/2022/09/the-us-opioid-problem-is-also-a-china-problem/",
+    summary: "Argues that China's role as the primary supplier of fentanyl precursor chemicals to Mexican cartels makes the opioid crisis a bilateral diplomatic issue requiring sustained U.S.-China counternarcotics engagement.",
+    tag: "Geopolitics",
+  },
+];
+
 function PublicationsSection() {
   const [showAll, setShowAll] = useState(false);
   const [yearFilter, setYearFilter] = useState<string>("All");
@@ -1264,6 +1300,89 @@ function PublicationsSection() {
       dark={false}
       bgOverlay="#F8F9FA"
     >
+
+        {/* Featured Publications */}
+        <div className="mb-10">
+          <div
+            className="text-xs font-bold tracking-widest uppercase mb-4"
+            style={{ color: "#4A7FA5", fontFamily: "'Lato', sans-serif", letterSpacing: "0.15em" }}
+          >
+            Featured
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {featuredPublications.map((pub, i) => (
+              <a
+                key={i}
+                href={pub.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group block reveal-on-scroll"
+                style={{ textDecoration: "none" }}
+              >
+                <div
+                  className="h-full flex flex-col p-6"
+                  style={{
+                    backgroundColor: "#0D2240",
+                    borderTop: "3px solid #4A7FA5",
+                    transition: "transform 0.2s, box-shadow 0.2s",
+                  }}
+                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.transform = "translateY(-3px)"; (e.currentTarget as HTMLElement).style.boxShadow = "0 8px 24px rgba(13,34,64,0.25)"; }}
+                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.transform = ""; (e.currentTarget as HTMLElement).style.boxShadow = ""; }}
+                >
+                  <div className="flex items-center justify-between mb-3">
+                    <span
+                      className="text-xs font-bold px-2 py-0.5"
+                      style={{ backgroundColor: "rgba(74,127,165,0.25)", color: "#7ab3d4", fontFamily: "'Lato', sans-serif", letterSpacing: "0.08em" }}
+                    >
+                      {pub.tag}
+                    </span>
+                    <span
+                      className="text-xs"
+                      style={{ color: "rgba(255,255,255,0.4)", fontFamily: "'Lato', sans-serif" }}
+                    >
+                      {pub.outlet} · {pub.year}
+                    </span>
+                  </div>
+                  <h3
+                    className="font-semibold leading-snug mb-3 group-hover:text-blue-300 transition-colors"
+                    style={{
+                      fontFamily: "'Libre Baskerville', serif",
+                      color: "#ffffff",
+                      fontSize: "0.95rem",
+                      lineHeight: 1.45,
+                    }}
+                  >
+                    {pub.title}
+                  </h3>
+                  <p
+                    className="text-xs leading-relaxed flex-1"
+                    style={{
+                      color: "rgba(255,255,255,0.5)",
+                      fontFamily: "'Lato', sans-serif",
+                      fontWeight: 300,
+                      lineHeight: 1.65,
+                    }}
+                  >
+                    {pub.summary}
+                  </p>
+                  <div className="mt-4 flex items-center gap-1" style={{ color: "#4A7FA5" }}>
+                    <span className="text-xs font-bold tracking-widest uppercase" style={{ fontFamily: "'Lato', sans-serif", fontSize: "0.6rem", letterSpacing: "0.15em" }}>Read</span>
+                    <ExternalLink size={10} />
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <div className="mb-6" style={{ borderTop: "1px solid #e5e7eb", paddingTop: "1.5rem" }}>
+          <div
+            className="text-xs font-bold tracking-widest uppercase mb-4"
+            style={{ color: "#4A7FA5", fontFamily: "'Lato', sans-serif", letterSpacing: "0.15em" }}
+          >
+            All Publications
+          </div>
+        </div>
 
         {/* Year filter */}
         <div className="flex flex-wrap gap-2 mb-6">
@@ -1674,6 +1793,7 @@ export default function Home() {
     <div className="min-h-screen">
       <NavBar />
       <HeroSection />
+      <StatBar />
       <AboutSection />
       <CareerSection />
       <PublicationsSection />

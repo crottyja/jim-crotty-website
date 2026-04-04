@@ -424,25 +424,10 @@ function SectionWrapper({
   dark?: boolean;
   bgOverlay?: string;
 }) {
-  const getInitialOpen = () => false;
-  const [open, setOpen] = useState(getInitialOpen);
-
-  // Listen for a custom "open-section" event dispatched by the nav
-  useEffect(() => {
-    const handler = (e: Event) => {
-      const detail = (e as CustomEvent<{ id: string }>).detail;
-      if (detail.id === id) {
-        setOpen(true);
-      }
-    };
-    window.addEventListener("open-section", handler);
-    return () => window.removeEventListener("open-section", handler);
-  }, [id]);
   const overlay = bgOverlay ?? (dark ? "rgba(13,34,64,0.88)" : "#F8F9FA");
-  const labelColor = dark ? "rgba(255,255,255,0.5)" : "#4A7FA5";
+  const labelColor = dark ? "#C9A84C" : "#C9A84C";
   const titleColor = dark ? "#ffffff" : "#0D2240";
   const borderColor = dark ? "rgba(255,255,255,0.1)" : "rgba(13,34,64,0.1)";
-  const chevronColor = dark ? "rgba(255,255,255,0.5)" : "#4A7FA5";
 
   return (
     <section
@@ -456,14 +441,15 @@ function SectionWrapper({
     >
       <div className="absolute inset-0" style={{ background: overlay }} />
       <div className="container relative z-10">
-        {/* Collapsible header */}
-        <button
-          onClick={() => setOpen((o) => !o)}
-          className="w-full flex items-center justify-between py-8 group text-left"
-          style={{ borderBottom: open ? `1px solid ${borderColor}` : "none" }}
-          aria-expanded={open}
+        {/* Static section header with gold accent left border */}
+        <div
+          className="py-8"
+          style={{ borderBottom: `1px solid ${borderColor}` }}
         >
-          <div>
+          <div
+            className="pl-4"
+            style={{ borderLeft: "3px solid #C9A84C" }}
+          >
             <div className="section-label mb-1" style={{ color: labelColor }}>{label}</div>
             <h2
               style={{
@@ -476,24 +462,10 @@ function SectionWrapper({
               {title}
             </h2>
           </div>
-          <span
-            className="flex-shrink-0 ml-4 transition-transform duration-300"
-            style={{ color: chevronColor, transform: open ? "rotate(0deg)" : "rotate(-90deg)" }}
-          >
-            {open ? <ChevronUp size={22} /> : <ChevronDown size={22} />}
-          </span>
-        </button>
-
-        {/* Collapsible body */}
-        <div
-          style={{
-            overflow: "hidden",
-            maxHeight: open ? "9999px" : "0",
-            transition: "max-height 0.5s cubic-bezier(0.4,0,0.2,1)",
-          }}
-        >
-          <div className="py-10">{children}</div>
         </div>
+
+        {/* Always-visible body */}
+        <div className="py-10">{children}</div>
       </div>
     </section>
   );
@@ -557,17 +529,12 @@ function NavBar() {
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
     e.preventDefault();
-    // Dispatch event to open the section
-    window.dispatchEvent(new CustomEvent("open-section", { detail: { id: sectionId } }));
-    // After a short delay (so the section can expand), scroll to it
-    setTimeout(() => {
-      const el = document.getElementById(sectionId);
-      if (el) {
-        const offset = 72; // nav height
-        const top = el.getBoundingClientRect().top + window.scrollY - offset;
-        window.scrollTo({ top, behavior: "smooth" });
-      }
-    }, 50);
+    const el = document.getElementById(sectionId);
+    if (el) {
+      const offset = 72; // nav height
+      const top = el.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: "smooth" });
+    }
   };
 
   return (
@@ -857,6 +824,23 @@ function HeroSection() {
         className="absolute inset-0"
         style={{ background: "rgba(13,34,64,0.90)" }}
       />
+      {/* Animated radial glow — subtle warm pulse from center-left */}
+      <div
+        className="absolute inset-0 hero-glow-anim"
+        style={{
+          background: "radial-gradient(ellipse 70% 55% at 30% 50%, rgba(201,168,76,0.07) 0%, transparent 70%)",
+          pointerEvents: "none",
+        }}
+      />
+      {/* Animated diagonal scan line */}
+      <div
+        className="absolute inset-0 hero-scan-anim"
+        style={{
+          background: "linear-gradient(135deg, transparent 40%, rgba(74,127,165,0.04) 50%, transparent 60%)",
+          backgroundSize: "200% 200%",
+          pointerEvents: "none",
+        }}
+      />
 
 
       <div className="container relative z-10 pt-24 pb-8">
@@ -897,7 +881,7 @@ function HeroSection() {
           {/* Pull-quote */}
           <blockquote
             className="mb-8 pl-4 border-l-2"
-            style={{ borderColor: "#4A7FA5" }}
+            style={{ borderColor: "#C9A84C" }}
           >
             <p
               className="text-white/80 italic leading-relaxed"
@@ -927,14 +911,14 @@ function HeroSection() {
               <a
                 key={tile.href}
                 href={tile.href}
-                className={`group flex flex-col gap-2 p-4 transition-all duration-200 hover:-translate-y-0.5${'center' in tile && tile.center ? ' col-span-2 sm:col-span-1' : ''}`}
+                className={`group flex flex-col gap-2 p-4 hero-tile${'center' in tile && tile.center ? ' col-span-2 sm:col-span-1' : ''}`}
                 style={{
                   backgroundColor: "rgba(255,255,255,0.06)",
                   border: "1px solid rgba(255,255,255,0.12)",
                   borderTop: "2px solid rgba(74,127,165,0.6)",
                 }}
               >
-                <span style={{ color: "#4A7FA5" }} className="group-hover:text-white transition-colors">{tile.icon}</span>
+                <span style={{ color: "#4A7FA5" }} className="group-hover:text-white transition-colors duration-200">{tile.icon}</span>
                 <div>
                   <div
                     className="font-semibold text-white text-sm leading-tight"

@@ -438,7 +438,7 @@ function SectionWrapper({
     return () => window.removeEventListener("open-section", handler);
   }, [id]);
 
-  const overlay = bgOverlay ?? (dark ? "rgba(13,34,64,0.88)" : "#F8F9FA");
+  const overlay = bgOverlay ?? (dark ? "#0D2240" : "#F8F9FA");
   const labelColor = "#C9A84C";
   const titleColor = dark ? "#ffffff" : "#0D2240";
   const borderColor = dark ? "rgba(255,255,255,0.1)" : "rgba(13,34,64,0.1)";
@@ -450,11 +450,6 @@ function SectionWrapper({
     <section
       id={id}
       className="relative"
-      style={{
-        backgroundImage: `url(${MAP_BG})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
     >
       <div className="absolute inset-0" style={{ background: overlay }} />
       <div className="container relative z-10">
@@ -740,7 +735,6 @@ function VideoSection() {
       label="04 / On Camera"
       title="Broadcast Appearances"
       dark={true}
-      bgOverlay="rgba(13,34,64,0.91)"
     >
       <p className="text-sm max-w-md mb-8" style={{ color: "rgba(255,255,255,0.55)", fontFamily: "'Lato', sans-serif", fontWeight: 300 }}>
         Selected broadcast and documentary appearances.
@@ -1311,7 +1305,6 @@ function PublicationsSection() {
       label="03 / Publications"
       title="Opinion and Analysis"
       dark={false}
-      bgOverlay="#F8F9FA"
     >
 
         {/* Year filter */}
@@ -1566,7 +1559,6 @@ function AffiliationsSection() {
       label="06 / Affiliations"
       title="Fellowships & Networks"
       dark={true}
-      bgOverlay="rgba(13,34,64,0.91)"
     >
       <p className="text-sm max-w-md mb-8" style={{ color: "rgba(255,255,255,0.55)", fontFamily: "'Lato', sans-serif", fontWeight: 300 }}>
         Jim is affiliated with several leading research institutions, policy organizations, and national security networks focused on drug policy, transnational organized crime, and law enforcement.

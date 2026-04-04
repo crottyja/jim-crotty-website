@@ -781,7 +781,7 @@ function HeroSection() {
             className="hero-titles text-white/70 mb-8 text-lg"
             style={{ fontFamily: "'Lato', sans-serif", fontWeight: 300, letterSpacing: "0.02em" }}
           >
-            Law Enforcement Outreach Manager, Meta Platforms &nbsp;·&nbsp; Former DEA Deputy Chief of Staff &nbsp;·&nbsp; Adjunct Professor, American University
+            Law Enforcement Outreach Manager, Meta Platforms &nbsp;·&nbsp; Former DEA Deputy Chief of Staff &nbsp;·&nbsp; Adjunct Professor, American University &nbsp;·&nbsp; Advisory Board Member &nbsp;·&nbsp; Senior Fellow
           </p>
 
           {/* Bio snippet */}

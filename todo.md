@@ -45,3 +45,4 @@
 - [x] PDF: Update pull-quote to match hero section
 - [x] PDF: Remove Meta "190+" inaccurate stat
 - [x] PDF: Add email/LinkedIn/website icons to header contact line
+- [x] Add "Advisory Board Member" and "Senior Fellow" to hero subtitle line

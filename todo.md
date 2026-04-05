@@ -95,3 +95,20 @@
 - [x] Subtle column rule between bio and headshot in About
 - [x] Back-to-top button (fixed, appears after hero)
 - [x] Normalise letter-spacing on all all-caps labels to 0.1em
+
+## Full Site Review Fixes
+- [x] index.html: title tag still has & (should be "and")
+- [x] index.html: add Open Graph and Twitter Card meta tags
+- [x] index.html: add canonical URL meta tag
+- [ ] Hero subtitle: "USF Global and National Security Institute" is very long — wrap gracefully on mobile
+- [x] NavBar: logo/name link on left is an empty anchor (no visible content, no logo)
+- [ ] NavBar: active section observer watches "about" but section id is "about" — verify all IDs match
+- [ ] VideoSection: Fox News thumbnail uses eager loading — add loading="lazy"
+- [x] InTheNewsSection: all news items use transitionDelay in seconds (0.1s * 9 = 0.9s) — cap at 0.4s
+- [x] ContactSection: email in error message is jcrotty@american.edu but contact route sends to jamesmcrotty@hotmail.com — make consistent
+- [x] ContactSection: contact form has no email field — user can't be replied to
+- [x] Footer: copyright only — add LinkedIn link for completeness
+- [ ] PDF route: title line truncates "Advisory Board Member" and "Senior Fellow" without full org names
+- [x] CSS: .hero-stats class defined but never used (from old StatBar removal)
+- [x] CSS: .back-to-top has duplicate rule blocks (lines 211-238 and 374-381) — merge them
+- [ ] AboutSection: bio paragraph 3 ends abruptly (line 1060 is empty — missing content)

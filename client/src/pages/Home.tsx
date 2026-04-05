@@ -569,7 +569,30 @@ function NavBar() {
       }}
     >
       <div className="container flex items-center justify-between h-16">
-        <a href="#" aria-label="Back to top" />
+        <a
+          href="#"
+          aria-label="Back to top"
+          className="flex items-center gap-2 group"
+          style={{ textDecoration: "none" }}
+        >
+          <span
+            className="inline-flex items-center justify-center w-8 h-8 text-xs font-black"
+            style={{
+              backgroundColor: "#C9A84C",
+              color: "#0D2240",
+              fontFamily: "'Lato', sans-serif",
+              letterSpacing: "0.04em",
+            }}
+          >
+            JC
+          </span>
+          <span
+            className="hidden sm:inline text-white/70 group-hover:text-white transition-colors text-xs tracking-widest uppercase"
+            style={{ fontFamily: "'Lato', sans-serif" }}
+          >
+            Jim Crotty
+          </span>
+        </a>
 
         {/* Desktop nav */}
         <div className="hidden md:flex items-center gap-8">
@@ -1140,7 +1163,7 @@ function CareerSection() {
                 <div
                   key={i}
                   className="reveal-on-scroll md:flex gap-8"
-                  style={{ transitionDelay: `${i * 0.1}s` }}
+                  style={{ transitionDelay: `${Math.min(i * 0.08, 0.4)}s` }}
                 >
                   {/* Period */}
                   <div
@@ -1565,6 +1588,7 @@ function AffiliationsSection() {
 function ContactSection() {
   const [formData, setFormData] = useState({
     name: "",
+    email: "",
     organization: "",
     inquiryType: "",
     message: "",
@@ -1594,7 +1618,7 @@ function ContactSection() {
         body: JSON.stringify(formData),
       });
       setStatus("sent");
-      setFormData({ name: "", organization: "", inquiryType: "", message: "" });
+      setFormData({ name: "", email: "", organization: "", inquiryType: "", message: "" });
     } catch {
       setStatus("error");
     }
@@ -1670,6 +1694,20 @@ function ContactSection() {
               </div>
             </div>
 
+            {/* Email */}
+            <div>
+              <label className="section-label block mb-1.5" style={{ color: "#4A7FA5" }}>Email *</label>
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+                placeholder="Your email address"
+                style={inputStyle}
+              />
+            </div>
+
             {/* Inquiry Type */}
             <div>
               <label className="section-label block mb-1.5" style={{ color: "#4A7FA5" }}>Inquiry Type *</label>
@@ -1703,7 +1741,7 @@ function ContactSection() {
 
             {status === "error" && (
               <p className="text-sm" style={{ color: "#c0392b", fontFamily: "'Lato', sans-serif" }}>
-                Something went wrong. Please try again or email jcrotty@american.edu directly.
+                Something went wrong. Please try again or connect via <a href="https://www.linkedin.com/in/jamesmcrotty" target="_blank" rel="noopener noreferrer" style={{ color: "#4A7FA5" }}>LinkedIn</a>.
               </p>
             )}
 
@@ -1744,13 +1782,25 @@ function Footer() {
       className="py-6 border-t"
       style={{ backgroundColor: "#0D2240", borderColor: "rgba(255,255,255,0.08)" }}
     >
-      <div className="container flex items-center justify-center">
+      <div className="container flex flex-col sm:flex-row items-center justify-between gap-4">
         <span
           className="text-sm"
           style={{ color: "rgba(255,255,255,0.4)", fontFamily: "'Lato', sans-serif", fontWeight: 300 }}
         >
           © {new Date().getFullYear()} Jim Crotty. All rights reserved.
         </span>
+        <a
+          href="https://www.linkedin.com/in/jamesmcrotty"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1.5 transition-colors duration-200 hover:opacity-100"
+          style={{ color: "rgba(255,255,255,0.4)", fontFamily: "'Lato', sans-serif", fontSize: "0.75rem", letterSpacing: "0.1em", textTransform: "uppercase" }}
+          onMouseEnter={(e) => (e.currentTarget.style.color = "#4A7FA5")}
+          onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.4)")}
+        >
+          <Linkedin size={13} />
+          LinkedIn
+        </a>
       </div>
     </footer>
   );

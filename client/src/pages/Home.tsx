@@ -867,7 +867,7 @@ function HeroSection() {
             className="hero-titles text-white/70 mb-8 text-lg"
             style={{ fontFamily: "'Lato', sans-serif", fontWeight: 300, letterSpacing: "0.02em" }}
           >
-            Law Enforcement Outreach Manager, Meta Platforms &nbsp;·&nbsp; Former DEA Deputy Chief of Staff &nbsp;·&nbsp; Adjunct Professor, American University &nbsp;·&nbsp; Advisory Board Member, United Against Fentanyl &nbsp;·&nbsp; Senior Fellow, USF Global &amp; National Security Institute
+            Law Enforcement Outreach Manager, Meta Platforms &nbsp;·&nbsp; Former DEA Deputy Chief of Staff &nbsp;·&nbsp; Adjunct Professor, American University &nbsp;·&nbsp; Advisory Board Member, United Against Fentanyl &nbsp;·&nbsp; Senior Fellow, USF Global and National Security Institute
           </p>
 
           {/* Bio snippet */}

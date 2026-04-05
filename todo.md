@@ -79,3 +79,7 @@
 - [x] Remove unused fadeInUp @keyframes from index.css
 - [x] Delete unused ComponentShowcase.tsx page file
 - [x] Optimize Google Fonts URL: remove unused font variants
+
+## Styling Refinements
+- [x] Make Research Areas tags more subtle (softer bg, lighter border, lighter text weight)
+- [x] Make Featured In links more subtle (remove heavy left border, use lighter text, softer bg)

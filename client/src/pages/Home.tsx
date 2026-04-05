@@ -1014,19 +1014,19 @@ function AboutSection() {
 
             {/* Research Areas */}
             <div className="mt-8 pt-6 border-t" style={{ borderColor: "#e5e7eb" }}>
-              <div className="section-label mb-3" style={{ color: "#4A7FA5" }}>Research Areas</div>
-              <div className="flex flex-wrap gap-2">
+              <div className="section-label mb-3" style={{ color: "rgba(74,127,165,0.65)" }}>Research Areas</div>
+              <div className="flex flex-wrap gap-1.5">
                 {["Drug Policy", "Transnational Organized Crime", "Global Drug Trends", "Money Laundering", "Law Enforcement", "Cyber & Online Drug Trafficking"].map((tag) => (
                   <span
                     key={tag}
-                    className="text-xs px-3 py-1"
+                    className="text-xs px-2.5 py-0.5"
                     style={{
-                      backgroundColor: "#f0f4f8",
-                      color: "#0D2240",
+                      backgroundColor: "transparent",
+                      color: "rgba(13,34,64,0.5)",
                       fontFamily: "'Lato', sans-serif",
-                      fontWeight: 700,
-                      border: "1px solid #d1dde8",
-                      letterSpacing: "0.02em",
+                      fontWeight: 400,
+                      border: "1px solid rgba(13,34,64,0.15)",
+                      letterSpacing: "0.03em",
                     }}
                   >
                     {tag}
@@ -1037,26 +1037,24 @@ function AboutSection() {
 
             {/* Featured In */}
             <div className="mt-6 pt-6 border-t" style={{ borderColor: "#e5e7eb" }}>
-              <div className="section-label mb-3" style={{ color: "#4A7FA5" }}>Featured In</div>
-              <div className="flex flex-wrap gap-2">
+              <div className="section-label mb-3" style={{ color: "rgba(74,127,165,0.65)" }}>Featured In</div>
+              <div className="flex flex-wrap gap-x-4 gap-y-1">
                 {mediaOutlets.map((outlet) => (
                   <a
                     key={outlet.name}
                     href={outlet.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-xs hover:opacity-80 transition-all"
+                    className="text-xs transition-colors duration-150"
                     style={{
-                      backgroundColor: "#f0f4f8",
-                      color: "#0D2240",
+                      color: "rgba(13,34,64,0.42)",
                       fontFamily: "'Lato', sans-serif",
-                      fontWeight: 700,
-                      border: "1px solid #d1dde8",
-                      borderLeft: "3px solid #4A7FA5",
+                      fontWeight: 400,
                       letterSpacing: "0.02em",
                       textDecoration: "none",
-                      padding: "4px 12px 4px 10px",
                     }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = "#4A7FA5")}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(13,34,64,0.42)")}
                   >
                     {outlet.name}
                   </a>

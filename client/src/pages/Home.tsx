@@ -322,17 +322,7 @@ const newsItems = [
     author: "Hannah Harris Green",
     url: "https://www.theguardian.com/uk-news/2024/oct/06/cannabis-vapes-synthetic-cannabinoid-illegal",
   },
-  {
-    outlet: "Pain News Network",
-    logo: "PNN",
-    color: "#c0392b",
-    date: "January 12, 2023",
-    title: "DEA Warns About Fentanyl As It Draws Criticism for Crackdown on Doctors",
-    quote: "The U.S. is making slow but steady progress in rolling back the opioid crisis, but there is much work to be done. The threat of prescription opioids still looms large and requires continued vigilance from DEA and its partners to protect Americans' health and safety.",
-    context: "Crotty wrote in Newsweek defending the DEA's enforcement actions against doctors who over-prescribe opioids, arguing that isolated tragic cases should not be used to reverse sound drug policies designed to protect the public from addiction and abuse.",
-    author: "Pat Anson",
-    url: "https://www.painnewsnetwork.org/stories/2023/1/12/dea-issues-fentanyl-warning-as-it-faces-criticism-for-crackdown-on-doctors",
-  },
+
   {
     outlet: "Wall Street Journal",
     logo: "WSJ",

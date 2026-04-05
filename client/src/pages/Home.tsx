@@ -1427,6 +1427,31 @@ function PublicationsSection() {
             </button>
           </div>
         )}
+        {showAll && (
+          <div className="mt-8 text-center">
+            <button
+              onClick={() => {
+                setShowAll(false);
+                const el = document.getElementById('publications');
+                if (el) {
+                  el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+              }}
+              className="inline-flex items-center gap-2 px-6 py-3 text-xs font-bold tracking-widest uppercase transition-all duration-200 hover:bg-[#C9A84C]/10"
+              style={{
+                color: "#0D2240",
+                border: "2px solid #C9A84C",
+                fontFamily: "'Lato', sans-serif",
+                fontSize: "0.7rem",
+                letterSpacing: "0.15em",
+                background: "transparent",
+              }}
+            >
+              Show Less
+              <ChevronUp size={14} />
+            </button>
+          </div>
+        )}
     </SectionWrapper>
   );
 }

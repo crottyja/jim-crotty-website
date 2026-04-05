@@ -900,12 +900,12 @@ function HeroSection() {
           {/* Section navigation tiles */}
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 mb-10">
             {[
-              { label: "Profile", sub: "Background & Bio", href: "#about", icon: <GraduationCap size={20} /> },
+              { label: "Profile", sub: "Background and Bio", href: "#about", icon: <GraduationCap size={20} /> },
               { label: "Career", sub: "Professional History", href: "#career", icon: <Briefcase size={20} /> },
               { label: "Publications", sub: "Opinion and Analysis", href: "#publications", icon: <BookOpen size={20} /> },
               { label: "On Camera", sub: "Broadcast Appearances", href: "#media", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg> },
               { label: "In the News", sub: "Media Coverage", href: "#in-the-news", icon: <Newspaper size={20} /> },
-              { label: "Affiliations", sub: "Fellowships & Networks", href: "#affiliations", icon: <Award size={20} /> },
+              { label: "Affiliations", sub: "Fellowships and Networks", href: "#affiliations", icon: <Award size={20} /> },
               { label: "Contact", sub: "Get in Touch", href: "#contact", icon: <Mail size={20} />, center: true },
             ].map((tile, idx) => (
               <a
@@ -990,7 +990,7 @@ function AboutSection() {
     <SectionWrapper
       id="about"
       label="01 / Profile"
-      title="Background & Bio"
+      title="Background and Bio"
       dark={false}
     >
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start relative">
@@ -1043,7 +1043,7 @@ function AboutSection() {
                 lineHeight: 1.2,
               }}
             >
-              Global Thought Leader in Law Enforcement & Drug Policy
+              Global Thought Leader in Law Enforcement and Drug Policy
             </h2>
 
             <div className="space-y-5 text-gray-700 leading-relaxed" style={{ fontFamily: "'Lato', sans-serif", fontWeight: 300, fontSize: "1.05rem" }}>
@@ -1065,7 +1065,7 @@ function AboutSection() {
             <div className="mt-8 pt-6 border-t" style={{ borderColor: "#e5e7eb" }}>
               <div className="section-label mb-3" style={{ color: "rgba(74,127,165,0.65)" }}>Research Areas</div>
               <div className="flex flex-wrap gap-1.5">
-                {["Drug Policy", "Transnational Organized Crime", "Global Drug Trends", "Money Laundering", "Law Enforcement", "Cyber & Online Drug Trafficking"].map((tag) => (
+                {["Drug Policy", "Transnational Organized Crime", "Global Drug Trends", "Money Laundering", "Law Enforcement", "Cyber and Online Drug Trafficking"].map((tag) => (
                   <span
                     key={tag}
                     className="text-xs px-2.5 py-0.5"
@@ -1502,7 +1502,7 @@ function AffiliationsSection() {
     <SectionWrapper
       id="affiliations"
       label="06 / Affiliations"
-      title="Fellowships & Networks"
+      title="Fellowships and Networks"
       dark={true}
     >
       <p className="text-sm max-w-md mb-8" style={{ color: "rgba(255,255,255,0.55)", fontFamily: "'Lato', sans-serif", fontWeight: 300 }}>

@@ -244,10 +244,10 @@ const career = [
     role: "Deputy Chief of Staff & Multiple Roles",
     org: "U.S. Drug Enforcement Administration (DEA)",
     location: "Washington, D.C. | Chicago | London | Afghanistan",
-    description: "Over 12 years of distinguished service. Final role: Deputy Chief of Staff and Executive Assistant to the Administrator. Prior roles included Group Supervisor (Chicago Field Division), Liaison Officer (London Country Office, 2013–2018), Tactical Intelligence Analyst with FAST-Alpha (Afghanistan, 2010), and Strategic Intelligence Analyst focused on South America.",
+    description: "Over 12 years of distinguished service. Final role: Deputy Chief of Staff and Executive Assistant to the Administrator. Prior roles included Group Supervisor (Chicago Field Division), Liaison Officer (London Country Office, 2013–2018), Tactical Intelligence Analyst with FAST-Alpha (Afghanistan, 2010), and Strategic Intelligence Analyst focused on South America. Held Top Secret/SCI clearance throughout tenure.",
   },
   {
-    period: "Pre-2009",
+    period: "2008 – 2009",
     role: "Associate, National Security Practice",
     org: "PRTM Management Consultants",
     location: "Washington, D.C.",
@@ -1885,6 +1885,9 @@ function ContactSection() {
             <p className="text-xs" style={{ color: "rgba(13,34,64,0.4)", fontFamily: "'Lato', sans-serif", fontWeight: 300 }}>
               You can also connect on{" "}
               <a href="https://www.linkedin.com/in/jamesmcrotty" target="_blank" rel="noopener noreferrer" style={{ color: "#4A7FA5", textDecoration: "underline" }}>LinkedIn</a>.
+            </p>
+            <p className="text-xs mt-3" style={{ color: "rgba(13,34,64,0.3)", fontFamily: "'Lato', sans-serif", fontWeight: 300, lineHeight: 1.6 }}>
+              Your information is used solely to respond to your inquiry and is not shared with third parties.
             </p>
           </form>
         )}

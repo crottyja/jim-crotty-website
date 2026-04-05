@@ -172,12 +172,12 @@ router.get("/api/download-cv", (_req, res) => {
       period: "2009 – 2021",
       location: "Washington, D.C. | Chicago | London | Afghanistan",
       detail:
-        "Over 12 years of distinguished service. Final role: Deputy Chief of Staff and Executive Assistant to the Administrator. Prior roles included Group Supervisor (Chicago Field Division), Liaison Officer (London Country Office, 2013–2018), Tactical Intelligence Analyst with FAST-Alpha (Afghanistan, 2010), and Strategic Intelligence Analyst focused on South America.",
+        "Over 12 years of distinguished service. Final role: Deputy Chief of Staff and Executive Assistant to the Administrator. Prior roles included Group Supervisor (Chicago Field Division), Liaison Officer (London Country Office, 2013–2018), Tactical Intelligence Analyst with FAST-Alpha (Afghanistan, 2010), and Strategic Intelligence Analyst focused on South America. Held Top Secret/SCI clearance throughout tenure.",
     },
     {
       title: "Associate, National Security Practice",
       org: "PRTM Management Consultants",
-      period: "Pre-2009",
+      period: "2008 – 2009",
       location: "Washington, D.C.",
       detail:
         "Provided strategic and operational advice to clients in the Intelligence Community, Department of Homeland Security, and Department of Defense.",

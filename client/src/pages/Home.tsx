@@ -1864,7 +1864,7 @@ function ContactSection() {
             <button
               type="submit"
               disabled={status === "sending"}
-              className="inline-flex items-center gap-2 px-8 py-3 transition-all duration-200"
+              className="inline-flex items-center gap-2 px-8 py-3 transition-all duration-200 hover:bg-[#4A7FA5] active:scale-95"
               style={{
                 backgroundColor: status === "sending" ? "#4A7FA5" : "#0D2240",
                 color: "#ffffff",
@@ -1905,6 +1905,18 @@ function Footer() {
         >
           © {new Date().getFullYear()} Jim Crotty. All rights reserved.
         </span>
+
+        {/* Jump to top */}
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className="inline-flex items-center gap-1.5 transition-colors duration-200 hover:text-[#C9A84C] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A84C]"
+          aria-label="Jump to top of page"
+          style={{ color: "rgba(255,255,255,0.4)", fontFamily: "'Lato', sans-serif", fontSize: "0.7rem", letterSpacing: "0.12em", textTransform: "uppercase", background: "none", border: "none", cursor: "pointer" }}
+        >
+          <ArrowUp size={12} />
+          Back to Top
+        </button>
+
         <a
           href="https://www.linkedin.com/in/jamesmcrotty"
           target="_blank"

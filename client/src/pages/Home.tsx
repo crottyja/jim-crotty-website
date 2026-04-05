@@ -825,10 +825,42 @@ function VideoSection() {
 
 function HeroSection() {
   const [parallaxY, setParallaxY] = useState(0);
+  const [activeSection, setActiveSection] = useState<string | null>(null);
+
   useEffect(() => {
     const onScroll = () => setParallaxY(window.scrollY * 0.12);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // Scroll-spy: track which section is currently in view
+  useEffect(() => {
+    const sectionIds = ["about", "career", "publications", "media", "in-the-news", "affiliations", "contact"];
+    const observers: IntersectionObserver[] = [];
+    // Keep a map of which sections are currently intersecting
+    const intersecting: Record<string, boolean> = {};
+
+    const updateActive = () => {
+      // Pick the first section (in DOM order) that is intersecting
+      const first = sectionIds.find(id => intersecting[id]) ?? null;
+      setActiveSection(first);
+    };
+
+    sectionIds.forEach(id => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const obs = new IntersectionObserver(
+        ([entry]) => {
+          intersecting[id] = entry.isIntersecting;
+          updateActive();
+        },
+        { threshold: 0.15 }
+      );
+      obs.observe(el);
+      observers.push(obs);
+    });
+
+    return () => observers.forEach(o => o.disconnect());
   }, []);
   return (
     <section
@@ -927,23 +959,26 @@ function HeroSection() {
               { label: "In the News",   href: "#in-the-news",  sectionId: "in-the-news" },
               { label: "Affiliations",  href: "#affiliations", sectionId: "affiliations" },
               { label: "Contact",       href: "#contact",      sectionId: "contact" },
-            ].map((pill, idx) => (
+            ].map((pill, idx) => {
+              const isActive = activeSection === pill.sectionId;
+              return (
               <a
                 key={pill.href}
                 href={pill.href}
-                className="hero-tile-stagger group inline-flex items-center px-4 py-1.5 transition-all duration-200 hover:-translate-y-px"
+                className="hero-tile-stagger group inline-flex items-center px-4 py-1.5 transition-all duration-300 hover:-translate-y-px"
                 style={{
                   fontFamily: "'Lato', sans-serif",
                   fontSize: "0.7rem",
                   fontWeight: 700,
                   letterSpacing: "0.13em",
                   textTransform: "uppercase",
-                  color: "rgba(255,255,255,0.75)",
-                  border: "1px solid rgba(74,127,165,0.45)",
+                  color: isActive ? "#C9A84C" : "rgba(255,255,255,0.75)",
+                  border: isActive ? "1px solid #C9A84C" : "1px solid rgba(74,127,165,0.45)",
                   borderRadius: "9999px",
-                  backgroundColor: "rgba(255,255,255,0.04)",
+                  backgroundColor: isActive ? "rgba(201,168,76,0.10)" : "rgba(255,255,255,0.04)",
                   animationDelay: `${idx * 70}ms`,
                   textDecoration: "none",
+                  transition: "color 0.3s ease, border-color 0.3s ease, background-color 0.3s ease, transform 0.2s ease",
                 }}
                 onClick={e => {
                   e.preventDefault();
@@ -958,19 +993,24 @@ function HeroSection() {
                   }, 50);
                 }}
                 onMouseEnter={e => {
-                  (e.currentTarget as HTMLAnchorElement).style.borderColor = "#C9A84C";
-                  (e.currentTarget as HTMLAnchorElement).style.color = "#ffffff";
-                  (e.currentTarget as HTMLAnchorElement).style.backgroundColor = "rgba(201,168,76,0.08)";
+                  if (!isActive) {
+                    (e.currentTarget as HTMLAnchorElement).style.borderColor = "#C9A84C";
+                    (e.currentTarget as HTMLAnchorElement).style.color = "#ffffff";
+                    (e.currentTarget as HTMLAnchorElement).style.backgroundColor = "rgba(201,168,76,0.08)";
+                  }
                 }}
                 onMouseLeave={e => {
-                  (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(74,127,165,0.45)";
-                  (e.currentTarget as HTMLAnchorElement).style.color = "rgba(255,255,255,0.75)";
-                  (e.currentTarget as HTMLAnchorElement).style.backgroundColor = "rgba(255,255,255,0.04)";
+                  if (!isActive) {
+                    (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(74,127,165,0.45)";
+                    (e.currentTarget as HTMLAnchorElement).style.color = "rgba(255,255,255,0.75)";
+                    (e.currentTarget as HTMLAnchorElement).style.backgroundColor = "rgba(255,255,255,0.04)";
+                  }
                 }}
               >
                 {pill.label}
               </a>
-            ))}
+              );
+            })}
           </div>{/* end pills */}
 
           {/* PDF Download button — discrete, below tiles */}

@@ -919,7 +919,7 @@ function HeroSection() {
             className="hero-titles text-white/70 mb-8 text-lg"
             style={{ fontFamily: "'Lato', sans-serif", fontWeight: 300, letterSpacing: "0.02em" }}
           >
-            Law Enforcement Outreach Manager, Meta Platforms &nbsp;·&nbsp; Former DEA Deputy Chief of Staff &nbsp;·&nbsp; Adjunct Professor, American University &nbsp;·&nbsp; Advisory Board Member, United Against Fentanyl &nbsp;·&nbsp; Senior Fellow, USF Global and National Security Institute
+            Former DEA Deputy Chief of Staff &nbsp;·&nbsp; Law Enforcement Outreach Manager, Meta Platforms &nbsp;·&nbsp; Adjunct Professor, American University
           </p>
 
           {/* Bio snippet */}
@@ -927,7 +927,7 @@ function HeroSection() {
             className="hero-bio text-white/60 mb-8 leading-relaxed"
             style={{ fontFamily: "'Lato', sans-serif", fontWeight: 300, fontSize: "1rem" }}
           >
-            A global thought leader and subject matter expert in law enforcement, intelligence, transnational organized crime, and drug policy — with over 14 years in law enforcement, including a distinguished career at the U.S. Drug Enforcement Administration, and a record of public service, academic scholarship, and policy advocacy.
+            A global thought leader and subject matter expert in law enforcement, intelligence, transnational organized crime, and drug policy — with over 14 years in law enforcement, including a distinguished career at the U.S. Drug Enforcement Administration spanning more than 30 countries, and a record of public service, academic scholarship, and policy advocacy.
           </p>
 
           {/* Pull-quote */}
@@ -1025,7 +1025,7 @@ function HeroSection() {
                 fontSize: "0.7rem",
                 letterSpacing: "0.12em",
                 textTransform: "uppercase",
-                opacity: 0.7,
+                opacity: 1,
               }}
             >
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
@@ -1066,7 +1066,7 @@ function AboutSection() {
     <SectionWrapper
       id="about"
       label="01 / Profile"
-      title="Background and Bio"
+      title="Background and Biography"
       dark={false}
     >
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start relative">
@@ -1368,7 +1368,7 @@ function PublicationsSection() {
     <SectionWrapper
       id="publications"
       label="03 / Publications"
-      title="Opinion and Analysis"
+      title="Policy Research and Analysis"
       dark={false}
     >
 
@@ -1697,7 +1697,7 @@ function AffiliationsSection() {
     <SectionWrapper
       id="affiliations"
       label="06 / Affiliations"
-      title="Fellowships and Networks"
+      title="Advisory Roles and Affiliations"
       dark={true}
     >
       <p className="text-sm max-w-md mb-8" style={{ color: "rgba(255,255,255,0.55)", fontFamily: "'Lato', sans-serif", fontWeight: 300 }}>

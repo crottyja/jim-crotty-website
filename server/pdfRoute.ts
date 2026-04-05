@@ -45,7 +45,7 @@ router.get("/api/download-cv", (_req, res) => {
     .font("Helvetica")
     .fontSize(9)
     .text(
-      "Law Enforcement Outreach Manager, Meta Platforms  ·  Former DEA Deputy Chief of Staff  ·  Adjunct Professor, American University  ·  Advisory Board Member  ·  Senior Fellow",
+      "Former DEA Deputy Chief of Staff  ·  Law Enforcement Outreach Manager, Meta Platforms  ·  Adjunct Professor, American University",
       60,
       60,
       { width: W }
@@ -73,7 +73,7 @@ router.get("/api/download-cv", (_req, res) => {
     .font("Helvetica-Oblique")
     .fontSize(10)
     .text(
-      '"The opioid crisis is not a red or blue state issue — it\'s an American issue."',
+      "\u201cThe opioid crisis is not a red or blue state issue \u2014 it\u2019s an American issue.\u201d",
       70,
       qY + 4,
       { width: W - 10 }
@@ -126,7 +126,7 @@ router.get("/api/download-cv", (_req, res) => {
   // ─── Summary ─────────────────────────────────────────────────────
   sectionHeader("Profile");
   bodyText(
-    "A global thought leader and subject matter expert in law enforcement, intelligence, transnational organized crime, and drug policy — with over 14 years in law enforcement, including a distinguished career at the U.S. Drug Enforcement Administration, and a record of public service, academic scholarship, and policy advocacy."
+    "A global thought leader and subject matter expert in law enforcement, intelligence, transnational organized crime, and drug policy — with over 14 years in law enforcement, including a distinguished career at the U.S. Drug Enforcement Administration spanning more than 30 countries, and a record of public service, academic scholarship, and policy advocacy."
   );
   curY += 4;
 
@@ -226,7 +226,7 @@ router.get("/api/download-cv", (_req, res) => {
   curY += 4;
 
   // ─── Selected Publications ────────────────────────────────────────
-  sectionHeader("Selected Publications (Opinion & Analysis)");
+  sectionHeader("Selected Publications (Policy Research and Analysis)");
 
   const pubs = [
     { year: "2026", title: "Could Mexican Cartels Be Incentivized to Sell 'Safer' Drugs?", outlet: "Small Wars Journal" },
@@ -271,7 +271,7 @@ router.get("/api/download-cv", (_req, res) => {
   curY += 4;
 
   // ─── Affiliations ─────────────────────────────────────────────────
-  sectionHeader("Affiliations & Fellowships");
+  sectionHeader("Advisory Roles and Affiliations");
 
   const affiliations = [
     { name: "United Against Fentanyl", role: "Advisory Board Member" },
@@ -348,7 +348,7 @@ router.get("/api/download-cv", (_req, res) => {
       .fillColor(NAVY)
       .font("Helvetica-Oblique")
       .fontSize(8.5)
-      .text(`"${mq.quote}"`, 66, curY, { width: W - 6 });
+      .text(`\u201c${mq.quote}\u201d`, 66, curY, { width: W - 6 });
     curY = doc.y + 1;
     // Context
     doc

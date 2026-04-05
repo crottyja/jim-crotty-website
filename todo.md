@@ -122,6 +122,3 @@
 - [ ] VideoSection: indentation inconsistency (extra indent on grid div)
 - [ ] VideoSection: "Watch / Read" link text — inconsistent, Fox News is not a video embed
 - [ ] Footer: hover color uses inline onMouseEnter/Leave — should use CSS class for consistency
-
-## Count-Up Animation (Congressional Inspiration)
-- [x] Add animated count-up credential stats row in hero section

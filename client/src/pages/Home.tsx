@@ -5,8 +5,27 @@
  * Layout: Off-center editorial columns, horizontal banding, left-border accents
  */
 
-import { CSSProperties, ReactNode, useEffect, useState, ChangeEvent, FormEvent, MouseEvent } from "react";
+import { CSSProperties, ReactNode, useEffect, useState, useRef, ChangeEvent, FormEvent, MouseEvent } from "react";
 import { Menu, X, ExternalLink, Linkedin, ChevronDown, ChevronUp, BookOpen, Briefcase, Award, GraduationCap, Globe, Mail, Newspaper, Quote, ArrowUp, Users, Shield, Send } from "lucide-react";
+// ── Count-up hook ──────────────────────────────────────────────────────────
+function useCountUp(target: number, duration = 1400, start = false) {
+  const [value, setValue] = useState(0);
+  useEffect(() => {
+    if (!start) return;
+    let startTime: number | null = null;
+    const step = (timestamp: number) => {
+      if (!startTime) startTime = timestamp;
+      const progress = Math.min((timestamp - startTime) / duration, 1);
+      // ease-out cubic
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setValue(Math.round(eased * target));
+      if (progress < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }, [start, target, duration]);
+  return value;
+}
+
 const MAP_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/map_bg-csabJgUBh7GraSoMYMWtE2.webp";
 const PROFILE_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/crottyheadshot2_b48bea55.webp";
 
@@ -802,8 +821,59 @@ function VideoSection() {
   );
 }
 
+// ── Credential stat cell with count-up ──────────────────────────────────
+function StatCell({ target, suffix, label, start }: { target: number; suffix: string; label: string; start: boolean }) {
+  const value = useCountUp(target, 1400, start);
+  return (
+    <div
+      className="flex flex-col items-center justify-center py-4 px-2"
+      style={{ background: "rgba(13,34,64,0.55)" }}
+    >
+      <div
+        style={{
+          fontFamily: "'Cormorant Garamond', serif",
+          fontSize: "2rem",
+          fontWeight: 600,
+          color: "#C9A84C",
+          lineHeight: 1,
+          letterSpacing: "-0.01em",
+        }}
+      >
+        {value}{suffix}
+      </div>
+      <div
+        style={{
+          fontFamily: "'Lato', sans-serif",
+          fontSize: "0.6rem",
+          fontWeight: 400,
+          color: "rgba(255,255,255,0.55)",
+          letterSpacing: "0.1em",
+          textTransform: "uppercase",
+          textAlign: "center",
+          marginTop: "0.25rem",
+          lineHeight: 1.3,
+        }}
+      >
+        {label}
+      </div>
+    </div>
+  );
+}
+
 function HeroSection() {
   const [parallaxY, setParallaxY] = useState(0);
+  const [statsVisible, setStatsVisible] = useState(false);
+  const statsRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const el = statsRef.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setStatsVisible(true); obs.disconnect(); } },
+      { threshold: 0.3 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
   useEffect(() => {
     const onScroll = () => setParallaxY(window.scrollY * 0.12);
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -960,15 +1030,26 @@ function HeroSection() {
 
           {/* Right column: headshot */}
           <div className="hidden lg:flex lg:w-72 xl:w-80 flex-shrink-0 justify-center items-start" style={{ paddingTop: "3.5rem" }}>
-            <div className="relative" style={{ boxShadow: "0 4px 32px rgba(255,255,255,0.12), 0 8px 24px rgba(0,0,0,0.45), 4px 4px 0 rgba(200,200,200,0.15)" }}>
-              <img
-                src={PROFILE_IMG}
-                alt="Jim Crotty"
-                className="w-64 xl:w-72 object-cover block"
-                style={{
-                  filter: "grayscale(15%)",
-                }}
-              />
+            <div className="flex flex-col gap-5 w-full items-center">
+              <div className="relative" style={{ boxShadow: "0 4px 32px rgba(255,255,255,0.12), 0 8px 24px rgba(0,0,0,0.45), 4px 4px 0 rgba(200,200,200,0.15)" }}>
+                <img
+                  src={PROFILE_IMG}
+                  alt="Jim Crotty"
+                  className="w-64 xl:w-72 object-cover block"
+                  style={{ filter: "grayscale(15%)" }}
+                />
+              </div>
+              {/* Credential stats count-up */}
+              <div ref={statsRef} className="w-full grid grid-cols-2 gap-px" style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.10)" }}>
+                {([
+                  { target: 14, suffix: "+", label: "Years in Law Enforcement" },
+                  { target: 30, suffix: "+", label: "Countries Served" },
+                  { target: 30, suffix: "+", label: "Publications" },
+                  { target: 100, suffix: "+", label: "Media Appearances" },
+                ] as { target: number; suffix: string; label: string }[]).map((stat) => (
+                  <StatCell key={stat.label} target={stat.target} suffix={stat.suffix} label={stat.label} start={statsVisible} />
+                ))}
+              </div>
             </div>
           </div>
 

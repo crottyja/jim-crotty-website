@@ -917,46 +917,49 @@ function HeroSection() {
             </cite>
           </blockquote>
 
-          {/* Section navigation tiles */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 mb-10">
+          {/* Section navigation pills */}
+          <div className="flex flex-wrap gap-2 mb-8">
             {[
-              { label: "Profile", sub: "Background and Bio", href: "#about", icon: <GraduationCap size={20} /> },
-              { label: "Career", sub: "Professional History", href: "#career", icon: <Briefcase size={20} /> },
-              { label: "Publications", sub: "Opinion and Analysis", href: "#publications", icon: <BookOpen size={20} /> },
-              { label: "On Camera", sub: "Broadcast Appearances", href: "#media", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg> },
-              { label: "In the News", sub: "Media Coverage", href: "#in-the-news", icon: <Newspaper size={20} /> },
-              { label: "Affiliations", sub: "Fellowships and Networks", href: "#affiliations", icon: <Award size={20} /> },
-              { label: "Contact", sub: "Get in Touch", href: "#contact", icon: <Mail size={20} />, center: true },
-            ].map((tile, idx) => (
+              { label: "Profile",       href: "#about" },
+              { label: "Career",        href: "#career" },
+              { label: "Publications",  href: "#publications" },
+              { label: "On Camera",     href: "#media" },
+              { label: "In the News",   href: "#in-the-news" },
+              { label: "Affiliations",  href: "#affiliations" },
+              { label: "Contact",       href: "#contact" },
+            ].map((pill, idx) => (
               <a
-                key={tile.href}
-                href={tile.href}
-                className={`group flex flex-col gap-2 p-4 hero-tile hero-tile-stagger transition-all duration-200 hover:-translate-y-0.5${'center' in tile && tile.center ? ' col-span-2 sm:col-span-1' : ''}`}
+                key={pill.href}
+                href={pill.href}
+                className="hero-tile-stagger group inline-flex items-center px-4 py-1.5 transition-all duration-200 hover:-translate-y-px"
                 style={{
-                  backgroundColor: "rgba(255,255,255,0.06)",
-                  border: "1px solid rgba(255,255,255,0.12)",
-                  borderTop: "2px solid rgba(74,127,165,0.6)",
-                  animationDelay: `${idx * 70}ms`,
+                  fontFamily: "'Lato', sans-serif",
+                  fontSize: "0.7rem",
+                  fontWeight: 700,
+                  letterSpacing: "0.13em",
+                  textTransform: "uppercase",
+                  color: "rgba(255,255,255,0.75)",
+                  border: "1px solid rgba(74,127,165,0.45)",
+                  borderRadius: "9999px",
+                  backgroundColor: "rgba(255,255,255,0.04)",
+                  animationDelay: `${idx * 60}ms`,
+                  textDecoration: "none",
+                }}
+                onMouseEnter={e => {
+                  (e.currentTarget as HTMLAnchorElement).style.borderColor = "#C9A84C";
+                  (e.currentTarget as HTMLAnchorElement).style.color = "#ffffff";
+                  (e.currentTarget as HTMLAnchorElement).style.backgroundColor = "rgba(201,168,76,0.08)";
+                }}
+                onMouseLeave={e => {
+                  (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(74,127,165,0.45)";
+                  (e.currentTarget as HTMLAnchorElement).style.color = "rgba(255,255,255,0.75)";
+                  (e.currentTarget as HTMLAnchorElement).style.backgroundColor = "rgba(255,255,255,0.04)";
                 }}
               >
-                <span style={{ color: "#4A7FA5" }} className="group-hover:text-white transition-colors duration-200">{tile.icon}</span>
-                <div>
-                  <div
-                    className="font-semibold text-white text-sm leading-tight"
-                    style={{ fontFamily: "'Lato', sans-serif", letterSpacing: "0.03em" }}
-                  >
-                    {tile.label}
-                  </div>
-                  <div
-                    className="text-xs mt-0.5"
-                    style={{ color: "rgba(255,255,255,0.45)", fontFamily: "'Lato', sans-serif" }}
-                  >
-                    {tile.sub}
-                  </div>
-                </div>
+                {pill.label}
               </a>
             ))}
-          </div>{/* end tiles grid */}
+          </div>{/* end pills */}
 
           {/* PDF Download button — discrete, below tiles */}
           <div className="mt-1 mb-6">

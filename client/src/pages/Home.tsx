@@ -419,10 +419,7 @@ function SectionWrapper({
   }, [id]);
 
   const overlay = dark ? "#0D2240" : "#F8F9FA";
-  // Patriotic rotating accent: red → white → blue → red cycle per section index
-  const PATRIOT_COLORS = ["#B22234", dark ? "rgba(255,255,255,0.85)" : "rgba(255,255,255,0.9)", "#4A7FA5", "#B22234", dark ? "rgba(255,255,255,0.85)" : "rgba(255,255,255,0.9)", "#4A7FA5", "#B22234"];
-  const sectionIndex = ["about", "career", "publications", "media", "in-the-news", "affiliations", "contact"].indexOf(id);
-  const labelColor = sectionIndex >= 0 ? PATRIOT_COLORS[sectionIndex] : "#C9A84C";
+  const labelColor = "#C9A84C";
   const titleColor = dark ? "#ffffff" : "#0D2240";
   const borderColor = dark ? "rgba(255,255,255,0.1)" : "rgba(13,34,64,0.1)";
   const chevronColor = dark ? "rgba(255,255,255,0.5)" : "#4A7FA5";
@@ -935,15 +932,9 @@ function HeroSection() {
 
           {/* Pull-quote */}
           <blockquote
-            className="mb-8 pl-4 relative"
-            style={{ paddingLeft: "1.25rem" }}
+            className="mb-8 pl-4 border-l-2"
+            style={{ borderColor: "#C9A84C" }}
           >
-            {/* Three-segment patriotic left border: red / white / blue */}
-            <span aria-hidden="true" style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: "3px", display: "flex", flexDirection: "column" }}>
-              <span style={{ flex: 1, background: "#B22234" }} />
-              <span style={{ flex: 1, background: "rgba(255,255,255,0.85)" }} />
-              <span style={{ flex: 1, background: "#4A7FA5" }} />
-            </span>
             <p
               className="text-white/80 italic leading-relaxed"
               style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.15rem", fontWeight: 400 }}
@@ -1037,7 +1028,7 @@ function HeroSection() {
                 opacity: 1,
               }}
             >
-              <span style={{ fontSize: "0.85rem", opacity: 0.75 }}>🇺🇸</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
               Download Profile PDF
             </a>
           </div>
@@ -1261,7 +1252,7 @@ function CareerSection() {
             {/* Vertical line */}
             <div
               className="absolute left-0 top-0 bottom-0 hidden md:block"
-              style={{ width: "2px", background: "linear-gradient(to bottom, rgba(178,34,52,0.75) 0%, rgba(178,34,52,0.75) 33%, rgba(255,255,255,0.55) 33%, rgba(255,255,255,0.55) 66%, rgba(13,34,64,0.85) 66%, rgba(13,34,64,0.85) 100%)", left: "140px" }}
+              style={{ width: "2px", background: "linear-gradient(to bottom, rgba(201,168,76,0.6), rgba(201,168,76,0.15))", left: "140px" }}
             />
 
             <div className="space-y-10">

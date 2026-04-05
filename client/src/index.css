@@ -342,19 +342,7 @@
     animation: tileEntrance 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   }
 
-  /* ── Drop cap on bio opening paragraph ───────────────────────────── */
-  .bio-drop-cap::first-letter {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 3.8em;
-    font-weight: 300;
-    line-height: 0.78;
-    float: left;
-    margin-right: 0.08em;
-    margin-top: 0.06em;
-    color: #0D2240;
-  }
-
-  /* ── Publication summary pull-quote first-line ───────────────────── */
+  /* ── Publication summary pull-quote first-line ──────────────────── */
   .pub-summary::first-line {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.05em;

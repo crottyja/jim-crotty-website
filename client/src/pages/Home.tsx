@@ -1003,15 +1003,7 @@ function AboutSection() {
       dark={false}
     >
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start relative">
-          {/* Vertical column rule — desktop only */}
-          <div
-            className="hidden lg:block absolute top-0 bottom-0"
-            style={{
-              left: "calc(33.333% + 1.5rem)",
-              width: "1px",
-              background: "rgba(13,34,64,0.08)",
-            }}
-          />
+
           {/* Left: Credentials */}
           <div className="lg:col-span-4 reveal-on-scroll">
             {/* Credentials */}
@@ -1056,7 +1048,7 @@ function AboutSection() {
             </h2>
 
             <div className="space-y-5 text-gray-700 leading-relaxed" style={{ fontFamily: "'Lato', sans-serif", fontWeight: 300, fontSize: "1.05rem" }}>
-              <p className="bio-drop-cap">
+              <p>
                 Jim Crotty is a recognized subject matter expert in law enforcement, intelligence, transnational organized crime, and drug policy. He currently serves as <strong style={{ fontWeight: 700, color: "#0D2240" }}>Law Enforcement Outreach Manager at Meta Platforms, Inc.</strong>, where he develops and maintains strategic relationships with law enforcement agencies across North America to help combat online criminal activity and prevent real-world harm.
               </p>
               <p>

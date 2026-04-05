@@ -568,31 +568,7 @@ function NavBar() {
         boxShadow: scrolled ? "0 2px 20px rgba(0,0,0,0.3)" : "none",
       }}
     >
-      <div className="container flex items-center justify-between h-16">
-        <a
-          href="#"
-          aria-label="Back to top"
-          className="flex items-center gap-2 group"
-          style={{ textDecoration: "none" }}
-        >
-          <span
-            className="inline-flex items-center justify-center w-8 h-8 text-xs font-black"
-            style={{
-              backgroundColor: "#C9A84C",
-              color: "#0D2240",
-              fontFamily: "'Lato', sans-serif",
-              letterSpacing: "0.04em",
-            }}
-          >
-            JC
-          </span>
-          <span
-            className="hidden sm:inline text-white/70 group-hover:text-white transition-colors text-xs tracking-widest uppercase"
-            style={{ fontFamily: "'Lato', sans-serif" }}
-          >
-            Jim Crotty
-          </span>
-        </a>
+      <div className="container flex items-center justify-end h-16">
 
         {/* Desktop nav */}
         <div className="hidden md:flex items-center gap-8">
@@ -721,7 +697,7 @@ function VideoSection() {
       <p className="text-sm max-w-md mb-8" style={{ color: "rgba(255,255,255,0.55)", fontFamily: "'Lato', sans-serif", fontWeight: 300 }}>
         Selected broadcast and documentary appearances.
       </p>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
           {videos.map((v) => (
             <div
               key={v.id}
@@ -816,7 +792,7 @@ function VideoSection() {
                   className="inline-flex items-center gap-1 mt-4 text-xs font-semibold tracking-wide uppercase hover:underline"
                   style={{ color: "#4A7FA5", fontFamily: "'Lato', sans-serif" }}
                 >
-                  Watch / Read <ExternalLink size={11} />
+                  Watch <ExternalLink size={11} />
                 </a>
               </div>
             </div>
@@ -1407,7 +1383,7 @@ function InTheNewsSection() {
               target="_blank"
               rel="noopener noreferrer"
               className="group block reveal-on-scroll"
-              style={{ transitionDelay: `${i * 0.1}s` }}
+              style={{ transitionDelay: `${Math.min(i * 0.1, 0.4)}s` }}
             >
               <div
                 className="h-full p-6 transition-all duration-200 group-hover:-translate-y-1"
@@ -1609,7 +1585,7 @@ function ContactSection() {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    if (!formData.name || !formData.inquiryType || !formData.message) return;
+    if (!formData.name || !formData.email || !formData.inquiryType || !formData.message) return;
     setStatus("sending");
     try {
       await fetch("/api/contact", {
@@ -1793,10 +1769,8 @@ function Footer() {
           href="https://www.linkedin.com/in/jamesmcrotty"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 transition-colors duration-200 hover:opacity-100"
-          style={{ color: "rgba(255,255,255,0.4)", fontFamily: "'Lato', sans-serif", fontSize: "0.75rem", letterSpacing: "0.1em", textTransform: "uppercase" }}
-          onMouseEnter={(e) => (e.currentTarget.style.color = "#4A7FA5")}
-          onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.4)")}
+          className="footer-linkedin-link inline-flex items-center gap-1.5 transition-colors duration-200"
+          style={{ fontFamily: "'Lato', sans-serif", fontSize: "0.75rem", letterSpacing: "0.1em", textTransform: "uppercase" }}
         >
           <Linkedin size={13} />
           LinkedIn

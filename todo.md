@@ -112,3 +112,13 @@
 - [x] CSS: .hero-stats class defined but never used (from old StatBar removal)
 - [x] CSS: .back-to-top has duplicate rule blocks (lines 211-238 and 374-381) — merge them
 - [ ] AboutSection: bio paragraph 3 ends abruptly (line 1060 is empty — missing content)
+
+## Final Review Fixes
+- [ ] NavBar: empty <div /> on left side — replace with nothing (justify-end the nav links)
+- [ ] HeroSection: news card animation delay cap at 0.4s (already done, verify)
+- [ ] AboutSection: bio paragraph 4 truncated at "Wall Stree" — verify full text
+- [ ] ContactSection: form validation — email field not in required check on line 1589
+- [ ] InTheNewsSection: transitionDelay not capped (i * 0.1 can reach 0.9s for 10 items)
+- [ ] VideoSection: indentation inconsistency (extra indent on grid div)
+- [ ] VideoSection: "Watch / Read" link text — inconsistent, Fox News is not a video embed
+- [ ] Footer: hover color uses inline onMouseEnter/Leave — should use CSS class for consistency

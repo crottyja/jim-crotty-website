@@ -1026,38 +1026,55 @@ function AboutSection() {
                   degree: "JD",
                   school: "University of Alabama School of Law",
                   year: "2008",
-                  logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/alabama-law-seal-crop_630c4cbd.png",
-                  logoAlt: "University of Alabama School of Law seal",
+                  logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/alabama-logo-new_f761e16f.webp",
+                  logoAlt: "University of Alabama School of Law",
+                  link: "https://www.law.ua.edu/",
                 },
                 {
                   degree: "MA, Political Science",
                   school: "Boston College",
                   year: "2005",
-                  logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/boston-college-seal-crop_53fa3628.png",
-                  logoAlt: "Boston College seal",
+                  logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/bc-logo-new_596da693.png",
+                  logoAlt: "Boston College",
+                  link: "https://www.bc.edu/",
                 },
                 {
                   degree: "BA, Political Science",
                   school: "Auburn University",
                   year: "2003",
                   note: "Summa Cum Laude",
-                  logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/auburn-university-logo_341e5991.png",
-                  logoAlt: "Auburn University logo",
+                  logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/auburn-logo-new_80563591.svg",
+                  logoAlt: "Auburn University",
+                  link: "https://www.auburn.edu/",
                 },
               ].map((ed) => (
                 <div key={ed.school} className="flex items-start gap-3">
-                  <img
-                    src={ed.logo}
-                    alt={ed.logoAlt}
-                    loading="lazy"
+                  <a
+                    href={ed.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title={ed.school}
                     style={{
-                      width: "44px",
-                      height: "44px",
-                      objectFit: "contain",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      width: "48px",
+                      height: "48px",
                       flexShrink: 0,
                       marginTop: "2px",
                     }}
-                  />
+                  >
+                    <img
+                      src={ed.logo}
+                      alt={ed.logoAlt}
+                      loading="lazy"
+                      style={{
+                        width: "44px",
+                        height: "44px",
+                        objectFit: "contain",
+                      }}
+                    />
+                  </a>
                   <div className="border-l-2 pl-3" style={{ borderColor: "#4A7FA5" }}>
                     <div className="font-semibold text-sm" style={{ color: "#0D2240", fontFamily: "'Lato', sans-serif" }}>
                       {ed.degree}
@@ -1411,7 +1428,13 @@ function PublicationsSection() {
   );
 }
 
+const NEWS_PAGE_SIZE = 6;
+
 function InTheNewsSection() {
+  const [visibleCount, setVisibleCount] = useState(NEWS_PAGE_SIZE);
+  const visibleItems = newsItems.slice(0, visibleCount);
+  const hasMore = visibleCount < newsItems.length;
+
   return (
     <SectionWrapper
       id="in-the-news"
@@ -1423,7 +1446,7 @@ function InTheNewsSection() {
         Jim's expert analysis has been sought by the world's leading news organizations on drug policy, cartels, and national security.
       </p>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {newsItems.map((item, i) => (
+          {visibleItems.map((item, i) => (
             <a
               key={i}
               href={item.url}
@@ -1539,6 +1562,24 @@ function InTheNewsSection() {
             </a>
           ))}
         </div>
+        {hasMore && (
+          <div className="flex justify-center mt-10">
+            <button
+              onClick={() => setVisibleCount((c) => c + NEWS_PAGE_SIZE)}
+              className="flex items-center gap-2 px-8 py-3 text-xs font-bold tracking-widest uppercase transition-all duration-200 hover:opacity-80"
+              style={{
+                color: "#0D2240",
+                border: "2px solid #C9A84C",
+                fontFamily: "'Lato', sans-serif",
+                letterSpacing: "0.15em",
+                background: "transparent",
+              }}
+            >
+              Load More
+              <ChevronDown size={14} />
+            </button>
+          </div>
+        )}
     </SectionWrapper>
   );
 }

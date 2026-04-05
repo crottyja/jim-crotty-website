@@ -920,13 +920,13 @@ function HeroSection() {
           {/* Section navigation pills */}
           <div className="flex flex-wrap gap-2 mb-8">
             {[
-              { label: "Profile",       href: "#about" },
-              { label: "Career",        href: "#career" },
-              { label: "Publications",  href: "#publications" },
-              { label: "On Camera",     href: "#media" },
-              { label: "In the News",   href: "#in-the-news" },
-              { label: "Affiliations",  href: "#affiliations" },
-              { label: "Contact",       href: "#contact" },
+              { label: "Profile",       href: "#about",        sectionId: "about" },
+              { label: "Career",        href: "#career",       sectionId: "career" },
+              { label: "Publications",  href: "#publications", sectionId: "publications" },
+              { label: "On Camera",     href: "#media",        sectionId: "media" },
+              { label: "In the News",   href: "#in-the-news",  sectionId: "in-the-news" },
+              { label: "Affiliations",  href: "#affiliations", sectionId: "affiliations" },
+              { label: "Contact",       href: "#contact",      sectionId: "contact" },
             ].map((pill, idx) => (
               <a
                 key={pill.href}
@@ -942,8 +942,20 @@ function HeroSection() {
                   border: "1px solid rgba(74,127,165,0.45)",
                   borderRadius: "9999px",
                   backgroundColor: "rgba(255,255,255,0.04)",
-                  animationDelay: `${idx * 60}ms`,
+                  animationDelay: `${idx * 70}ms`,
                   textDecoration: "none",
+                }}
+                onClick={e => {
+                  e.preventDefault();
+                  // Fire the open-section event so the accordion expands
+                  window.dispatchEvent(
+                    new CustomEvent("open-section", { detail: { id: pill.sectionId } })
+                  );
+                  // Then scroll smoothly to the section
+                  setTimeout(() => {
+                    const el = document.getElementById(pill.sectionId);
+                    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+                  }, 50);
                 }}
                 onMouseEnter={e => {
                   (e.currentTarget as HTMLAnchorElement).style.borderColor = "#C9A84C";

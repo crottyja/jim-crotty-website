@@ -6,19 +6,21 @@ import { ENV } from "./_core/env";
 const contactRouter = Router();
 
 contactRouter.post("/api/contact", async (req, res) => {
-  const { name, organization, inquiryType, message } = req.body as {
+  const { name, email, organization, inquiryType, message } = req.body as {
     name?: string;
+    email?: string;
     organization?: string;
     inquiryType?: string;
     message?: string;
   };
 
-  if (!name?.trim() || !inquiryType?.trim() || !message?.trim()) {
-    res.status(400).json({ error: "Name, inquiry type, and message are required." });
+  if (!name?.trim() || !email?.trim() || !inquiryType?.trim() || !message?.trim()) {
+    res.status(400).json({ error: "Name, email, inquiry type, and message are required." });
     return;
   }
 
   const cleanName = name.trim();
+  const cleanEmail = email!.trim();
   const cleanOrg = organization?.trim() || "";
   const cleanType = inquiryType.trim();
   const cleanMessage = message.trim();
@@ -36,6 +38,10 @@ contactRouter.post("/api/contact", async (req, res) => {
           <tr>
             <td style="padding: 6px 0; color: #4A7FA5; font-weight: 700; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.1em; width: 130px;">Name</td>
             <td style="padding: 6px 0; color: #0D2240;">${cleanName}</td>
+          </tr>
+          <tr>
+            <td style="padding: 6px 0; color: #4A7FA5; font-weight: 700; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.1em;">Email</td>
+            <td style="padding: 6px 0; color: #0D2240;"><a href="mailto:${cleanEmail}" style="color: #4A7FA5;">${cleanEmail}</a></td>
           </tr>
           ${cleanOrg ? `<tr>
             <td style="padding: 6px 0; color: #4A7FA5; font-weight: 700; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.1em;">Organization</td>
@@ -67,9 +73,9 @@ contactRouter.post("/api/contact", async (req, res) => {
       const { error } = await resend.emails.send({
         from: "jcrotty.com Contact Form <onboarding@resend.dev>",
         to: ["jamesmcrotty@hotmail.com"],
+        replyTo: cleanEmail,
         subject: emailSubject,
         html: emailHtml,
-        // replyTo not set — replies go to the sender's email if they include it in the message
       });
       if (error) {
         console.error("[Contact] Resend error:", error);
@@ -87,6 +93,7 @@ contactRouter.post("/api/contact", async (req, res) => {
   // Also notify via Manus owner notification as a backup
   const notifContent = [
     `**Name:** ${cleanName}`,
+    `**Email:** ${cleanEmail}`,
     cleanOrg ? `**Organization:** ${cleanOrg}` : null,
     `**Inquiry Type:** ${cleanType}`,
     `**Message:**\n${cleanMessage}`,

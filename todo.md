@@ -122,3 +122,7 @@
 - [ ] VideoSection: indentation inconsistency (extra indent on grid div)
 - [ ] VideoSection: "Watch / Read" link text — inconsistent, Fox News is not a video embed
 - [ ] Footer: hover color uses inline onMouseEnter/Leave — should use CSS class for consistency
+
+## Performance and Contact Form Fixes
+- [x] Add loading=lazy to Fox News thumbnail image in On Camera section
+- [x] Wire email field through to server contactRoute.ts (replyTo, email table row, owner notification)

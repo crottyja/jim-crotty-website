@@ -722,8 +722,17 @@ function VideoSection() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="relative flex items-center justify-center group"
-                  style={{ backgroundColor: "#0D2240", minHeight: "220px", backgroundImage: v.thumbnail ? `url(${v.thumbnail})` : "none", backgroundSize: "cover", backgroundPosition: "center" }}
+                  style={{ backgroundColor: "#0D2240", minHeight: "220px", position: "relative", overflow: "hidden" }}
                 >
+                  {v.thumbnail && (
+                    <img
+                      src={v.thumbnail}
+                      alt={v.title}
+                      loading="lazy"
+                      className="absolute inset-0 w-full h-full object-cover"
+                      style={{ pointerEvents: "none" }}
+                    />
+                  )}
                   <div className="absolute inset-0" style={{ backgroundColor: "rgba(13,34,64,0.75)" }} />
                   <div className="relative z-10 text-center px-8">
                     <div
@@ -965,6 +974,7 @@ function HeroSection() {
                 src={PROFILE_IMG}
                 alt="Jim Crotty"
                 className="w-64 xl:w-72 object-cover block"
+                loading="eager"
                 style={{
                   filter: "grayscale(15%)",
                 }}

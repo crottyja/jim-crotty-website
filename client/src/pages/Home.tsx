@@ -1022,22 +1022,55 @@ function AboutSection() {
             <div className="space-y-4">
               <div className="section-label mb-3" style={{ color: "#4A7FA5" }}>Education</div>
               {[
-                { degree: "JD", school: "University of Alabama School of Law", year: "2008" },
-                { degree: "MA, Political Science", school: "Boston College", year: "2005" },
-                { degree: "BA, Political Science", school: "Auburn University", year: "2003", note: "Summa Cum Laude" },
+                {
+                  degree: "JD",
+                  school: "University of Alabama School of Law",
+                  year: "2008",
+                  logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/alabama-law-seal-crop_630c4cbd.png",
+                  logoAlt: "University of Alabama School of Law seal",
+                },
+                {
+                  degree: "MA, Political Science",
+                  school: "Boston College",
+                  year: "2005",
+                  logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/boston-college-seal-crop_53fa3628.png",
+                  logoAlt: "Boston College seal",
+                },
+                {
+                  degree: "BA, Political Science",
+                  school: "Auburn University",
+                  year: "2003",
+                  note: "Summa Cum Laude",
+                  logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/auburn-university-logo_341e5991.png",
+                  logoAlt: "Auburn University logo",
+                },
               ].map((ed) => (
-                <div key={ed.school} className="border-l-2 pl-4" style={{ borderColor: "#4A7FA5" }}>
-                  <div className="font-semibold text-sm" style={{ color: "#0D2240", fontFamily: "'Lato', sans-serif" }}>
-                    {ed.degree}
-                  </div>
-                  <div className="text-sm text-gray-600" style={{ fontFamily: "'Lato', sans-serif" }}>
-                    {ed.school}, {ed.year}
-                  </div>
-                  {ed.note && (
-                    <div className="text-xs italic text-gray-500" style={{ fontFamily: "'Lato', sans-serif" }}>
-                      {ed.note}
+                <div key={ed.school} className="flex items-start gap-3">
+                  <img
+                    src={ed.logo}
+                    alt={ed.logoAlt}
+                    loading="lazy"
+                    style={{
+                      width: "44px",
+                      height: "44px",
+                      objectFit: "contain",
+                      flexShrink: 0,
+                      marginTop: "2px",
+                    }}
+                  />
+                  <div className="border-l-2 pl-3" style={{ borderColor: "#4A7FA5" }}>
+                    <div className="font-semibold text-sm" style={{ color: "#0D2240", fontFamily: "'Lato', sans-serif" }}>
+                      {ed.degree}
                     </div>
-                  )}
+                    <div className="text-sm text-gray-600" style={{ fontFamily: "'Lato', sans-serif" }}>
+                      {ed.school}, {ed.year}
+                    </div>
+                    {ed.note && (
+                      <div className="text-xs italic text-gray-500" style={{ fontFamily: "'Lato', sans-serif" }}>
+                        {ed.note}
+                      </div>
+                    )}
+                  </div>
                 </div>
               ))}
 
@@ -1176,11 +1209,11 @@ function CareerSection() {
                     <div
                       className="rounded-full"
                       style={{
-                        width: "12px",
-                        height: "12px",
-                        backgroundColor: "#4A7FA5",
-                        border: "2px solid #C9A84C",
-                        boxShadow: "0 0 8px rgba(74,127,165,0.6)",
+                        width: "14px",
+                        height: "14px",
+                        backgroundColor: "#ffffff",
+                        border: "2.5px solid #C9A84C",
+                        boxShadow: "0 0 0 3px rgba(201,168,76,0.18)",
                         flexShrink: 0,
                       }}
                     />
@@ -1396,11 +1429,11 @@ function InTheNewsSection() {
               href={item.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group block reveal-on-scroll"
+              className="group flex flex-col reveal-on-scroll"
               style={{ transitionDelay: `${Math.min(i * 0.1, 0.4)}s` }}
             >
               <div
-                className="h-full p-6 transition-all duration-200 group-hover:-translate-y-1"
+                className="flex flex-col flex-1 p-6 transition-all duration-200 group-hover:-translate-y-1"
                 style={{
                   backgroundColor: "#F8F9FA",
                   boxShadow: "0 2px 8px rgba(0,0,0,0.06)",
@@ -1484,7 +1517,7 @@ function InTheNewsSection() {
 
                 {/* Context */}
                 <p
-                  className="text-sm leading-relaxed mb-4"
+                  className="text-sm leading-relaxed mb-4 flex-1"
                   style={{
                     color: "#6b7280",
                     fontFamily: "'Lato', sans-serif",

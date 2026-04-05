@@ -1029,7 +1029,7 @@ function AboutSection() {
                   logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/univ-logo-alabama-mark_a108e57d.png",
                   logoAlt: "University of Alabama School of Law",
                   link: "https://www.law.ua.edu/",
-                  logoSize: 32,
+                  logoSize: 36,
                 },
                 {
                   degree: "MA, Political Science",

@@ -55,7 +55,7 @@ const publications = [
     summary: "Contends that the explosion of synthetic drugs is driven by market economics — low production costs and high profit margins — not the failure of prohibition, requiring economic rather than purely punitive policy responses."
   },
   {
-    year: "2025", title: "Could Illicit Drug Production Shift to US?", outlet: "Small Wars Journal / El Centro",
+    year: "2025", title: "Could Illicit Drug Production Shift to US?", outlet: "Small Wars Journal",
     url: "https://smallwarsjournal.com/2025/02/19/could-illicit-drug-production-shift-to-us/",
     summary: "Warns that tightening border enforcement and tariffs on Mexico could incentivize drug trafficking organizations to shift synthetic drug manufacturing operations to within the United States."
   },
@@ -372,7 +372,7 @@ const affiliations = [
   { name: "United Against Fentanyl", role: "Advisory Board Member", desc: "Bipartisan non-profit focused on ending the U.S. opioid crisis.", url: "https://www.uniteagainstfentanyl.org", icon: "shield" },
   { name: "Global Initiative Against Transnational Organized Crime (GI-TOC)", role: "Network of Experts Member", desc: "International network of researchers and practitioners addressing organized crime.", url: "https://globalinitiative.net", icon: "users" },
   { name: "USF Global and National Security Institute (GNSI)", role: "Non-Resident Senior Fellow", desc: "University of South Florida research institute on national security.", url: "https://www.usf.edu/gnsi/", icon: "award" },
-  { name: "Small Wars Journal – El Centro", role: "2026 Fellow / Associate", desc: "Leading journal on irregular warfare and national security strategy.", url: "https://smallwarsjournal.com", icon: "book" },
+  { name: "Small Wars Journal", role: "2026 Fellow / Associate", desc: "Leading journal on irregular warfare and national security strategy.", url: "https://smallwarsjournal.com", icon: "book" },
   { name: "Center for Advanced Defense Studies (C4ADS)", role: "Former Senior Fellow", desc: "Supported Organized Crime and Grand Corruption team on drug trafficking and money laundering.", url: "https://c4ads.org", icon: "users" },
   { name: "Presidential Management Fellows Program", role: "Former Fellow", desc: "Prestigious U.S. government leadership development program.", url: "https://www.pmf.gov", icon: "award" },
 ];

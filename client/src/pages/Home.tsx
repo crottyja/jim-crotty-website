@@ -589,7 +589,7 @@ function NavBar() {
               key={l.href}
               href={l.href}
               onClick={(e) => handleNavClick(e, l.sectionId)}
-              className="relative text-sm font-body uppercase transition-colors duration-200 pb-0.5"
+              className="relative text-sm font-body uppercase transition-colors duration-200 pb-0.5 hover:text-white"
               style={{
                 fontFamily: "'Lato', sans-serif",
                 fontSize: "0.7rem",
@@ -810,7 +810,7 @@ function VideoSection() {
                   href={v.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 mt-4 text-xs font-semibold tracking-wide uppercase hover:underline"
+                  className="inline-flex items-center gap-1 mt-4 text-xs font-semibold tracking-wide uppercase hover:underline hover:opacity-80 transition-opacity duration-200"
                   style={{ color: "#4A7FA5", fontFamily: "'Lato', sans-serif" }}
                 >
                   Watch <ExternalLink size={11} />
@@ -931,7 +931,7 @@ function HeroSection() {
               <a
                 key={tile.href}
                 href={tile.href}
-                className={`group flex flex-col gap-2 p-4 hero-tile hero-tile-stagger${'center' in tile && tile.center ? ' col-span-2 sm:col-span-1' : ''}`}
+                className={`group flex flex-col gap-2 p-4 hero-tile hero-tile-stagger transition-all duration-200 hover:-translate-y-0.5${'center' in tile && tile.center ? ' col-span-2 sm:col-span-1' : ''}`}
                 style={{
                   backgroundColor: "rgba(255,255,255,0.06)",
                   border: "1px solid rgba(255,255,255,0.12)",
@@ -1054,6 +1054,7 @@ function AboutSection() {
                     target="_blank"
                     rel="noopener noreferrer"
                     title={ed.school}
+                    className="transition-transform duration-200 hover:scale-110 hover:opacity-90"
                     style={{
                       display: "flex",
                       alignItems: "center",
@@ -1321,7 +1322,7 @@ function PublicationsSection() {
             <button
               key={y}
               onClick={() => { setYearFilter(y); setShowAll(false); }}
-              className="px-3 py-1 text-xs font-bold tracking-widest uppercase transition-all duration-150"
+              className="px-3 py-1 text-xs font-bold tracking-widest uppercase transition-all duration-150 hover:border-[#0D2240] hover:text-[#0D2240]"
               style={{
                 fontFamily: "'Lato', sans-serif",
                 letterSpacing: "0.1em",
@@ -1373,7 +1374,7 @@ function PublicationsSection() {
                     </span>
                   </div>
                   <h3
-                    className="font-semibold leading-snug group-hover:text-blue-700 transition-colors mb-2"
+                    className="font-semibold leading-snug group-hover:text-[#4A7FA5] transition-colors mb-2"
                     style={{
                       fontFamily: "'Libre Baskerville', serif",
                       color: "#0D2240",
@@ -1411,12 +1412,14 @@ function PublicationsSection() {
           <div className="mt-8 text-center">
             <button
               onClick={() => setShowAll(true)}
-              className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold tracking-widest uppercase transition-all duration-200 hover:bg-gray-100"
+              className="inline-flex items-center gap-2 px-6 py-3 text-xs font-bold tracking-widest uppercase transition-all duration-200 hover:bg-[#C9A84C]/10 hover:border-[#C9A84C]"
               style={{
                 color: "#0D2240",
+                border: "2px solid #C9A84C",
                 fontFamily: "'Lato', sans-serif",
                 fontSize: "0.7rem",
                 letterSpacing: "0.15em",
+                background: "transparent",
               }}
             >
               View All Publications
@@ -1562,11 +1565,29 @@ function InTheNewsSection() {
             </a>
           ))}
         </div>
+        {!hasMore && visibleCount > NEWS_PAGE_SIZE && (
+          <div className="flex justify-center mt-6">
+            <button
+              onClick={() => setVisibleCount(NEWS_PAGE_SIZE)}
+              className="flex items-center gap-2 px-8 py-3 text-xs font-bold tracking-widest uppercase transition-all duration-200 hover:bg-[#C9A84C]/10"
+              style={{
+                color: "#0D2240",
+                border: "2px solid #C9A84C",
+                fontFamily: "'Lato', sans-serif",
+                letterSpacing: "0.15em",
+                background: "transparent",
+              }}
+            >
+              Show Less
+              <ChevronUp size={14} />
+            </button>
+          </div>
+        )}
         {hasMore && (
           <div className="flex justify-center mt-10">
             <button
               onClick={() => setVisibleCount((c) => c + NEWS_PAGE_SIZE)}
-              className="flex items-center gap-2 px-8 py-3 text-xs font-bold tracking-widest uppercase transition-all duration-200 hover:opacity-80"
+              className="flex items-center gap-2 px-8 py-3 text-xs font-bold tracking-widest uppercase transition-all duration-200 hover:bg-[#C9A84C]/10"
               style={{
                 color: "#0D2240",
                 border: "2px solid #C9A84C",
@@ -1599,7 +1620,7 @@ function AffiliationsSection() {
           {affiliations.map((aff, i) => (
             <div
               key={i}
-              className="p-6 reveal-on-scroll"
+              className="p-6 reveal-on-scroll transition-all duration-200 hover:-translate-y-0.5"
               style={{
                 transitionDelay: `${i * 0.08}s`,
                 backgroundColor: "rgba(255,255,255,0.07)",
@@ -1857,7 +1878,7 @@ function Footer() {
           href="https://www.linkedin.com/in/jamesmcrotty"
           target="_blank"
           rel="noopener noreferrer"
-          className="footer-linkedin-link inline-flex items-center gap-1.5 transition-colors duration-200"
+          className="footer-linkedin-link inline-flex items-center gap-1.5 transition-colors duration-200 hover:text-[#C9A84C]"
           style={{ fontFamily: "'Lato', sans-serif", fontSize: "0.75rem", letterSpacing: "0.1em", textTransform: "uppercase" }}
         >
           <Linkedin size={13} />

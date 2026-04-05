@@ -1568,7 +1568,13 @@ function InTheNewsSection() {
         {!hasMore && visibleCount > NEWS_PAGE_SIZE && (
           <div className="flex justify-center mt-6">
             <button
-              onClick={() => setVisibleCount(NEWS_PAGE_SIZE)}
+              onClick={() => {
+                setVisibleCount(NEWS_PAGE_SIZE);
+                const el = document.getElementById('in-the-news');
+                if (el) {
+                  el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+              }}
               className="flex items-center gap-2 px-8 py-3 text-xs font-bold tracking-widest uppercase transition-all duration-200 hover:bg-[#C9A84C]/10"
               style={{
                 color: "#0D2240",

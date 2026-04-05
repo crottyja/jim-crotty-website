@@ -315,4 +315,68 @@
     background-color: #fafcff !important;
     outline: none;
   }
+
+  /* ── Gold rule under section titles ──────────────────────────────── */
+  .section-title-rule {
+    display: block;
+    width: 2rem;
+    height: 2px;
+    margin-top: 0.5rem;
+    border-radius: 1px;
+    transition: opacity 0.3s ease, width 0.3s ease;
+  }
+  .section-accordion-btn[aria-expanded="true"] .section-title-rule {
+    width: 2.5rem;
+  }
+
+  /* ── Staggered hero tile entrance ────────────────────────────────── */
+  @keyframes tileEntrance {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .hero-tile-stagger {
+    opacity: 0;
+    animation: tileEntrance 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  /* ── Drop cap on bio opening paragraph ───────────────────────────── */
+  .bio-drop-cap::first-letter {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.8em;
+    font-weight: 300;
+    line-height: 0.78;
+    float: left;
+    margin-right: 0.08em;
+    margin-top: 0.06em;
+    color: #0D2240;
+  }
+
+  /* ── Publication summary pull-quote first-line ───────────────────── */
+  .pub-summary::first-line {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05em;
+    font-style: italic;
+    color: #4a5568;
+  }
+
+  /* ── Normalise all-caps label letter-spacing ─────────────────────── */
+  .section-label {
+    letter-spacing: 0.15em;
+  }
+
+  /* ── Back-to-top: gold accent on hover ───────────────────────────── */
+  .back-to-top {
+    border: 1px solid rgba(201,168,76,0.35);
+  }
+  .back-to-top:hover {
+    background-color: #0D2240;
+    border-color: #C9A84C;
+    color: #C9A84C;
+  }
 }

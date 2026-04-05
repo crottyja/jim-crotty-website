@@ -443,6 +443,10 @@ function SectionWrapper({
             >
               {title}
             </h2>
+            <div
+              className="section-title-rule"
+              style={{ background: "#C9A84C", opacity: open ? 1 : 0.5 }}
+            />
           </div>
           <span
             className="flex-shrink-0 ml-4 transition-all duration-300 section-accordion-chevron"
@@ -506,11 +510,29 @@ function useScrollReveal() {
 function NavBar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>("");
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 60);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const sectionIds = ["about", "career", "publications", "media", "in-the-news", "affiliations", "contact"];
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActiveSection(entry.target.id);
+        });
+      },
+      { rootMargin: "-30% 0px -60% 0px", threshold: 0 }
+    );
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
   }, []);
 
   const links = [
@@ -556,10 +578,21 @@ function NavBar() {
               key={l.href}
               href={l.href}
               onClick={(e) => handleNavClick(e, l.sectionId)}
-              className="text-white/80 hover:text-white text-sm font-body tracking-widest uppercase transition-colors duration-200"
-              style={{ fontFamily: "'Lato', sans-serif", fontSize: "0.7rem", letterSpacing: "0.15em" }}
+              className="relative text-sm font-body uppercase transition-colors duration-200 pb-0.5"
+              style={{
+                fontFamily: "'Lato', sans-serif",
+                fontSize: "0.7rem",
+                letterSpacing: "0.15em",
+                color: activeSection === l.sectionId ? "#ffffff" : "rgba(255,255,255,0.7)",
+              }}
             >
               {l.label}
+              {activeSection === l.sectionId && (
+                <span
+                  className="absolute bottom-0 left-0 right-0 h-px"
+                  style={{ background: "#C9A84C", borderRadius: "1px" }}
+                />
+              )}
             </a>
           ))}
 
@@ -771,14 +804,20 @@ function VideoSection() {
 }
 
 function HeroSection() {
+  const [parallaxY, setParallaxY] = useState(0);
+  useEffect(() => {
+    const onScroll = () => setParallaxY(window.scrollY * 0.12);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center"
+      className="relative min-h-screen flex items-center overflow-hidden"
       style={{
         backgroundImage: `url(${MAP_BG})`,
         backgroundSize: "cover",
-        backgroundPosition: "center",
+        backgroundPosition: `center ${parallaxY}px`,
       }}
     >
       {/* Dark overlay */}
@@ -868,15 +907,16 @@ function HeroSection() {
               { label: "In the News", sub: "Media Coverage", href: "#in-the-news", icon: <Newspaper size={20} /> },
               { label: "Affiliations", sub: "Fellowships & Networks", href: "#affiliations", icon: <Award size={20} /> },
               { label: "Contact", sub: "Get in Touch", href: "#contact", icon: <Mail size={20} />, center: true },
-            ].map((tile) => (
+            ].map((tile, idx) => (
               <a
                 key={tile.href}
                 href={tile.href}
-                className={`group flex flex-col gap-2 p-4 hero-tile${'center' in tile && tile.center ? ' col-span-2 sm:col-span-1' : ''}`}
+                className={`group flex flex-col gap-2 p-4 hero-tile hero-tile-stagger${'center' in tile && tile.center ? ' col-span-2 sm:col-span-1' : ''}`}
                 style={{
                   backgroundColor: "rgba(255,255,255,0.06)",
                   border: "1px solid rgba(255,255,255,0.12)",
                   borderTop: "2px solid rgba(74,127,165,0.6)",
+                  animationDelay: `${idx * 70}ms`,
                 }}
               >
                 <span style={{ color: "#4A7FA5" }} className="group-hover:text-white transition-colors duration-200">{tile.icon}</span>
@@ -953,7 +993,16 @@ function AboutSection() {
       title="Background & Bio"
       dark={false}
     >
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start relative">
+          {/* Vertical column rule — desktop only */}
+          <div
+            className="hidden lg:block absolute top-0 bottom-0"
+            style={{
+              left: "calc(33.333% + 1.5rem)",
+              width: "1px",
+              background: "rgba(13,34,64,0.08)",
+            }}
+          />
           {/* Left: Credentials */}
           <div className="lg:col-span-4 reveal-on-scroll">
             {/* Credentials */}
@@ -998,7 +1047,7 @@ function AboutSection() {
             </h2>
 
             <div className="space-y-5 text-gray-700 leading-relaxed" style={{ fontFamily: "'Lato', sans-serif", fontWeight: 300, fontSize: "1.05rem" }}>
-              <p>
+              <p className="bio-drop-cap">
                 Jim Crotty is a recognized subject matter expert in law enforcement, intelligence, transnational organized crime, and drug policy. He currently serves as <strong style={{ fontWeight: 700, color: "#0D2240" }}>Law Enforcement Outreach Manager at Meta Platforms, Inc.</strong>, where he develops and maintains strategic relationships with law enforcement agencies across North America to help combat online criminal activity and prevent real-world harm.
               </p>
               <p>
@@ -1273,7 +1322,7 @@ function PublicationsSection() {
                   </h3>
                   {pub.summary && (
                     <p
-                      className="text-xs leading-relaxed"
+                      className="pub-summary text-xs leading-relaxed"
                       style={{
                         color: "#6b7280",
                         fontFamily: "'Lato', sans-serif",

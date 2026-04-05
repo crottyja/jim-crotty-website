@@ -83,3 +83,15 @@
 ## Styling Refinements
 - [x] Make Research Areas tags more subtle (softer bg, lighter border, lighter text weight)
 - [x] Make Featured In links more subtle (remove heavy left border, use lighter text, softer bg)
+
+## Visual Enhancements (Batch)
+- [x] Gold rule under each section title (h2)
+- [x] Active nav indicator (gold underline/dot on current section)
+- [x] Staggered hero tile entrance animation
+- [x] Parallax depth on hero background texture
+- [x] Publication card hover lift (translateY + shadow)
+- [x] Drop cap on bio opening paragraph
+- [x] Pull-quote styling in Publications cards
+- [x] Subtle column rule between bio and headshot in About
+- [x] Back-to-top button (fixed, appears after hero)
+- [x] Normalise letter-spacing on all all-caps labels to 0.1em

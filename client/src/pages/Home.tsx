@@ -5,22 +5,8 @@
  * Layout: Off-center editorial columns, horizontal banding, left-border accents
  */
 
-import React, { useEffect, useState } from "react";
+import { CSSProperties, ReactNode, useEffect, useState, ChangeEvent, FormEvent, MouseEvent } from "react";
 import { Menu, X, ExternalLink, Linkedin, ChevronDown, ChevronUp, BookOpen, Briefcase, Award, GraduationCap, Globe, Mail, Newspaper, Quote, ArrowUp, Users, Shield, Send } from "lucide-react";
-
-const LOGO_DEA = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/logo_dea_sm_9adb416c.png";
-const LOGO_META = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/logo_meta_v2_d36d1aef.png";
-const LOGO_AU = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/logo_au_sm_3af77265.png";
-const LOGO_AUBURN = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/logo_auburn_sm_393be940.png";
-const LOGO_ALABAMA = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/logo_alabama_sm_3210b25a.png";
-const LOGO_BC = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/logo_bc_v2_baa8226b.png";
-const LOGO_USF = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/logo_usf_v2_06cc32d8.png";
-const LOGO_UAF = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/logo_uaf_sm_0aad8988.png";
-const LOGO_GITOC = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/logo_gitoc_9c8adfcc.png";
-const LOGO_C4ADS = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/logo_c4ads_0b95344d.png";
-const LOGO_SWJ = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/logo_swj_b0a61e87.png";
-
-const HERO_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/hero_bg-E39Xv3dAoLSLwUSSr7GHbD.webp";
 const MAP_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/map_bg-csabJgUBh7GraSoMYMWtE2.webp";
 const PROFILE_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/crottyheadshot2_b48bea55.webp";
 
@@ -231,7 +217,6 @@ const career = [
     org: "Meta Platforms, Inc.",
     location: "Washington, D.C.",
     description: "Develops and maintains strategic relationships with law enforcement agencies across North America to help combat online criminal activity and prevent real-world harm.",
-    icon: "meta"
   },
   {
     period: "2024 – Present",
@@ -239,7 +224,6 @@ const career = [
     org: "American University, School of Public Affairs",
     location: "Washington, D.C.",
     description: "Teaches JLC-451: Drugs, Crime & Public Policy and JLC-313: Organized Crime in the Department of Justice, Law & Criminology.",
-    icon: "edu"
   },
   {
     period: "2023 – 2024",
@@ -247,7 +231,6 @@ const career = [
     org: "DC Metropolitan Police Department (MPD)",
     location: "Washington, D.C.",
     description: "Led a team of Criminal Research Specialists providing real-time intelligence on major crimes across the District of Columbia.",
-    icon: "law"
   },
   {
     period: "2021 – 2023",
@@ -255,7 +238,6 @@ const career = [
     org: "The Cohen Group",
     location: "Washington, D.C.",
     description: "Led multiple client teams across defense, cybersecurity, healthcare, energy, and national security sectors at the strategic advisory firm founded by former Secretary of Defense William Cohen.",
-    icon: "advisory"
   },
   {
     period: "2009 – 2021",
@@ -263,7 +245,6 @@ const career = [
     org: "U.S. Drug Enforcement Administration (DEA)",
     location: "Washington, D.C. | Chicago | London | Afghanistan",
     description: "Over 12 years of distinguished service. Final role: Deputy Chief of Staff and Executive Assistant to the Administrator. Prior roles included Group Supervisor (Chicago Field Division), Liaison Officer (London Country Office, 2013–2018), Tactical Intelligence Analyst with FAST-Alpha (Afghanistan, 2010), and Strategic Intelligence Analyst focused on South America.",
-    icon: "dea"
   },
   {
     period: "Pre-2009",
@@ -271,14 +252,12 @@ const career = [
     org: "PRTM Management Consultants",
     location: "Washington, D.C.",
     description: "Provided strategic and operational advice to clients in the Intelligence Community, Department of Homeland Security, and Department of Defense.",
-    icon: "consulting"
   },
 ];
 
 const newsItems = [
   {
     outlet: "The Baltimore Banner",
-    outletShort: "Banner",
     logo: "BB",
     color: "#1a1a1a",
     date: "March 18, 2025",
@@ -290,7 +269,6 @@ const newsItems = [
   },
   {
     outlet: "The Guardian",
-    outletShort: "Guardian",
     logo: "G",
     color: "#052962",
     date: "October 6, 2024",
@@ -302,7 +280,6 @@ const newsItems = [
   },
   {
     outlet: "Washington Post",
-    outletShort: "WaPo",
     logo: "WP",
     color: "#231f20",
     date: "August 20, 2022",
@@ -314,7 +291,6 @@ const newsItems = [
   },
   {
     outlet: "Atlanta Journal-Constitution",
-    outletShort: "AJC",
     logo: "AJC",
     color: "#1a1a1a",
     date: "January 21, 2025",
@@ -326,7 +302,6 @@ const newsItems = [
   },
   {
     outlet: "The Guardian",
-    outletShort: "Guardian",
     logo: "G",
     color: "#052962",
     date: "March 8, 2025",
@@ -338,7 +313,6 @@ const newsItems = [
   },
   {
     outlet: "The Guardian",
-    outletShort: "Guardian",
     logo: "G",
     color: "#052962",
     date: "October 17, 2025",
@@ -350,7 +324,6 @@ const newsItems = [
   },
   {
     outlet: "Wall Street Journal",
-    outletShort: "WSJ",
     logo: "WSJ",
     color: "#0D2240",
     date: "August 30, 2022",
@@ -362,7 +335,6 @@ const newsItems = [
   },
   {
     outlet: "Associated Press",
-    outletShort: "AP",
     logo: "AP",
     color: "#0D2240",
     date: "March 9, 2022",
@@ -374,7 +346,6 @@ const newsItems = [
   },
   {
     outlet: "STAT News",
-    outletShort: "STAT",
     logo: "STAT",
     color: "#0D2240",
     date: "May 7, 2025",
@@ -386,7 +357,6 @@ const newsItems = [
   },
   {
     outlet: "Fox News",
-    outletShort: "Fox",
     logo: "FOX",
     color: "#0D2240",
     date: "August 26, 2022",
@@ -414,15 +384,13 @@ function SectionWrapper({
   title,
   defaultOpen = false,
   dark = false,
-  bgOverlay,
 }: {
   id: string;
-  children: React.ReactNode;
+  children: ReactNode;
   label: string;
   title: string;
   defaultOpen?: boolean;
   dark?: boolean;
-  bgOverlay?: string;
 }) {
   const [open, setOpen] = useState(defaultOpen);
 
@@ -438,7 +406,7 @@ function SectionWrapper({
     return () => window.removeEventListener("open-section", handler);
   }, [id]);
 
-  const overlay = bgOverlay ?? (dark ? "#0D2240" : "#F8F9FA");
+  const overlay = dark ? "#0D2240" : "#F8F9FA";
   const labelColor = "#C9A84C";
   const titleColor = dark ? "#ffffff" : "#0D2240";
   const borderColor = dark ? "rgba(255,255,255,0.1)" : "rgba(13,34,64,0.1)";
@@ -555,7 +523,7 @@ function NavBar() {
     { label: "Contact", href: "#contact", sectionId: "contact" },
   ];
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
+  const handleNavClick = (e: MouseEvent<HTMLAnchorElement>, sectionId: string) => {
     e.preventDefault();
     // Dispatch event to open the section first
     window.dispatchEvent(new CustomEvent("open-section", { detail: { id: sectionId } }));
@@ -658,44 +626,6 @@ function NavBar() {
         </>
       )}
     </nav>
-  );
-}
-
-function StatBar() {
-  const stats = [
-    { value: "14+", label: "Years in Law Enforcement" },
-    { value: "35+", label: "Publications & Op-Eds" },
-    { value: "6", label: "Fellowships & Networks" },
-    { value: "19+", label: "Media Outlets" },
-    { value: "30+", label: "Countries Served" },
-  ];
-  return (
-    <div
-      style={{
-        backgroundColor: "#0a1c35",
-        borderTop: "1px solid rgba(74,127,165,0.3)",
-        borderBottom: "1px solid rgba(74,127,165,0.2)",
-      }}
-    >
-      <div className="container">
-        <p
-          className="text-center py-3 flex flex-wrap items-center justify-center gap-x-0"
-          style={{ fontFamily: "'Lato', sans-serif", fontWeight: 300, letterSpacing: "0.02em", fontSize: "0.85rem", color: "rgba(255,255,255,0.7)" }}
-        >
-          {stats.map((s, i) => (
-            <React.Fragment key={s.label}>
-              <span>
-                <span style={{ fontWeight: 600, color: "#ffffff" }}>{s.value}</span>
-                {" "}{s.label}
-              </span>
-              {i < stats.length - 1 && (
-                <span style={{ color: "rgba(255,255,255,0.35)", margin: "0 0.6em" }}>&nbsp;·&nbsp;</span>
-              )}
-            </React.Fragment>
-          ))}
-        </p>
-      </div>
-    </div>
   );
 }
 
@@ -1260,33 +1190,6 @@ function BackToTop() {
   );
 }
 
-const featuredPublications = [
-  {
-    year: "2022",
-    title: "Launching Missiles Is Easy, Drug Control Is Hard",
-    outlet: "Lawfare",
-    url: "https://www.lawfaremedia.org/article/launching-missiles-easy-drug-control-hard",
-    summary: "Critiques proposals to use military force against Mexican drug cartels, arguing that the complexity of drug supply chains makes kinetic strikes an ineffective and counterproductive policy tool.",
-    tag: "Strategy",
-  },
-  {
-    year: "2022",
-    title: "The next generation of illicit drugs? Think 'synthetic'",
-    outlet: "STAT News",
-    url: "https://www.statnews.com/2022/08/05/synthetic-drugs-fuel-next-wave-illicit-drug-use/",
-    summary: "Predicts that synthetic drugs will define the next era of illicit drug trafficking, as their low production costs, high potency, and ease of global distribution make them far more dangerous than plant-based predecessors.",
-    tag: "Public Health",
-  },
-  {
-    year: "2022",
-    title: "The US Opioid Problem Is Also a China Problem",
-    outlet: "The Diplomat",
-    url: "https://thediplomat.com/2022/09/the-us-opioid-problem-is-also-a-china-problem/",
-    summary: "Argues that China's role as the primary supplier of fentanyl precursor chemicals to Mexican cartels makes the opioid crisis a bilateral diplomatic issue requiring sustained U.S.-China counternarcotics engagement.",
-    tag: "Geopolitics",
-  },
-];
-
 function PublicationsSection() {
   const [showAll, setShowAll] = useState(false);
   const [yearFilter, setYearFilter] = useState<string>("All");
@@ -1629,11 +1532,11 @@ function ContactSection() {
     "General Question",
   ];
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (!formData.name || !formData.inquiryType || !formData.message) return;
     setStatus("sending");
@@ -1650,7 +1553,7 @@ function ContactSection() {
     }
   };
 
-  const inputStyle: React.CSSProperties = {
+  const inputStyle: CSSProperties = {
     width: "100%",
     padding: "0.65rem 0.85rem",
     fontFamily: "'Lato', sans-serif",

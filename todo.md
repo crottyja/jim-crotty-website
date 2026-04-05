@@ -66,3 +66,16 @@
 - [x] Final pre-publication audit: colors, fonts, copy, links
 - [x] Align headshot top with lowercase letters in Jim Crotty
 - [x] Build refined logo bar and integrate into footer
+
+## Code Optimization (Audit)
+- [x] Remove 11 unused LOGO_ and HERO_BG constants from Home.tsx
+- [x] Remove unused StatBar component (defined but never rendered)
+- [x] Remove unused featuredPublications constant
+- [x] Remove unused bgOverlay prop from SectionWrapper
+- [x] Remove unused outletShort field from all newsItems data
+- [x] Remove unused icon field from all career data entries
+- [x] Replace React namespace imports with named imports (ReactNode, CSSProperties, etc.)
+- [x] Remove unused CSS classes from index.css
+- [x] Remove unused fadeInUp @keyframes from index.css
+- [x] Delete unused ComponentShowcase.tsx page file
+- [x] Optimize Google Fonts URL: remove unused font variants

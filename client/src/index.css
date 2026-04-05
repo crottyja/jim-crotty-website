@@ -149,18 +149,6 @@
   }
   
   /* Policy Brief specific utilities */
-  .font-display {
-    font-family: 'Cormorant Garamond', serif;
-  }
-  
-  .font-heading {
-    font-family: 'Libre Baskerville', serif;
-  }
-  
-  .font-body {
-    font-family: 'Lato', sans-serif;
-  }
-  
   .section-label {
     font-family: 'Lato', sans-serif;
     font-size: 0.7rem;
@@ -169,42 +157,6 @@
     text-transform: uppercase;
     color: #4A7FA5;
   }
-  
-  .navy-bg {
-    background-color: #0D2240;
-  }
-  
-  .steel-accent {
-    color: #4A7FA5;
-  }
-  
-  .left-border-accent {
-    border-left: 3px solid #4A7FA5;
-    padding-left: 1rem;
-  }
-  
-  /* Fade-in animation for scroll reveals */
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  .animate-fade-in-up {
-    animation: fadeInUp 0.6s ease-out forwards;
-  }
-  
-  /* Stagger delay utilities */
-  .delay-100 { animation-delay: 0.1s; }
-  .delay-200 { animation-delay: 0.2s; }
-  .delay-300 { animation-delay: 0.3s; }
-  .delay-400 { animation-delay: 0.4s; }
-  .delay-500 { animation-delay: 0.5s; }
   
   /* Initially hidden for scroll animation */
   .reveal-on-scroll {
@@ -318,10 +270,6 @@
     box-shadow: 0 8px 24px rgba(13,34,64,0.5), 0 0 0 1px rgba(201,168,76,0.25);
   }
 
-  /* Gold accent token */
-  .gold-accent { color: #C9A84C; }
-  .gold-border { border-color: #C9A84C; }
-
   /* Publication card hover lift */
   .pub-card {
     transition: transform 0.22s ease, box-shadow 0.22s ease;
@@ -329,59 +277,6 @@
   .pub-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 8px 24px rgba(13,34,64,0.13);
-  }
-
-  /* Consistent left-border card accent */
-  .accent-card {
-    border-left: 3px solid #4A7FA5;
-  }
-  .accent-card-navy {
-    border-left: 3px solid rgba(255,255,255,0.3);
-  }
-
-  /* Section transition divider */
-  .section-divider {
-    height: 1px;
-    background: linear-gradient(to right, transparent, rgba(13,34,64,0.12) 20%, rgba(13,34,64,0.12) 80%, transparent);
-    margin: 0;
-  }
-  .section-divider-navy {
-    height: 1px;
-    background: linear-gradient(to right, transparent, rgba(255,255,255,0.12) 20%, rgba(255,255,255,0.12) 80%, transparent);
-    margin: 0;
-  }
-
-  /* Mobile nav drawer */
-  .mobile-nav-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.4);
-    z-index: 40;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.25s ease;
-  }
-  .mobile-nav-overlay.open {
-    opacity: 1;
-    pointer-events: auto;
-  }
-  .mobile-nav-drawer {
-    position: fixed;
-    top: 0;
-    right: 0;
-    height: 100%;
-    width: min(280px, 85vw);
-    background: #0D2240;
-    z-index: 50;
-    transform: translateX(100%);
-    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-    display: flex;
-    flex-direction: column;
-    padding: 2rem 1.5rem;
-    gap: 0.25rem;
-  }
-  .mobile-nav-drawer.open {
-    transform: translateX(0);
   }
 
   /* Accordion section header hover effects */

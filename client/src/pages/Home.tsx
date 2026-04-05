@@ -322,6 +322,17 @@ const newsItems = [
     author: "Hannah Harris Green",
     url: "https://www.theguardian.com/uk-news/2024/oct/06/cannabis-vapes-synthetic-cannabinoid-illegal",
   },
+  {
+    outlet: "The Baltimore Banner",
+    logo: "BB",
+    color: "#1a1a1a",
+    date: "October 15, 2024",
+    title: "90,000 methadone pills went missing from the Baltimore jail, leaked documents reveal",
+    quote: "They're generally only taken and reserved for the most serious offenses and violations. They're not taken very lightly, particularly given the context of this being a department of corrections facility and recognizing the importance of medication-assisted treatment during the opioid crisis.",
+    context: "Crotty called the DEA's decision to pursue a formal memorandum of agreement against the Baltimore jail 'pretty rare,' underscoring the gravity of the facility losing track of nearly 92,500 methadone pills — a controlled substance critical to opioid treatment programs.",
+    author: "Ben Conarck",
+    url: "https://www.thebanner.com/community/criminal-justice/baltimore-jail-methadone-pills-EGO3IFAN4VGQXE3QZ26W4ADNRQ/",
+  },
 
   {
     outlet: "Wall Street Journal",

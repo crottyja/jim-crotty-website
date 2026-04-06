@@ -57,7 +57,7 @@ router.get("/api/download-cv", (_req, res) => {
   const linkColor = "rgba(255,255,255,0.55)";
 
   doc.fillColor(iconColor).font("Helvetica-Bold").fontSize(8).text("✉", 60, contactY, { continued: true });
-  doc.fillColor(linkColor).font("Helvetica").fontSize(8).text("  jcrotty@american.edu", { continued: true });
+  doc.fillColor(linkColor).font("Helvetica").fontSize(8).text("  jamesmcrotty@hotmail.com", { continued: true });
 
   doc.fillColor(iconColor).font("Helvetica-Bold").text("   in", { continued: true });
   doc.fillColor(linkColor).font("Helvetica").text("  linkedin.com/in/jamesmcrotty", { continued: true });
@@ -148,7 +148,7 @@ router.get("/api/download-cv", (_req, res) => {
       period: "2024 – Present",
       location: "Washington, D.C.",
       detail:
-        "Teaches JLC-451: Drugs, Crime & Public Policy and JLC-313: Organized Crime in the Department of Justice, Law & Criminology.",
+        "Teaches JLC-451: Drugs, Crime and Public Policy and JLC-313: Organized Crime in the Department of Justice, Law and Criminology.",
     },
     {
       title: "Head, Investigative Support Section",
@@ -167,7 +167,7 @@ router.get("/api/download-cv", (_req, res) => {
         "Led multiple client teams across defense, cybersecurity, healthcare, energy, and national security sectors at the strategic advisory firm founded by former Secretary of Defense William Cohen.",
     },
     {
-      title: "Deputy Chief of Staff & Multiple Roles",
+      title: "Deputy Chief of Staff and Multiple Roles",
       org: "U.S. Drug Enforcement Administration (DEA)",
       period: "2009 – 2021",
       location: "Washington, D.C. | Chicago | London | Afghanistan",

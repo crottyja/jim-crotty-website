@@ -1,11 +1,38 @@
 import { Router } from "express";
+import rateLimit from "express-rate-limit";
 import { Resend } from "resend";
 import { notifyOwner } from "./_core/notification";
 import { ENV } from "./_core/env";
 
 const contactRouter = Router();
 
-contactRouter.post("/api/contact", async (req, res) => {
+// ─── Rate limiter: max 5 submissions per 15 minutes per IP ───────────────────
+const contactLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 5,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { error: "Too many submissions. Please wait a few minutes and try again." },
+});
+
+// ─── HTML escape helper to prevent XSS in email template ─────────────────────
+function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+// ─── Input length limits ──────────────────────────────────────────────────────
+const MAX_NAME = 100;
+const MAX_EMAIL = 254;
+const MAX_ORG = 200;
+const MAX_TYPE = 100;
+const MAX_MESSAGE = 5000;
+
+contactRouter.post("/api/contact", contactLimiter, async (req, res) => {
   const { name, email, organization, inquiryType, message } = req.body as {
     name?: string;
     email?: string;
@@ -19,11 +46,18 @@ contactRouter.post("/api/contact", async (req, res) => {
     return;
   }
 
-  const cleanName = name.trim();
-  const cleanEmail = email!.trim();
-  const cleanOrg = organization?.trim() || "";
-  const cleanType = inquiryType.trim();
-  const cleanMessage = message.trim();
+  const cleanName = name.trim().slice(0, MAX_NAME);
+  const cleanEmail = email.trim().slice(0, MAX_EMAIL);
+  const cleanOrg = (organization?.trim() || "").slice(0, MAX_ORG);
+  const cleanType = inquiryType.trim().slice(0, MAX_TYPE);
+  const cleanMessage = message.trim().slice(0, MAX_MESSAGE);
+
+  // Escaped versions for HTML email template
+  const safeN = escapeHtml(cleanName);
+  const safeE = escapeHtml(cleanEmail);
+  const safeO = escapeHtml(cleanOrg);
+  const safeT = escapeHtml(cleanType);
+  const safeM = escapeHtml(cleanMessage);
 
   const emailSubject = `[jcrotty.com] ${cleanType} — ${cleanName}`;
   const emailHtml = `
@@ -37,24 +71,24 @@ contactRouter.post("/api/contact", async (req, res) => {
         <table style="width: 100%; border-collapse: collapse; font-family: 'Arial', sans-serif; font-size: 0.9rem;">
           <tr>
             <td style="padding: 6px 0; color: #4A7FA5; font-weight: 700; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.1em; width: 130px;">Name</td>
-            <td style="padding: 6px 0; color: #0D2240;">${cleanName}</td>
+            <td style="padding: 6px 0; color: #0D2240;">${safeN}</td>
           </tr>
           <tr>
             <td style="padding: 6px 0; color: #4A7FA5; font-weight: 700; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.1em;">Email</td>
-            <td style="padding: 6px 0; color: #0D2240;"><a href="mailto:${cleanEmail}" style="color: #4A7FA5;">${cleanEmail}</a></td>
+            <td style="padding: 6px 0; color: #0D2240;"><a href="mailto:${safeE}" style="color: #4A7FA5;">${safeE}</a></td>
           </tr>
           ${cleanOrg ? `<tr>
             <td style="padding: 6px 0; color: #4A7FA5; font-weight: 700; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.1em;">Organization</td>
-            <td style="padding: 6px 0; color: #0D2240;">${cleanOrg}</td>
+            <td style="padding: 6px 0; color: #0D2240;">${safeO}</td>
           </tr>` : ""}
           <tr>
             <td style="padding: 6px 0; color: #4A7FA5; font-weight: 700; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.1em;">Inquiry Type</td>
-            <td style="padding: 6px 0; color: #0D2240;">${cleanType}</td>
+            <td style="padding: 6px 0; color: #0D2240;">${safeT}</td>
           </tr>
         </table>
         <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #e5e7eb;">
           <div style="color: #4A7FA5; font-weight: 700; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.1em; margin-bottom: 10px; font-family: 'Arial', sans-serif;">Message</div>
-          <p style="color: #374151; line-height: 1.7; margin: 0; white-space: pre-wrap; font-family: 'Arial', sans-serif; font-size: 0.95rem;">${cleanMessage}</p>
+          <p style="color: #374151; line-height: 1.7; margin: 0; white-space: pre-wrap; font-family: 'Arial', sans-serif; font-size: 0.95rem;">${safeM}</p>
         </div>
       </div>
       <div style="padding: 16px 32px; background: #0D2240;">
@@ -97,7 +131,9 @@ contactRouter.post("/api/contact", async (req, res) => {
     cleanOrg ? `**Organization:** ${cleanOrg}` : null,
     `**Inquiry Type:** ${cleanType}`,
     `**Message:**\n${cleanMessage}`,
-    emailSent ? `\n✅ Email delivered to jcrotty@american.edu` : `\n⚠️ Email delivery not configured`,
+    emailSent
+      ? `\n✅ Email delivered to jamesmcrotty@hotmail.com`
+      : `\n⚠️ Email delivery not configured`,
   ]
     .filter(Boolean)
     .join("\n\n");

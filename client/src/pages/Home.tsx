@@ -5,7 +5,7 @@
  * Layout: Off-center editorial columns, horizontal banding, left-border accents
  */
 
-import { CSSProperties, ReactNode, useEffect, useState, ChangeEvent, FormEvent, MouseEvent } from "react";
+import { CSSProperties, MouseEvent, ReactNode, useEffect, useState, ChangeEvent, FormEvent } from "react";
 import { Menu, X, ExternalLink, Linkedin, ChevronDown, ChevronUp, BookOpen, Briefcase, Award, GraduationCap, Globe, Mail, Newspaper, Quote, ArrowUp, Users, Shield, Send } from "lucide-react";
 const MAP_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/map_bg-csabJgUBh7GraSoMYMWtE2.webp";
 const PROFILE_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/crottyheadshot2_b48bea55.webp";
@@ -220,10 +220,10 @@ const career = [
   },
   {
     period: "2024 – Present",
-    role: "Adjunct Professor & Lecturer",
+    role: "Adjunct Professor and Lecturer",
     org: "American University, School of Public Affairs",
     location: "Washington, D.C.",
-    description: "Teaches JLC-451: Drugs, Crime & Public Policy and JLC-313: Organized Crime in the Department of Justice, Law & Criminology.",
+      description: "Teaches JLC-451: Drugs, Crime and Public Policy and JLC-313: Organized Crime in the Department of Justice, Law and Criminology.",
   },
   {
     period: "2023 – 2024",
@@ -241,7 +241,7 @@ const career = [
   },
   {
     period: "2009 – 2021",
-    role: "Deputy Chief of Staff & Multiple Roles",
+    role: "Deputy Chief of Staff and Multiple Roles",
     org: "U.S. Drug Enforcement Administration (DEA)",
     location: "Washington, D.C. | Chicago | London | Afghanistan",
     description: "Over 12 years of distinguished service. Final role: Deputy Chief of Staff and Executive Assistant to the Administrator. Prior roles included Group Supervisor (Chicago Field Division), Liaison Officer (London Country Office, 2013–2018), Tactical Intelligence Analyst with FAST-Alpha (Afghanistan, 2010), and Strategic Intelligence Analyst focused on South America. Held Top Secret/SCI clearance throughout tenure.",
@@ -2006,7 +2006,6 @@ export default function Home() {
       <AffiliationsSection />
       <ContactSection />
       <Footer />
-      <BackToTop />
     </div>
   );
 }

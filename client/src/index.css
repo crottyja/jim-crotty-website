@@ -53,7 +53,7 @@
   --color-navy-light: #1a3a5c;
   --color-steel: #4A7FA5;
   --color-steel-light: #6a9fc5;
-  --color-gold: #C8860A;
+  --color-gold: #C9A84C;
   --color-cream: #F5F0E8;
 }
 
@@ -153,7 +153,7 @@
     font-family: 'Lato', sans-serif;
     font-size: 0.7rem;
     font-weight: 700;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
     color: #4A7FA5;
   }
@@ -253,20 +253,6 @@
     animation: heroScanDrift 12s ease-in-out infinite;
   }
 
-  /* Hero tile hover: lift + gold top border + soft glow */
-  .hero-tile {
-    transition: transform 0.22s cubic-bezier(0.22,1,0.36,1),
-                box-shadow 0.22s ease,
-                border-top-color 0.22s ease,
-                background-color 0.22s ease;
-  }
-  .hero-tile:hover {
-    transform: translateY(-5px);
-    background-color: rgba(255,255,255,0.10) !important;
-    border-top-color: #C9A84C !important;
-    box-shadow: 0 8px 24px rgba(13,34,64,0.5), 0 0 0 1px rgba(201,168,76,0.25);
-  }
-
   /* Publication card hover lift */
   .pub-card {
     transition: transform 0.22s ease, box-shadow 0.22s ease;
@@ -350,16 +336,11 @@
     color: #4a5568;
   }
 
-  /* ── Normalise all-caps label letter-spacing ─────────────────────── */
-  .section-label {
-    letter-spacing: 0.15em;
-  }
-
   .footer-linkedin-link {
     color: rgba(255,255,255,0.4);
   }
   .footer-linkedin-link:hover {
-    color: #4A7FA5;
+    color: #C9A84C;
   }
 
 

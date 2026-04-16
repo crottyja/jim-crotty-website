@@ -147,6 +147,3 @@
 - [x] Fix mobile Publications year-filter to horizontal scroll strip (overflow-x-auto, flex-shrink-0, scrollbar-none)
 - [x] Generate and add branded 1200x630 Open Graph image (navy/gold branded card, Twitter card meta tags added)
 - [x] Add sitemap.xml to client/public
-
-## Content Updates (Round 5)
-- [x] Replace standalone "Jim" first-name references with "Crotty" throughout site content

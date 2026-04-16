@@ -911,7 +911,7 @@ function HeroSection() {
               letterSpacing: "-0.01em",
             }}
           >
-            <span style={{ fontWeight: 600, fontStyle: "italic", color: "#C9A84C" }}>Crotty</span>
+            Jim <span style={{ fontWeight: 600, fontStyle: "italic", color: "#C9A84C" }}>Crotty</span>
           </h1>
 
           {/* Title */}
@@ -1171,10 +1171,10 @@ function AboutSection() {
                 Jim Crotty is a recognized subject matter expert in law enforcement, intelligence, transnational organized crime, and drug policy. He currently serves as <strong style={{ fontWeight: 700, color: "#0D2240" }}>Law Enforcement Outreach Manager at Meta Platforms, Inc.</strong>, where he develops and maintains strategic relationships with law enforcement agencies across North America to help combat online criminal activity and prevent real-world harm.
               </p>
               <p>
-                Before joining Meta, Crotty led the Investigative Support Section at the <strong style={{ fontWeight: 700, color: "#0D2240" }}>DC Metropolitan Police Department (MPD)</strong>, managing a team of Criminal Research Specialists providing real-time intelligence on major crimes across the District of Columbia. He also served as Associate Vice President at <strong style={{ fontWeight: 700, color: "#0D2240" }}>The Cohen Group</strong>, a strategic advisory firm founded by former Secretary of Defense William Cohen, where he led client teams across defense, cybersecurity, healthcare, energy, and national security.
+                Before joining Meta, Jim led the Investigative Support Section at the <strong style={{ fontWeight: 700, color: "#0D2240" }}>DC Metropolitan Police Department (MPD)</strong>, managing a team of Criminal Research Specialists providing real-time intelligence on major crimes across the District of Columbia. He also served as Associate Vice President at <strong style={{ fontWeight: 700, color: "#0D2240" }}>The Cohen Group</strong>, a strategic advisory firm founded by former Secretary of Defense William Cohen, where he led client teams across defense, cybersecurity, healthcare, energy, and national security.
               </p>
               <p>
-                Crotty's distinguished public service career includes over <strong style={{ fontWeight: 700, color: "#0D2240" }}>14 years in law enforcement</strong>, anchored by a career at the <strong style={{ fontWeight: 700, color: "#0D2240" }}>U.S. Drug Enforcement Administration (DEA)</strong>, where he served in strategic, tactical, and operational positions domestically and internationally across more than 30 countries. His final DEA assignment was as Deputy Chief of Staff and Executive Assistant to the Administrator — the agency's top leadership position.
+                Jim's distinguished public service career includes over <strong style={{ fontWeight: 700, color: "#0D2240" }}>14 years in law enforcement</strong>, anchored by a career at the <strong style={{ fontWeight: 700, color: "#0D2240" }}>U.S. Drug Enforcement Administration (DEA)</strong>, where he served in strategic, tactical, and operational positions domestically and internationally across more than 30 countries. His final DEA assignment was as Deputy Chief of Staff and Executive Assistant to the Administrator — the agency's top leadership position.
               </p>
               <p>
                 He is an <strong style={{ fontWeight: 700, color: "#0D2240" }}>Adjunct Professor at American University's School of Public Affairs</strong>, teaching courses on Drugs, Crime, and Public Policy and Organized Crime. His commentary and analysis have been featured in the <em>Washington Post</em>, <em>Wall Street Journal</em>, <em>Newsweek</em>, <em>The Hill</em>, <em>STAT News</em>, <em>The Guardian</em>, and many other leading publications.
@@ -1527,7 +1527,7 @@ function InTheNewsSection() {
       dark={false}
     >
       <p className="text-sm max-w-md text-gray-500 mb-8" style={{ fontFamily: "'Lato', sans-serif", fontWeight: 300 }}>
-        Crotty's expert analysis has been sought by the world's leading news organizations on drug policy, cartels, and national security.
+        Jim's expert analysis has been sought by the world's leading news organizations on drug policy, cartels, and national security.
       </p>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {visibleItems.map((item, i) => (
@@ -1701,7 +1701,7 @@ function AffiliationsSection() {
       dark={true}
     >
       <p className="text-sm max-w-md mb-8" style={{ color: "rgba(255,255,255,0.55)", fontFamily: "'Lato', sans-serif", fontWeight: 300 }}>
-        Crotty is affiliated with several leading research institutions, policy organizations, and national security networks focused on drug policy, transnational organized crime, and law enforcement.
+        Jim is affiliated with several leading research institutions, policy organizations, and national security networks focused on drug policy, transnational organized crime, and law enforcement.
       </p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {affiliations.map((aff, i) => (

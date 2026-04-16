@@ -3,16 +3,37 @@
   "builds": [
     {
       "src": "api/server.ts",
-      "use": "@vercel/node",
-      "config": {
-        "includeFiles": ["dist/public/**"]
-      }
+      "use": "@vercel/node"
+    },
+    {
+      "src": "dist/public/**",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
     {
-      "src": "/(.*)",
+      "src": "/api/(.*)",
       "dest": "/api/server.ts"
+    },
+    {
+      "src": "/download-profile-pdf",
+      "dest": "/api/server.ts"
+    },
+    {
+      "src": "/contact",
+      "dest": "/api/server.ts"
+    },
+    {
+      "src": "/assets/(.*)",
+      "dest": "/dist/public/assets/$1"
+    },
+    {
+      "src": "/sitemap.xml",
+      "dest": "/dist/public/sitemap.xml"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/dist/public/index.html"
     }
   ]
 }

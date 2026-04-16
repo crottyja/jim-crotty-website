@@ -6,7 +6,7 @@
  */
 
 import { CSSProperties, MouseEvent, ReactNode, useEffect, useState, ChangeEvent, FormEvent } from "react";
-import { Menu, X, ExternalLink, Linkedin, ChevronDown, ChevronUp, Globe, Mail, Newspaper, Quote, ArrowUp, Send } from "lucide-react";
+import { Menu, X, ExternalLink, Linkedin, ChevronDown, ChevronUp, BookOpen, Briefcase, Award, GraduationCap, Globe, Mail, Newspaper, Quote, ArrowUp, Users, Shield, Send } from "lucide-react";
 const MAP_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/map_bg-csabJgUBh7GraSoMYMWtE2.webp";
 const PROFILE_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/crottyheadshot2_b48bea55.webp";
 
@@ -381,12 +381,12 @@ const newsItems = [
 ];
 
 const affiliations = [
-  { name: "United Against Fentanyl", role: "Advisory Board Member", desc: "Bipartisan non-profit focused on ending the U.S. opioid crisis.", url: "https://www.uniteagainstfentanyl.org", logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/affil-united-against-fentanyl_8c6af29b.png" },
-  { name: "Global Initiative Against Transnational Organized Crime (GI-TOC)", role: "Network of Experts Member", desc: "International network of researchers and practitioners addressing organized crime.", url: "https://globalinitiative.net", logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/affil-gi-toc_a565e626.png" },
-  { name: "USF Global and National Security Institute (GNSI)", role: "Non-Resident Senior Fellow", desc: "University of South Florida research institute on national security.", url: "https://www.usf.edu/gnsi/", logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/affil-usf-gnsi_f1be22ce.png" },
-  { name: "Small Wars Journal", role: "2026 Fellow / Associate", desc: "Leading journal on irregular warfare and national security strategy.", url: "https://smallwarsjournal.com", logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/affil-small-wars-journal_41815d3a.png" },
-  { name: "Center for Advanced Defense Studies (C4ADS)", role: "Former Senior Fellow", desc: "Supported Organized Crime and Grand Corruption team on drug trafficking and money laundering.", url: "https://c4ads.org", logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/affil-c4ads_c2e8d8dd.png" },
-  { name: "Presidential Management Fellows Program", role: "Former Fellow", desc: "Prestigious U.S. government leadership development program.", url: "https://www.pmf.gov", logo: "https://d2xsxph8kpxj0f.cloudfront.net/310519663451950503/iBHV5ZcZsrLaWgHahkPnfq/affil-pmf_52c1f340.png" },
+  { name: "United Against Fentanyl", role: "Advisory Board Member", desc: "Bipartisan non-profit focused on ending the U.S. opioid crisis.", url: "https://www.uniteagainstfentanyl.org", icon: "shield" },
+  { name: "Global Initiative Against Transnational Organized Crime (GI-TOC)", role: "Network of Experts Member", desc: "International network of researchers and practitioners addressing organized crime.", url: "https://globalinitiative.net", icon: "users" },
+  { name: "USF Global and National Security Institute (GNSI)", role: "Non-Resident Senior Fellow", desc: "University of South Florida research institute on national security.", url: "https://www.usf.edu/gnsi/", icon: "award" },
+  { name: "Small Wars Journal", role: "2026 Fellow / Associate", desc: "Leading journal on irregular warfare and national security strategy.", url: "https://smallwarsjournal.com", icon: "book" },
+  { name: "Center for Advanced Defense Studies (C4ADS)", role: "Former Senior Fellow", desc: "Supported Organized Crime and Grand Corruption team on drug trafficking and money laundering.", url: "https://c4ads.org", icon: "users" },
+  { name: "Presidential Management Fellows Program", role: "Former Fellow", desc: "Prestigious U.S. government leadership development program.", url: "https://www.pmf.gov", icon: "award" },
 ];
 
 function SectionWrapper({
@@ -1705,62 +1705,52 @@ function AffiliationsSection() {
       </p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {affiliations.map((aff, i) => (
-            <a
+            <div
               key={i}
-              href={aff.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block p-6 reveal-on-scroll transition-all duration-200 hover:-translate-y-1 hover:shadow-lg"
+              className="p-6 reveal-on-scroll transition-all duration-200 hover:-translate-y-0.5"
               style={{
                 transitionDelay: `${i * 0.08}s`,
                 backgroundColor: "rgba(255,255,255,0.07)",
                 border: "1px solid rgba(255,255,255,0.12)",
-                borderTop: "3px solid #C9A84C",
-                textDecoration: "none",
+                borderTop: "3px solid #4A7FA5",
               }}
             >
-              {/* Logo area */}
-              <div
-                className="flex items-center justify-center mb-4"
-                style={{ height: "56px" }}
-              >
-                <img
-                  src={aff.logo}
-                  alt={aff.name + " logo"}
-                  style={{
-                    maxHeight: "52px",
-                    maxWidth: "140px",
-                    objectFit: "contain",
-                    filter: "brightness(0) invert(1)",
-                    opacity: 0.85,
-                    transition: "opacity 0.2s",
-                  }}
-                  onMouseEnter={e => (e.currentTarget.style.opacity = "1")}
-                  onMouseLeave={e => (e.currentTarget.style.opacity = "0.85")}
-                />
-              </div>
-              {/* Name and role */}
-              <div className="border-t pt-3" style={{ borderColor: "rgba(255,255,255,0.12)" }}>
-                <h3
-                  className="font-bold leading-snug mb-1"
-                  style={{ fontFamily: "'Libre Baskerville', serif", color: "#ffffff", fontSize: "0.9rem" }}
-                >
-                  {aff.name}
-                </h3>
-                <div
-                  className="text-xs font-semibold tracking-wide mb-2"
-                  style={{ color: "#C9A84C", fontFamily: "'Lato', sans-serif", letterSpacing: "0.05em" }}
-                >
-                  {aff.role}
+              <div className="flex items-start gap-3 mb-3">
+                {aff.icon === "shield" && <Shield size={18} className="flex-shrink-0 mt-0.5" style={{ color: "#4A7FA5" }} />}
+                {aff.icon === "users" && <Users size={18} className="flex-shrink-0 mt-0.5" style={{ color: "#4A7FA5" }} />}
+                {aff.icon === "book" && <BookOpen size={18} className="flex-shrink-0 mt-0.5" style={{ color: "#4A7FA5" }} />}
+                {aff.icon === "award" && <Award size={18} className="flex-shrink-0 mt-0.5" style={{ color: "#4A7FA5" }} />}
+                <div>
+                  <h3
+                    className="font-bold leading-snug"
+                    style={{ fontFamily: "'Libre Baskerville', serif", color: "#ffffff", fontSize: "0.95rem" }}
+                  >
+                    <a
+                      href={aff.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 hover:underline transition-colors"
+                      style={{ color: "#ffffff" }}
+                    >
+                      {aff.name}
+                      <ExternalLink size={11} className="flex-shrink-0 opacity-50" />
+                    </a>
+                  </h3>
+                  <div
+                    className="text-xs font-semibold mt-1 tracking-wide"
+                    style={{ color: "#4A7FA5", fontFamily: "'Lato', sans-serif", letterSpacing: "0.05em" }}
+                  >
+                    {aff.role}
+                  </div>
                 </div>
-                <p
-                  className="text-xs leading-relaxed"
-                  style={{ color: "rgba(255,255,255,0.55)", fontFamily: "'Lato', sans-serif", fontWeight: 300 }}
-                >
-                  {aff.desc}
-                </p>
               </div>
-            </a>
+              <p
+                className="text-sm leading-relaxed"
+                style={{ color: "rgba(255,255,255,0.6)", fontFamily: "'Lato', sans-serif", fontWeight: 300 }}
+              >
+                {aff.desc}
+              </p>
+            </div>
           ))}
         </div>
     </SectionWrapper>
@@ -1778,7 +1768,6 @@ function ContactSection() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
 
   const inquiryTypes = [
-    "Government / Policy Inquiry",
     "Media Inquiry",
     "Speaking Engagement",
     "Academic Collaboration",

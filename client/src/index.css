@@ -343,5 +343,13 @@
     color: #C9A84C;
   }
 
+  /* Hide scrollbar for the year-filter strip on mobile */
+  .scrollbar-none {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
 
 }

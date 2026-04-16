@@ -1372,13 +1372,13 @@ function PublicationsSection() {
       dark={false}
     >
 
-        {/* Year filter */}
-        <div className="flex flex-wrap gap-2 mb-6">
+        {/* Year filter — horizontal scroll on mobile, wrap on larger screens */}
+        <div className="flex gap-2 mb-6 overflow-x-auto pb-1 sm:flex-wrap sm:overflow-x-visible sm:pb-0 scrollbar-none" style={{ WebkitOverflowScrolling: 'touch' }}>
           {years.map((y) => (
             <button
               key={y}
               onClick={() => { setYearFilter(y); setShowAll(false); }}
-              className="px-3 py-1 text-xs font-bold tracking-widest uppercase transition-all duration-150 hover:border-[#0D2240] hover:text-[#0D2240]"
+              className="px-3 py-1 text-xs font-bold tracking-widest uppercase transition-all duration-150 hover:border-[#0D2240] hover:text-[#0D2240] flex-shrink-0"
               style={{
                 fontFamily: "'Lato', sans-serif",
                 letterSpacing: "0.1em",

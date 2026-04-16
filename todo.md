@@ -138,3 +138,12 @@
 - [x] NavBar: remove empty <div /> on left side (justify-end the nav links) — already resolved in prior session, confirmed via DOM inspection
 - [x] VideoSection: fix "Watch / Read" label — Fox News card now shows "Read", YouTube card shows "Watch" (dynamic based on embedType)
 - [x] AboutSection: bio paragraph 4 is complete — "Wall Stree" was a truncated display in the audit log, full text confirmed in source
+
+## Content Updates (Round 4)
+- [x] Add 2026 SWJ article "Could Mexican Cartels Be Incentivized to Sell 'Safer' Drugs?" to Publications section (already present as first entry)
+
+## Site Quality Improvements
+- [x] Add JSON-LD Person schema markup to index.html for SEO (enhanced with url, image, nationality fields)
+- [x] Fix mobile Publications year-filter to horizontal scroll strip (overflow-x-auto, flex-shrink-0, scrollbar-none)
+- [x] Generate and add branded 1200x630 Open Graph image (navy/gold branded card, Twitter card meta tags added)
+- [x] Add sitemap.xml to client/public

@@ -939,13 +939,13 @@ function HeroSection() {
               className="text-white/80 italic leading-relaxed"
               style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.15rem", fontWeight: 400 }}
             >
-              "The opioid crisis is not a red or blue state issue — it’s an American issue."
+              "What we're seeing today is the single largest transformation in the drug trade ever."
             </p>
             <cite
               className="block mt-2 text-xs not-italic tracking-widest uppercase"
               style={{ color: "#4A7FA5", fontFamily: "'Lato', sans-serif" }}
             >
-              — Jim Crotty, AL.com
+              — Jim Crotty, Atlanta Journal-Constitution
             </cite>
           </blockquote>
 

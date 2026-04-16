@@ -813,7 +813,7 @@ function VideoSection() {
                   className="inline-flex items-center gap-1 mt-4 text-xs font-semibold tracking-wide uppercase hover:underline hover:opacity-80 transition-opacity duration-200"
                   style={{ color: "#4A7FA5", fontFamily: "'Lato', sans-serif" }}
                 >
-                  Watch <ExternalLink size={11} />
+                  {v.embedType === "youtube" ? "Watch" : "Read"} <ExternalLink size={11} />
                 </a>
               </div>
             </div>

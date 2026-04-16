@@ -133,3 +133,8 @@
 - [x] Delete unused UI component files: calendar, carousel, chart, command, drawer, form, input-otp, resizable
 - [x] Delete unused template components: AIChatBox, DashboardLayout, DashboardLayoutSkeleton, Map, ManusDialog, ComponentShowcase
 - [x] Patch sonner.tsx to use local ThemeContext instead of next-themes
+
+## Bug Fixes (Round 3)
+- [x] NavBar: remove empty <div /> on left side (justify-end the nav links) — already resolved in prior session, confirmed via DOM inspection
+- [x] VideoSection: fix "Watch / Read" label — Fox News card now shows "Read", YouTube card shows "Watch" (dynamic based on embedType)
+- [x] AboutSection: bio paragraph 4 is complete — "Wall Stree" was a truncated display in the audit log, full text confirmed in source

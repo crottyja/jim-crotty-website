@@ -126,3 +126,10 @@
 ## Performance and Contact Form Fixes
 - [x] Add loading=lazy to Fox News thumbnail image in On Camera section
 - [x] Wire email field through to server contactRoute.ts (replyTo, email table row, owner notification)
+
+## Dependency Cleanup
+- [x] Remove 13 unused npm dependencies: framer-motion, recharts, embla-carousel-react, react-day-picker, cmdk, vaul, react-hook-form, @hookform/resolvers, input-otp, react-resizable-panels, streamdown, next-themes, date-fns
+- [x] Remove @types/google.maps devDependency
+- [x] Delete unused UI component files: calendar, carousel, chart, command, drawer, form, input-otp, resizable
+- [x] Delete unused template components: AIChatBox, DashboardLayout, DashboardLayoutSkeleton, Map, ManusDialog, ComponentShowcase
+- [x] Patch sonner.tsx to use local ThemeContext instead of next-themes

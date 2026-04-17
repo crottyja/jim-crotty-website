@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: jim-crotty-website
+    runtime: node
+    buildCommand: npm install -g pnpm && pnpm install && pnpm run build:render
+    startCommand: node dist/server-render.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: RESEND_API_KEY
+        sync: false
+      - key: DATABASE_URL
+        sync: false
+      - key: JWT_SECRET
+        sync: false
